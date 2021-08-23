@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "nonebot-plugin-arcaea"
+version = "0.1.0"
+description = ""
+authors = ["Chendihe4975 <Chendihe4975@gmail.com>"]
+license = "AGPL-3.0 License"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiohttp = "^3.7.4"
+websockets = "^9.1"
+Pillow = "^8.3.1"
+peewee = "^3.14.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
