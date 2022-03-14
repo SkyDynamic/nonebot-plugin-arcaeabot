@@ -15,7 +15,7 @@ assets_path = path.abspath(path.join(path.dirname(__file__), "assets"))
 
 async def check_update() -> List[str]:
     async with ClientSession() as session:
-        async with session.get("https://arcaea.dihe.moe/api/song_list", verify_ssl=False) as resp:
+        async with session.get("https://127.0.0.1:17777/api/song_list", verify_ssl=False) as resp:
             result = list()
             for k, v in (await resp.json()).items():
                 if k not in listdir(path.join(assets_path, "song")):
