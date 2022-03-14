@@ -13,7 +13,7 @@ from nonebot.adapters.onebot.v11 import Bot
 from nonebot.adapters.onebot.v11 import Event, MessageEvent
 from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.exception import ActionFailed, FinishedException
-
+from nonebot.params import State
 from .data import UserInfo
 from .draw_image import UserArcaeaInfo
 from .assets_updater import check_update
@@ -23,7 +23,7 @@ matcher = on_command("/arc", aliases={"arcaea", "/a"}, priority=1, block=True)
 
 
 @matcher.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+async def _(bot: Bot, event: Event, state: T_State=State()):
     if isinstance(event, MessageEvent):
         if (msg := event.get_plaintext().split()):
             if msg[0] not in ["help", "info", "recent", "b30", "bind", "unbind", "assets_update"]:
