@@ -11,7 +11,7 @@ from datetime import datetime
 from time import localtime, mktime, strftime
 
 from PIL import Image, ImageDraw, ImageFont
-from nonebot.adapters.cqhttp.message import MessageSegment
+from nonebot.adapters.onebot.v11 import MessageSegment
 
 from .assets import StaticPath, ASSETS
 from .request import fetch_user_info

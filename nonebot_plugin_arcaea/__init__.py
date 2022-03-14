@@ -9,9 +9,9 @@
 from loguru import logger
 from nonebot.plugin import on_command
 from nonebot.typing import T_State
-from nonebot.adapters.cqhttp.bot import Bot
-from nonebot.adapters.cqhttp.event import Event, MessageEvent
-from nonebot.adapters.cqhttp.message import MessageSegment
+from nonebot.adapters.onebot.v11 import Bot
+from nonebot.adapters.onebot.v11 import Event, MessageEvent
+from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.exception import ActionFailed, FinishedException
 
 from .data import UserInfo
