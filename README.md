@@ -7,7 +7,7 @@ Arcaea 查分器。
 
 ## 如何开始 Quick Start
 
-使该项目被您的 NoneBot2 (nonebot2 及 nonebot-adapter-cqhttp 版本不得低于 `2.0.0a14` ) 机器人作为插件加载, 至于如何做, 您应该懂的。
+使该项目被您的 NoneBot2 (nonebot2 及 nonebot-adapter-onebot 版本不得低于 `2.0.0-beta2` ) 机器人作为插件加载, 至于如何做, 您应该懂的。
 
 ## 指令 Command
 
