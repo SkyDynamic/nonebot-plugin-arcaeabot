@@ -3,7 +3,8 @@ from .matcher import arc
 from .handlers import (
     help_handler,
     bind_handler,
-    pre_handler
+    pre_handler,
+    assets_update_handler
 )
 
 
