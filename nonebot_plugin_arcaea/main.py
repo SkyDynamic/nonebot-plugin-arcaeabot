@@ -1,4 +1,3 @@
-from nonebot_plugin_arcaea.handlers.assets_update import assets_update_handler
 from .matcher import arc
 from .handlers import (
     help_handler,
@@ -6,7 +5,9 @@ from .handlers import (
     pre_handler,
     assets_update_handler,
     unbind_handler,
-    info_handler
+    info_handler,
+    recent_handler,
+    b30_handler
 )
 
 
@@ -16,3 +17,5 @@ arc.handle()(pre_handler)
 arc.handle()(assets_update_handler)
 arc.handle()(unbind_handler)
 arc.handle()(info_handler)
+arc.handle()(recent_handler)
+arc.handle()(b30_handler)

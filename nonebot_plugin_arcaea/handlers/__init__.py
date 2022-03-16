@@ -4,3 +4,5 @@ from .pre import pre_handler
 from .assets_update import assets_update_handler
 from .unbind import unbind_handler
 from .info import info_handler
+from .recent import recent_handler
+from .b30 import b30_handler
