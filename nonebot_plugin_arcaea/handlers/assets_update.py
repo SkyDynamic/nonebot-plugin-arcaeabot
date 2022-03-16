@@ -1,4 +1,3 @@
-from aiocqhttp import ActionFailed
 from nonebot.adapters.onebot.v11 import Bot, MessageEvent, Message
 from nonebot.params import CommandArg
 from nonebot.log import logger
