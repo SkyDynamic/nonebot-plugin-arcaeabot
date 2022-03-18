@@ -1,1 +1,0 @@
-char assets will be downloaded here

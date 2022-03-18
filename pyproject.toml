@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "nonebot_plugin_ArcaeaQuery"
+name = "nonebot_plugin_arcaeabot"
 version = "0.2.0"
 description = ""
 authors = ["Chendihe4975 <Chendihe4975@gmail.com>", "<SEAFHMC>, d1366160279@gmail.com"]
