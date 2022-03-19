@@ -13,7 +13,7 @@ async def assets_update_handler(bot: Bot, event: MessageEvent, args: Message = C
         result_char = await check_char_update()
         try:
             await arc.finish("\n".join([f"> {event.sender.card or event.sender.nickname}",
-            f"成功更新 {len(result_song)} 张曲绘, ",
-            f"成功更新 {len(result_char)} 张立绘"]))
+                                        f"成功更新 {len(result_song)} 张曲绘, ",
+                                        f"成功更新 {len(result_char)} 张立绘"]))
         except ActionFailed as e:
             logger.error(f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}')

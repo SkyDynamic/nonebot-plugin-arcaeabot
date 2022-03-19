@@ -12,6 +12,7 @@ from .assets import StaticPath
 
 db = pw.SqliteDatabase(StaticPath.database)
 
+
 class UserInfo(pw.Model):
     user_qq = pw.IntegerField()
     arcaea_id = pw.IntegerField()
@@ -20,6 +21,7 @@ class UserInfo(pw.Model):
     class Meta:
         database = db
         primary_key = pw.CompositeKey("user_qq", "arcaea_id")
+
 
 if not path.exists(StaticPath.database):
     db.connect()

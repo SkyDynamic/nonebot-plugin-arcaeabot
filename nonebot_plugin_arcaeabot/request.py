@@ -11,7 +11,7 @@ from brotli import decompress
 from typing import List, Dict
 try:
     import ujson as json
-except:
+except Exception:
     import json
 
 
