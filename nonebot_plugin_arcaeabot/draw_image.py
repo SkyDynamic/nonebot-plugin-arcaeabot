@@ -271,7 +271,7 @@ class UserArcaeaInfo:
         image.alpha_composite(hp_grid, (415, 290))
         rating_image = open_img(StaticPath.select_rating_image(
             score=score, failed=(health == -1)))
-        image.alpha_composite(rating_image, (585, 417))
+        image.alpha_composite(rating_image, (595, 417))
         ptt = open_img(StaticPath.select_image("ptt",
                                                choice_ptt_background(rating))).resize((75, 75))
         image.alpha_composite(ptt, (655, 50))
