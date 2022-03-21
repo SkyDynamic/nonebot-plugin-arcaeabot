@@ -15,6 +15,7 @@ from nonebot.adapters.onebot.v11 import MessageSegment
 
 from .assets import StaticPath, ASSETS
 from .request import fetch_user_info
+import ujson as json
 
 
 def player_time_format(time_stamp: int) -> str:
@@ -228,6 +229,7 @@ class UserArcaeaInfo:
         icon = f"{character}u_icon.png" if is_char_uncapped ^ is_char_uncapped_override else f"{character}_icon.png"
         rating: int = data["rating"]
         song_id: str = data["recent_score"][0]["song_id"]
+        song_name: str = get_song_name(song_id=song_id)["en"]
         difficulty: int = data["recent_score"][0]["difficulty"]
         score: int = data["recent_score"][0]["score"]
         shiny_perfect_count: int = data["recent_score"][0]["shiny_perfect_count"]
@@ -277,9 +279,9 @@ class UserArcaeaInfo:
         write_arcaea_id = DataText(
             920, 20, 40, f"id: {arcaea_id}", StaticPath.exo_regular)
         image = draw_text(image, write_arcaea_id, 96, 75, 84, 255)
-        write_song_id = DataText((640 - len(song_id) / 2 * 32), 115,
+        write_song_name = DataText((640 - len(song_name) / 2 * 32), 115,
                                  65, song_id.capitalize(), StaticPath.exo_regular)
-        image = draw_text(image, write_song_id)
+        image = draw_text(image, write_song_name)
         write_score = DataText((640-len(str(score))/2 * 30), 310,
                                55, format(score, ",").replace(",", "'"), StaticPath.geosans_light)
         image = draw_text(image, write_score)
@@ -315,3 +317,8 @@ class UserArcaeaInfo:
         image = draw_text(image, write_ptt)
         image.save(StaticPath.output(str(arcaea_id) + "_recent"))
         return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id) + "_recent"))
+
+
+def get_song_name(song_id: str):
+    with open(StaticPath.constants_json, "r", encoding="UTF-8") as f:
+        return json.loads(f.read())['data'][song_id]

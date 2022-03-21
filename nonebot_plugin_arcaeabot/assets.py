@@ -1,8 +1,8 @@
 """
  - Author: DiheChen
  - Date: 2021-08-15 22:00:59
- - LastEditTime: 2021-08-22 02:12:26
- - LastEditors: DiheChen
+ - LastEditTime: 2022-03-21 09:22:26
+ - LastEditors: SEAFHMC
  - Description: None
  - GitHub: https://github.com/Chendihe4975
 """
@@ -52,6 +52,7 @@ class StaticPath:
     exo_regular = path.join(ASSETS, "font", "Exo-Regular.ttf")
     geosans_light = path.join(ASSETS, "font", "GeosansLight.ttf")
     track_failed = path.join(ASSETS, "recent", "clear_normal.png")
+    constants_json = path.join(ASSETS, "constants.json")
 
     @staticmethod
     def select_image(*args) -> str:

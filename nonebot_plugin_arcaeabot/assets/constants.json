@@ -1,0 +1,2432 @@
+[
+    {
+        "cmd": "songtitle",
+        "data": {
+            "sayonarahatsukoi": {
+                "en": "Sayonara Hatsukoi"
+            },
+            "lostcivilization": {
+                "en": "Lost Civilization"
+            },
+            "goodtek": {
+                "en": "GOODTEK (Arcaea Edit)"
+            },
+            "viyella": {
+                "en": "cry of viyella"
+            },
+            "rise": {
+                "en": "Rise"
+            },
+            "lucifer": {
+                "en": "Lucifer"
+            },
+            "fairytale": {
+                "en": "Fairytale"
+            },
+            "hearditsaid": {
+                "en": "I've heard it said"
+            },
+            "babaroque": {
+                "en": "Babaroque"
+            },
+            "memoryfactory": {
+                "en": "memoryfactory.lzh"
+            },
+            "snowwhite": {
+                "en": "Snow White"
+            },
+            "relentless": {
+                "en": "Relentless"
+            },
+            "shadesoflight": {
+                "en": "Shades of Light in a Transcendent Realm"
+            },
+            "vexaria": {
+                "en": "Vexaria"
+            },
+            "essenceoftwilight": {
+                "en": "Essence of Twilight"
+            },
+            "qualia": {
+                "en": "qualia -ideaesthesia-"
+            },
+            "pragmatism": {
+                "en": "PRAGMATISM"
+            },
+            "sheriruth": {
+                "en": "Sheriruth"
+            },
+            "lumia": {
+                "en": "Lumia"
+            },
+            "dement": {
+                "en": "Dement ~after legend~"
+            },
+            "dandelion": {
+                "en": "Dandelion"
+            },
+            "anokumene": {
+                "en": "An\u00f6kumene",
+                "ko": "Anokumene",
+                "zh-Hant": "Anokumene",
+                "zh-Hans": "Anokumene"
+            },
+            "infinityheaven": {
+                "en": "Infinity Heaven"
+            },
+            "partyvinyl": {
+                "en": "Party Vinyl"
+            },
+            "flashback": {
+                "en": "Flashback"
+            },
+            "flyburg": {
+                "en": "Flyburg and Endroll",
+                "ja": "\u30d5\u30e9\u30a4\u30d6\u30eb\u30af\u3068\u30a8\u30f3\u30c9\u30ed\u30a6\u30eb"
+            },
+            "nirvluce": {
+                "en": "Nirv lucE"
+            },
+            "paradise": {
+                "en": "Paradise"
+            },
+            "brandnewworld": {
+                "en": "Brand new world"
+            },
+            "dataerror": {
+                "en": "DataErr0r"
+            },
+            "crosssoul": {
+                "en": "CROSS\u2020SOUL"
+            },
+            "yourvoiceso": {
+                "en": "Your voice so... feat. Such"
+            },
+            "chronostasis": {
+                "en": "Chronostasis"
+            },
+            "kanagawa": {
+                "en": "Kanagawa Cyber Culvert",
+                "ja": "\u795e\u5948\u5ddd\u96fb\u8133\u6697\u6e20"
+            },
+            "moonlightofsandcastle": {
+                "en": "Moonlight of Sand Castle"
+            },
+            "reconstruction": {
+                "en": "REconstruction"
+            },
+            "evoltex": {
+                "en": "Evoltex (poppi'n mix)"
+            },
+            "oracle": {
+                "en": "Oracle"
+            },
+            "aterlbus": {
+                "en": "\u03b1terl\u03b2us",
+                "zh-Hant": "aterlbus",
+                "zh-Hans": "aterlbus"
+            },
+            "clotho": {
+                "en": "Clotho and the stargazer",
+                "ja": "\u30af\u30ed\u30fc\u30c8\u30fc\u3068\u661f\u306e\u89b3\u6e2c\u8005"
+            },
+            "impurebird": {
+                "en": "Impure Bird",
+                "ja": "\u4e0d\u6d44\u306a\u767d\u3044\u9ce5"
+            },
+            "ignotus": {
+                "en": "Ignotus"
+            },
+            "lethaeus": {
+                "en": "Lethaeus"
+            },
+            "romancewars": {
+                "en": "Romance Wars",
+                "ja": "vs\u30ad\u30df\u6226\u4e89"
+            },
+            "blossoms": {
+                "en": "Blossoms"
+            },
+            "moonheart": {
+                "en": "Moonheart"
+            },
+            "genesis": {
+                "en": "Genesis"
+            },
+            "harutopia": {
+                "ja": "\u30cf\u30eb\u30c8\u30d4\u30a2 ~Utopia of Spring~",
+                "en": "Harutopia ~Utopia of Spring~"
+            },
+            "auxesia": {
+                "en": "Auxesia"
+            },
+            "rabbitintheblackroom": {
+                "en": "Rabbit In The Black Room"
+            },
+            "modelista": {
+                "en": "Modelista"
+            },
+            "soundwitch": {
+                "en": "SOUNDWiTCH"
+            },
+            "trappola": {
+                "en": "trappola bewitching",
+                "ja": "\u5996\u8276\u9b54\u5973 -trappola bewitching-"
+            },
+            "iconoclast": {
+                "en": "Iconoclast"
+            },
+            "conflict": {
+                "en": "conflict"
+            },
+            "axiumcrisis": {
+                "en": "Axium Crisis"
+            },
+            "grievouslady": {
+                "en": "Grievous Lady"
+            },
+            "dreaminattraction": {
+                "en": "Dreamin' Attraction!!"
+            },
+            "redandblue": {
+                "en": "Red and Blue"
+            },
+            "onelastdrive": {
+                "en": "One Last Drive"
+            },
+            "surrender": {
+                "en": "Surrender"
+            },
+            "yozakurafubuki": {
+                "en": "Yosakura Fubuki",
+                "ja": "\u591c\u685c\u5439\u96ea"
+            },
+            "cyanine": {
+                "en": "cyanine"
+            },
+            "dreamgoeson": {
+                "en": "Dream goes on"
+            },
+            "journey": {
+                "en": "Journey"
+            },
+            "specta": {
+                "en": "Specta"
+            },
+            "quon": {
+                "en": "Quon"
+            },
+            "syro": {
+                "en": "Syro"
+            },
+            "reinvent": {
+                "en": "Reinvent"
+            },
+            "silentrush": {
+                "en": "Silent Rush"
+            },
+            "singularity": {
+                "en": "Singularity"
+            },
+            "memoryforest": {
+                "en": "Memory Forest"
+            },
+            "strongholds": {
+                "en": "Strongholds"
+            },
+            "nexttoyou": {
+                "en": "next to you"
+            },
+            "metallicpunisher": {
+                "en": "Metallic Punisher"
+            },
+            "blaster": {
+                "en": "Blaster"
+            },
+            "guardina": {
+                "en": "\u03b3uar\u03b4ina",
+                "kr": "guardina",
+                "zh-Hant": "guardina",
+                "zh-Hans": "guardina"
+            },
+            "carminescythe": {
+                "en": "carmine:scythe"
+            },
+            "bethere": {
+                "en": "Be There"
+            },
+            "cyberneciacatharsis": {
+                "en": "Cybernecia Catharsis"
+            },
+            "callmyname": {
+                "en": "Call My Name feat. Yukacco"
+            },
+            "inkarusi": {
+                "en": "inkar-usi"
+            },
+            "mazenine": {
+                "en": "Maze No.9",
+                "ja": "\u4e5d\u756a\u76ee\u306e\u8ff7\u8def"
+            },
+            "themessage": {
+                "en": "The Message"
+            },
+            "sulfur": {
+                "en": "Sulfur"
+            },
+            "halcyon": {
+                "en": "Halcyon"
+            },
+            "etherstrike": {
+                "en": "Ether Strike"
+            },
+            "fractureray": {
+                "en": "Fracture Ray"
+            },
+            "suomi": {
+                "en": "Suomi"
+            },
+            "bookmaker": {
+                "en": "Bookmaker (2D Version)"
+            },
+            "darakunosono": {
+                "ja": "\u5815\u697d\u306e\u5712",
+                "en": "Illegal Paradise"
+            },
+            "dropdead": {
+                "en": "dropdead"
+            },
+            "fallensquare": {
+                "en": "Fallensquare"
+            },
+            "nhelv": {
+                "en": "Nhelv"
+            },
+            "espebranch": {
+                "ja": "\u767d\u9053\u3001\u591a\u5e0c\u671b\u7f8a\u3068\u4fe1\u3058\u3042\u308a\u304f\u3002",
+                "en": "LunarOrbit -believe in the Espebranch road-"
+            },
+            "purgatorium": {
+                "en": "Purgatorium"
+            },
+            "hikari": {
+                "ja": "\u5149",
+                "en": "Hikari"
+            },
+            "stager": {
+                "en": "STAGER (ALL STAGE CLEAR)"
+            },
+            "hallofmirrors": {
+                "en": "Hall of Mirrors"
+            },
+            "linearaccelerator": {
+                "en": "Linear Accelerator"
+            },
+            "tiferet": {
+                "en": "Tiferet"
+            },
+            "alexandrite": {
+                "en": "Alexandrite"
+            },
+            "rugie": {
+                "en": "Rugie"
+            },
+            "astraltale": {
+                "en": "Astral tale"
+            },
+            "phantasia": {
+                "en": "Phantasia"
+            },
+            "empireofwinter": {
+                "en": "Empire of Winter"
+            },
+            "merlin": {
+                "en": "MERLIN"
+            },
+            "dxfullmetal": {
+                "ja": "DX\u8d85\u6027\u80fd\u30d5\u30eb\u30e1\u30bf\u30eb\u5c11\u5973",
+                "en": "DX Choseinou Full Metal Shojo"
+            },
+            "omakeno": {
+                "en": "OMAKENO Stroke"
+            },
+            "scarletlance": {
+                "en": "Scarlet Lance"
+            },
+            "ouroboros": {
+                "en": "ouroboros -twin stroke of the end-"
+            },
+            "libertas": {
+                "en": "Libertas"
+            },
+            "solitarydream": {
+                "en": "Solitary Dream",
+                "ja": "\u865a\u7a7a\u306e\u5922"
+            },
+            "antithese": {
+                "en": "Antithese"
+            },
+            "corruption": {
+                "en": "Corruption"
+            },
+            "blackterritory": {
+                "en": "Black Territory"
+            },
+            "viciousheroism": {
+                "en": "Vicious Heroism"
+            },
+            "cyaegha": {
+                "en": "Cyaegha"
+            },
+            "revixy": {
+                "en": "ReviXy"
+            },
+            "grimheart": {
+                "en": "Grimheart"
+            },
+            "vector": {
+                "en": "VECTO\u042f"
+            },
+            "supernova": {
+                "en": "SUPERNOVA"
+            },
+            "dottodot": {
+                "en": "Dot to Dot feat. shully"
+            },
+            "garakuta": {
+                "en": "Garakuta Doll Play"
+            },
+            "ikazuchi": {
+                "en": "Ikazuchi",
+                "ja": "\u6012\u69cc"
+            },
+            "worldvanquisher": {
+                "en": "World Vanquisher"
+            },
+            "dreadnought": {
+                "en": "Dreadnought"
+            },
+            "particlearts": {
+                "en": "Particle Arts"
+            },
+            "vindication": {
+                "en": "Vindication"
+            },
+            "heavensdoor": {
+                "en": "Heavensdoor"
+            },
+            "ringedgenesis": {
+                "en": "Ringed Genesis"
+            },
+            "chelsea": {
+                "en": "Chelsea"
+            },
+            "aiueoon": {
+                "en": "AI[UE]OON"
+            },
+            "melodyoflove": {
+                "en": "A Wandering Melody of Love",
+                "ja": "\u8ff7\u3048\u308b\u97f3\u8272\u306f\u604b\u306e\u5504"
+            },
+            "tiemedowngently": {
+                "en": "Tie me down gently"
+            },
+            "valhallazero": {
+                "en": "Valhalla:0"
+            },
+            "mirzam": {
+                "en": "Mirzam"
+            },
+            "diode": {
+                "en": "Diode"
+            },
+            "freefall": {
+                "en": "FREEF4LL"
+            },
+            "gloryroad": {
+                "en": "GLORY\uff1aROAD"
+            },
+            "monochromeprincess": {
+                "en": "Monochrome Princess"
+            },
+            "heavenlycaress": {
+                "en": "Heavenly caress"
+            },
+            "senkyou": {
+                "en": "Senkyou"
+            },
+            "filament": {
+                "en": "Filament"
+            },
+            "avantraze": {
+                "en": "Avant Raze"
+            },
+            "battlenoone": {
+                "en": "BATTLE NO.1"
+            },
+            "laqryma": {
+                "en": "La'qryma of the Wasteland"
+            },
+            "einherjar": {
+                "en": "Einherjar Joker"
+            },
+            "izana": {
+                "en": "IZANA"
+            },
+            "saikyostronger": {
+                "en": "SAIKYO STRONGER",
+                "ja": "\u6700\u5f37STRONGER"
+            },
+            "worldexecuteme": {
+                "en": "world.execute(me);"
+            },
+            "blrink": {
+                "en": "BLRINK"
+            },
+            "oblivia": {
+                "en": "Oblivia"
+            },
+            "amygdata": {
+                "en": "amygdata"
+            },
+            "corpssansorganes": {
+                "en": "corps-sans-organes"
+            },
+            "equilibrium": {
+                "en": "Equilibrium"
+            },
+            "antagonism": {
+                "en": "Antagonism"
+            },
+            "lostdesire": {
+                "en": "Lost Desire"
+            },
+            "dantalion": {
+                "en": "Dantalion"
+            },
+            "ifi": {
+                "en": "#1f1e33"
+            },
+            "tempestissimo": {
+                "en": "Tempestissimo"
+            },
+            "arcahv": {
+                "en": "Arcahv"
+            },
+            "altale": {
+                "en": "Altale"
+            },
+            "givemeanightmare": {
+                "en": "Give Me a Nightmare"
+            },
+            "blacklotus": {
+                "en": "Black Lotus"
+            },
+            "gekka": {
+                "en": "Gekka (Short Version)"
+            },
+            "vividtheory": {
+                "en": "Vivid Theory"
+            },
+            "onefr": {
+                "en": "1F\u221a"
+            },
+            "scarletcage": {
+                "en": "Scarlet Cage"
+            },
+            "faintlight": {
+                "en": "Faint Light (Arcaea Edit)"
+            },
+            "feelssoright": {
+                "en": "Feels So Right feat. Renko"
+            },
+            "teriqma": {
+                "en": "Teriqma"
+            },
+            "mahoroba": {
+                "en": "MAHOROBA"
+            },
+            "badtek": {
+                "en": "BADTEK"
+            },
+            "maliciousmischance": {
+                "en": "Malicious Mischance"
+            },
+            "gothiveofra": {
+                "en": "Got hive of Ra"
+            },
+            "buchigireberserker": {
+                "en": "BUCHiGiRE Berserker"
+            },
+            "galaxyfriends": {
+                "en": "Galaxy Friends"
+            },
+            "crossover": {
+                "en": "CROSS\u2020OVER"
+            },
+            "xeraphinite": {
+                "en": "Xeraphinite"
+            },
+            "lapis": {
+                "en": "Lapis"
+            },
+            "xanatos": {
+                "en": "Xanatos"
+            },
+            "purpleverse": {
+                "en": "Purple Verse"
+            },
+            "alicealamode": {
+                "en": "Alice \u00e0 la mode",
+                "ko": "Alice a la mode"
+            },
+            "eccentrictale": {
+                "en": "Eccentric Tale"
+            },
+            "alicessuitcase": {
+                "en": "Alice's Suitcase"
+            },
+            "jump": {
+                "en": "Jump"
+            },
+            "felis": {
+                "en": "Felis"
+            },
+            "besideyou": {
+                "en": "Beside You"
+            },
+            "heartjackin": {
+                "en": "Heart Jackin'"
+            },
+            "toaliceliddell": {
+                "en": "To: Alice Liddell",
+                "ja": "\u30a2\u30ea\u30b9\u30fb\u30ea\u30c7\u30eb\u306b\u6367\u3050"
+            },
+            "lazyaddiction": {
+                "en": "Lazy Addiction"
+            },
+            "dazzlehop": {
+                "en": "Dazzle hop"
+            },
+            "viyellastears": {
+                "en": "Viyella's Tears"
+            },
+            "omegafour": {
+                "en": "\u03c94",
+                "zh-Hant": "w4",
+                "zh-Hans": "w4"
+            },
+            "aprilshowers": {
+                "en": "April showers",
+                "ja": "\u56db\u6708\u306e\u96e8"
+            },
+            "seventhsense": {
+                "en": "7thSense"
+            },
+            "oshamascramble": {
+                "en": "Oshama Scramble!"
+            },
+            "amazingmightyyyy": {
+                "en": "AMAZING MIGHTYYYY!!!!"
+            },
+            "climax": {
+                "en": "Climax"
+            },
+            "lastcelebration": {
+                "en": "Last Celebration"
+            },
+            "gou": {
+                "en": "Misdeed -la bont\u00e9 de Dieu et l'origine du mal-",
+                "ja": "\u696d -\u5584\u306a\u308b\u795e\u3068\u3053\u306e\u4e16\u306e\u60aa\u306b\u3064\u3044\u3066-"
+            },
+            "glow": {
+                "en": "Glow"
+            },
+            "attraqtia": {
+                "en": "AttraqtiA"
+            },
+            "enchantedlove": {
+                "en": "enchanted love"
+            },
+            "take": {
+                "en": "Bamboo",
+                "ja": "\u7af9"
+            },
+            "gimmedablood": {
+                "en": "GIMME DA BLOOD"
+            },
+            "bassline": {
+                "en": "Can I Friend You on Bassbook? Lol",
+                "ja": "\u30d9\u30fc\u30b9\u30e9\u30a4\u30f3\u3084\u3063\u3066\u308b\uff1f\uff57"
+            },
+            "lifeispiano": {
+                "en": "Life is PIANO"
+            },
+            "paperwitch": {
+                "en": "Paper Witch"
+            },
+            "crystalgravity": {
+                "en": "Crystal Gravity"
+            },
+            "farawaylight": {
+                "en": "Far Away Light"
+            },
+            "loschen": {
+                "en": "L\u00f6schen"
+            },
+            "aegleseeker": {
+                "en": "Aegleseeker"
+            },
+            "coastalhighway": {
+                "en": "Coastal Highway"
+            },
+            "odysseia": {
+                "en": "\u039f\u0394\u03a5\u03a3\u03a3\u0395\u0399\u0391"
+            },
+            "overwhelm": {
+                "en": "Overwhelm"
+            },
+            "vandalism": {
+                "en": "Vandalism"
+            },
+            "turbocharger": {
+                "en": "Turbocharger"
+            },
+            "theultimacy": {
+                "en": "THE ULTIMACY"
+            },
+            "rekkaresonance": {
+                "en": "REKKA RESONANCE",
+                "ja": "\u70c8\u83efRESONANCE"
+            },
+            "kyogenkigo": {
+                "en": "False Embellishment",
+                "ja": "\u72c2\u8a00\u7dba\u8a9e"
+            },
+            "hivemind": {
+                "en": "HIVEMIND"
+            },
+            "seclusion": {
+                "en": "Seclusion"
+            },
+            "smallcloud": {
+                "en": "Small Cloud Sugar Candy"
+            },
+            "alterale": {
+                "en": "AlterAle"
+            },
+            "divinelight": {
+                "en": "Divine Light of Myriad",
+                "ja": "\u5149\u901f\u795e\u6388\u8aac - Divine Light of Myriad -"
+            },
+            "mazymetroplex": {
+                "en": "Mazy Metroplex"
+            },
+            "quonwacca": {
+                "en": "Quon"
+            },
+            "withu": {
+                "en": "with U"
+            },
+            "genocider": {
+                "en": "GENOCIDER"
+            },
+            "letyoudivermx": {
+                "en": "Let you DIVE! (nitro rmx)"
+            },
+            "sheriruthrmx": {
+                "en": "Sheriruth (Laur Remix)"
+            },
+            "eveninginscarlet": {
+                "en": "Evening in Scarlet",
+                "ja": "\u7dcb\u7e8f\u3044\u306e\u5bb5"
+            },
+            "bluecomet": {
+                "en": "blue comet"
+            },
+            "energysynergymatrix": {
+                "en": "ENERGY SYNERGY MATRIX"
+            },
+            "gengaozo": {
+                "en": "G e n g a o z o"
+            },
+            "goldenslaughterer": {
+                "en": "goldenslaughterer"
+            },
+            "lastendconductor": {
+                "en": "lastendconductor"
+            },
+            "redolentshape": {
+                "en": "Redolent Shape"
+            },
+            "cosmica": {
+                "en": "Cosmica"
+            },
+            "ascent": {
+                "en": "Ascent"
+            },
+            "livefastdieyoung": {
+                "en": "Live Fast Die Young"
+            },
+            "summerfireworks": {
+                "en": "Summer Fireworks of Love",
+                "ja": "\u5f69\u308b\u590f\u306e\u604b\u82b1\u706b"
+            },
+            "firstsnow": {
+                "en": "First Snow"
+            },
+            "bluerose": {
+                "en": "Blue Rose"
+            },
+            "blockedlibrary": {
+                "en": "Blocked Library"
+            },
+            "neokosmo": {
+                "en": "n\u03ad\u03bf \u03ba\u03ccsmo",
+                "ko": "neo kosmo",
+                "zh-Hant": "neo kosmo",
+                "zh-Hans": "neo kosmo"
+            },
+            "lightningscrew": {
+                "en": "Lightning Screw"
+            },
+            "lightsofmuse": {
+                "en": "Lights of Muse"
+            },
+            "finalstep": {
+                "en": "Final Step!"
+            },
+            "akinokagerou": {
+                "en": "Haze of Autumn",
+                "ja": "\u79cb\u306e\u967d\u708e"
+            },
+            "medusa": {
+                "en": "Medusa"
+            },
+            "init": {
+                "en": "init()"
+            },
+            "internetoverdose": {
+                "en": "INTERNET OVERDOSE"
+            },
+            "sakurafubuki": {
+                "en": "Sakura Fubuki"
+            },
+            "nulctrl": {
+                "en": "NULCTRL"
+            },
+            "macromod": {
+                "en": "Macrocosmic Modulation"
+            },
+            "neowings": {
+                "en": "NEO WINGS"
+            },
+            "kissinglucifer": {
+                "en": "Kissing Lucifer"
+            },
+            "avril": {
+                "en": "\u00c4vril -Flicka i krans-"
+            }
+        }
+    },
+    {
+        "cmd": "songartist",
+        "data": {
+            "sayonarahatsukoi": "REDSHiFT",
+            "lostcivilization": "Laur vs CK",
+            "goodtek": "EBIMAYO",
+            "viyella": "Laur",
+            "rise": "Combatplayer",
+            "lucifer": "chitose",
+            "fairytale": "chitose",
+            "hearditsaid": "Combatplayer",
+            "babaroque": "cYsmix",
+            "memoryfactory": "Frums",
+            "snowwhite": "Puru",
+            "relentless": "Akira Complex",
+            "shadesoflight": "ak+q",
+            "vexaria": "ak+q",
+            "essenceoftwilight": "ak+q",
+            "qualia": "nitro",
+            "pragmatism": "Laur",
+            "sheriruth": "Team Grimoire",
+            "lumia": "sky_delta",
+            "dement": "Cosmograph",
+            "dandelion": "Farhan",
+            "anokumene": "Jun Kuroda",
+            "infinityheaven": "HyuN",
+            "partyvinyl": "\u30e2\u30ea\u30e2\u30ea\u3042\u3064\u3057",
+            "flashback": "ARForest",
+            "flyburg": "\u30a2\u30ea\u30b9\u30b7\u30e3\u30c3\u30cf\u3068\u9b54\u6cd5\u306e\u697d\u56e3",
+            "nirvluce": "\u3057\u30fc\u3051\u30fc",
+            "paradise": "Sound Souler",
+            "brandnewworld": "U-ske",
+            "dataerror": "Cosmograph",
+            "crosssoul": "HyuN feat. Syepias",
+            "yourvoiceso": "PSYQUI",
+            "chronostasis": "\u9ed2\u7687\u5e1d",
+            "kanagawa": "\u5357\u3086\u306b",
+            "moonlightofsandcastle": "\u65c5\u4ebaE",
+            "reconstruction": "Ryazan",
+            "evoltex": "Arch vs n3pu",
+            "oracle": "TQ\u2606",
+            "aterlbus": "Aoi",
+            "clotho": "\u3057\u30fc\u3051\u30fc",
+            "impurebird": "MIssionary",
+            "ignotus": "ak+q",
+            "lethaeus": "Silentroom",
+            "romancewars": "U-ske (feat. lueur)",
+            "blossoms": "T2Kazuya",
+            "moonheart": "\u7fe1\u4e43\u30a4\u30b9\u30ab",
+            "genesis": "Iris",
+            "harutopia": "A-zu-ra",
+            "auxesia": "ginkiha",
+            "rabbitintheblackroom": "Rabbit House",
+            "modelista": "HiTECH NINJA",
+            "soundwitch": "HATE",
+            "trappola": "gmtn.",
+            "iconoclast": "Yamajet",
+            "conflict": "siromaru + cranky",
+            "axiumcrisis": "ak+q",
+            "grievouslady": "Team Grimoire vs Laur",
+            "dreaminattraction": "\u7fe1\u4e43\u30a4\u30b9\u30ab",
+            "redandblue": "Silentroom",
+            "onelastdrive": "REDSHiFT",
+            "surrender": "void",
+            "yozakurafubuki": "A.SAKA",
+            "cyanine": "jioyi",
+            "dreamgoeson": "Tiny Minim",
+            "journey": "ARForest",
+            "specta": "Junk",
+            "quon": "Feryquitous",
+            "syro": "Mitomoro",
+            "reinvent": "Sound Souler",
+            "silentrush": "Soleily",
+            "singularity": "ETIA.",
+            "memoryforest": "ETIA.",
+            "strongholds": "Yooh",
+            "nexttoyou": "uma feat. \u6a58\u82b1\u97f3",
+            "metallicpunisher": "INNOCENT NOIZE",
+            "blaster": "Massive New Krew",
+            "guardina": "Aoi",
+            "carminescythe": "\u304b\u3086\u304d",
+            "bethere": "PSYQUI",
+            "cyberneciacatharsis": "Tanchiky",
+            "callmyname": "Mameyudoufu",
+            "inkarusi": "DIA",
+            "mazenine": "\u30a2\u30ea\u30b9\u30b7\u30e3\u30c3\u30cf\u3068\u9b54\u6cd5\u306e\u697d\u56e3",
+            "themessage": "Jun Kuroda",
+            "sulfur": "\u307a\u306e\u308c\u308a",
+            "halcyon": "xi",
+            "etherstrike": "Akira Complex",
+            "fractureray": "Sakuzyo",
+            "suomi": "Aire",
+            "bookmaker": "Kobaryo",
+            "darakunosono": "gmtn. (witch's slave)",
+            "dropdead": "Frums",
+            "fallensquare": "Silentroom",
+            "nhelv": "Silentroom",
+            "espebranch": "Apo11o program ft. \u5927\u702c\u826f\u3042\u3044",
+            "purgatorium": "\u304a\u6708\u3055\u307e\u4ea4\u97ff\u66f2",
+            "hikari": "THB",
+            "stager": "Ras",
+            "hallofmirrors": "Sta",
+            "linearaccelerator": "THE SHAFT",
+            "tiferet": "xi + Sta",
+            "alexandrite": "WAiKURO",
+            "rugie": "Feryquitous feat.Sennzai",
+            "astraltale": "Noah",
+            "phantasia": "Yunosuke",
+            "empireofwinter": "Street",
+            "merlin": "REDALiCE",
+            "dxfullmetal": "IOSYS TRAX (uno with.\u3061\u3088\u3053)",
+            "omakeno": "t+pazolite",
+            "scarletlance": "MASAKI (ZUNTATA)",
+            "ouroboros": "Cranky VS MASAKI",
+            "libertas": "Zekk",
+            "solitarydream": "ak+q feat. Sennzai",
+            "antithese": "Blacklolita",
+            "corruption": "3R2",
+            "blackterritory": "DJ Myosuke",
+            "viciousheroism": "Kobaryo",
+            "cyaegha": "USAO",
+            "revixy": "ikaruga_nex",
+            "grimheart": "Puru",
+            "vector": "WHITEFISTS",
+            "supernova": "BACO",
+            "dottodot": "Mameyudoufu",
+            "garakuta": "t+pazolite",
+            "ikazuchi": "\u5149\u5409\u731b\u4fee",
+            "worldvanquisher": "void (Mournfinale)",
+            "dreadnought": "Mastermind (xi + nora2r)",
+            "particlearts": "Virtual Self",
+            "vindication": "Laur",
+            "heavensdoor": "LeaF",
+            "ringedgenesis": "Edelritter",
+            "chelsea": "7mai",
+            "aiueoon": "MYUKKE.",
+            "melodyoflove": "\u304b\u3089\u3068P\u03b1nchii\u5c11\u5e74 feat.\u306f\u308b\u306e",
+            "tiemedowngently": "\u6e9d\u53e3\u3086\u3046\u307e feat. \u5927\u702c\u826f\u3042\u3044",
+            "valhallazero": "Juggernaut.",
+            "mirzam": "Aoi vs. siqlo",
+            "diode": "Kolaa",
+            "freefall": "YUKIYANAGI",
+            "gloryroad": "uma vs. \u30e2\u30ea\u30e2\u30ea\u3042\u3064\u3057",
+            "monochromeprincess": "polysha",
+            "heavenlycaress": "Noah",
+            "senkyou": "MYTK",
+            "filament": "Puru",
+            "avantraze": "Sampling Masters MEGA",
+            "battlenoone": "TANO*C Sound Team",
+            "laqryma": "DJ Noriken",
+            "einherjar": "DJ Genki vs Gram",
+            "izana": "t+pazolite vs P*Light",
+            "saikyostronger": "REDALiCE vs USAO",
+            "worldexecuteme": "Mili",
+            "blrink": "Sta",
+            "oblivia": "Saiph",
+            "amygdata": "nitro",
+            "corpssansorganes": "cybermiso",
+            "equilibrium": "Maozon",
+            "antagonism": "Yooh vs. siromaru",
+            "lostdesire": "Powerless feat. Sennzai",
+            "dantalion": "Team Grimoire",
+            "ifi": "\u304b\u3081\u308a\u3042(EDP)",
+            "tempestissimo": "t+pazolite",
+            "arcahv": "Feryquitous",
+            "altale": "Sakuzyo",
+            "givemeanightmare": "\u30a2\u30ea\u30b9\u30b7\u30e3\u30c3\u30cf\u3068\u9b54\u6cd5\u306e\u697d\u56e3",
+            "blacklotus": "wa.",
+            "gekka": "Nhato",
+            "vividtheory": "ak+q",
+            "onefr": "WHITEFISTS",
+            "scarletcage": "Daisuke Kurosawa",
+            "faintlight": "Taishi",
+            "feelssoright": "Mysteka",
+            "teriqma": "owl*tree",
+            "mahoroba": "Zekk",
+            "badtek": "EBIMAYO",
+            "maliciousmischance": "s-don",
+            "gothiveofra": "E.G.G.",
+            "buchigireberserker": "REDALiCE vs MASAKI",
+            "galaxyfriends": "Kobaryo",
+            "crossover": "HyuN feat. LyuU",
+            "xeraphinite": "BlackY",
+            "lapis": "SHIKI",
+            "xanatos": "Tatsh",
+            "purpleverse": "Hommarju",
+            "alicealamode": "Masanori Akita",
+            "eccentrictale": "Yamajet",
+            "alicessuitcase": "Endorfin.",
+            "jump": "Rasmus Faber",
+            "felis": "M2U",
+            "besideyou": "\u6c5f\u53e3\u5b5d\u5b8f",
+            "heartjackin": "Yu_Asahina",
+            "toaliceliddell": "\u30e2\u30ea\u30e2\u30ea\u3042\u3064\u3057",
+            "lazyaddiction": "sky_delta",
+            "dazzlehop": "Sampling Masters MEGA",
+            "viyellastears": "Laur",
+            "omegafour": "\u7a74\u5c71\u5927\u8f14 VS \u5149\u5409\u731b\u4fee VS Kai",
+            "aprilshowers": "cubesato",
+            "seventhsense": "\u524a\u9664",
+            "oshamascramble": "t+pazolite",
+            "amazingmightyyyy": "WAiKURO",
+            "climax": "USAO",
+            "lastcelebration": "Laur vs CK",
+            "gou": "\u5149\u5409\u731b\u4fee VS \u7a74\u5c71\u5927\u8f14",
+            "glow": "SPACELECTRO",
+            "attraqtia": "\u304b\u3081\u308a\u3042",
+            "enchantedlove": "linear ring",
+            "take": "\u7acb\u79cb feat.\u3061\u3087\u3053",
+            "gimmedablood": "C-Show",
+            "bassline": "\u304b\u3081\u308a\u3042 feat. \u306a\u306a\u3072\u3089",
+            "lifeispiano": "Junk",
+            "paperwitch": "Yu-dachi",
+            "crystalgravity": "Tanchiky vs. siromaru",
+            "farawaylight": "technoplanet feat. \u306f\u308b\u306e & \u9ed2\u6ca2\u30c0\u30a4\u30b9\u30b1",
+            "loschen": "BlackY feat. Risa Yuzuki",
+            "aegleseeker": "Silentroom vs Frums",
+            "coastalhighway": "Glitch Droids",
+            "odysseia": "Sober Bear",
+            "overwhelm": "xi",
+            "vandalism": "Ashrount",
+            "turbocharger": "A/I",
+            "theultimacy": "aran vs Massive New Krew",
+            "rekkaresonance": "REDALiCE vs Kobaryo",
+            "kyogenkigo": "\u5f71\u864e\u3002 & ikaruga_nex",
+            "hivemind": "\u304b\u305f\u304e\u308a",
+            "seclusion": "Laur feat. Sennzai",
+            "smallcloud": "\u30c6\u30c5\u30ab x Aoi feat.\u6843\u96db\u306a\u306e",
+            "alterale": "Arik Kau Delay (\u30a2\u30e9\uff06\u304b\u3086\u304d\uff06\u3067\u308a\uff09",
+            "divinelight": "yoho",
+            "mazymetroplex": "aran",
+            "quonwacca": "DJ Noriken",
+            "withu": "t+pazolite & Massive New Krew feat. \u30ea\u30ea\u30a3(CV:\u9752\u6728\u5fd7\u8cb4)",
+            "genocider": "DJ Myosuke",
+            "letyoudivermx": "nitro (lowiro)",
+            "sheriruthrmx": "Laur",
+            "eveninginscarlet": "Freezer feat.\u5983\u82fa",
+            "bluecomet": "\u3042\u3042\u3042\u3042",
+            "energysynergymatrix": "Tanchiky",
+            "gengaozo": "-45",
+            "goldenslaughterer": "zts",
+            "lastendconductor": "zts",
+            "redolentshape": "Sanaas",
+            "cosmica": "Nhato",
+            "ascent": "TANUKI",
+            "livefastdieyoung": "anubasu-anubasu",
+            "summerfireworks": "karatoP\u03b1nchii feat.\u306f\u308b\u306e",
+            "firstsnow": "\u9ed2\u9b54",
+            "bluerose": "Cosmograph",
+            "blockedlibrary": "\u5f71\u864e\u3002",
+            "neokosmo": "ak+q \u00d7 Street",
+            "lightningscrew": "HiTECH NINJA",
+            "lightsofmuse": "Ayatsugu_Otowa",
+            "finalstep": "Lime",
+            "akinokagerou": "karatoP\u03b1nchii feat.\u306f\u308b\u306e",
+            "medusa": "HiTECH NINJA",
+            "init": "kamome sano",
+            "internetoverdose": "Aiobahn feat. KOTOKO",
+            "sakurafubuki": "Street",
+            "nulctrl": "Silentroom",
+            "macromod": "JAKAZiD",
+            "neowings": "SOUND HOLIC feat. Nana Takahashi",
+            "kissinglucifer": "ETIA.",
+            "avril": "Rig\u00ebl Theatre"
+        }
+    },
+    {
+        "cmd": "constants",
+        "data": {
+            "alexandrite": [
+                4.5,
+                7,
+                10
+            ],
+            "anokumene": [
+                2.5,
+                6.5,
+                9.2
+            ],
+            "aterlbus": [
+                4,
+                7,
+                10.2
+            ],
+            "auxesia": [
+                3.5,
+                6.5,
+                9.3
+            ],
+            "axiumcrisis": [
+                5.5,
+                8.5,
+                10.9
+            ],
+            "babaroque": [
+                3,
+                6.5,
+                8.5
+            ],
+            "bethere": [
+                4,
+                7.5,
+                9.4
+            ],
+            "blaster": [
+                4,
+                7,
+                9.3
+            ],
+            "blossoms": [
+                1,
+                4,
+                7
+            ],
+            "bookmaker": [
+                4.5,
+                6.5,
+                8.3,
+                10
+            ],
+            "brandnewworld": [
+                2,
+                4,
+                7.5
+            ],
+            "callmyname": [
+                3.5,
+                6,
+                8.7
+            ],
+            "carminescythe": [
+                4,
+                7.5,
+                9.6
+            ],
+            "chronostasis": [
+                3.5,
+                7.5,
+                9.1
+            ],
+            "clotho": [
+                2,
+                5,
+                7.5
+            ],
+            "conflict": [
+                4.5,
+                7.5,
+                10.1
+            ],
+            "crosssoul": [
+                4,
+                7,
+                9.4
+            ],
+            "cyanine": [
+                4,
+                7.5,
+                10.6
+            ],
+            "cyberneciacatharsis": [
+                4,
+                7,
+                9.5
+            ],
+            "dandelion": [
+                2.5,
+                6,
+                8.5
+            ],
+            "darakunosono": [
+                2,
+                7,
+                9.6
+            ],
+            "dataerror": [
+                3,
+                7,
+                9.5
+            ],
+            "dement": [
+                3.5,
+                6,
+                7.5,
+                9.9
+            ],
+            "dreamgoeson": [
+                1.5,
+                5,
+                7.5
+            ],
+            "dreaminattraction": [
+                4.5,
+                7,
+                9.6
+            ],
+            "dropdead": [
+                1.5,
+                9.5,
+                9.1,
+                10.5
+            ],
+            "espebranch": [
+                3.5,
+                6,
+                9.6
+            ],
+            "essenceoftwilight": [
+                4.5,
+                7,
+                9.1
+            ],
+            "etherstrike": [
+                5.5,
+                8.3,
+                10.3
+            ],
+            "evoltex": [
+                2,
+                7,
+                8.9
+            ],
+            "fairytale": [
+                1,
+                3.5,
+                7,
+                9.5
+            ],
+            "fallensquare": [
+                3,
+                7,
+                9.6
+            ],
+            "flashback": [
+                2,
+                5,
+                8.8
+            ],
+            "flyburg": [
+                3,
+                6,
+                9
+            ],
+            "fractureray": [
+                6,
+                9.5,
+                11.2
+            ],
+            "genesis": [
+                2,
+                5.5,
+                8.2
+            ],
+            "goodtek": [
+                4,
+                6.5,
+                9.3,
+                9.8
+            ],
+            "grievouslady": [
+                6.5,
+                9.3,
+                11.3
+            ],
+            "guardina": [
+                4,
+                7.5,
+                10.5
+            ],
+            "halcyon": [
+                5.5,
+                8.2,
+                10.7
+            ],
+            "hallofmirrors": [
+                3,
+                5.5,
+                8.2
+            ],
+            "harutopia": [
+                1,
+                4.5,
+                8.5
+            ],
+            "hearditsaid": [
+                3.5,
+                6,
+                8.1
+            ],
+            "hikari": [
+                2.5,
+                6,
+                8.1
+            ],
+            "iconoclast": [
+                4,
+                7,
+                9.1
+            ],
+            "ignotus": [
+                3.5,
+                6.5,
+                9.3,
+                9.9
+            ],
+            "impurebird": [
+                2,
+                5.5,
+                9.4
+            ],
+            "infinityheaven": [
+                1.5,
+                5.5,
+                7.5,
+                9.6
+            ],
+            "inkarusi": [
+                2,
+                4,
+                7.5
+            ],
+            "journey": [
+                3,
+                6,
+                8.6
+            ],
+            "kanagawa": [
+                1,
+                5.5,
+                9,
+                9.8
+            ],
+            "lethaeus": [
+                3.5,
+                6.5,
+                9.7
+            ],
+            "linearaccelerator": [
+                2.5,
+                6.5,
+                9.8
+            ],
+            "lostcivilization": [
+                4,
+                7,
+                9.2,
+                9.8
+            ],
+            "lucifer": [
+                3.5,
+                5.5,
+                8.2
+            ],
+            "lumia": [
+                2.5,
+                5.5,
+                8.4,
+                9.5
+            ],
+            "mazenine": [
+                3,
+                3.5,
+                8.9
+            ],
+            "memoryfactory": [
+                2.5,
+                5.5,
+                8.9
+            ],
+            "memoryforest": [
+                3.5,
+                6,
+                9.8
+            ],
+            "metallicpunisher": [
+                3,
+                7,
+                10.2
+            ],
+            "modelista": [
+                3.5,
+                7.5,
+                10
+            ],
+            "moonheart": [
+                2.5,
+                5.5,
+                8.4,
+                9.6
+            ],
+            "moonlightofsandcastle": [
+                1.5,
+                5,
+                7.5
+            ],
+            "nexttoyou": [
+                4.5,
+                7,
+                8.8,
+                9.6
+            ],
+            "nhelv": [
+                3,
+                6.5,
+                9.9
+            ],
+            "nirvluce": [
+                2.5,
+                7,
+                10.3
+            ],
+            "onelastdrive": [
+                2.5,
+                5.5,
+                8.2
+            ],
+            "oracle": [
+                3,
+                5.5,
+                9.3
+            ],
+            "paradise": [
+                1,
+                4,
+                7.5
+            ],
+            "partyvinyl": [
+                4,
+                7.5,
+                9.5
+            ],
+            "pragmatism": [
+                4.5,
+                8.6,
+                10.1,
+                11
+            ],
+            "purgatorium": [
+                2.5,
+                6,
+                8.4,
+                9.6
+            ],
+            "qualia": [
+                4.5,
+                7,
+                9.1,
+                9.7
+            ],
+            "quon": [
+                4,
+                6.5,
+                9.7
+            ],
+            "rabbitintheblackroom": [
+                2.5,
+                5.5,
+                8.4
+            ],
+            "reconstruction": [
+                2.5,
+                6,
+                8.4
+            ],
+            "redandblue": [
+                4,
+                7.5,
+                9.4,
+                10
+            ],
+            "reinvent": [
+                2.5,
+                6.5,
+                8.5
+            ],
+            "relentless": [
+                4.5,
+                6.5,
+                8
+            ],
+            "rise": [
+                2.5,
+                4,
+                7.5
+            ],
+            "romancewars": [
+                1,
+                4,
+                7.5
+            ],
+            "sayonarahatsukoi": [
+                1.5,
+                4.5,
+                7
+            ],
+            "shadesoflight": [
+                3,
+                6,
+                8.3
+            ],
+            "sheriruth": [
+                5.5,
+                7.5,
+                10.2
+            ],
+            "silentrush": [
+                2.5,
+                5,
+                8.6
+            ],
+            "singularity": [
+                4.5,
+                7.5,
+                10.7,
+                10.3
+            ],
+            "snowwhite": [
+                2.5,
+                5,
+                8.4
+            ],
+            "soundwitch": [
+                3.5,
+                6.5,
+                9.9
+            ],
+            "specta": [
+                3.5,
+                6.5,
+                9.5
+            ],
+            "stager": [
+                3,
+                6.5,
+                9.5
+            ],
+            "strongholds": [
+                2.5,
+                5,
+                9.2
+            ],
+            "sulfur": [
+                4,
+                6,
+                9.7
+            ],
+            "suomi": [
+                2,
+                5,
+                7.5
+            ],
+            "surrender": [
+                3,
+                6.5,
+                8.8
+            ],
+            "syro": [
+                3.5,
+                6.5,
+                9.3
+            ],
+            "themessage": [
+                3,
+                6.5,
+                9.7
+            ],
+            "tiferet": [
+                4.5,
+                7.5,
+                10.6
+            ],
+            "trappola": [
+                3,
+                6,
+                10
+            ],
+            "vexaria": [
+                2.5,
+                5,
+                7,
+                8.8
+            ],
+            "viyella": [
+                3.5,
+                6,
+                8.5
+            ],
+            "yourvoiceso": [
+                3.5,
+                6.5,
+                9.4
+            ],
+            "yozakurafubuki": [
+                4.5,
+                7,
+                9.4
+            ],
+            "astraltale": [
+                4.5,
+                7,
+                9.6
+            ],
+            "rugie": [
+                3,
+                6,
+                9.2
+            ],
+            "phantasia": [
+                4,
+                5.5,
+                9.2
+            ],
+            "empireofwinter": [
+                3.5,
+                6.5,
+                9
+            ],
+            "merlin": [
+                3,
+                5.5,
+                8.9
+            ],
+            "omakeno": [
+                3,
+                6.5,
+                9.5
+            ],
+            "dxfullmetal": [
+                3,
+                6,
+                9.8
+            ],
+            "scarletlance": [
+                4,
+                7,
+                10.1
+            ],
+            "ouroboros": [
+                4.5,
+                7,
+                10.7
+            ],
+            "libertas": [
+                3.5,
+                5.5,
+                9.2
+            ],
+            "solitarydream": [
+                4,
+                7,
+                8.8
+            ],
+            "antithese": [
+                2,
+                5,
+                8.8,
+                9.5
+            ],
+            "cyaegha": [
+                5.5,
+                8.4,
+                10.8
+            ],
+            "corruption": [
+                3,
+                6.5,
+                9.9
+            ],
+            "blackterritory": [
+                3,
+                7.5,
+                9.7
+            ],
+            "viciousheroism": [
+                4,
+                7.5,
+                10
+            ],
+            "grimheart": [
+                2.5,
+                5,
+                8.6
+            ],
+            "revixy": [
+                3,
+                6,
+                9
+            ],
+            "dottodot": [
+                3,
+                6,
+                8.3
+            ],
+            "supernova": [
+                3,
+                6,
+                9.8
+            ],
+            "vector": [
+                3,
+                7,
+                9.4
+            ],
+            "ikazuchi": [
+                3.5,
+                7.5,
+                10.5
+            ],
+            "garakuta": [
+                4.5,
+                6.5,
+                10.4
+            ],
+            "worldvanquisher": [
+                2.5,
+                5.5,
+                10.9
+            ],
+            "vindication": [
+                4,
+                6.5,
+                9.6
+            ],
+            "particlearts": [
+                3.5,
+                6,
+                8.8
+            ],
+            "dreadnought": [
+                4,
+                7,
+                9.8
+            ],
+            "heavensdoor": [
+                4.5,
+                7.5,
+                9.9,
+                10.7
+            ],
+            "ringedgenesis": [
+                5.5,
+                8.4,
+                10.8
+            ],
+            "chelsea": [
+                3,
+                6,
+                8.5
+            ],
+            "aiueoon": [
+                3.5,
+                6.5,
+                9.5
+            ],
+            "melodyoflove": [
+                3.5,
+                7.5,
+                9.7
+            ],
+            "tiemedowngently": [
+                3,
+                5.5,
+                8.3
+            ],
+            "valhallazero": [
+                4.5,
+                7,
+                10.4
+            ],
+            "mirzam": [
+                4,
+                7,
+                10
+            ],
+            "gloryroad": [
+                4.5,
+                7,
+                10.6
+            ],
+            "freefall": [
+                4,
+                7,
+                8.6
+            ],
+            "diode": [
+                2.5,
+                5.5,
+                8.1
+            ],
+            "heavenlycaress": [
+                3.5,
+                7.5,
+                9.8
+            ],
+            "monochromeprincess": [
+                4.5,
+                7.5,
+                9.6
+            ],
+            "senkyou": [
+                3,
+                5.5,
+                8.7
+            ],
+            "filament": [
+                4.5,
+                7.5,
+                9.7
+            ],
+            "avantraze": [
+                3.5,
+                6.5,
+                9.6
+            ],
+            "battlenoone": [
+                3.5,
+                6.5,
+                9.7
+            ],
+            "einherjar": [
+                4,
+                7,
+                9.8
+            ],
+            "izana": [
+                5,
+                8.3,
+                10.2
+            ],
+            "laqryma": [
+                3.5,
+                6.5,
+                9.1,
+                9.9
+            ],
+            "saikyostronger": [
+                5.5,
+                9.4,
+                11
+            ],
+            "worldexecuteme": [
+                3.5,
+                5.5,
+                8.5
+            ],
+            "blrink": [
+                3.5,
+                7.5,
+                9.7
+            ],
+            "oblivia": [
+                3.5,
+                5,
+                8.3
+            ],
+            "amygdata": [
+                4,
+                7.5,
+                9.6
+            ],
+            "corpssansorganes": [
+                4.5,
+                7.5,
+                10.6
+            ],
+            "dantalion": [
+                5,
+                8.2,
+                10.8
+            ],
+            "ifi": [
+                5.5,
+                9.2,
+                10.9
+            ],
+            "blacklotus": [
+                3,
+                6.5,
+                9.7
+            ],
+            "antagonism": [
+                4.5,
+                7.5,
+                9.9
+            ],
+            "gekka": [
+                4,
+                6,
+                8.6
+            ],
+            "lostdesire": [
+                4,
+                7.5,
+                9.8
+            ],
+            "givemeanightmare": [
+                3.5,
+                5.5,
+                9
+            ],
+            "altale": [
+                2.5,
+                5.5,
+                9.7
+            ],
+            "tempestissimo": [
+                6.5,
+                9.5,
+                10.6,
+                11.5
+            ],
+            "onefr": [
+                2.5,
+                6.5,
+                8.2
+            ],
+            "equilibrium": [
+                3.5,
+                6.5,
+                9.4
+            ],
+            "vividtheory": [
+                2,
+                5,
+                8.8
+            ],
+            "arcahv": [
+                4.5,
+                7.5,
+                9.9
+            ],
+            "faintlight": [
+                3,
+                6,
+                9.1
+            ],
+            "scarletcage": [
+                4,
+                7,
+                9.7
+            ],
+            "feelssoright": [
+                3.5,
+                6.5,
+                9.3
+            ],
+            "teriqma": [
+                3,
+                6.5,
+                9.4
+            ],
+            "mahoroba": [
+                3,
+                6.5,
+                9.5
+            ],
+            "badtek": [
+                4,
+                7,
+                9.7
+            ],
+            "maliciousmischance": [
+                4,
+                7.5,
+                10.1
+            ],
+            "buchigireberserker": [
+                5,
+                8.6,
+                10.9
+            ],
+            "gothiveofra": [
+                3,
+                6.5,
+                9.8
+            ],
+            "galaxyfriends": [
+                3.5,
+                6,
+                9.8
+            ],
+            "crossover": [
+                4,
+                6.5,
+                9.4
+            ],
+            "lapis": [
+                2,
+                6,
+                9.4
+            ],
+            "xeraphinite": [
+                3,
+                7,
+                9.8
+            ],
+            "xanatos": [
+                4,
+                7.5,
+                10
+            ],
+            "alicealamode": [
+                2.5,
+                6.5,
+                9.2
+            ],
+            "felis": [
+                4,
+                7.5,
+                10.4
+            ],
+            "jump": [
+                4,
+                6,
+                9
+            ],
+            "purpleverse": [
+                4,
+                7,
+                9.5
+            ],
+            "alicessuitcase": [
+                3.5,
+                6,
+                9.1
+            ],
+            "eccentrictale": [
+                2,
+                5.5,
+                8.4
+            ],
+            "toaliceliddell": [
+                4,
+                7,
+                10.4
+            ],
+            "heartjackin": [
+                3,
+                5.5,
+                9.7
+            ],
+            "besideyou": [
+                2.5,
+                6,
+                8.7
+            ],
+            "dazzlehop": [
+                3.5,
+                6,
+                9.7
+            ],
+            "viyellastears": [
+                4,
+                7,
+                10.4
+            ],
+            "omegafour": [
+                3.5,
+                7.5,
+                10.8
+            ],
+            "lazyaddiction": [
+                2.5,
+                6,
+                9.4
+            ],
+            "seventhsense": [
+                3,
+                7.5,
+                9.9
+            ],
+            "oshamascramble": [
+                3.5,
+                6.5,
+                10
+            ],
+            "amazingmightyyyy": [
+                4.5,
+                7.5,
+                10.7
+            ],
+            "aprilshowers": [
+                2,
+                5.5,
+                8.3
+            ],
+            "climax": [
+                4.5,
+                7.5,
+                10.6
+            ],
+            "lastcelebration": [
+                3.5,
+                6.5,
+                10.5
+            ],
+            "gou": [
+                5.5,
+                8.5,
+                10.8
+            ],
+            "glow": [
+                4,
+                7,
+                9.3
+            ],
+            "attraqtia": [
+                4,
+                7.5,
+                10.4
+            ],
+            "take": [
+                3,
+                6.5,
+                9.9
+            ],
+            "enchantedlove": [
+                2,
+                4.5,
+                8.4
+            ],
+            "gimmedablood": [
+                3.5,
+                7,
+                10.3
+            ],
+            "bassline": [
+                3,
+                6.5,
+                9.3
+            ],
+            "lifeispiano": [
+                3.5,
+                5.5,
+                9.1
+            ],
+            "aegleseeker": [
+                5.5,
+                8.8,
+                11
+            ],
+            "overwhelm": [
+                5,
+                8.5,
+                10.6
+            ],
+            "loschen": [
+                3.5,
+                7,
+                10.1
+            ],
+            "paperwitch": [
+                2,
+                5,
+                8.7
+            ],
+            "crystalgravity": [
+                3.5,
+                6.5,
+                9.4
+            ],
+            "vandalism": [
+                3.5,
+                6,
+                9.7
+            ],
+            "farawaylight": [
+                4.5,
+                7.5,
+                9.8
+            ],
+            "coastalhighway": [
+                3,
+                6,
+                8.6
+            ],
+            "odysseia": [
+                4,
+                7.5,
+                9.5
+            ],
+            "turbocharger": [
+                2.5,
+                5.5,
+                8.9
+            ],
+            "rekkaresonance": [
+                5,
+                8.3,
+                10.7
+            ],
+            "theultimacy": [
+                3,
+                7,
+                9.7
+            ],
+            "alterale": [
+                3,
+                6,
+                9.7
+            ],
+            "divinelight": [
+                4.5,
+                7.5,
+                10.8
+            ],
+            "seclusion": [
+                4,
+                7,
+                10.5
+            ],
+            "kyogenkigo": [
+                3.5,
+                6.5,
+                9.3
+            ],
+            "smallcloud": [
+                3,
+                6.5,
+                9.1
+            ],
+            "hivemind": [
+                4,
+                7.5,
+                9.9
+            ],
+            "quonwacca": [
+                2.5,
+                5.5,
+                8.7,
+                10.4
+            ],
+            "sheriruthrmx": [
+                4,
+                7.5,
+                10.5
+            ],
+            "letyoudivermx": [
+                3,
+                6.5,
+                9.2
+            ],
+            "genocider": [
+                4.5,
+                8.5,
+                10.7
+            ],
+            "mazymetroplex": [
+                null,
+                7.5,
+                9.7
+            ],
+            "withu": [
+                2.5,
+                6.5,
+                9.4
+            ],
+            "eveninginscarlet": [
+                4,
+                7,
+                9.5
+            ],
+            "bluecomet": [
+                3.5,
+                5,
+                8.2
+            ],
+            "energysynergymatrix": [
+                3.5,
+                7,
+                9.6
+            ],
+            "gengaozo": [
+                4,
+                7.5,
+                10.3
+            ],
+            "goldenslaughterer": [
+                4,
+                6.5,
+                9.7
+            ],
+            "lastendconductor": [
+                3.5,
+                7,
+                9.4,
+                10.2
+            ],
+            "redolentshape": [
+                4.5,
+                7.5,
+                10.2
+            ],
+            "livefastdieyoung": [
+                null,
+                8.1,
+                10.5
+            ],
+            "ascent": [
+                3,
+                6,
+                9.8
+            ],
+            "cosmica": [
+                2.5,
+                5,
+                8.2
+            ],
+            "summerfireworks": [
+                3,
+                6.5,
+                9.9
+            ],
+            "neokosmo": [
+                null,
+                7.5,
+                9.7
+            ],
+            "firstsnow": [
+                2.5,
+                4.5,
+                7.5
+            ],
+            "lightningscrew": [
+                4.5,
+                7.5,
+                10.5
+            ],
+            "blockedlibrary": [
+                3.5,
+                6.5,
+                9.3
+            ],
+            "bluerose": [
+                2,
+                5.5,
+                9.1
+            ],
+            "medusa": [
+                4.5,
+                7,
+                10.2
+            ],
+            "akinokagerou": [
+                3.5,
+                7,
+                9.8
+            ],
+            "finalstep": [
+                3.5,
+                7,
+                9.4
+            ],
+            "lightsofmuse": [
+                2.5,
+                5.5,
+                8.7
+            ],
+            "init": [
+                4,
+                7,
+                9.8
+            ],
+            "kissinglucifer": [
+                4.5,
+                7.5,
+                10.3
+            ],
+            "neowings": [
+                4,
+                7.5,
+                10.2
+            ],
+            "macromod": [
+                4,
+                7.5,
+                9.8
+            ],
+            "sakurafubuki": [
+                3.5,
+                5.5,
+                9.3
+            ],
+            "internetoverdose": [
+                3,
+                6.5,
+                8.4
+            ],
+            "avril": [
+                3,
+                6,
+                8.3
+            ],
+            "nulctrl": [
+                3,
+                6,
+                9.5
+            ]
+        }
+    }
+]
