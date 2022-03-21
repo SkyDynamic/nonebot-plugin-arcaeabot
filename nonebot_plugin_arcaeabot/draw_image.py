@@ -319,9 +319,9 @@ class UserArcaeaInfo:
         write_miss_count = DataText(670+(4-len(str(miss_count))/2 * 15), 610, 30, str(
             miss_count), StaticPath.geosans_light)
         image = draw_text(image, write_miss_count, 137, 137, 137, 255)
-        write_ptt = DataText(660, 70, 30, str(
+        write_ptt = DataText(660, 70, 20, str(
             round(rating/100, 2)), StaticPath.exo_regular)
-        image = draw_text(image, write_ptt)
+        image = draw_text(image, write_ptt, stroke_fill="Black", stroke_width=2)
         image.save(StaticPath.output(str(arcaea_id) + "_recent"))
         return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id) + "_recent"))
 
