@@ -64,20 +64,20 @@ class DataText:
         self.anchor = anchor
 
 
-def write_text(image: Image.Image, font, text="text", pos=(0, 0), color=(255, 255, 255, 255), anchor="lt") -> Image.Image:
+def write_text(image: Image.Image, font, text="text", pos=(0, 0), color=(255, 255, 255, 255), anchor="lt", stroke_width=0, stroke_fill="Black") -> Image.Image:
     rgba_image = image
     text_overlay = Image.new("RGBA", rgba_image.size, (255, 255, 255, 0))
     image_draw = ImageDraw.Draw(text_overlay)
-    image_draw.text(pos, text, font=font, fill=color, anchor=anchor)
+    image_draw.text(pos, text, font=font, fill=color, anchor=anchor, stroke_width=stroke_width, stroke_fill=stroke_fill)
     return Image.alpha_composite(rgba_image, text_overlay)
 
 
-def draw_text(image, class_text: DataText, R=255, G=255, B=255, A=255) -> Image.Image:
+def draw_text(image, class_text: DataText, R=255, G=255, B=255, A=255, stroke_width=0, stroke_fill="Black") -> Image.Image:
     font = class_text.font
     text = class_text.text
     anchor = class_text.anchor
     color = (R, G, B, A)
-    return write_text(image, font, text, (class_text.L, class_text.T), color, anchor)
+    return write_text(image, font, text, (class_text.L, class_text.T), color, anchor, stroke_width=stroke_width, stroke_fill=stroke_fill)
 
 
 def open_img(image_path: str) -> Image.Image:
@@ -127,7 +127,7 @@ class UserArcaeaInfo:
         image.alpha_composite(ptt_background, (300, 400))
         write_ptt = DataText(375, 475, 45, rating / 100 if rating != -
                              1 else "--", StaticPath.exo_regular, anchor="mm")
-        image = draw_text(image, write_ptt)
+        image = draw_text(image, write_ptt, stroke_fill="Black", stroke_width=2)
         write_arcname = DataText(455, 400, 85, name,
                                  StaticPath.geosans_light, anchor="lb")
         image = draw_text(image, write_arcname)
@@ -283,11 +283,11 @@ class UserArcaeaInfo:
         image = draw_text(image, write_arcaea_id, 96, 75, 84, 255)
         write_song_name = DataText(
             (640 - len(song_name) / 2 * 20), 115, 40,
-            song_name.capitalize(), StaticPath.exo_regular)
+            song_name.capitalize(), StaticPath.NotoSansCJKsc_Regular)
         image = draw_text(image, write_song_name)
         write_author = DataText(
             (640 - len(author_name) / 2 * 12), 165, 24,
-            author_name.capitalize(), StaticPath.exo_regular)
+            author_name.capitalize(), StaticPath.NotoSansCJKsc_Regular)
         image = draw_text(image, write_author)
         write_score = DataText((640-len(str(score))/2 * 30), 310,
                                55, format(score, ",").replace(",", "'"), StaticPath.geosans_light)
