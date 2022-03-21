@@ -252,8 +252,10 @@ class UserArcaeaInfo:
             "song", data["recent_score"][0]["song_id"], "base.jpg")).resize((375, 375))
         image.alpha_composite(song_cover, (40, 290))
         track_info = open_img(StaticPath.is_failed(
-            character=character, health=health, score=score, lost_count=miss_count)).resize((545, 45))
-        image.alpha_composite(track_info, (365, 225))
+            character=character, health=health, score=score, lost_count=miss_count))
+        origin_size_w, origin_size_h = track_info.size
+        track_info = track_info.resize((545, int(545/origin_size_w*origin_size_h)))
+        image.alpha_composite(track_info, (365, 215))
         character = open_img(StaticPath.select_image("char", full_character
                                                      )).resize((1000, 1000))
         image.alpha_composite(character, (650, 125))
