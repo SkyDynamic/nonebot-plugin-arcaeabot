@@ -280,7 +280,7 @@ class UserArcaeaInfo:
             920, 20, 40, f"id: {arcaea_id}", StaticPath.exo_regular)
         image = draw_text(image, write_arcaea_id, 96, 75, 84, 255)
         write_song_name = DataText((640 - len(song_name) / 2 * 32), 115,
-                                 65, song_id.capitalize(), StaticPath.exo_regular)
+                                 65, song_name.capitalize(), StaticPath.exo_regular)
         image = draw_text(image, write_song_name)
         write_score = DataText((640-len(str(score))/2 * 30), 310,
                                55, format(score, ",").replace(",", "'"), StaticPath.geosans_light)
