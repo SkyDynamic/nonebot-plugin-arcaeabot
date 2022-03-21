@@ -321,4 +321,4 @@ class UserArcaeaInfo:
 
 def get_song_name(song_id: str):
     with open(StaticPath.constants_json, "r", encoding="UTF-8") as f:
-        return json.loads(f.read())['data'][song_id]
+        return json.loads(f.read())[0]['data'][song_id]
