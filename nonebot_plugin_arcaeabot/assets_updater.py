@@ -10,12 +10,24 @@ from typing import List
 from aiohttp import ClientSession
 from os import path, listdir, makedirs
 
+from nonebot import get_driver
+from .config import Config
+from nonebot.log import logger
+
+try:
+    plugin_config = Config.parse_obj(get_driver().config)
+    src_api_url = plugin_config.src_api_url
+except Exception as e:
+    logger.error(e)
+    logger.error("未监测到自定义src_api_url, 使用默认值")
+    src_api_url = Config.src_api_url
+
 assets_path = path.abspath(path.join(path.dirname(__file__), "assets"))
 
 
 async def check_song_update() -> List[str]:
     async with ClientSession() as session:
-        async with session.get("http://127.0.0.1:17777/api/song_list", verify_ssl=False) as resp:
+        async with session.get(src_api_url+"song_list", verify_ssl=False) as resp:
             result = list()
             for k, v in (await resp.json()).items():
                 if k not in listdir(path.join(assets_path, "song")):
@@ -31,7 +43,7 @@ async def check_song_update() -> List[str]:
 
 async def check_char_update() -> int:
     async with ClientSession() as session:
-        async with session.get("http://127.0.0.1:17777/api/char_list", verify_ssl=False) as resp:
+        async with session.get(src_api_url+"char_list", verify_ssl=False) as resp:
             result = list()
             for k, v in (await resp.json()).items():
                 if k not in listdir(path.join(assets_path, "char")):
