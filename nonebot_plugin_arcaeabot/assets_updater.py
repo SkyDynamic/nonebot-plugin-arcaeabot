@@ -19,7 +19,7 @@ try:
     src_api_url = plugin_config.src_api_url
 except Exception as e:
     logger.error(e)
-    logger.error("未监测到自定义src_api_url, 使用默认值")
+    logger.info("未监测到自定义src_api_url, 使用默认值")
     src_api_url = Config.src_api_url
 
 assets_path = path.abspath(path.join(path.dirname(__file__), "assets"))
