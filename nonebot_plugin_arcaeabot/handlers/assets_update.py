@@ -3,7 +3,7 @@ from nonebot.params import CommandArg
 from nonebot.log import logger
 from nonebot.exception import ActionFailed
 from ..matcher import arc
-from ..assets_updater import check_song_update, check_char_update
+from ..assets_updater import check_song_update, check_char_update, check_constants_update
 
 
 async def assets_update_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
@@ -11,6 +11,7 @@ async def assets_update_handler(bot: Bot, event: MessageEvent, args: Message = C
     if args[0] == "assets_update":
         result_song = await check_song_update()
         result_char = await check_char_update()
+        await check_constants_update()
         try:
             await arc.finish("\n".join([f"> {event.sender.card or event.sender.nickname}",
                                         f"成功更新 {len(result_song)} 张曲绘, ",
