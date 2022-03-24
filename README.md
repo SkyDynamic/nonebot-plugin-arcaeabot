@@ -25,9 +25,6 @@ Arcaea 查分器。
 | /arc recent        | 查询您的最近游玩信息                                         |
 | /arc b30           | 查询您的 best 30 记录                                        |
 
-## 为什么这个插件不工作 ? Why is this plugin not working
-
-这你得问 [estertion](https://gist.github.com/esterTion/c673a5e2547cd54c202f129babaf601d) 。
 
 ## 参考代码
 - [DiheChen/nonebot-plugin-arcaea](https://github.com/DiheChen/nonebot-plugin-arcaea)
