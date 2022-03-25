@@ -33,7 +33,7 @@ Arcaea 查分器。
   </a>
 </p>
 
-摆烂了，咕咕咕
+咕咕咕
 ## 参考代码
 - [DiheChen/nonebot-plugin-arcaea](https://github.com/DiheChen/nonebot-plugin-arcaea)
 - [iyume/nonebot-plugin-arcaea](https://github.com/iyume/nonebot-plugin-arcaea)
