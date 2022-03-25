@@ -25,7 +25,15 @@ Arcaea 查分器。
 | /arc recent        | 查询您的最近游玩信息                                         |
 | /arc b30           | 查询您的 best 30 记录                                        |
 
+## To Do
+- 自定义名片
+<p align="center">
+  <a href="https://sm.ms/image/JDvXTCQl8zghV3B" target="_blank">
+    <img src="https://s2.loli.net/2022/03/25/JDvXTCQl8zghV3B.png">
+  </a>
+</p>
 
+摆烂了，咕咕咕
 ## 参考代码
 - [DiheChen/nonebot-plugin-arcaea](https://github.com/DiheChen/nonebot-plugin-arcaea)
 - [iyume/nonebot-plugin-arcaea](https://github.com/iyume/nonebot-plugin-arcaea)
