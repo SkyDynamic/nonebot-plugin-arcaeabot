@@ -1,8 +1,8 @@
 """
  - Author: DiheChen
  - Date: 2021-08-15 22:01:10
- - LastEditTime: 2021-08-19 21:40:04
- - LastEditors: DiheChen
+ - LastEditTime: 2022-03-27 01:47:04
+ - LastEditors: SEAFHMC
  - Description: None
  - GitHub: https://github.com/Chendihe4975
 """
@@ -64,7 +64,8 @@ class DataText:
         self.anchor = anchor
 
 
-def write_text(image: Image.Image, font, text="text", pos=(0, 0), color=(255, 255, 255, 255), anchor="lt", stroke_width=0, stroke_fill="Black") -> Image.Image:
+def write_text(image: Image.Image, font, text="text", pos=(0, 0), color=(255, 255, 255, 255),
+               anchor="lt", stroke_width=0, stroke_fill="Black") -> Image.Image:
     rgba_image = image
     text_overlay = Image.new("RGBA", rgba_image.size, (255, 255, 255, 0))
     image_draw = ImageDraw.Draw(text_overlay)
@@ -84,6 +85,11 @@ def open_img(image_path: str) -> Image.Image:
     with open(image_path, "rb") as f:
         image = Image.open(f).convert("RGBA")
     return image
+
+
+def get_song_info() -> list:
+    with open(StaticPath.constants_json, "r", encoding="UTF-8") as f:
+        return json.loads(f.read())
 
 
 class UserArcaeaInfo:
@@ -326,8 +332,3 @@ class UserArcaeaInfo:
         image = draw_text(image, write_ptt, stroke_fill="Black", stroke_width=2)
         image.save(StaticPath.output(str(arcaea_id) + "_recent"))
         return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id) + "_recent"))
-
-
-def get_song_info() -> list:
-    with open(StaticPath.constants_json, "r", encoding="UTF-8") as f:
-        return json.loads(f.read())
