@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "nonebot_plugin_arcaeabot"
-version = "0.2.5"
+version = "0.2.6"
 description = "An arcaea plugin for nonebot2. ( A cross platform Python async bot framework. )"
 authors = ["Chendihe4975 <Chendihe4975@gmail.com>", "<SEAFHMC> d1366160279@gmail.com"]
 license = "AGPL-3.0 License"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 aiohttp = "^3.8.1"
 websockets = "^10.2"
 Pillow = "^9.0.1"

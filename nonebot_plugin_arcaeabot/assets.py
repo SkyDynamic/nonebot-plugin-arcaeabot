@@ -51,7 +51,7 @@ class StaticPath:
     lost = path.join(ASSETS, "recent", "hit_lost.png")
     exo_regular = path.join(ASSETS, "font", "Exo-Regular.ttf")
     geosans_light = path.join(ASSETS, "font", "GeosansLight.ttf")
-    NotoSansCJKsc_Regular = path.join(ASSETS, "font", "NotoSansCJKsc-Regular.otf")
+    notosanscjksc_regular = path.join(ASSETS, "font", "NotoSansCJKsc-Regular.otf")
     track_failed = path.join(ASSETS, "recent", "clear_normal.png")
     constants_json = path.join(ASSETS, "constants.json")
 

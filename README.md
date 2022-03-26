@@ -6,6 +6,7 @@ An arcaea plugin for nonebot2. ( A cross platform Python async bot framework. )
 Arcaea 查分器。
 
 ## 如何开始 Quick Start
+使用前请确保您的Python版本>=3.8</br> 
 
 使该项目被您的 NoneBot2 (nonebot2 及 nonebot-adapter-onebot 版本不得低于 `2.0.0-beta2` ) 机器人作为插件加载, 至于如何做, 您应该懂的。
 ### 首次使用您需要更新资源文件(assets/song与assets/char)。

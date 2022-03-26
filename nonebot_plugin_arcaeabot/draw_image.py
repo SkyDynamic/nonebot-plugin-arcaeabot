@@ -285,11 +285,11 @@ class UserArcaeaInfo:
         image = draw_text(image, write_arcaea_id, 96, 75, 84, 255)
         write_song_name = DataText(
             (640 - len(song_name) / 2 * 20), 115, 40,
-            song_name.capitalize(), StaticPath.NotoSansCJKsc_Regular)
+            song_name.capitalize(), StaticPath.notosanscjksc_regular)
         image = draw_text(image, write_song_name)
         write_author = DataText(
             (640 - len(author_name) / 2 * 12), 165, 24,
-            author_name.capitalize(), StaticPath.NotoSansCJKsc_Regular)
+            author_name.capitalize(), StaticPath.notosanscjksc_regular)
         image = draw_text(image, write_author)
         write_score = DataText((640-len(str(score))/2 * 30), 310,
                                55, format(score, ",").replace(",", "'"), StaticPath.geosans_light)
