@@ -26,13 +26,9 @@ Arcaea 查分器。
 | /arc recent        | 查询您的最近游玩信息                                         |
 | /arc b30           | 查询您的 best 30 记录                                        |
 
+</br> 本项目使用[Estertion](https://redive.estertion.win/arcaea/probe/)的查分服务器，使用时请节制防止炸服（
 ## To Do
 - 自定义名片
-<p align="center">
-  <a href="https://sm.ms/image/JDvXTCQl8zghV3B" target="_blank">
-    <img src="https://s2.loli.net/2022/03/25/JDvXTCQl8zghV3B.png">
-  </a>
-</p>
 
 咕咕咕
 ## 参考代码
