@@ -16,9 +16,9 @@ except Exception:
     import json
 
 
-async def fetch_user_info(arcaea_id: int, recent_only: bool = False) -> List[Dict]:
+async def fetch_user_info(arcaea_id: str, recent_only: bool = False) -> List[Dict]:
     async with websockets.connect("wss://arc.estertion.win:616/", ssl=ssl._create_unverified_context()) as websocket:
-        await websocket.send(str(arcaea_id))
+        await websocket.send(arcaea_id)
         result = list()
         while (data := await websocket.recv()) != "bye":
             if isinstance(data, bytes):

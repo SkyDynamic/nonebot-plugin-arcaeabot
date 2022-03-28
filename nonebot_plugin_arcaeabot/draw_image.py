@@ -96,11 +96,11 @@ class UserArcaeaInfo:
     querying = list()
 
     @staticmethod
-    def is_querying(arcaea_id: int) -> bool:
+    def is_querying(arcaea_id: str) -> bool:
         return arcaea_id in UserArcaeaInfo.querying
 
     @staticmethod
-    async def draw_best30_image(arcaea_id: int):
+    async def draw_best30_image(arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
             data = await fetch_user_info(arcaea_id, recent_only=False)
@@ -220,7 +220,7 @@ class UserArcaeaInfo:
         return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id)))
 
     @staticmethod
-    async def draw_recent_image(arcaea_id: int):
+    async def draw_recent_image(arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
             data = (await fetch_user_info(arcaea_id, recent_only=True))[0]["data"]

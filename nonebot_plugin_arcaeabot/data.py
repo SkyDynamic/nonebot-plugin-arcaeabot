@@ -15,7 +15,7 @@ db = pw.SqliteDatabase(StaticPath.database)
 
 class UserInfo(pw.Model):
     user_qq = pw.IntegerField()
-    arcaea_id = pw.IntegerField()
+    arcaea_id = pw.CharField()
     arcaea_name = pw.CharField()
 
     class Meta:
