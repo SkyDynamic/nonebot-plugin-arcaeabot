@@ -8,7 +8,6 @@ from ..draw_image import UserArcaeaInfo
 
 async def b30_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
     args: list = str(args).split()
-    logger.debug(args)
     if args[0] == "b30":
         user_info = UserInfo.get_or_none(
             UserInfo.user_qq == event.user_id)

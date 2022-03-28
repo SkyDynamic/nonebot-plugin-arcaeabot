@@ -8,7 +8,6 @@ from ..draw_image import UserArcaeaInfo
 
 async def recent_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
     args: list = str(args).split()
-    logger.debug(args)
     if args[0] == "recent":
         user_info = UserInfo.get_or_none(
             UserInfo.user_qq == event.user_id)
@@ -19,9 +18,9 @@ async def recent_handler(bot: Bot, event: MessageEvent, args: Message = CommandA
                 logger.exception(
                     f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}')
                 return
-        if not UserArcaeaInfo.is_querying(arcaea_id=int(user_info.arcaea_id)):
+        if not UserArcaeaInfo.is_querying(arcaea_id=user_info.arcaea_id):
             result = await UserArcaeaInfo.draw_recent_image(
-                arcaea_id=int(user_info.arcaea_id))
+                arcaea_id=user_info.arcaea_id)
             try:
                 await arc.finish(MessageSegment.reply(event.message_id) + result)
             except ActionFailed as e:
