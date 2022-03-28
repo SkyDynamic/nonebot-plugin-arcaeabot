@@ -10,7 +10,7 @@ from ..request import fetch_user_info
 async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
     args: list = str(args).split()
     if args[0] == "bind":
-        arc_id = str(args[1]).strip()
+        arc_id = args[1].strip()
         if len(arc_id) != 9:
             try:
                 await arc.finish("\n".join([f"> {event.sender.card or event.sender.nickname}", "id 格式错误，请检查。"]))
