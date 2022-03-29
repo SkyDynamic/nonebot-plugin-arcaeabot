@@ -30,7 +30,6 @@ Arcaea 查分器。
 ## To Do
 后续可能会弃用[Estertion](https://redive.estertion.win/arcaea/probe/)的查分api（bot的查询速度相对来说过于快了），改用其他api
 
-咕咕咕
 ## 参考代码
 - [DiheChen/nonebot-plugin-arcaea](https://github.com/DiheChen/nonebot-plugin-arcaea)
 - [iyume/nonebot-plugin-arcaea](https://github.com/iyume/nonebot-plugin-arcaea)
