@@ -4,7 +4,15 @@ from nonebot.params import CommandArg
 from nonebot.log import logger
 from ..data import UserInfo
 from ..matcher import arc
-from ..request import fetch_user_info
+
+from ..adapters.utils import adapter_chooser
+api_in_use = adapter_chooser().upper()
+if api_in_use == "AUA":
+    from ..adapters.aua.api import fetch_user_info
+elif api_in_use == "ESTERTION":
+    from ..adapters.estertion.api import fetch_user_info
+else:
+    logger.error("不支持的Api选项")
 
 
 async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
@@ -17,7 +25,10 @@ async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
             except ActionFailed as e:
                 logger.error(
                     f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}')
-        player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[0]["data"]["name"]
+        if api_in_use == "AUA":
+            player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))["content"]["account_info"]["name"]
+        elif api_in_use == "ESTERTION":
+            player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[0]["data"]["name"]
         UserInfo.replace(user_qq=event.user_id, arcaea_id=arc_id, arcaea_name=player_name).execute()
         try:
             await arc.finish("\n".join([f"> {event.sender.card or event.sender.nickname}",

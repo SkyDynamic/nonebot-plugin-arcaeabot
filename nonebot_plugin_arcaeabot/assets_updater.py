@@ -9,12 +9,9 @@
 from typing import List
 from aiohttp import ClientSession
 from os import path, listdir, makedirs
-from .request import fetch_user_info
-from .assets import StaticPath
 from nonebot import get_driver
 from .config import Config
 from nonebot.log import logger
-import ujson as json
 
 try:
     plugin_config = Config.parse_obj(get_driver().config)
@@ -54,9 +51,3 @@ async def check_char_update() -> List[str]:
                             file.write(await res.read())
                             result.append(k)
             return result
-
-
-async def check_constants_update():
-    res = await fetch_user_info("constants")
-    with open(StaticPath.constants_json, "w", encoding="UTF-8") as f:
-        f.write(json.dumps(res, indent=4))
