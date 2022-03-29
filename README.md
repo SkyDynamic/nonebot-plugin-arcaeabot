@@ -6,7 +6,13 @@ An arcaea plugin for nonebot2. ( A cross platform Python async bot framework. )
 Arcaea 查分器。
 
 ## 如何开始 Quick Start
-使用前请确保您的Python版本>=3.8</br> 
+使用前请确保您的Python版本>=3.8</br> </br>
+项目默认使用AUA (ArcaeaUnlimitedApi)，您需要申请相关SECRET并在.env.{ENVIRONMENT}中填写</br>
+| 参数               | 描述                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| AUA_URL | AUA的地址 |
+| AUA_UA | AUA请求头User-Agent |
+| API_IN_USE | 选择使用哪种Api；可填写AUA或ESTERTION（不推荐滥用estertion的api，若有需要请自行编写） |
 
 使该项目被您的 NoneBot2 (nonebot2 及 nonebot-adapter-onebot 版本不得低于 `2.0.0-beta2` ) 机器人作为插件加载, 至于如何做, 您应该懂的。
 ### 首次使用您需要更新资源文件(assets/song, assets/char以及constants.json)。
@@ -26,9 +32,8 @@ Arcaea 查分器。
 | /arc recent        | 查询您的最近游玩信息                                         |
 | /arc b30           | 查询您的 best 30 记录                                        |
 
-</br> 本项目使用[Estertion](https://redive.estertion.win/arcaea/probe/)的查分服务器，使用时请节制防止炸服（
 ## To Do
-后续可能会弃用[Estertion](https://redive.estertion.win/arcaea/probe/)的查分api（bot的查询速度相对来说过于快了），改用其他api
+- 咕咕咕
 
 ## 参考代码
 - [DiheChen/nonebot-plugin-arcaea](https://github.com/DiheChen/nonebot-plugin-arcaea)
