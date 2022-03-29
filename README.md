@@ -28,7 +28,7 @@ Arcaea 查分器。
 
 </br> 本项目使用[Estertion](https://redive.estertion.win/arcaea/probe/)的查分服务器，使用时请节制防止炸服（
 ## To Do
-- 自定义名片
+后续可能会弃用[Estertion](https://redive.estertion.win/arcaea/probe/)的查分api（bot的查询速度相对来说过于快了），改用其他api
 
 咕咕咕
 ## 参考代码
