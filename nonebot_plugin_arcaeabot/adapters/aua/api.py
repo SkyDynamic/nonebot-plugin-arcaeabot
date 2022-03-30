@@ -3,15 +3,23 @@ from nonebot.log import logger
 from ...config import Config
 from typing import List, Dict
 from httpx import AsyncClient
-try:
+from ..utils import adapter_selector
+
+if adapter_selector().upper() == "AUA":
     plugin_config = Config.parse_obj(get_driver().config)
     aua_url = plugin_config.aua_url
     aua_ua = plugin_config.aua_ua
-except Exception as e:
-    logger.error(e)
-    logger.info("未监测到自定义aua配置!")
-    aua_url = Config.aua_url
-    aua_ua = Config.aua_ua
+    if aua_url:
+        logger.info("使用自定义aua_url")
+    else:
+        aua_url = "SECRET"
+        logger.error("若选用aua, 请配置aua_url")
+    if aua_ua:
+        logger.info("使用自定义aua_ua")
+    else:
+        aua_ua = "SECRET"
+        logger.error("若选用aua, 请配置aua_ua")
+
 headers = {"User-Agent": aua_ua}
 
 async def fetch_user_info(arcaea_id: str, recent_only: bool = False) -> List[Dict]:

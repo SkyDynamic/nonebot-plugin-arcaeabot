@@ -1,8 +1,9 @@
 from pydantic import BaseModel, Extra
+from typing import Optional
 
 
 class Config(BaseModel, extra=Extra.ignore):
-    src_api_url: str = "http://107.182.17.60:17777/api/"
-    aua_url: str = "SECRET"
-    aua_ua: str = "SECRET"
-    api_in_use: str = "aua"
+    src_api_url: Optional[str] = None
+    aua_url: Optional[str] = None
+    aua_ua: Optional[str] = None
+    api_in_use: Optional[str] = None

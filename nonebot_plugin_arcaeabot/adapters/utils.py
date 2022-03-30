@@ -5,8 +5,8 @@ from PIL import Image, ImageDraw, ImageFont
 from ..assets import StaticPath, ASSETS
 import ujson as json
 from nonebot import get_driver
-from nonebot.log import logger
 from ..config import Config
+from typing import Optional
 
 
 def player_time_format(time_stamp: int) -> str:
@@ -83,12 +83,11 @@ def get_song_info() -> list:
         return json.loads(f.read())
 
 
-def adapter_chooser():
-    try:
-        plugin_config = Config.parse_obj(get_driver().config)
-        api_in_use = plugin_config.api_in_use
-    except Exception as e:
-        logger.error(e)
-        logger.info("未监测到自定义src_api_url, 使用默认值")
-        api_in_use = Config.api_in_use
+def adapter_selector() -> Optional[str]:
+    plugin_config = Config.parse_obj(get_driver().config)
+    api_in_use = plugin_config.api_in_use
+    if api_in_use:
+        pass
+    else:
+        api_in_use = "AUA"
     return api_in_use

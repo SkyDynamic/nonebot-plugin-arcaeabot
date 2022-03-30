@@ -5,8 +5,8 @@ from nonebot.log import logger
 from ..data import UserInfo
 from ..matcher import arc
 
-from ..adapters.utils import adapter_chooser
-api_in_use = adapter_chooser().upper()
+from ..adapters.utils import adapter_selector
+api_in_use = adapter_selector().upper()
 if api_in_use == "AUA":
     from ..adapters.aua.api import fetch_user_info
 elif api_in_use == "ESTERTION":

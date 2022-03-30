@@ -4,12 +4,14 @@ from nonebot.log import logger
 from ..matcher import arc
 from ..data import UserInfo
 
-from ..adapters.utils import adapter_chooser
-api_in_use = adapter_chooser().upper()
+from ..adapters.utils import adapter_selector
+api_in_use = adapter_selector().upper()
 if api_in_use == "AUA":
+    logger.info("将使用ArcaeaUnlimitedApi")
     from ..adapters.aua.draw_image import UserArcaeaInfo
 elif api_in_use == "ESTERTION":
     from ..adapters.estertion.draw_image import UserArcaeaInfo
+    logger.info("将使用EstertionApi")
 else:
     logger.error("不支持的Api选项")
 

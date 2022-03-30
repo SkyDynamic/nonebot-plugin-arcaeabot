@@ -13,13 +13,12 @@ from nonebot import get_driver
 from .config import Config
 from nonebot.log import logger
 
-try:
-    plugin_config = Config.parse_obj(get_driver().config)
-    src_api_url = plugin_config.src_api_url
-except Exception as e:
-    logger.error(e)
-    logger.info("未监测到自定义src_api_url, 使用默认值")
-    src_api_url = Config.src_api_url
+plugin_config = Config.parse_obj(get_driver().config)
+src_api_url = plugin_config.src_api_url
+if src_api_url:
+    logger.info("使用自定义src_api_url")
+else:
+    src_api_url = "http://107.182.17.60:17777/api/"
 
 assets_path = path.abspath(path.join(path.dirname(__file__), "assets"))
 
