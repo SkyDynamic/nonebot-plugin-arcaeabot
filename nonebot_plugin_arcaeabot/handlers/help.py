@@ -15,5 +15,5 @@ async def help_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
                                         "/arc recent 查询上一次游玩记录。",
                                         "/arc b30 查询 best 30 记录。"]))
         except ActionFailed as e:
-            logger.error(
+            logger.exception(
                     f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}')

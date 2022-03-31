@@ -3,15 +3,11 @@ from nonebot.params import CommandArg
 from nonebot.log import logger
 from ..matcher import arc
 from ..data import UserInfo
+try:
+    from ..adapters.utils import UserArcaeaInfo
+except ImportError:
+    logger.error("查分Api填写不规范, 请检查.env中的api_in_use配置")
 
-from ..adapters.utils import adapter_selector
-api_in_use = adapter_selector().upper()
-if api_in_use == "AUA":
-    from ..adapters.aua.draw_image import UserArcaeaInfo
-elif api_in_use == "ESTERTION":
-    from ..adapters.estertion.draw_image import UserArcaeaInfo
-else:
-    logger.error("不支持的Api选项")
 
 
 async def b30_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
