@@ -56,9 +56,11 @@ class UserArcaeaInfo:
         ptt_background = open_img(
             StaticPath.select_image("ptt", choice_ptt_background(rating))).resize((150, 150))
         image.alpha_composite(ptt_background, (300, 400))
-        write_ptt = DataText(375, 475, 45, rating / 100 if rating != -
-                             1 else "--", StaticPath.exo_regular, anchor="mm")
-        image = draw_text(image, write_ptt, stroke_fill="Black", stroke_width=2)
+        raw_ptt = str(round(rating/100, 2)).split(".")
+        write_ptt_head = DataText(373, 490, 45, raw_ptt[0], StaticPath.exo_regular, anchor="rs")
+        image = draw_text(image, write_ptt_head, stroke_fill="Black", stroke_width=2)
+        write_ptt_tail = DataText(373, 490, 35, "."+raw_ptt[1], StaticPath.exo_regular, anchor="ls")
+        image = draw_text(image, write_ptt_tail, stroke_fill="Black", stroke_width=2)
         write_arcname = DataText(455, 400, 85, name,
                                  StaticPath.geosans_light, anchor="lb")
         image = draw_text(image, write_arcname)
@@ -252,8 +254,10 @@ class UserArcaeaInfo:
         write_miss_count = DataText(670+(4-len(str(miss_count))/2 * 15), 610, 30, str(
             miss_count), StaticPath.geosans_light)
         image = draw_text(image, write_miss_count, 137, 137, 137, 255)
-        write_ptt = DataText(660, 70, 30, str(
-            round(rating/100, 2)), StaticPath.exo_regular)
-        image = draw_text(image, write_ptt, stroke_fill="Black", stroke_width=2)
+        raw_ptt = str(round(rating/100, 2)).split(".")
+        write_ptt_head = DataText(373, 490, 45, raw_ptt[0], StaticPath.exo_regular, anchor="rs")
+        image = draw_text(image, write_ptt_head, stroke_fill="Black", stroke_width=2)
+        write_ptt_tail = DataText(373, 490, 35, "."+raw_ptt[1], StaticPath.exo_regular, anchor="ls")
+        image = draw_text(image, write_ptt_tail, stroke_fill="Black", stroke_width=2)
         image.save(StaticPath.output(str(arcaea_id) + "_recent"))
         return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id) + "_recent"))
