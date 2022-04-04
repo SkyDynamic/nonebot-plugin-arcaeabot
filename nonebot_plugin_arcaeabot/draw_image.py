@@ -77,10 +77,8 @@ class UserArcaeaInfo:
                 background_x = 30
             else:
                 background_x += 600
-            if api_in_use == "AUA":
-                song_id = data["song_id"]
-            elif api_in_use == "ESTERTION":
-                song_id = data["data"][0]["song_id"]
+            if api_in_use == "ESTERTION":
+                data = data["data"][0]
             best30_background = open_img(
                 StaticPath.b30_score_background)
             image.alpha_composite(
