@@ -1,19 +1,21 @@
-"""
- - Author: DiheChen
- - Date: 2021-08-15 22:01:10
- - LastEditTime: 2022-03-27 01:47:04
- - LastEditors: SEAFHMC
- - Description: None
- - GitHub: https://github.com/Chendihe4975
-"""
 from PIL import Image
 from nonebot.adapters.onebot.v11 import MessageSegment
-from ...assets import StaticPath
-from .api import fetch_user_info
-from ..utils import (
-    open_img, choice_ptt_background, DataText,
+from nonebot.log import logger
+from .assets import StaticPath
+from .adapters.utils import (
+    open_img, choice_ptt_background, DataText, adapter_selector,
     draw_text, player_time_format, song_time_format, get_song_info
 )
+
+api_in_use = adapter_selector().upper()
+if api_in_use == "AUA":
+    logger.info("将使用ArcaeaUnlimitedApi")
+    from .adapters.aua.resolver import ApiResult
+elif api_in_use == "ESTERTION":
+    logger.info("将使用EstertionApi")
+    from .adapters.estertion.resolver import ApiResult
+else:
+    logger.error("不支持的Api选项")
 
 
 class UserArcaeaInfo:
@@ -27,19 +29,18 @@ class UserArcaeaInfo:
     async def draw_best30_image(arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
-            data = await fetch_user_info(arcaea_id, recent_only=False)
+            data = ApiResult()
+            await data.get_b30(arcaea_id=arcaea_id)
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
         UserArcaeaInfo.querying.remove(arcaea_id)
-        name: str = data["content"]["account_info"]["name"]
-        character: int = data["content"]["account_info"]["character"]
-        is_char_uncapped: bool = data["content"]["account_info"]["is_char_uncapped"]
-        is_char_uncapped_override: bool = data["content"]["account_info"]["is_char_uncapped_override"]
-        rating: str = data["content"]["account_info"]["rating"]
-        best: float = data["content"]["best30_avg"]
-        recent: float = data["content"]["recent10_avg"]
-        icon: str = f"{character}u_icon.png" if is_char_uncapped ^ is_char_uncapped_override else f"{character}_icon.png"
+        name: str = data.name
+        rating: str = data.rating
+        best: float = data.best
+        recent: float = data.recent
+        icon: str = data.icon
+        score_info_list = data.score_info_list
         image = Image.new("RGBA", (1800, 3000))
         background = open_img(StaticPath.b30_background)
         image.alpha_composite(background)
@@ -68,7 +69,7 @@ class UserArcaeaInfo:
         image = draw_text(image, w_b30)
         background_y = 580
         background_x = 0
-        for num, data in enumerate(data["content"]["best30_list"]+["space"]):
+        for num, data in enumerate(score_info_list):
             if num == 30:
                 break
             if num % 3 == 0:
@@ -142,37 +143,35 @@ class UserArcaeaInfo:
     async def draw_recent_image(arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
-            data = (await fetch_user_info(arcaea_id, recent_only=True))
+            data = ApiResult()
+            await data.get_recent(arcaea_id=arcaea_id)
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
         UserArcaeaInfo.querying.remove(arcaea_id)
-        name: str = data["content"]["account_info"]["name"]
-        character: int = data["content"]["account_info"]["character"]
-        is_char_uncapped: bool = data["content"]["account_info"]["is_char_uncapped"]
-        is_char_uncapped_override: bool = data["content"]["account_info"]["is_char_uncapped_override"]
-        icon = f"{character}u_icon.png" if is_char_uncapped ^ is_char_uncapped_override else f"{character}_icon.png"
-        rating: int = data["content"]["account_info"]["rating"]
-        song_id: str = data["content"]["recent_score"][0]["song_id"]
-        song_info: list = get_song_info()
-        song_name: str = song_info[0]["data"][song_id]["en"]
-        author_name: str = song_info[1]["data"][song_id]
-        difficulty: int = data["content"]["recent_score"][0]["difficulty"]
-        score: int = data["content"]["recent_score"][0]["score"]
-        shiny_perfect_count: int = data["content"]["recent_score"][0]["shiny_perfect_count"]
-        perfect_count: int = data["content"]["recent_score"][0]["perfect_count"]
-        near_count: int = data["content"]["recent_score"][0]["near_count"]
-        miss_count: int = data["content"]["recent_score"][0]["miss_count"]
-        health: int = data["content"]["recent_score"][0]["health"]
-        song_rating: float = data["content"]["recent_score"][0]["rating"]
-        constant: float = get_song_info()[2]["data"][song_id][data["content"]["recent_score"][0]["difficulty"]]
+        name: str = data.name
+        character: int = data.character
+        icon = data.icon
+        rating: int = data.rating
+        song_id: str = data.song_id
+        song_name: str = data.song_name
+        author_name: str = data.author_name
+        difficulty: int = data.difficulty
+        score: int = data.score
+        shiny_perfect_count: int = data.shiny_perfect_count
+        perfect_count: int = data.perfect_count
+        near_count: int = data.near_count
+        miss_count: int = data.miss_count
+        health: int = data.health
+        song_rating: float = data.song_rating
+        constant: float = data.constant
+        full_character = data.full_character
         image = Image.new("RGBA", (1280, 720))
         background = open_img(StaticPath.recent_background)
         image.alpha_composite(background)
         icon = open_img(StaticPath.select_image(
             "char", icon)).resize((130, 130))
         image.alpha_composite(icon, (575, -15))
-        full_character = f"{character}u.png" if is_char_uncapped ^ is_char_uncapped_override else f"{character}.png"
         song_cover = open_img(StaticPath.select_image(
             "song", song_id, "base.jpg")).resize((375, 375))
         image.alpha_composite(song_cover, (40, 290))

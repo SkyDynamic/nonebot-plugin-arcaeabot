@@ -7,7 +7,6 @@ import ujson as json
 from nonebot import get_driver
 from ..config import Config
 from typing import Optional
-from nonebot.log import logger
 
 
 def player_time_format(time_stamp: int) -> str:
@@ -96,12 +95,8 @@ def adapter_selector() -> Optional[str]:
 
 api_in_use = adapter_selector().upper()
 if api_in_use == "AUA":
-    logger.info("将使用ArcaeaUnlimitedApi")
-    from ..adapters.aua.draw_image import UserArcaeaInfo
     from ..adapters.aua.api import fetch_user_info
 elif api_in_use == "ESTERTION":
-    logger.info("将使用EstertionApi")
-    from ..adapters.estertion.draw_image import UserArcaeaInfo
     from ..adapters.estertion.api import fetch_user_info
 else:
-    logger.error("不支持的Api选项")
+    pass

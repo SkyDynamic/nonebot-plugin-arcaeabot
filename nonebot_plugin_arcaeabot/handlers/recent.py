@@ -3,11 +3,7 @@ from nonebot.params import CommandArg
 from nonebot.log import logger
 from ..matcher import arc
 from ..data import UserInfo
-try:
-    from ..adapters.utils import UserArcaeaInfo
-except ImportError:
-    logger.error("查分Api填写不规范, 请检查.env中的api_in_use配置")
-
+from ..draw_image import UserArcaeaInfo
 
 
 async def recent_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):

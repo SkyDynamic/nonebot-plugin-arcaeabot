@@ -5,10 +5,10 @@ from nonebot.log import logger
 from ..data import UserInfo
 from ..matcher import arc
 try:
-    from ..adapters.utils import adapter_selector, fetch_user_info
+    from ..adapters.utils import fetch_user_info
 except ImportError:
     logger.error("查分Api填写不规范, 请检查.env中的api_in_use配置")
-api_in_use = adapter_selector().upper()
+from ..adapters.utils import api_in_use
 
 
 async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
