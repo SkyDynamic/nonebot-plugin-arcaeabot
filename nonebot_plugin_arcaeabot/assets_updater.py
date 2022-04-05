@@ -1,13 +1,13 @@
 """
  - Author: DiheChen
  - Date: 2021-08-15 22:01:10
- - LastEditTime: 2022-03-18 15:48:30
+ - LastEditTime: 2022-04-05 22:48:30
  - LastEditors: SEAFHMC
  - Description: None
  - GitHub: https://github.com/Chendihe4975
 """
 from typing import List
-from aiohttp import ClientSession
+from httpx import AsyncClient
 from os import path, listdir, makedirs
 from nonebot import get_driver
 from .config import Config
@@ -24,29 +24,29 @@ assets_path = path.abspath(path.join(path.dirname(__file__), "assets"))
 
 
 async def check_song_update() -> List[str]:
-    async with ClientSession() as session:
-        async with session.get(src_api_url+"song_list", verify_ssl=False) as resp:
-            result = list()
-            for k, v in (await resp.json()).items():
-                if k not in listdir(path.join(assets_path, "song")):
-                    for link in v:
-                        args = link.split("/")
-                        makedirs(path.join(assets_path, "song", args[-2]), exist_ok=True)
-                        async with session.get(link, verify_ssl=False) as res:
-                            with open(path.join(assets_path, "song", args[-2], args[-1]), "wb") as file:
-                                file.write(await res.read())
-                                result.append(args[-2])
-            return result
+    async with AsyncClient() as client:
+        resp1 = await client.get(src_api_url+"song_list")
+        result = list()
+        for k, v in (resp1.json()).items():
+            if k not in listdir(path.join(assets_path, "song")):
+                for link in v:
+                    args = link.split("/")
+                    makedirs(path.join(assets_path, "song", args[-2]), exist_ok=True)
+                    resp2 = await client.get(link)
+                    with open(path.join(assets_path, "song", args[-2], args[-1]), "wb") as file:
+                        file.write(resp2.read())
+                        result.append(args[-2])
+        return result
 
 
 async def check_char_update() -> List[str]:
-    async with ClientSession() as session:
-        async with session.get(src_api_url+"char_list", verify_ssl=False) as resp:
-            result = list()
-            for k, v in (await resp.json()).items():
-                if k not in listdir(path.join(assets_path, "char")):
-                    async with session.get(v, verify_ssl=False) as res:
-                        with open(path.join(assets_path, "char", k), "wb") as file:
-                            file.write(await res.read())
-                            result.append(k)
-            return result
+    async with AsyncClient() as client:
+        resp1 = await client.get(src_api_url+"char_list")
+        result = list()
+        for k, v in (resp1.json()).items():
+            if k not in listdir(path.join(assets_path, "char")):
+                resp2 = await client.get(v)
+                with open(path.join(assets_path, "char", k), "wb") as file:
+                    file.write(resp2.read())
+                    result.append(k)
+        return result
