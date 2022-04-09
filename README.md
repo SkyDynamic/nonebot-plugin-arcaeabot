@@ -11,8 +11,8 @@ Arcaea 查分器。
 项目默认使用AUA (ArcaeaUnlimitedApi)，您需要申请相关SECRET并在.env.{ENVIRONMENT}中填写</br>
 | 参数               | 描述                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| AUA_URL | AUA的地址 |
-| AUA_UA | AUA请求头User-Agent |
+| AUA_URL | AUA的地址，如"https://www.example.com"</br>（不需要添加/botarcapi） |
+| AUA_UA | AUA请求头User-Agent，如"Grievous Lady (Linux; U; Android 2.3.3; BotArcAPI" |
 | API_IN_USE | 选择使用哪种Api；可填写AUA或ESTERTION（不推荐滥用estertion的api，若有需要请自行编写） |
 
 使该项目被您的 NoneBot2 (nonebot2 及 nonebot-adapter-onebot 版本不得低于 `2.0.0-beta2` ) 机器人作为插件加载, 至于如何做, 您应该懂的。
