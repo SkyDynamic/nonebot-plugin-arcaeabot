@@ -16,7 +16,7 @@ class ApiResult:
         self.icon: str = (f"{self.character}u_icon.png"
                           if self.is_char_uncapped ^ self.is_char_uncapped_override
                           else f"{self.character}_icon.png")
-        self.score_info_list = self.data["content"]["best30_list"]+["space"]
+        self.score_info_list = self.data["content"]["best30_list"]+self.data["content"]["best30_overflow"]
 
     @classmethod
     async def get_recent(self, arcaea_id: str, recent_only: bool = True):

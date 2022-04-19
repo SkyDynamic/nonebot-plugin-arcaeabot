@@ -33,6 +33,7 @@ class UserArcaeaInfo:
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
+        UserArcaeaInfo.querying.remove(arcaea_id)
         image = draw_b30(data)
         image.save(StaticPath.output(str(arcaea_id)))
         return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id)))

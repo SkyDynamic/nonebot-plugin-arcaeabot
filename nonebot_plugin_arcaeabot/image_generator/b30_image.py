@@ -3,7 +3,6 @@ from typing import Tuple, Dict
 from .assets import StaticPath
 from .utils import text_image, open_img, get_song_info, get_average_color, is_dark, player_time_format, DataText, draw_text, choice_ptt_background
 
-
 def draw_score_bg(
     average_color: Tuple[int, int, int], song_cover: Image.Image, mask: Image.Image
 ) -> Image.Image:
@@ -81,7 +80,7 @@ def draw_score_detail(data: Dict, rank: int, song_id: str, mask: Image.Image) ->
     return image
 
 
-def draw_b30(data):
+def draw_b30(arcaea_id: str, data):
     B30_bg = open_img(StaticPath.B30_bg)
     #User Info
     name: str = data.name
@@ -101,7 +100,6 @@ def draw_b30(data):
     write_arcname = DataText(355, 280, 100, name,
                                 StaticPath.exo_medium, anchor="lb")
     B30_bg = draw_text(B30_bg, write_arcname)
-    arcaea_id = "114514009"
     write_arcaea_id = DataText(
         380, 360, 60, f"ID:{arcaea_id}", StaticPath.exo_medium, anchor="lb")
     B30_bg = draw_text(B30_bg, write_arcaea_id)
@@ -117,17 +115,16 @@ def draw_b30(data):
     background_y = 640
     background_x = 0
     mask = Image.open(StaticPath.mask)
-    if True:
-        for num, data in enumerate(score_info_list):
-            if num == 39:
-                break
-            if num % 3 == 0:
-                background_y += 300 if num != 0 else 0
-                background_x = 100
-            else:
-                background_x += 620
-            if num / 3==10:
-                background_y += 100
-                B30_bg.alpha_composite(divider, (0, background_y-87))
-            B30_bg.alpha_composite(draw_score_detail(data, rank=num, song_id=data["song_id"], mask=mask), (background_x, background_y))
+    for num, value in enumerate(score_info_list):
+        if num == 39:
+            break
+        if num % 3 == 0:
+            background_y += 300 if num != 0 else 0
+            background_x = 100
+        else:
+            background_x += 620
+        if num / 3==10:
+            background_y += 100
+            B30_bg.alpha_composite(divider, (0, background_y-87))
+        B30_bg.alpha_composite(draw_score_detail(value, rank=num, song_id=value["song_id"], mask=mask), (background_x, background_y))
     return B30_bg
