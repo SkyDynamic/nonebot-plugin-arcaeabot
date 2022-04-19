@@ -32,7 +32,7 @@ class ApiResult:
         self.song_id: str = self.data["content"]["recent_score"][0]["song_id"]
         self.song_info: list = get_song_info(self.song_id)
         self.song_name: str = self.song_info["title_localized"]["en"]
-        self.author_name: str = self.song_info[1]["data"][self.song_id]
+        self.author_name: str = self.song_info["artist"]
         self.difficulty: int = self.data["content"]["recent_score"][0]["difficulty"]
         self.score: int = self.data["content"]["recent_score"][0]["score"]
         self.shiny_perfect_count: int = self.data["content"]["recent_score"][0]["shiny_perfect_count"]
