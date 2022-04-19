@@ -34,7 +34,7 @@ class UserArcaeaInfo:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
         UserArcaeaInfo.querying.remove(arcaea_id)
-        image = draw_b30(arcaea_id, data)
+        image = draw_b30(arcaea_id=arcaea_id, data=data)
         image.save(StaticPath.output(str(arcaea_id)))
         return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id)))
 
