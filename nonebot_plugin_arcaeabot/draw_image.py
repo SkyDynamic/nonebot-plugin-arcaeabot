@@ -3,7 +3,7 @@ from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.log import logger
 from .assets import StaticPath
 from .adapters.utils import (
-    open_img, choice_ptt_background, DataText, adapter_selector,draw_text)
+    open_img, choice_ptt_background, DataText, adapter_selector, draw_text)
 from .image_generator import draw_b30
 
 api_in_use = adapter_selector().upper()

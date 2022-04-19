@@ -2,7 +2,7 @@ from PIL import Image, ImageFont, ImageDraw, ImageEnhance
 from numpy import average
 from .assets import StaticPath
 from typing import Tuple, Union, Dict
-from time import localtime, mktime, strftime
+from time import localtime, strftime
 import ujson as json
 
 
@@ -29,10 +29,9 @@ def get_average_color(image: Image.Image):
     return (R_average, G_average, B_average)
 
 
-def text_image(
-    text: str, font: str, size: int, color: Tuple[int, int, int] = (0, 0, 0),
-    contrast_degree: Union[int, float]=1, pos: Tuple[int, int] = (0, 0), anchor: str = "lt",
-    stroke_fill=(0, 0, 0, 0), stroke_width=0) -> Image.Image:
+def text_image(text: str, font: str, size: int, color: Tuple[int, int, int] = (0, 0, 0),
+               contrast_degree: Union[int, float] = 1, pos: Tuple[int, int] = (0, 0),
+               anchor: str = "lt", stroke_fill=(0, 0, 0, 0), stroke_width=0) -> Image.Image:
     font = ImageFont.truetype(font, size)
     image = Image.new("RGBA", (size*len(text), size*2), (0, 0, 0, 0))
     draw = ImageDraw.Draw(image)
@@ -47,9 +46,11 @@ def is_dark(color: Tuple[int, int, int]):
         True if color[0] * 0.299 + color[1] * 0.587 + color[2] * 0.114 < 192 else False
     )
 
+
 def player_time_format(time_stamp: int) -> str:
     struct_time = localtime(time_stamp / 1000)
     return strftime("%Y-%m-%d %H:%M:%S", struct_time)
+
 
 def get_song_info(song_id: str) -> Dict:
     with open(StaticPath.slst_json, "r", encoding="UTF-8") as f:
@@ -57,6 +58,7 @@ def get_song_info(song_id: str) -> Dict:
     for i in slst["songs"]:
         if i["id"] == song_id:
             return i
+
 
 def choice_ptt_background(ptt: int):
     if ptt == -1:
@@ -78,6 +80,8 @@ def choice_ptt_background(ptt: int):
         return "rating_6.png"
 
 # Lagecy
+
+
 class DataText:
     def __init__(self, L, T, size, text, path, anchor="lt") -> None:
         self.L = L
