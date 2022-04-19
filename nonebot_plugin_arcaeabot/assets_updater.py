@@ -36,6 +36,9 @@ async def check_song_update() -> List[str]:
                     with open(path.join(assets_path, "song", args[-2], args[-1]), "wb") as file:
                         file.write(resp2.read())
                         result.append(args[-2])
+        resp3 = await client.get(src_api_url+"slst")
+        with open(path.join(assets_path, "slst.json", "wb")) as file:
+            file.write(resp3.json())
         return result
 
 
