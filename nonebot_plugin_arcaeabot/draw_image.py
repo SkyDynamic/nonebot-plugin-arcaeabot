@@ -3,9 +3,8 @@ from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.log import logger
 from .assets import StaticPath
 from .adapters.utils import (
-    open_img, choice_ptt_background, DataText, adapter_selector,
-    draw_text, player_time_format, song_time_format, get_song_info
-)
+    open_img, choice_ptt_background, DataText, adapter_selector,draw_text)
+from .image_generator import draw_b30
 
 api_in_use = adapter_selector().upper()
 if api_in_use == "AUA":
@@ -34,110 +33,7 @@ class UserArcaeaInfo:
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
-        UserArcaeaInfo.querying.remove(arcaea_id)
-        name: str = data.name
-        rating: str = data.rating
-        best: float = data.best
-        recent: float = data.recent
-        icon: str = data.icon
-        score_info_list = data.score_info_list
-        image = Image.new("RGBA", (1800, 3000))
-        background = open_img(StaticPath.b30_background)
-        image.alpha_composite(background)
-        icon = open_img(StaticPath.select_image(
-            "char", icon)).resize((250, 250))
-        image.alpha_composite(icon, (175, 275))
-        ptt_background = open_img(
-            StaticPath.select_image("ptt", choice_ptt_background(rating))).resize((150, 150))
-        image.alpha_composite(ptt_background, (300, 400))
-        raw_ptt = str(round(rating/100, 2)).split(".")
-        write_ptt_head = DataText(373, 490, 45, raw_ptt[0], StaticPath.exo_semibold, anchor="rs")
-        image = draw_text(image, write_ptt_head, stroke_fill="Black", stroke_width=2)
-        write_ptt_tail = DataText(373, 490, 35, "."+raw_ptt[1], StaticPath.exo_semibold, anchor="ls")
-        image = draw_text(image, write_ptt_tail, stroke_fill="Black", stroke_width=2)
-        write_arcname = DataText(455, 400, 85, name,
-                                 StaticPath.geosans_light, anchor="lb")
-        image = draw_text(image, write_arcname)
-        write_arcaea_id = DataText(
-            480, 475, 60, f"ID:{arcaea_id}", StaticPath.exo_regular, anchor="lb")
-        image = draw_text(image, write_arcaea_id)
-        write_r10 = DataText(
-            1100, 400, 60, f"Recent 10: {recent:.3f}", StaticPath.exo_regular, anchor="lb")
-        image = draw_text(image, write_r10)
-        w_b30 = DataText(
-            1100, 425, 60, f"Best 30: {best:.3f}", StaticPath.exo_regular)
-        image = draw_text(image, w_b30)
-        background_y = 580
-        background_x = 0
-        for num, data in enumerate(score_info_list):
-            if num == 30:
-                break
-            if num % 3 == 0:
-                background_y += 240 if num != 0 else 0
-                background_x = 30
-            else:
-                background_x += 600
-            if api_in_use == "ESTERTION":
-                data = data["data"][0]
-            best30_background = open_img(
-                StaticPath.b30_score_background)
-            image.alpha_composite(
-                best30_background, (10 + background_x, background_y))
-            song_background = open_img(
-                StaticPath.select_image("song", data["song_id"], "base.jpg")).resize((190, 190))
-            image.alpha_composite(
-                song_background, (35 + background_x, 5 + background_y))
-            diff_background = open_img(
-                StaticPath.select_image("diff", ["PST.png", "PRS.png", "FTR.png", "BYD.png"][data["difficulty"]])).resize((72, 72))
-            image.alpha_composite(
-                diff_background, (161 + background_x, background_y - 3))
-            rank_background = open_img(StaticPath.check_rank_background(
-                score=data["score"], failed=(data["health"] == -1))).resize((135, 65))
-            image.alpha_composite(
-                rank_background, (395 + background_x, 95 + background_y))
-            write_constant = DataText(223 + background_x, 12 + background_y, 20,
-                                      f'{get_song_info()[2]["data"][data["song_id"]][data["difficulty"]]:.1f}', StaticPath.exo_regular, anchor='rt')
-            image = draw_text(image, write_constant)
-            write_ranking = DataText(480 + background_x, background_y, 45,
-                                     f'#{num + 1}', StaticPath.exo_regular, anchor='lm')
-            image = draw_text(image, write_ranking)
-            write_score = DataText(235 + background_x, 15 + background_y,
-                                   55, f'{data["score"]:,}', StaticPath.geosans_light)
-            image = draw_text(image, write_score)
-            write_PURE = DataText(235 + background_x, 75 + background_y,
-                                  30, 'PURE', StaticPath.geosans_light)
-            image = draw_text(image, write_PURE)
-            write_p_count = DataText(335 + background_x, 75 + background_y,
-                                     30, data["perfect_count"], StaticPath.geosans_light)
-            image = draw_text(image, write_p_count)
-            write_sp_count = DataText(400 + background_x, 75 + background_y,
-                                      20, f'+{data["shiny_perfect_count"]}', StaticPath.geosans_light)
-            image = draw_text(image, write_sp_count)
-            write_far_text = DataText(
-                235 + background_x, 105 + background_y, 30, 'FAR', StaticPath.geosans_light)
-            image = draw_text(image, write_far_text)
-            write_far_count = DataText(335 + background_x, 105 + background_y,
-                                       30, data["near_count"], StaticPath.geosans_light)
-            image = draw_text(image, write_far_count)
-            write_lost_text = DataText(
-                235 + background_x, 135 + background_y, 30, 'LOST', StaticPath.geosans_light)
-            image = draw_text(image, write_lost_text)
-            write_lost_count = DataText(
-                335 + background_x, 135 + background_y, 30, data["miss_count"], StaticPath.geosans_light)
-            image = draw_text(image, write_lost_count)
-            write_rating_text = DataText(
-                235 + background_x, 170 + background_y, 30, 'Rating:', StaticPath.geosans_light)
-            image = draw_text(image, write_rating_text)
-            write_rating = DataText(335 + background_x, 170 + background_y,
-                                    30, f'{data["rating"]:.3f}', StaticPath.geosans_light)
-            image = draw_text(image, write_rating)
-            write_time = DataText(280 + background_x, 210 + background_y, 30,
-                                  player_time_format(data["time_played"]), StaticPath.exo_regular, anchor='mm')
-            image = draw_text(image, write_time)
-            if song_time_format(data["time_played"]) <= 7:
-                new_background = open_img(StaticPath.new_background)
-                image.alpha_composite(
-                    new_background, (background_x - 23, background_y))
+        image = draw_b30(data)
         image.save(StaticPath.output(str(arcaea_id)))
         return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id)))
 

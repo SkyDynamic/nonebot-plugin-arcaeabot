@@ -36,9 +36,6 @@ def track_complete(score: int, lost_count: int) -> str:
 
 class StaticPath:
     database = path.join(ASSETS, "data.db")
-    b30_background = path.join(ASSETS, "b30_bg.png")
-    b30_score_background = path.join(ASSETS, "b30_score_bg.png")
-    new_background = path.join(ASSETS, "new.png")
     recent_background = path.join(ASSETS, "recent", "recent_bg.png")
     hp_base = path.join(ASSETS, "recent", "hp_base.png")
     hp_grid = path.join(ASSETS, "recent", "hp_grid.png")
