@@ -1,5 +1,5 @@
 from .api import fetch_user_info
-from ..utils import get_song_info
+from ...image_generator.utils import get_song_info
 
 
 class ApiResult:
@@ -30,8 +30,8 @@ class ApiResult:
                      else f"{self.character}_icon.png")
         self.rating: int = self.data["content"]["account_info"]["rating"]
         self.song_id: str = self.data["content"]["recent_score"][0]["song_id"]
-        self.song_info: list = get_song_info()
-        self.song_name: str = self.song_info[0]["data"][self.song_id]["en"]
+        self.song_info: list = get_song_info(self.song_id)
+        self.song_name: str = self.song_info["title_localized"]["en"]
         self.author_name: str = self.song_info[1]["data"][self.song_id]
         self.difficulty: int = self.data["content"]["recent_score"][0]["difficulty"]
         self.score: int = self.data["content"]["recent_score"][0]["score"]
@@ -41,7 +41,7 @@ class ApiResult:
         self.miss_count: int = self.data["content"]["recent_score"][0]["miss_count"]
         self.health: int = self.data["content"]["recent_score"][0]["health"]
         self.song_rating: float = self.data["content"]["recent_score"][0]["rating"]
-        self.constant: float = get_song_info()[2]["data"][self.song_id][self.data["content"]["recent_score"][0]["difficulty"]]
+        self.constant: float = self.song_info["difficulties"][self.difficulty]["rating"]
         self.full_character = (f"{self.character}u.png"
                                if self.is_char_uncapped ^ self.is_char_uncapped_override
                                else f"{self.character}.png")
