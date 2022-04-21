@@ -12,6 +12,7 @@ from os import path, listdir, makedirs
 from nonebot import get_driver
 from .config import Config
 from nonebot.log import logger
+from tqdm import tqdm
 
 plugin_config = Config.parse_obj(get_driver().config)
 src_api_url = plugin_config.src_api_url
@@ -27,7 +28,7 @@ async def check_song_update() -> List[str]:
     async with AsyncClient() as client:
         resp1 = await client.get(src_api_url+"song_list")
         result = list()
-        for k, v in (resp1.json()).items():
+        for k, v in tqdm((resp1.json()).items()):
             if k not in listdir(path.join(assets_path, "song")):
                 for link in v:
                     args = link.split("/")
@@ -46,7 +47,7 @@ async def check_char_update() -> List[str]:
     async with AsyncClient() as client:
         resp1 = await client.get(src_api_url+"char_list")
         result = list()
-        for k, v in (resp1.json()).items():
+        for k, v in tqdm((resp1.json()).items()):
             if k not in listdir(path.join(assets_path, "char")):
                 resp2 = await client.get(v)
                 with open(path.join(assets_path, "char", k), "wb") as file:
