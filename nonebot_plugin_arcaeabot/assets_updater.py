@@ -14,7 +14,7 @@ from .config import Config
 from nonebot.log import logger
 from tqdm import tqdm
 
-plugin_config = Config.parse_obj(get_driver().config)
+plugin_config = Config.parse_obj(get_driver().config.dict())
 src_api_url = plugin_config.src_api_url
 if src_api_url:
     logger.info("使用自定义src_api_url")

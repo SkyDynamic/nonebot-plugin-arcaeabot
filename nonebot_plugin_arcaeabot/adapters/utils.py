@@ -84,7 +84,7 @@ def get_song_info() -> list:
 
 
 def adapter_selector() -> Optional[str]:
-    plugin_config = Config.parse_obj(get_driver().config)
+    plugin_config = Config.parse_obj(get_driver().config.dict())
     api_in_use = plugin_config.api_in_use
     if api_in_use:
         pass

@@ -6,7 +6,7 @@ from httpx import AsyncClient
 from ..utils import adapter_selector
 
 if adapter_selector().upper() == "AUA":
-    plugin_config = Config.parse_obj(get_driver().config)
+    plugin_config = Config.parse_obj(get_driver().config.dict())
     aua_url = plugin_config.aua_url
     aua_ua = plugin_config.aua_ua
     if aua_url:
