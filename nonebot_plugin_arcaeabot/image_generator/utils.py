@@ -101,9 +101,9 @@ def write_text(image: Image.Image, font, text="text", pos=(0, 0), color=(255, 25
     return Image.alpha_composite(rgba_image, text_overlay)
 
 
-def draw_text(image, class_text: DataText, R=255, G=255, B=255, A=255, stroke_width=0, stroke_fill="Black") -> Image.Image:
+def draw_text(image, class_text: DataText, color: Tuple[int, int, int, int] = (255, 255, 255, 255), stroke_width=0, stroke_fill="Black") -> Image.Image:
     font = class_text.font
     text = class_text.text
     anchor = class_text.anchor
-    color = (R, G, B, A)
+    color = color
     return write_text(image, font, text, (class_text.L, class_text.T), color, anchor, stroke_width=stroke_width, stroke_fill=stroke_fill)
