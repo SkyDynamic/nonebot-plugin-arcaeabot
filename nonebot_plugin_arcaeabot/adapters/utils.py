@@ -95,8 +95,10 @@ def adapter_selector() -> Optional[str]:
 
 api_in_use = adapter_selector().upper()
 if api_in_use == "AUA":
-    from ..adapters.aua.api import fetch_user_info
+    from .aua.api import fetch_user_info
+    from .aua.resolver import ApiResult
 elif api_in_use == "ESTERTION":
-    from ..adapters.estertion.api import fetch_user_info
+    from .estertion.api import fetch_user_info
+    from .estertion.resolver import ApiResult
 else:
     pass
