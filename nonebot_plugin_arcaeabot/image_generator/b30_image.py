@@ -1,7 +1,6 @@
-from PIL import Image
+from PIL import Image, ImageEnhance
 from typing import Tuple, Dict
 from .assets import StaticPath
-from ..adapters.utils import ApiResult
 from .utils import (
     open_img, get_song_info, get_average_color, is_dark,
     player_time_format, DataText, draw_text, choice_ptt_background)
@@ -89,7 +88,7 @@ def draw_score_detail(data: Dict, rank: int, song_id: str, mask: Image.Image) ->
     return image
 
 
-def draw_b30(arcaea_id: str, data: ApiResult):
+def draw_b30(arcaea_id: str, data):
     B30_bg = open_img(StaticPath.B30_bg)
     # User Info
     name: str = data.name

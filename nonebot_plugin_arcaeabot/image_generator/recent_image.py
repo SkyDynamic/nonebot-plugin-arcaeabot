@@ -1,9 +1,9 @@
-from ..adapters.utils import ApiResult
+
 from PIL import Image
 from .assets import StaticPath
 from .utils import open_img, DataText ,draw_text, choice_ptt_background
 
-def draw_recent(arcaea_id: str, data: ApiResult):
+def draw_recent(arcaea_id: str, data):
     name: str = data.name
     character: int = data.character
     icon = data.icon
