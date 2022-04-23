@@ -26,7 +26,7 @@ assets_path = path.abspath(path.join(path.dirname(__file__), "assets"))
 
 async def check_song_update() -> List[str]:
     async with AsyncClient() as client:
-        resp1 = await client.get(src_api_url+"song_list")
+        resp1 = await client.get(src_api_url + "song_list")
         result = list()
         for k, v in tqdm((resp1.json()).items()):
             if k not in listdir(path.join(assets_path, "song")):
@@ -34,10 +34,12 @@ async def check_song_update() -> List[str]:
                     args = link.split("/")
                     makedirs(path.join(assets_path, "song", args[-2]), exist_ok=True)
                     resp2 = await client.get(link)
-                    with open(path.join(assets_path, "song", args[-2], args[-1]), "wb") as file:
+                    with open(
+                        path.join(assets_path, "song", args[-2], args[-1]), "wb"
+                    ) as file:
                         file.write(resp2.read())
                         result.append(args[-2])
-        resp3 = await client.get(src_api_url+"slst")
+        resp3 = await client.get(src_api_url + "slst")
         with open(path.join(assets_path, "slst.json"), "wb") as file:
             file.write(resp3.read())
         return result
@@ -45,7 +47,7 @@ async def check_song_update() -> List[str]:
 
 async def check_char_update() -> List[str]:
     async with AsyncClient() as client:
-        resp1 = await client.get(src_api_url+"char_list")
+        resp1 = await client.get(src_api_url + "char_list")
         result = list()
         for k, v in tqdm((resp1.json()).items()):
             if k not in listdir(path.join(assets_path, "char")):

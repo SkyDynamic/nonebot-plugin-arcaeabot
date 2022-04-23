@@ -4,6 +4,7 @@ from nonebot.params import CommandArg
 from nonebot.log import logger
 from ..data import UserInfo
 from ..matcher import arc
+
 try:
     from ..adapters.utils import fetch_user_info
 except ImportError:
@@ -17,18 +18,39 @@ async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
         arc_id = args[1].strip()
         if len(arc_id) != 9:
             try:
-                await arc.finish("\n".join([f"> {event.sender.card or event.sender.nickname}", "id 格式错误，请检查。"]))
+                await arc.finish(
+                    "\n".join(
+                        [
+                            f"> {event.sender.card or event.sender.nickname}",
+                            "id 格式错误，请检查。",
+                        ]
+                    )
+                )
             except ActionFailed as e:
                 logger.exception(
-                    f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}')
+                    f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}'
+                )
         if api_in_use == "AUA":
-            player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))["content"]["account_info"]["name"]
+            player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[
+                "content"
+            ]["account_info"]["name"]
         elif api_in_use == "ESTERTION":
-            player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[0]["data"]["name"]
-        UserInfo.replace(user_qq=event.user_id, arcaea_id=arc_id, arcaea_name=player_name).execute()
+            player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[
+                0
+            ]["data"]["name"]
+        UserInfo.replace(
+            user_qq=event.user_id, arcaea_id=arc_id, arcaea_name=player_name
+        ).execute()
         try:
-            await arc.finish("\n".join([f"> {event.sender.card or event.sender.nickname}",
-                                        f"绑定成功, 用户名: {player_name}, id: {arc_id}"]))
+            await arc.finish(
+                "\n".join(
+                    [
+                        f"> {event.sender.card or event.sender.nickname}",
+                        f"绑定成功, 用户名: {player_name}, id: {arc_id}",
+                    ]
+                )
+            )
         except ActionFailed as e:
             logger.exception(
-                f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}')
+                f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}'
+            )

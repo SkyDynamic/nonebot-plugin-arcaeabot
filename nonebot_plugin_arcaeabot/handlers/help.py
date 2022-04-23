@@ -9,11 +9,18 @@ async def help_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
     logger.debug(args)
     if args[0] == "help":
         try:
-            await arc.finish("\n".join(["/arc bind {arcaea id} 进行绑定。",
-                                        "/arc unbind 解除绑定。",
-                                        "/arc info 查看绑定信息。",
-                                        "/arc recent 查询上一次游玩记录。",
-                                        "/arc b30 查询 best 30 记录。"]))
+            await arc.finish(
+                "\n".join(
+                    [
+                        "/arc bind {arcaea id} 进行绑定。",
+                        "/arc unbind 解除绑定。",
+                        "/arc info 查看绑定信息。",
+                        "/arc recent 查询上一次游玩记录。",
+                        "/arc b30 查询 best 30 记录。",
+                    ]
+                )
+            )
         except ActionFailed as e:
             logger.exception(
-                    f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}')
+                f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}'
+            )

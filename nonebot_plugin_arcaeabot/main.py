@@ -7,7 +7,7 @@ from .handlers import (
     unbind_handler,
     info_handler,
     recent_handler,
-    b30_handler
+    b30_handler,
 )
 
 

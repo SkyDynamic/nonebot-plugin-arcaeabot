@@ -34,7 +34,7 @@ class UserArcaeaInfo:
         UserArcaeaInfo.querying.remove(arcaea_id)
         image = draw_b30(arcaea_id=arcaea_id, data=data)
         image.save(StaticPath.output(str(arcaea_id)))
-        return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id)))
+        return MessageSegment.image("file:///" + StaticPath.output(str(arcaea_id)))
 
     @staticmethod
     async def draw_recent_image(arcaea_id: str):
@@ -48,4 +48,6 @@ class UserArcaeaInfo:
         UserArcaeaInfo.querying.remove(arcaea_id)
         image = draw_recent(arcaea_id=arcaea_id, data=data)
         image.save(StaticPath.output(str(arcaea_id) + "_recent"))
-        return MessageSegment.image("file:///"+StaticPath.output(str(arcaea_id) + "_recent"))
+        return MessageSegment.image(
+            "file:///" + StaticPath.output(str(arcaea_id) + "_recent")
+        )
