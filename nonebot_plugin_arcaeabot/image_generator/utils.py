@@ -29,17 +29,6 @@ def get_average_color(image: Image.Image):
     return (R_average, G_average, B_average)
 
 
-def text_image(text: str, font: str, size: int, color: Tuple[int, int, int] = (0, 0, 0),
-               contrast_degree: Union[int, float] = 1, pos: Tuple[int, int] = (0, 0),
-               anchor: str = "lt", stroke_fill=(0, 0, 0, 0), stroke_width=0) -> Image.Image:
-    font = ImageFont.truetype(font, size)
-    image = Image.new("RGBA", (size*len(text), size*2), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(image)
-    draw.text(pos, text, color, anchor=anchor, font=font, stroke_fill=stroke_fill, stroke_width=stroke_width)
-    contrast_enhancer = ImageEnhance.Contrast(image)
-    contrast_img = contrast_enhancer.enhance(contrast_degree)
-    return contrast_img
-
 
 def is_dark(color: Tuple[int, int, int]):
     return (
@@ -78,8 +67,6 @@ def choice_ptt_background(ptt: int):
         return "rating_5.png"
     else:
         return "rating_6.png"
-
-# Lagecy
 
 
 class DataText:

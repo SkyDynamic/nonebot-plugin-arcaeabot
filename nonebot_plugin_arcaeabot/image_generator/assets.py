@@ -64,7 +64,7 @@ class StaticPath:
     # Function
     @staticmethod
     def select_image(*args) -> str:
-        return path.join(ASSETS, *args)
+        return path.join(str(ASSETS), *args)
     @staticmethod
     def check_rank_background(score: int, failed: bool = False):
         img_name = f"grade_{check_rank(score).lower()}.png" if not failed else "grade_f.png"
