@@ -11,6 +11,7 @@ async def assets_update_handler(
 ):
     args: list = str(args).split()
     if args[0] == "assets_update":
+        await arc.send("正在更新…")
         result_song = await check_song_update()
         result_char = await check_char_update()
         try:
@@ -27,3 +28,4 @@ async def assets_update_handler(
             logger.exception(
                 f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}'
             )
+            await arc.finish("更新出错！")

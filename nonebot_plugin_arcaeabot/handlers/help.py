@@ -17,6 +17,7 @@ async def help_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
                         "/arc info 查看绑定信息。",
                         "/arc recent 查询上一次游玩记录。",
                         "/arc b30 查询 best 30 记录。",
+                        "/arc assets_update 更新曲绘与立绘资源",
                     ]
                 )
             )
