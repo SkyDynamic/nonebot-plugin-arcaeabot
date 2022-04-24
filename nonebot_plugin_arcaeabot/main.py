@@ -8,7 +8,7 @@ from .handlers import (
     info_handler,
     recent_handler,
     b30_handler,
-    best_handler
+    best_handler,
 )
 
 

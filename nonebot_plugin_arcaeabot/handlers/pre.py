@@ -13,6 +13,6 @@ async def pre_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg(
         "bind",
         "unbind",
         "assets_update",
-        "best"
+        "best",
     ]:
         await arc.finish("不支持的命令参数")

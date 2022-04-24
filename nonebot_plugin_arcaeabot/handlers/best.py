@@ -13,8 +13,12 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
     args: list = str(args).split()
     if args[0] == "best":
         user_info = UserInfo.get_or_none(UserInfo.user_qq == event.user_id)
-        song_alias = alias.get_or_none(alias.alias == args[1].strip())
-        song_id = song_alias[0] if not song_alias else None
+        song_alias = (
+            alias.get_or_none(alias.alias == args[1].strip())
+            if alias.get_or_none(alias.alias == args[1].strip())
+            else alias.get_or_none(alias.sid == args[1].strip())
+        )
+        song_id = song_alias.sid if song_alias else None
         difficulty = args[2].strip()
         # Exception
         if not user_info:

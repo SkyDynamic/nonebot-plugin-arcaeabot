@@ -3,12 +3,15 @@ from PIL import Image
 from .assets import StaticPath
 from .utils import open_img, DataText, draw_text, choice_ptt_background
 
+
 def draw_user_best(data: Dict) -> Image.Image:
     arcaea_id: str = data["content"]["account_info"]["code"]
     name: str = data["content"]["account_info"]["name"]
     character: int = data["content"]["account_info"]["character"]
     is_char_uncapped = data["content"]["account_info"]["is_char_uncapped"]
-    is_char_uncapped_override = data["content"]["account_info"]["is_char_uncapped_override"]
+    is_char_uncapped_override = data["content"]["account_info"][
+        "is_char_uncapped_override"
+    ]
     icon: str = (
         f"{character}u_icon.png"
         if is_char_uncapped ^ is_char_uncapped_override
@@ -25,7 +28,9 @@ def draw_user_best(data: Dict) -> Image.Image:
     near_count: int = data["content"]["record"]["near_count"]
     miss_count: int = data["content"]["record"]["miss_count"]
     health: int = data["content"]["record"]["health"]
-    song_rating: float = data["content"]["songinfo"][0]["difficulties"][difficulty]["realrating"]
+    song_rating: float = data["content"]["songinfo"][0]["difficulties"][difficulty][
+        "realrating"
+    ]
     constant: float = data["content"]["record"]["rating"]
     full_character = (
         f"{character}u.png"
