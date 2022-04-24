@@ -1,9 +1,19 @@
 from PIL import Image, ImageFont, ImageDraw
-from numpy import average
 from .assets import StaticPath
 from typing import Tuple, Dict
 from time import localtime, strftime
-import ujson as json
+
+try:
+    import ujson as json
+except ImportError:
+    import json
+
+try:
+    from numpy import average
+except ImportError:
+
+    def average(Itr):
+        return sum(Itr) / len(Itr)
 
 
 def open_img(image_path: str) -> Image.Image:
