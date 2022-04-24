@@ -1,10 +1,8 @@
 from nonebot.adapters.onebot.v11 import MessageSegment
 from nonebot.log import logger
-from .assets import StaticPath
 from .adapters.utils import adapter_selector
 from .image_generator import draw_b30, draw_recent, draw_user_best
 from io import BytesIO
-import base64
 
 api_in_use = adapter_selector().upper()
 if api_in_use == "AUA":
@@ -39,8 +37,7 @@ class UserArcaeaInfo:
                 image = draw_b30(arcaea_id=arcaea_id, data=data)
                 buffer = BytesIO()
                 image.save(buffer, "png")
-                img_b64 = base64.b64encode(buffer.getvalue())
-                return MessageSegment.image(img_b64)
+                return MessageSegment.image(buffer)
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
@@ -59,8 +56,7 @@ class UserArcaeaInfo:
                 image = draw_recent(arcaea_id=arcaea_id, data=data)
                 buffer = BytesIO()
                 image.save(buffer, "png")
-                img_b64 = base64.b64encode(buffer.getvalue())
-                return MessageSegment.image(img_b64)
+                return MessageSegment.image(buffer)
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
@@ -77,8 +73,7 @@ class UserArcaeaInfo:
                 image = draw_user_best(data=data)
                 buffer = BytesIO()
                 image.save(buffer, "png")
-                img_b64 = base64.b64encode(buffer.getvalue())
-                return MessageSegment.image(img_b64)
+                return MessageSegment.image(buffer)
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
