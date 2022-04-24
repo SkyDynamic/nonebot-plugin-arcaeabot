@@ -8,6 +8,7 @@ from .handlers import (
     info_handler,
     recent_handler,
     b30_handler,
+    best_handler
 )
 
 
@@ -19,3 +20,4 @@ arc.handle()(unbind_handler)
 arc.handle()(info_handler)
 arc.handle()(recent_handler)
 arc.handle()(b30_handler)
+arc.handle()(best_handler)
