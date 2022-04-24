@@ -39,3 +39,6 @@ async def fetch_user_info(arcaea_id: str, recent_only: bool = False) -> List[Dic
                 timeout=100,
             )
             return res.json()
+
+async def get_user_best(arcaea_id: str, song_id: str):
+    pass
