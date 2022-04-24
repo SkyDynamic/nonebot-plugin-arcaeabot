@@ -13,9 +13,9 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
     args: list = str(args).split()
     if args[0] == "best":
         user_info = UserInfo.get_or_none(UserInfo.user_qq == event.user_id)
-        song_id = args[1].strip()
-#        song_alias = alias.get_or_none(alias.alias == args[1].strip())
-#        song_id = song_alias[0] if not song_alias else None
+        song_alias = alias.get_or_none(alias.alias == args[1].strip())
+        song_id = song_alias[0] if not song_alias else None
+        difficulty = args[2].strip()
         # Exception
         if not user_info:
             try:
@@ -48,7 +48,7 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
         # Query
         if not UserArcaeaInfo.is_querying(user_info.arcaea_id):
             result = await UserArcaeaInfo.draw_best(
-                arcaea_id=user_info.arcaea_id, song_id=song_id
+                arcaea_id=user_info.arcaea_id, song_id=song_id, difficulty=difficulty
             )
             try:
                 await arc.finish(MessageSegment.reply(event.message_id) + result)

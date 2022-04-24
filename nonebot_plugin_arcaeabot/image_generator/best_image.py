@@ -16,8 +16,8 @@ def draw_user_best(data: Dict) -> Image.Image:
     )
     rating: int = data["content"]["account_info"]["rating"]
     song_id: str = data["content"]["record"]["song_id"]
-    song_name: str = data["content"]["songinfo"]["title_localized"]["en"]
-    author_name: str = data["content"]["songinfo"]["title_localized"]["artist"]
+    song_name: str = data["content"]["songinfo"][0]["title_localized"]["en"]
+    author_name: str = data["content"]["songinfo"][0]["artist"]
     difficulty: int = data["content"]["record"]["difficulty"]
     score: int = data["content"]["record"]["score"]
     shiny_perfect_count: int = data["content"]["record"]["shiny_perfect_count"]
@@ -25,7 +25,7 @@ def draw_user_best(data: Dict) -> Image.Image:
     near_count: int = data["content"]["record"]["near_count"]
     miss_count: int = data["content"]["record"]["miss_count"]
     health: int = data["content"]["record"]["health"]
-    song_rating: float = data["content"]["songinfo"]["difficulties"][difficulty]["realrating"]
+    song_rating: float = data["content"]["songinfo"][0]["difficulties"][difficulty]["realrating"]
     constant: float = data["content"]["record"]["rating"]
     full_character = (
         f"{character}u.png"
