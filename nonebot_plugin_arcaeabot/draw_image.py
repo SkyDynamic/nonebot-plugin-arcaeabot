@@ -28,13 +28,19 @@ class UserArcaeaInfo:
         try:
             data = ApiResult()
             await data.get_b30(arcaea_id=arcaea_id)
+            if data.retcode != 0:
+                UserArcaeaInfo.querying.remove(arcaea_id)
+                return f"<ErrorCode {str(data.retcode)}> \n {str(data.message)}"
+            else:
+                UserArcaeaInfo.querying.remove(arcaea_id)
+                image = draw_b30(arcaea_id=arcaea_id, data=data)
+                image.save(StaticPath.output(str(arcaea_id)))
+                return MessageSegment.image(
+                    "file:///" + StaticPath.output(str(arcaea_id))
+                )
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
-        UserArcaeaInfo.querying.remove(arcaea_id)
-        image = draw_b30(arcaea_id=arcaea_id, data=data)
-        image.save(StaticPath.output(str(arcaea_id)))
-        return MessageSegment.image("file:///" + StaticPath.output(str(arcaea_id)))
 
     @staticmethod
     async def draw_recent_image(arcaea_id: str):
@@ -42,12 +48,16 @@ class UserArcaeaInfo:
         try:
             data = ApiResult()
             await data.get_recent(arcaea_id=arcaea_id)
+            if data.retcode != 0:
+                UserArcaeaInfo.querying.remove(arcaea_id)
+                return f"<ErrorCode {str(data.retcode)}> \n {str(data.message)}"
+            else:
+                UserArcaeaInfo.querying.remove(arcaea_id)
+                image = draw_recent(arcaea_id=arcaea_id, data=data)
+                image.save(StaticPath.output(str(arcaea_id) + "_recent"))
+                return MessageSegment.image(
+                    "file:///" + StaticPath.output(str(arcaea_id) + "_recent")
+                )
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
             return str(e)
-        UserArcaeaInfo.querying.remove(arcaea_id)
-        image = draw_recent(arcaea_id=arcaea_id, data=data)
-        image.save(StaticPath.output(str(arcaea_id) + "_recent"))
-        return MessageSegment.image(
-            "file:///" + StaticPath.output(str(arcaea_id) + "_recent")
-        )
