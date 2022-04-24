@@ -3,7 +3,8 @@ An arcaea plugin for nonebot2. ( A cross platform Python async bot framework. )
 
 ## 功能 Resume
 
-Arcaea 查分器。
+Arcaea 查分器。</br>
+[更新日志](https://github.com/SEAFHMC/nonebot-plugin-arcaeabot/blob/main/CHANGELOG.MD)
 
 ## 如何开始 Quick Start
 ***请注意! 1.0.0后的版本更改了默认使用的api，您需要填写相关配置才能正常使用***</br></br>
@@ -39,4 +40,3 @@ Arcaea 查分器。
 ## 参考代码
 - [DiheChen/nonebot-plugin-arcaea](https://github.com/DiheChen/nonebot-plugin-arcaea)
 - [iyume/nonebot-plugin-arcaea](https://github.com/iyume/nonebot-plugin-arcaea)
-
