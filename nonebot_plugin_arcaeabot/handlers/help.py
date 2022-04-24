@@ -6,7 +6,6 @@ from ..matcher import arc
 
 async def help_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
     args: list = str(args).split()
-    logger.debug(args)
     if args[0] == "help":
         try:
             await arc.finish(

@@ -46,7 +46,9 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
                 return
         # Query
         if not UserArcaeaInfo.is_querying(user_info.arcaea_id):
-            result = await UserArcaeaInfo.draw_best(arcaea_id=user_info.arcaea_id, song_id=song_id)
+            result = await UserArcaeaInfo.draw_best(
+                arcaea_id=user_info.arcaea_id, song_id=song_id
+            )
             try:
                 await arc.finish(MessageSegment.reply(event.message_id) + result)
             except ActionFailed as e:

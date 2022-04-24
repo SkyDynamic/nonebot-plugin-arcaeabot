@@ -7,7 +7,6 @@ from ..data import UserInfo
 
 async def info_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
     args: list = str(args).split()
-    logger.debug(args)
     if args[0] == "info":
         user_info = UserInfo.get_or_none(UserInfo.user_qq == event.user_id)
         if not user_info:
