@@ -30,7 +30,7 @@ class UserArcaeaInfo:
             await data.get_b30(arcaea_id=arcaea_id)
             if data.retcode != 0:
                 UserArcaeaInfo.querying.remove(arcaea_id)
-                return f"<ErrorCode {str(data.retcode)}> \n {str(data.message)}"
+                return data.message
             else:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 image = draw_b30(arcaea_id=arcaea_id, data=data)
@@ -50,7 +50,7 @@ class UserArcaeaInfo:
             await data.get_recent(arcaea_id=arcaea_id)
             if data.retcode != 0:
                 UserArcaeaInfo.querying.remove(arcaea_id)
-                return f"<ErrorCode {str(data.retcode)}> \n {str(data.message)}"
+                return data.message
             else:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 image = draw_recent(arcaea_id=arcaea_id, data=data)
