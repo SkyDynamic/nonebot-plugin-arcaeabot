@@ -40,5 +40,11 @@ async def fetch_user_info(arcaea_id: str, recent_only: bool = False) -> List[Dic
             )
             return res.json()
 
-async def get_user_best(arcaea_id: str, song_id: str):
-    pass
+async def get_user_best(arcaea_id: str, songname: str):
+    async with AsyncClient() as client:
+        resp = await client.get(
+            url = f"{aua_url}/botarcapi/song/alias?songname={songname}",
+            headers=headers,
+            timeout=100
+        )
+        return resp.json()
