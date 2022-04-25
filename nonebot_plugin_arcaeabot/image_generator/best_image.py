@@ -28,10 +28,10 @@ def draw_user_best(data: Dict) -> Image.Image:
     near_count: int = data["content"]["record"]["near_count"]
     miss_count: int = data["content"]["record"]["miss_count"]
     health: int = data["content"]["record"]["health"]
-    song_rating: float = data["content"]["songinfo"][0]["difficulties"][difficulty][
+    song_rating: float = data["content"]["record"]["rating"]
+    constant: float = data["content"]["songinfo"][0]["difficulties"][difficulty][
         "realrating"
     ]
-    constant: float = data["content"]["record"]["rating"]
     full_character = (
         f"{character}u.png"
         if is_char_uncapped ^ is_char_uncapped_override
