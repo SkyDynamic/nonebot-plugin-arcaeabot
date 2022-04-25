@@ -116,8 +116,8 @@ def draw_user_best(data: Dict) -> Image.Image:
         40,
         230,
         40,
-        ["Past", "Persent", "Future", "Beyond"][difficulty] + " " + str(int(constant)),
-        StaticPath.geosans_light,
+        ["Past", "Present", "Future", "Beyond"][difficulty] + " " + str(int(constant)),
+        StaticPath.kazesawa_regular,
     )
     image = draw_text(image, write_difficulty, (96, 75, 84, 255))
     write_recent_text = DataText(40, 20, 45, "Recent", StaticPath.exo_regular)
