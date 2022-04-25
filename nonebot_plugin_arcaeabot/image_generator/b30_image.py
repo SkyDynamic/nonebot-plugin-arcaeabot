@@ -123,14 +123,26 @@ def draw_score_detail(
     return image
 
 
-def draw_b30(arcaea_id: str, data):
+def draw_b30(data: Dict):
     B30_bg = open_img(StaticPath.B30_bg)
     # User Info
-    name: str = data.name
-    rating: str = data.rating
-    best: float = data.best
-    recent: float = data.recent
-    icon: str = data.icon
+    best: float = data["content"]["best30_avg"]
+    recent: float = data["content"]["recent10_avg"]
+    account_info = data["content"]["account_info"]
+    arcaea_id: str = account_info["code"]
+    name: str = account_info["name"]
+    rating: str = account_info["rating"]
+    character = account_info["character"]
+    is_char_uncapped_override: bool = account_info["is_char_uncapped_override"]
+    is_char_uncapped: bool = account_info["is_char_uncapped"]
+    icon: str = (
+        f"{character}u_icon.png"
+        if is_char_uncapped ^ is_char_uncapped_override
+        else f"{character}_icon.png"
+    )
+    score_info_list = (
+        data["content"]["best30_list"] + data["content"]["best30_overflow"]
+    )
     icon = open_img(StaticPath.char_dir / icon).resize((250, 250))
     B30_bg.alpha_composite(icon, (75, 130))
     ptt_background = open_img(
@@ -161,7 +173,6 @@ def draw_b30(arcaea_id: str, data):
     )
     B30_bg = draw_text(B30_bg, write_b30)
     # Score Info
-    score_info_list = data.score_info_list
     divider = open_img(StaticPath.divider).resize((2000, 50))
     background_y = 640
     background_x = 0
@@ -178,7 +189,9 @@ def draw_b30(arcaea_id: str, data):
             background_y += 100
             B30_bg.alpha_composite(divider, (0, background_y - 87))
         B30_bg.alpha_composite(
-            draw_score_detail(value, rank=num, song_id=value["song_id"], mask=mask),
+            draw_score_detail(
+                data=value, rank=num, song_id=value["song_id"], mask=mask
+            ),
             (background_x, background_y),
         )
     return B30_bg

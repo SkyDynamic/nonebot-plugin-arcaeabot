@@ -1,33 +1,49 @@
 from PIL import Image
 from .assets import StaticPath
-from .utils import open_img, DataText, draw_text, choice_ptt_background
+from .utils import open_img, DataText, draw_text, choice_ptt_background, get_song_info
+from typing import Dict
 
 
-def draw_recent(arcaea_id: str, data):
-    name: str = data.name
-    character: int = data.character
-    icon = data.icon
-    rating: int = data.rating
-    song_id: str = data.song_id
-    song_name: str = data.song_name
-    author_name: str = data.author_name
-    difficulty: int = data.difficulty
-    score: int = data.score
-    shiny_perfect_count: int = data.shiny_perfect_count
-    perfect_count: int = data.perfect_count
-    near_count: int = data.near_count
-    miss_count: int = data.miss_count
-    health: int = data.health
-    song_rating: float = data.song_rating
-    constant: float = data.constant
-    full_character = data.full_character
+def draw_recent(data: Dict):
+    # User Info
+    account_info = data["content"]["account_info"]
+    arcaea_id: str = account_info["code"]
+    name: str = account_info["name"]
+    character = account_info["character"]
+    is_char_uncapped_override: bool = account_info["is_char_uncapped_override"]
+    is_char_uncapped: bool = account_info["is_char_uncapped"]
+    icon: str = (
+        f"{character}u_icon.png"
+        if is_char_uncapped ^ is_char_uncapped_override
+        else f"{character}_icon.png"
+    )
+    rating: str = account_info["rating"]
+    # Score Info
+    recent_score = data["content"]["recent_score"][0]
+    song_id: str = recent_score["song_id"]
+    song_info: Dict = get_song_info(song_id)
+    song_name: str = song_info["title_localized"]["en"]
+    author_name: str = song_info["artist"]
+    difficulty: int = recent_score["difficulty"]
+    score: int = recent_score["score"]
+    shiny_perfect_count: int = recent_score["shiny_perfect_count"]
+    perfect_count: int = recent_score["perfect_count"]
+    near_count: int = recent_score["near_count"]
+    miss_count: int = recent_score["miss_count"]
+    health: int = recent_score["health"]
+    song_rating: float = recent_score["rating"]
+    constant: float = song_info["difficulties"][difficulty]["rating"]
+    full_character = (
+        f"{character}u.png"
+        if is_char_uncapped ^ is_char_uncapped_override
+        else f"{character}.png"
+    )
     image = Image.new("RGBA", (1280, 720))
     background = open_img(StaticPath.recent_background)
     image.alpha_composite(background)
     icon = open_img(StaticPath.select_image("char", icon)).resize((130, 130))
     image.alpha_composite(icon, (575, -15))
-    cover_name = "3.jpg" if difficulty == 3 else "base.jpg"
-    song_cover = open_img(StaticPath.select_image("song", song_id, cover_name)).resize(
+    song_cover = open_img(StaticPath.select_image("song", song_id, "base.jpg")).resize(
         (375, 375)
     )
     image.alpha_composite(song_cover, (40, 290))
@@ -75,7 +91,7 @@ def draw_recent(arcaea_id: str, data):
         115,
         40,
         song_name.capitalize(),
-        StaticPath.kazesawa_regular,
+        StaticPath.notosanscjksc_regular,
     )
     image = draw_text(image, write_song_name)
     write_author = DataText(
@@ -83,7 +99,7 @@ def draw_recent(arcaea_id: str, data):
         165,
         24,
         author_name.capitalize(),
-        StaticPath.kazesawa_regular,
+        StaticPath.notosanscjksc_regular,
     )
     image = draw_text(image, write_author)
     write_score = DataText(
@@ -98,8 +114,8 @@ def draw_recent(arcaea_id: str, data):
         40,
         230,
         40,
-        ["Past", "Present", "Future", "Beyond"][difficulty] + " " + str(int(constant)),
-        StaticPath.kazesawa_regular,
+        ["Past", "Persent", "Future", "Beyond"][difficulty] + " " + str(int(constant)),
+        StaticPath.geosans_light,
     )
     image = draw_text(image, write_difficulty, (96, 75, 84, 255))
     write_recent_text = DataText(40, 20, 45, "Recent", StaticPath.exo_regular)
