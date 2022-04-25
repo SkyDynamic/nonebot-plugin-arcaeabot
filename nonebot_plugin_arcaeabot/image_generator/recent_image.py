@@ -75,7 +75,7 @@ def draw_recent(arcaea_id: str, data):
         115,
         40,
         song_name.capitalize(),
-        StaticPath.notosanscjksc_regular,
+        StaticPath.kazesawa_regular,
     )
     image = draw_text(image, write_song_name)
     write_author = DataText(
@@ -83,7 +83,7 @@ def draw_recent(arcaea_id: str, data):
         165,
         24,
         author_name.capitalize(),
-        StaticPath.notosanscjksc_regular,
+        StaticPath.kazesawa_regular,
     )
     image = draw_text(image, write_author)
     write_score = DataText(

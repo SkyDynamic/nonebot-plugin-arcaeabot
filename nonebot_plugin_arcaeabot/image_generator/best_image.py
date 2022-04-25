@@ -91,7 +91,7 @@ def draw_user_best(data: Dict) -> Image.Image:
         115,
         40,
         song_name.capitalize(),
-        StaticPath.notosanscjksc_regular,
+        StaticPath.kazesawa_regular,
     )
     image = draw_text(image, write_song_name)
     write_author = DataText(
@@ -99,7 +99,7 @@ def draw_user_best(data: Dict) -> Image.Image:
         165,
         24,
         author_name.capitalize(),
-        StaticPath.notosanscjksc_regular,
+        StaticPath.kazesawa_regular,
         anchor="mt",
     )
     image = draw_text(image, write_author)
