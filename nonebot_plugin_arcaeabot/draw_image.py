@@ -40,7 +40,7 @@ class UserArcaeaInfo:
                 return data["message"]
             else:
                 UserArcaeaInfo.querying.remove(arcaea_id)
-                image = draw_recent(arcaea_id=arcaea_id, data=data)
+                image = draw_recent(data=data)
                 buffer = BytesIO()
                 image.save(buffer, "png")
                 return MessageSegment.image(buffer)
