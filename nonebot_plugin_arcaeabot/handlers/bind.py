@@ -4,12 +4,7 @@ from nonebot.params import CommandArg
 from nonebot.log import logger
 from ..data import UserInfo
 from ..matcher import arc
-
-try:
-    from ..adapters.utils import fetch_user_info
-except ImportError:
-    logger.error("查分Api填写不规范, 请检查.env中的api_in_use配置")
-from ..adapters.utils import api_in_use
+from ..request import fetch_user_info
 
 
 async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
@@ -30,14 +25,9 @@ async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
                 logger.exception(
                     f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}'
                 )
-        if api_in_use == "AUA":
-            player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[
-                "content"
-            ]["account_info"]["name"]
-        elif api_in_use == "ESTERTION":
-            player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[
-                0
-            ]["data"]["name"]
+        player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[
+            "content"
+        ]["account_info"]["name"]
         UserInfo.replace(
             user_qq=event.user_id, arcaea_id=arc_id, arcaea_name=player_name
         ).execute()
