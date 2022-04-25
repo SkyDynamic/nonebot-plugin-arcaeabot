@@ -15,6 +15,7 @@ async def pre_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg(
                     "/arc recent 查询上一次游玩记录。",
                     "/arc b30 查询 best 30 记录。",
                     "/arc assets_update 更新曲绘与立绘资源",
+                    r"/arc best {songname} {difficulty} 查询单曲最高分",
                 ]
             )
         )

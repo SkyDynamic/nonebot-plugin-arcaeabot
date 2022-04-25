@@ -1,4 +1,10 @@
 # Change Log
+## [1.2.0](https://pypi.org/project/nonebot-plugin-arcaeabot/1.2.0/)
+- 新增user best查询
+- 修复图片中部分文本错位问题
+- 发送图片不再需要先存储到本地硬盘了
+- 优化错误提示
+- 移除不必要的依赖
 ## [1.1.1](https://pypi.org/project/nonebot-plugin-arcaeabot/1.1.1/)
 - Assets_Update时在后台可显示进度条
 - 查询失败时输出更详细的错误提示
