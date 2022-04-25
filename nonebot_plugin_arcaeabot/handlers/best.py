@@ -26,7 +26,10 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
                 try:
                     await arc.finish(
                         "\n".join(
-                            [f"> {event.sender.card or event.sender.nickname}", "你还没绑定哦~"]
+                            [
+                                f"> {event.sender.card or event.sender.nickname}",
+                                "你还没绑定哦~",
+                            ]
                         )
                     )
                 except ActionFailed as e:
@@ -38,7 +41,9 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
             # Query
             if not UserArcaeaInfo.is_querying(user_info.arcaea_id):
                 result = await UserArcaeaInfo.draw_best(
-                    arcaea_id=user_info.arcaea_id, song_id=song_id, difficulty=difficulty
+                    arcaea_id=user_info.arcaea_id,
+                    song_id=song_id,
+                    difficulty=difficulty,
                 )
                 try:
                     await arc.finish(MessageSegment.reply(event.message_id) + result)
