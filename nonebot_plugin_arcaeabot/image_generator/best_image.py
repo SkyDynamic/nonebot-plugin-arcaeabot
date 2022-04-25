@@ -95,19 +95,21 @@ def draw_user_best(data: Dict) -> Image.Image:
     )
     image = draw_text(image, write_song_name)
     write_author = DataText(
-        (640 - len(author_name) / 2 * 12),
+        640,
         165,
         24,
         author_name.capitalize(),
         StaticPath.notosanscjksc_regular,
+        anchor="mt",
     )
     image = draw_text(image, write_author)
     write_score = DataText(
-        (640 - len(str(score)) / 2 * 30),
+        640,
         310,
         55,
         format(score, ",").replace(",", "'"),
         StaticPath.geosans_light,
+        anchor="mt",
     )
     image = draw_text(image, write_score)
     write_difficulty = DataText(
