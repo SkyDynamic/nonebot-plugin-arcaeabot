@@ -8,9 +8,10 @@
 """
 from os import path
 import peewee as pw
-from .assets import StaticPath
+from ._RHelper import RHelper
 
-db = pw.SqliteDatabase(StaticPath.database)
+root = RHelper()
+db = pw.SqliteDatabase(root("data.db"))
 
 
 class UserInfo(pw.Model):
@@ -23,7 +24,7 @@ class UserInfo(pw.Model):
         primary_key = pw.CompositeKey("user_qq", "arcaea_id")
 
 
-if not path.exists(StaticPath.database):
+if not path.exists(root("data.db")):
     db.connect()
     db.create_tables([UserInfo])
     db.close()
