@@ -1,17 +1,11 @@
-"""
- - Author: DiheChen
- - Date: 2021-08-15 21:58:53
- - LastEditTime: 2021-08-18 03:10:39
- - LastEditors: DiheChen
- - Description: None
- - GitHub: https://github.com/Chendihe4975
-"""
+from nonebot.log import logger
 from os import path
 import peewee as pw
 from ._RHelper import RHelper
 
 root = RHelper()
-db = pw.SqliteDatabase(root/("data.db"))
+db_path = root/("user_data.db")
+db = pw.SqliteDatabase(db_path)
 
 
 class UserInfo(pw.Model):
@@ -24,7 +18,8 @@ class UserInfo(pw.Model):
         primary_key = pw.CompositeKey("user_qq", "arcaea_id")
 
 
-if not path.exists(root("data.db")):
+if not path.exists(db_path):
+    logger.info(f"创建数据库于 {db_path}")
     db.connect()
     db.create_tables([UserInfo])
     db.close()
