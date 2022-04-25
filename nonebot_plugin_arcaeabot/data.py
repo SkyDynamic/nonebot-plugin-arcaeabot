@@ -4,7 +4,7 @@ import peewee as pw
 from ._RHelper import RHelper
 
 root = RHelper()
-db_path = root/("user_data.db")
+db_path = root.database/("user_data.db")
 db = pw.SqliteDatabase(db_path)
 
 
