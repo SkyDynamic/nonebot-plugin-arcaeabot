@@ -11,7 +11,7 @@ import peewee as pw
 from ._RHelper import RHelper
 
 root = RHelper()
-db = pw.SqliteDatabase(root("data.db"))
+db = pw.SqliteDatabase(root/("data.db"))
 
 
 class UserInfo(pw.Model):
