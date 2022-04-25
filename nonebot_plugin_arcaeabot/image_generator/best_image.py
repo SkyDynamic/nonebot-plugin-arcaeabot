@@ -1,7 +1,7 @@
 from typing import Dict
 from PIL import Image
 from .assets import StaticPath
-from .utils import open_img, DataText, draw_text, choice_ptt_background
+from .utils import open_img, DataText, draw_text, choice_ptt_background, get_song_info
 
 
 def draw_user_best(data: Dict) -> Image.Image:
@@ -19,8 +19,9 @@ def draw_user_best(data: Dict) -> Image.Image:
     )
     rating: int = data["content"]["account_info"]["rating"]
     song_id: str = data["content"]["record"]["song_id"]
-    song_name: str = data["content"]["songinfo"][0]["title_localized"]["en"]
-    author_name: str = data["content"]["songinfo"][0]["artist"]
+    song_info: Dict = get_song_info(song_id)
+    song_name: str = song_info["title_localized"]["en"]
+    author_name: str = song_info["artist"]
     difficulty: int = data["content"]["record"]["difficulty"]
     score: int = data["content"]["record"]["score"]
     shiny_perfect_count: int = data["content"]["record"]["shiny_perfect_count"]
