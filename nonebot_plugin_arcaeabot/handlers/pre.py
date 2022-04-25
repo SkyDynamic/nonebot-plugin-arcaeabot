@@ -5,7 +5,7 @@ from ..matcher import arc
 
 async def pre_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
     args: list = str(args).split()
-    if args[0] not in [
+    if len(args) !=0 and args[0] not in[
         "help",
         "info",
         "recent",

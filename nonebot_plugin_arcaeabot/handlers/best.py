@@ -63,4 +63,4 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
                     )
                     return
         else:
-            arc.finish("参数输入有误！")
+            await arc.finish("参数输入有误！")
