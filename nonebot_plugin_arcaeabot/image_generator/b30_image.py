@@ -149,7 +149,7 @@ def draw_b30(arcaea_id: str, data):
     write_arcname = DataText(355, 280, 100, name, StaticPath.exo_medium, anchor="lb")
     B30_bg = draw_text(B30_bg, write_arcname)
     write_arcaea_id = DataText(
-        380, 360, 60, f"ID:{arcaea_id}", StaticPath.exo_medium, anchor="lb"
+        380, 364, 60, f"ID:{arcaea_id}", StaticPath.exo_medium, anchor="lb"
     )
     B30_bg = draw_text(B30_bg, write_arcaea_id)
     write_r10 = DataText(

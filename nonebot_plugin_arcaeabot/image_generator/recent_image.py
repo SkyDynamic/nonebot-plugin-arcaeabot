@@ -26,7 +26,8 @@ def draw_recent(arcaea_id: str, data):
     image.alpha_composite(background)
     icon = open_img(StaticPath.select_image("char", icon)).resize((130, 130))
     image.alpha_composite(icon, (575, -15))
-    song_cover = open_img(StaticPath.select_image("song", song_id, "base.jpg")).resize(
+    cover_name = "3.jpg" if difficulty == 3 else "base.jpg"
+    song_cover = open_img(StaticPath.select_image("song", song_id, cover_name)).resize(
         (375, 375)
     )
     image.alpha_composite(song_cover, (40, 290))
