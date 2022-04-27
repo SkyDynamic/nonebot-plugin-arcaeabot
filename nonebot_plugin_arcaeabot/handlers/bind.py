@@ -25,7 +25,10 @@ async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
                 logger.exception(
                     f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}'
                 )
-        player_name = (await get_user_info(arcaea_id=arc_id))[
+        res1 = await get_user_info(arcaea_id=arc_id)
+        if res1["status"] != 0:
+                return str(res1["status"]) + ": " + res1["message"]
+        player_name = res1[
             "content"
         ]["account_info"]["name"]
         UserInfo.replace(

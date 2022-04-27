@@ -24,7 +24,7 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
             difficulty = "ftr"
         elif len(args) != 3:
             await arc.finish("参数输入长度有误！")
-        elif args[2].strip().lower()=="byd" or args[2].strip().lower()=="ftr" or args[2].strip().lower()=="prs" or args[2].strip().lower()=="pst":
+        elif args[2].strip().lower() == "byd" or args[2].strip().lower() == "ftr" or args[2].strip().lower() == "prs" or args[2].strip().lower() == "pst":
             difficulty = args[2].strip()
         elif args[2].strip()>='0' and args[2].strip()<='3':
             difficulty = args[2].strip()
