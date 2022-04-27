@@ -37,10 +37,10 @@ class StaticPath:
     # util
     slst_json = root.assets / ("slst.json")
     # B30
-    B30_bg = root.assets("B30.png")
-    mask = root.assets("mask.png")
-    table = root.assets("table.png")
-    divider = root.assets("Divider.png")
+    B30_bg = root.assets / ("B30.png")
+    mask = root.assets / ("mask.png")
+    table = root.assets / ("table.png")
+    divider = root.assets / ("Divider.png")
     song_dir = root.assets.song
     diff_dir = root.assets.diff
     char_dir = root.assets.char
@@ -68,6 +68,7 @@ class StaticPath:
     geosans_light = root.assets.font / ("GeosansLight.ttf")
     notosanscjksc_regular = root.assets.font / ("NotoSansCJKsc-Regular.otf")
     exo_semibold = root.assets.font / ("Exo-SemiBold.ttf")
+
     # Function
     @staticmethod
     def select_image(*args) -> str:

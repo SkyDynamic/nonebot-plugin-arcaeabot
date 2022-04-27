@@ -1,6 +1,7 @@
 from nonebot.adapters.onebot.v11 import Bot, MessageEvent, Message
 from nonebot.params import CommandArg
 from ..matcher import arc
+from ..config import config
 
 
 async def pre_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
@@ -29,4 +30,8 @@ async def pre_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg(
         "assets_update",
         "best",
     ]:
+        aua_ua = config.get_config("aua_ua")
+        aua_url = config.get_config("aua_url")
+        if aua_ua == 'SECRET' or aua_url == 'URL':
+            await arc.finish("ArcaeaUnlimitedApi is not configured!")
         await arc.finish("不支持的命令参数")

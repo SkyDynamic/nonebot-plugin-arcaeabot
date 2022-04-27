@@ -8,7 +8,7 @@ from ..data import UserInfo
 async def unbind_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg()):
     args: list = str(args).split()
     if args[0] == "unbind":
-        result = UserInfo.delete().where(UserInfo.user_qq == event.user_id).execute()
+        UserInfo.delete().where(UserInfo.user_qq == event.user_id).execute()
         try:
             await arc.finish(
                 "\n".join(

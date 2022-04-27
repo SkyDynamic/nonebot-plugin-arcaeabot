@@ -4,7 +4,7 @@ from nonebot.params import CommandArg
 from nonebot.log import logger
 from ..data import UserInfo
 from ..matcher import arc
-from ..request import fetch_user_info
+from ..request import get_user_info
 
 
 async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
@@ -25,7 +25,7 @@ async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
                 logger.exception(
                     f'ActionFailed | {e.info["msg"].lower()} | retcode = {e.info["retcode"]} | {e.info["wording"]}'
                 )
-        player_name = (await fetch_user_info(arcaea_id=arc_id, recent_only=True))[
+        player_name = (await get_user_info(arcaea_id=arc_id))[
             "content"
         ]["account_info"]["name"]
         UserInfo.replace(
