@@ -17,4 +17,4 @@
 ## [1.0.0](https://pypi.org/project/nonebot-plugin-arcaeabot/1.0.0/)
 - 弃用Estertion，转用ArcaeaUnlimitedApi
 ## [0.2.8](https://pypi.org/project/nonebot-plugin-arcaeabot/0.2.8/)
-- 适配2.0.0-beta.2
+- 适配Nonebot 2.0.0-beta.2
