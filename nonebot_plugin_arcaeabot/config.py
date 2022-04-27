@@ -7,10 +7,8 @@ Config_path = Path() / "data" / "arcaea" / "config.yml"
 New_map = {
     'aua_url': 'URL',
     'aua_ua': 'SECRET',
-    'src_url': 'http://107.182.17.60:17777/api/',
-    'assets': '.\\data\\arcaea'
+    'src_url': 'http://107.182.17.60:17777/api/'
 }
-New_path = Path() / "data" / "arcaea"
 
 
 class ConfigsManager:
@@ -18,7 +16,7 @@ class ConfigsManager:
         self._data: dict = {}
         self._path: str = file
         if not self._path:
-            self._path = New_path / "config.yml"
+            self._path = Config_path
         self._file: str = Path(self._path)
         if self._file.is_file():
             with open(self._path, "r", encoding="utf8") as f:

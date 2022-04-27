@@ -1,10 +1,9 @@
 import os
-from .config import config
 
 
 class RHelper(str):
     def __init__(self, path: str = None) -> None:
-        ROOT = config.get_config("assets")
+        ROOT = path.abspath(path.join(path.dirname(__file__)))
         if not path:
             self.__rpath = ROOT
         else:
