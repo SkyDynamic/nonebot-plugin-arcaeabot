@@ -21,8 +21,8 @@ def draw_user_best(data: Dict) -> Image.Image:
     rating: int = account_info.rating
     record = user_best.record
     song_id: str = record.song_id
-    song_info: SongInfo = SongInfo(**get_song_info(song_id))
-    song_name: str = song_info.title_localized.en
+    song_info: SongInfo = user_best.songinfo
+    song_name: str = song_info.name_en
     author_name: str = song_info.artist
     difficulty: int = record.difficulty
     score: int = record.score
@@ -32,7 +32,7 @@ def draw_user_best(data: Dict) -> Image.Image:
     miss_count: int = record.miss_count
     health: int = record.health
     song_rating: float = record.rating
-    constant: float = song_info.difficulties[difficulty].rating
+    constant: float = song_info.rating / 10
     full_character = (
         f"{character}u.png"
         if is_char_uncapped ^ is_char_uncapped_override

@@ -1,6 +1,6 @@
 from PIL import Image
 from .assets import StaticPath
-from .utils import open_img, DataText, draw_text, choice_ptt_background, get_song_info
+from .utils import open_img, DataText, draw_text, choice_ptt_background
 from typing import Dict
 from ..AUA import UserRecent, SongInfo, AccountInfo
 
@@ -23,8 +23,8 @@ def draw_recent(data: Dict):
     # Score Info
     recent_score = user_recent.recent_score[0]
     song_id: str = recent_score.song_id
-    song_info: SongInfo = SongInfo(**get_song_info(song_id))
-    song_name: str = song_info.title_localized.en
+    song_info: SongInfo = user_recent.songinfo[0]
+    song_name: str = song_info.name_en
     author_name: str = song_info.artist
     difficulty: int = recent_score.difficulty
     score: int = recent_score.score
@@ -34,7 +34,7 @@ def draw_recent(data: Dict):
     miss_count: int = recent_score.miss_count
     health: int = recent_score.health
     song_rating: float = recent_score.rating
-    constant: float = song_info.difficulties[difficulty].rating
+    constant: float = song_info.rating / 10
     full_character = (
         f"{character}u.png"
         if is_char_uncapped ^ is_char_uncapped_override

@@ -4,7 +4,6 @@ from typing import Tuple, Dict
 from .assets import StaticPath
 from .utils import (
     open_img,
-    get_song_info,
     get_average_color,
     is_dark,
     player_time_format,
@@ -42,10 +41,13 @@ def draw_score_bg(
 
 
 def draw_score_detail(
-    song_score: SongScore, rank: int, song_id: str, mask: Image.Image
+    song_score: SongScore,
+    rank: int,
+    song_id: str,
+    song_info: SongInfo,
+    mask: Image.Image,
 ) -> Image.Image:
     # Frame
-    song_info = SongInfo(**get_song_info(song_id))
     diff = song_score.difficulty
     cover_name = "3.jpg" if diff == 3 else "base.jpg"
     song_background = open_img(
@@ -58,7 +60,7 @@ def draw_score_detail(
         StaticPath.diff_dir / ["PST.png", "PRS.png", "FTR.png", "BYD.png"][diff]
     ).resize((14, 48))
     image.alpha_composite(diff_background, (24, 24))
-    song_name = song_info.title_localized.en
+    song_name = song_info.name_en
     song_name = song_name if len(song_name) < 19 else song_name[:18] + "…"
     text_overlay = Image.new("RGBA", (560, 270), (0, 0, 0, 0))
     write_song_name = DataText(45, 32, 40, song_name, StaticPath.kazesawa_regular)
@@ -111,7 +113,7 @@ def draw_score_detail(
         250,
         165,
         25,
-        f"{song_info.difficulties[song_score.difficulty].rating:.1f}",
+        f"{song_info.rating/10:.1f}",
         StaticPath.kazesawa_regular,
     )
     text_overlay = draw_text(text_overlay, write_constant, average_color)
@@ -144,6 +146,7 @@ def draw_b30(data: Dict):
         else f"{character}_icon.png"
     )
     score_info_list = user_best30.best30_list + user_best30.best30_overflow
+    song_info_list = user_best30.best30_songinfo + user_best30.best30_overflow_songinfo
     icon = open_img(StaticPath.char_dir / icon).resize((250, 250))
     B30_bg.alpha_composite(icon, (75, 130))
     ptt_background = open_img(
@@ -178,7 +181,9 @@ def draw_b30(data: Dict):
     background_y = 640
     background_x = 0
     mask = Image.open(StaticPath.mask)
-    for num, value in enumerate(score_info_list):
+    for num, scoer_info, song_info in zip(
+        list(range(40)), score_info_list, song_info_list
+    ):
         if num == 39:
             break
         if num % 3 == 0:
@@ -191,7 +196,11 @@ def draw_b30(data: Dict):
             B30_bg.alpha_composite(divider, (0, background_y - 87))
         B30_bg.alpha_composite(
             draw_score_detail(
-                song_score=value, rank=num, song_id=value.song_id, mask=mask
+                song_score=scoer_info,
+                rank=num,
+                song_id=scoer_info.song_id,
+                song_info=song_info,
+                mask=mask,
             ),
             (background_x, background_y),
         )

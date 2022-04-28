@@ -1,6 +1,10 @@
+from typing import List
+
+
 from ...basemodel import Base
 from .song_score import SongScore
 from .account_info import AccountInfo
+from .song_info import SongInfo
 
 
 """
@@ -31,7 +35,17 @@ from .account_info import AccountInfo
       "miss_count": 1,
       "perfect_count": 1570,
       "shiny_perfect_count": 1466
-    }
+    },
+    "songinfo": [
+        {
+            "name_en": "LunarOrbit -believe in the Espebranch road-",
+            "name_jp": "白道、多希望羊と信じありく。",
+            "artist": "Apo11o program ft. 大瀬良あい",
+            "side": 1,
+            "rating": 96,
+        }
+        # More Song Info
+    ]
 }
 """
 
@@ -39,3 +53,4 @@ from .account_info import AccountInfo
 class UserBest(Base):
     account_info: AccountInfo
     record: SongScore
+    songinfo: List[SongInfo]

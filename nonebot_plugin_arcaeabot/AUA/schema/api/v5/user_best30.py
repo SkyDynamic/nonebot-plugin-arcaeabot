@@ -2,6 +2,8 @@ from typing import List
 
 from pydantic import validator
 
+from image_generator.AUA.schema.api.v5.song_info import SongInfo
+
 from ...basemodel import Base
 from .song_score import SongScore
 from .account_info import AccountInfo
@@ -58,7 +60,9 @@ from .account_info import AccountInfo
         "shiny_perfect_count": 1287
       },
       # More Score Info
-    ]
+    ],
+    "best30_songinfo": List[SongInfo],
+    "best30_overflow_songinfo": List[SongInfo]
 }
 """
 
@@ -69,3 +73,5 @@ class UserBest30(Base):
     account_info: AccountInfo
     best30_list: List[SongScore]
     best30_overflow: List[SongScore]
+    best30_songinfo: List[SongInfo]
+    best30_overflow_songinfo: List[SongInfo]

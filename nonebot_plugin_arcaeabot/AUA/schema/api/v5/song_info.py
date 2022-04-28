@@ -6,57 +6,33 @@ from ...basemodel import Base
 
 """
 {
-    "idx": 0,
-    "id": "sayonarahatsukoi",
-    "title_localized": {
-    "en": "Sayonara Hatsukoi"
-    },
-    "artist": "REDSHiFT",
-    "bpm": "178",
-    "bpm_base": 178,
+    "name_en": "LunarOrbit -believe in the Espebranch road-",
+    "name_jp": "白道、多希望羊と信じありく。",
+    "artist": "Apo11o program ft. 大瀬良あい",
+    "bpm": "192",
+    "bpm_base": 192.0,
     "set": "base",
-    "purchase": "",
-    "audioPreview": 44494,
-    "audioPreviewEnd": 76853,
-    "side": 0,
-    "bg": "",
-    "date": 1487980800,
-    "version": "1.0",
-    "difficulties": [
-    {
-        "ratingClass": 0,
-        "chartDesigner": "Nitro",
-        "jacketDesigner": "",
-        "rating": 1
-    },
-    {
-        "ratingClass": 1,
-        "chartDesigner": "Nitro",
-        "jacketDesigner": "",
-        "rating": 4
-    },
-    {
-        "ratingClass": 2,
-        "chartDesigner": "Toaster",
-        "jacketDesigner": "",
-        "rating": 7
-    }
-    ]
+    "set_friendly": "Arcaea",
+    "time": 141,
+    "side": 1,
+    "world_unlock": true,
+    "remote_download": false,
+    "bg": "mirai_conflict",
+    "date": 1535673600,
+    "version": "1.7",
+    "difficulty": 18,
+    "rating": 96,
+    "note": 1058,
+    "chart_designer": "月刊Toaster",
+    "jacket_designer": "hideo",
+    "jacket_override": false,
+    "audio_override": false
 }
 """
 
 
-class TitleLocalized(Base):
-    en: str
-
-
-class DifficultyInfo(Base):
-    rating: int
-
-
 class SongInfo(Base):
-    idx: int
-    id: str
-    title_localized: TitleLocalized
+    name_en: str
     artist: str
-    difficulties: List[DifficultyInfo]
+    side: int
+    rating: int
