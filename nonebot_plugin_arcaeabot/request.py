@@ -58,6 +58,7 @@ async def get_user_best(arcaea_id: str, song_id: str, difficulty: str, recent: b
         )
         return res.json()
 
+
 async def get_song_list() -> List[Dict]:
     async with AsyncClient() as client:
         # Config
