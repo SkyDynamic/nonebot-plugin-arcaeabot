@@ -1,6 +1,7 @@
 from typing import List, Dict
 from httpx import AsyncClient
 from .config import config
+from nonebot.log import logger
 
 
 async def get_user_info(arcaea_id: str, recent: bool = False) -> List[Dict]:
@@ -8,6 +9,8 @@ async def get_user_info(arcaea_id: str, recent: bool = False) -> List[Dict]:
         # Config
         aua_ua = config.get_config("aua_ua")
         aua_url = config.get_config("aua_url")
+        if aua_ua == 'SECRET' or aua_url == 'URL':
+            logger.error("ArcaeaUnlimitedApi is not configured!")
         headers = {"User-Agent": aua_ua}
         # To str
         _recent = "&recent=1&withsonginfo=true" if recent is True else ""
