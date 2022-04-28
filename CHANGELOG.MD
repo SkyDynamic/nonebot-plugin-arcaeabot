@@ -1,4 +1,6 @@
 # Change
+## [2.0.1](https://pypi.org/project/nonebot-plugin-arcaeabot/2.0.1/)
+- 舍弃了616的slst，现在谱面定数显示更具体了
 ## [2.0.0](https://pypi.org/project/nonebot-plugin-arcaeabot/2.0.0/)
 - 我们优化了项目结构（感谢[RocksonLee](https://github.com/RocksonLee)的PR）
 - 更换了config的填写方式，使用yaml文件配置，详见README
