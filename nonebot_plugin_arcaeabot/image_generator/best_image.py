@@ -21,7 +21,7 @@ def draw_user_best(data: Dict) -> Image.Image:
     rating: int = account_info.rating
     record = user_best.record
     song_id: str = record.song_id
-    song_info: SongInfo = user_best.songinfo
+    song_info: SongInfo = user_best.songinfo[0]
     song_name: str = song_info.name_en
     author_name: str = song_info.artist
     difficulty: int = record.difficulty
