@@ -4,6 +4,8 @@ from os import path, listdir, makedirs
 from tqdm import tqdm
 from .config import config
 from ._RHelper import RHelper
+from .request import get_song_list
+import json
 root = RHelper()
 
 
@@ -28,9 +30,10 @@ async def check_song_update() -> List[str]:
                         file.write(resp2.read())
                         result.append(args[-2])
 
-        resp3 = await client.get(src_api_url + "slst")
+        resp3 = await get_song_list()
         with open(root.assets / ("slst.json"), "wb") as file:
-            file.write(resp3.read())
+            json.dump(resp3, file)
+
         return result
 
 

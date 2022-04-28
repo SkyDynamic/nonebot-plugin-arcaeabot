@@ -57,3 +57,17 @@ async def get_user_best(arcaea_id: str, song_id: str, difficulty: str, recent: b
             timeout=100,
         )
         return res.json()
+
+async def get_song_list() -> List[Dict]:
+    async with AsyncClient() as client:
+        # Config
+        aua_ua = config.get_config("aua_ua")
+        aua_url = config.get_config("aua_url")
+        headers = {"User-Agent": aua_ua}
+        # request
+        res = await client.get(
+            url=f"{aua_url}/botarcapi/song/list",
+            headers=headers,
+            timeout=100,
+        )
+        return res.json()
