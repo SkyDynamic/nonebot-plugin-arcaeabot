@@ -34,5 +34,5 @@ async def pre_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg(
     else:
         aua_ua = config.get_config("aua_ua")
         aua_url = config.get_config("aua_url")
-        if aua_ua == 'SECRET' or aua_url == 'URL':
+        if aua_ua == "SECRET" or aua_url == "URL":
             await arc.finish("ArcaeaUnlimitedApi is not configured!")

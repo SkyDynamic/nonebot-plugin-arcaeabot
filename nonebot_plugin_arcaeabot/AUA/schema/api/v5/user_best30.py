@@ -62,6 +62,7 @@ from .account_info import AccountInfo
 }
 """
 
+
 class UserBest30(Base):
     best30_avg: float
     recent10_avg: float

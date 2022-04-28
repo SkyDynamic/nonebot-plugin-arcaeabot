@@ -1,5 +1,6 @@
 from PIL import Image, ImageEnhance
 from typing import Tuple, Dict
+
 from .assets import StaticPath
 from .utils import (
     open_img,
@@ -11,7 +12,7 @@ from .utils import (
     draw_text,
     choice_ptt_background,
 )
-from ..AUA import UserBest30, AccountInfo, SongInfo, SongScore
+from ..AUA import UserBest30, SongInfo, SongScore
 
 
 def draw_score_bg(
@@ -41,14 +42,14 @@ def draw_score_bg(
 
 
 def draw_score_detail(
-    data: Dict, rank: int, song_id: str, mask: Image.Image
+    song_score: SongScore, rank: int, song_id: str, mask: Image.Image
 ) -> Image.Image:
     # Frame
-    song_info = get_song_info(song_id)
-    diff = data["difficulty"]
+    song_info = SongInfo(**get_song_info(song_id))
+    diff = song_score.difficulty
     cover_name = "3.jpg" if diff == 3 else "base.jpg"
     song_background = open_img(
-        StaticPath.song_dir / data["song_id"] / cover_name
+        StaticPath.song_dir / song_score.song_id / cover_name
     ).resize((270, 270))
     average_color = get_average_color(song_background)
     contrast_degree = 7 if is_dark(average_color) else 0.3
@@ -57,12 +58,12 @@ def draw_score_detail(
         StaticPath.diff_dir / ["PST.png", "PRS.png", "FTR.png", "BYD.png"][diff]
     ).resize((14, 48))
     image.alpha_composite(diff_background, (24, 24))
-    song_name = song_info["title_localized"]["en"]
+    song_name = song_info.title_localized.en
     song_name = song_name if len(song_name) < 19 else song_name[:18] + "…"
     text_overlay = Image.new("RGBA", (560, 270), (0, 0, 0, 0))
     write_song_name = DataText(45, 32, 40, song_name, StaticPath.kazesawa_regular)
     text_overlay = draw_text(text_overlay, write_song_name, average_color)
-    write_score = DataText(45, 80, 40, f'{data["score"]:,}', StaticPath.exo_medium)
+    write_score = DataText(45, 80, 40, f"{song_score.score:,}", StaticPath.exo_medium)
     text_overlay = draw_text(text_overlay, write_score, average_color)
     write_ranking = DataText(490, 20, 30, f"#{rank + 1}", StaticPath.exo_medium)
     image = draw_text(image, write_ranking, (255, 255, 255, 255), 1)
@@ -83,26 +84,26 @@ def draw_score_detail(
     text_overlay = draw_text(text_overlay, write_arrow, average_color)
     # Count
     write_p_count = DataText(
-        75, 130, 30, str(data["perfect_count"]), StaticPath.kazesawa_regular
+        75, 130, 30, str(song_score.perfect_count), StaticPath.kazesawa_regular
     )
     text_overlay = draw_text(text_overlay, write_p_count, average_color)
     write_sp_count = DataText(
-        155, 130, 20, f'+{data["shiny_perfect_count"]}', StaticPath.kazesawa_regular
+        155, 130, 20, f"+{song_score.shiny_perfect_count}", StaticPath.kazesawa_regular
     )
     text_overlay = draw_text(text_overlay, write_sp_count, average_color)
     write_near_count = DataText(
-        75, 175, 30, str(data["near_count"]), StaticPath.kazesawa_regular
+        75, 175, 30, str(song_score.near_count), StaticPath.kazesawa_regular
     )
     text_overlay = draw_text(text_overlay, write_near_count, average_color)
     write_miss_count = DataText(
-        75, 220, 30, str(data["miss_count"]), StaticPath.kazesawa_regular
+        75, 220, 30, str(song_score.miss_count), StaticPath.kazesawa_regular
     )
     text_overlay = draw_text(text_overlay, write_miss_count, average_color)
     write_time = DataText(
         250,
         230,
         25,
-        player_time_format(data["time_played"]),
+        player_time_format(song_score.time_played),
         StaticPath.kazesawa_regular,
     )
     text_overlay = draw_text(text_overlay, write_time, average_color)
@@ -110,12 +111,12 @@ def draw_score_detail(
         250,
         165,
         25,
-        f'{song_info["difficulties"][data["difficulty"]]["rating"]:.1f}',
+        f"{song_info.difficulties[song_score.difficulty].rating:.1f}",
         StaticPath.kazesawa_regular,
     )
     text_overlay = draw_text(text_overlay, write_constant, average_color)
     write_rating = DataText(
-        320, 148, 25, f'{data["rating"]:.3f}', StaticPath.kazesawa_regular
+        320, 148, 25, f"{song_score.rating:.3f}", StaticPath.kazesawa_regular
     )
     text_overlay = draw_text(text_overlay, write_rating, average_color)
     contrast_enhancer = ImageEnhance.Contrast(text_overlay)
@@ -126,24 +127,23 @@ def draw_score_detail(
 
 def draw_b30(data: Dict):
     B30_bg = open_img(StaticPath.B30_bg)
+    user_best30 = UserBest30(**data["content"])
     # User Info
-    best: float = data["content"]["best30_avg"]
-    recent: float = data["content"]["recent10_avg"]
-    account_info = data["content"]["account_info"]
-    arcaea_id: str = account_info["code"]
-    name: str = account_info["name"]
-    rating: str = account_info["rating"]
-    character = account_info["character"]
-    is_char_uncapped_override: bool = account_info["is_char_uncapped_override"]
-    is_char_uncapped: bool = account_info["is_char_uncapped"]
+    best: float = user_best30.best30_avg
+    recent: float = user_best30.recent10_avg
+    account_info = user_best30.account_info
+    arcaea_id: str = account_info.code
+    name: str = account_info.name
+    rating: str = account_info.rating
+    character = account_info.character
+    is_char_uncapped_override: bool = account_info.is_char_uncapped_override
+    is_char_uncapped: bool = account_info.is_char_uncapped
     icon: str = (
         f"{character}u_icon.png"
         if is_char_uncapped ^ is_char_uncapped_override
         else f"{character}_icon.png"
     )
-    score_info_list = (
-        data["content"]["best30_list"] + data["content"]["best30_overflow"]
-    )
+    score_info_list = user_best30.best30_list + user_best30.best30_overflow
     icon = open_img(StaticPath.char_dir / icon).resize((250, 250))
     B30_bg.alpha_composite(icon, (75, 130))
     ptt_background = open_img(
@@ -191,7 +191,7 @@ def draw_b30(data: Dict):
             B30_bg.alpha_composite(divider, (0, background_y - 87))
         B30_bg.alpha_composite(
             draw_score_detail(
-                data=value, rank=num, song_id=value["song_id"], mask=mask
+                song_score=value, rank=num, song_id=value.song_id, mask=mask
             ),
             (background_x, background_y),
         )

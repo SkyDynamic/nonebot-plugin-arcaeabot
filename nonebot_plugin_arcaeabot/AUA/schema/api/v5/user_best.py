@@ -1,6 +1,3 @@
-
-
-
 from ...basemodel import Base
 from .song_score import SongScore
 from .account_info import AccountInfo
@@ -37,6 +34,7 @@ from .account_info import AccountInfo
     }
 }
 """
+
 
 class UserBest(Base):
     account_info: AccountInfo

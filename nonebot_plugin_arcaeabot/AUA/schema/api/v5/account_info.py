@@ -19,10 +19,11 @@ from ...basemodel import Base
 }
 """
 
+
 class AccountInfo(Base):
     code: str
     name: str
-    user_id :int
+    user_id: int
     is_mutual: bool
     is_char_uncapped_override: bool
     is_char_uncapped: bool

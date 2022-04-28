@@ -45,11 +45,14 @@ from ...basemodel import Base
 }
 """
 
+
 class TitleLocalized(Base):
     en: str
 
+
 class DifficultyInfo(Base):
     rating: int
+
 
 class SongInfo(Base):
     idx: int

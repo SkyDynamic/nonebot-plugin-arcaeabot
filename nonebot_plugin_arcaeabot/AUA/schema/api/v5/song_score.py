@@ -21,6 +21,7 @@ from ...basemodel import Base
 },
 """
 
+
 class SongScore(Base):
     score: int
     health: int

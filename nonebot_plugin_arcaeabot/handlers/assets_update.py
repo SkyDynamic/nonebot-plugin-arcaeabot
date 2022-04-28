@@ -16,7 +16,7 @@ async def assets_update_handler(
 ):
     args: list = str(args).split()
 
-    if len(args) == 2 and args[1] == 'all':
+    if len(args) == 2 and args[1] == "all":
         if path.exist(root.assets.song):
             rmtree(root.assets.song)
         if path.exist(root.assets.char):
