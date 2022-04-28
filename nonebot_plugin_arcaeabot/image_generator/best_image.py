@@ -6,7 +6,7 @@ from ..AUA import UserBest, AccountInfo, SongInfo
 
 
 def draw_user_best(data: Dict) -> Image.Image:
-    user_best: UserBest = UserBest(**data)
+    user_best: UserBest = UserBest(**data["content"])
     account_info: AccountInfo = user_best.account_info
     arcaea_id: str = account_info.code
     name: str = account_info.name

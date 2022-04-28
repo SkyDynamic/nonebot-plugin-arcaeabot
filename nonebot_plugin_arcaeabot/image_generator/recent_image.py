@@ -7,7 +7,7 @@ from ..AUA import UserRecent, SongInfo, AccountInfo
 
 def draw_recent(data: Dict):
     # User Info
-    user_recent: UserRecent = UserRecent(**data)
+    user_recent: UserRecent = UserRecent(**data["content"])
     account_info: AccountInfo = user_recent.account_info
     arcaea_id: str = account_info.code
     name: str = account_info.name

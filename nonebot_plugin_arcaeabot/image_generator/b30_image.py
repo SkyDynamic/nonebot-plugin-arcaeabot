@@ -11,6 +11,7 @@ from .utils import (
     draw_text,
     choice_ptt_background,
 )
+from ..AUA import UserBest30, AccountInfo, SongInfo, SongScore
 
 
 def draw_score_bg(
