@@ -1,12 +1,9 @@
 import os
-from os import path
-
-
-ROOT = path.abspath(path.join(path.dirname(__file__)))
 
 
 class RHelper(str):
     def __init__(self, path: str = None) -> None:
+        ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__)))
         if not path:
             self.__rpath = ROOT
         else:

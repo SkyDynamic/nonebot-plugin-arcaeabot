@@ -1,8 +1,7 @@
 from nonebot.adapters.onebot.v11 import MessageSegment
-from nonebot.log import logger
 from .image_generator import draw_b30, draw_recent, draw_user_best
 from io import BytesIO
-from .request import get_user_best, fetch_user_info
+from .request import get_user_best, get_user_b30, get_user_recent
 
 
 class UserArcaeaInfo:
@@ -16,10 +15,10 @@ class UserArcaeaInfo:
     async def draw_best30_image(arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
-            data = await fetch_user_info(arcaea_id=arcaea_id)
+            data = await get_user_b30(arcaea_id=arcaea_id, overflow=10)
             if data["status"] != 0:
                 UserArcaeaInfo.querying.remove(arcaea_id)
-                return data["message"]
+                return str(data["status"]) + ": " + data["message"]
             else:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 image = draw_b30(data=data)
@@ -34,10 +33,10 @@ class UserArcaeaInfo:
     async def draw_recent_image(arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
-            data = await fetch_user_info(arcaea_id=arcaea_id, recent_only=True)
+            data = await get_user_recent(arcaea_id=arcaea_id)
             if data["status"] != 0:
                 UserArcaeaInfo.querying.remove(arcaea_id)
-                return data["message"]
+                return str(data["status"]) + ": " + data["message"]
             else:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 image = draw_recent(data=data)
@@ -52,12 +51,10 @@ class UserArcaeaInfo:
     async def draw_best(arcaea_id: str, song_id: str, difficulty: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
-            data = await get_user_best(
-                arcaea_id=arcaea_id, song_id=song_id, difficulty=difficulty
-            )
+            data = await get_user_best(arcaea_id=arcaea_id, song_id=song_id, difficulty=difficulty)
             if data["status"] != 0:
                 UserArcaeaInfo.querying.remove(arcaea_id)
-                return data["message"]
+                return str(data["status"]) + ": " + data["message"]
             else:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 image = draw_user_best(data=data)

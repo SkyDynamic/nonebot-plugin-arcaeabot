@@ -1,4 +1,4 @@
-# Change 
+# Change
 ## [1.2.1](https://pypi.org/project/nonebot-plugin-arcaeabot/1.2.1/)
 - 修复日文无法显示的问题
 - 修复了一处拼写错误
