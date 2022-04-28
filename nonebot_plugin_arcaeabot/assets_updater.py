@@ -31,8 +31,10 @@ async def check_song_update() -> List[str]:
                         result.append(args[-2])
 
         resp3 = await get_song_list()
+        _data = json.dumps(resp3["content"])
+
         with open(root.assets / ("slst.json"), "wb") as file:
-            json.dump(resp3, file)
+            file.write(_data.encode("UTF-8"))
 
         return result
 

@@ -1,8 +1,5 @@
-from os import ftruncate
-from loguru import logger
 from nonebot.adapters.onebot.v11 import Bot, MessageEvent, Message, MessageSegment
 from nonebot.params import CommandArg
-from nonebot.exception import ActionFailed
 from ..data import UserInfo
 from ..main import arc
 from ..draw_image import UserArcaeaInfo
@@ -28,7 +25,7 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
         with open(slst_json, "r") as file:
             data = json.load(file)
 
-        for s in data["content"]["songs"]:
+        for s in data["songs"]:
             if s["song_id"] == args[1].strip():
                 song_id = s["song_id"]
                 song = s
@@ -36,13 +33,15 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
                 if alias == args[1].strip():
                     song_id = s["song_id"]
                     song = s
-                    
+
         # check
         if len(args) == 2:
             difficulty = 2
         elif len(args) != 3:
-            await arc.finish("参数输入长度有误！")
+            await arc.finish(MessageSegment.reply(event.message_id) + "不支持的命令参数")
         elif args[2].strip().lower() == "byd":
+            if len(song["difficulties"]) == 3:
+                await arc.finish(MessageSegment.reply(event.message_id) + "难度不存在！")
             difficulty = 3
         elif args[2].strip().lower() == "ftr":
             difficulty = 2
@@ -51,36 +50,22 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
         elif args[2].strip().lower() == "pst":
             difficulty = 0
         else:
-            await arc.finish("参数输入有误！")
+            await arc.finish(MessageSegment.reply(event.message_id) + "参数输入有误！")
 
-        if not song["difficulties"][difficulty]:
-            await arc.finish("难度不存在！")
-            
         # Exception
         if not user_info:
-            await arc.finish(
-                "\n".join(
-                    [
-                        f"> {event.sender.card or event.sender.nickname}",
-                        "你还没绑定哦~",
-                    ]
-                )
-            )
-        # Query
-        if not UserArcaeaInfo.is_querying(user_info.arcaea_id):
-            result = await UserArcaeaInfo.draw_best(
-                arcaea_id=user_info.arcaea_id,
-                song_id=song_id,
-                difficulty=difficulty,
-            )
-            await arc.finish(MessageSegment.reply(event.message_id) + result)
+            await arc.finish(MessageSegment.reply(event.message_id) + "你还没绑定呢！")
 
-        else:
-            await arc.finish(
-                "\n".join(
-                    [
-                        f"> {event.sender.card or event.sender.nickname}",
-                        "您已在查询队列, 请勿重复发起查询。",
-                    ]
-                )
-            )
+        if UserArcaeaInfo.is_querying(user_info.arcaea_id):
+            await arc.finish(MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。")
+
+        # Query
+        result = await UserArcaeaInfo.draw_best_image(
+            arcaea_id=user_info.arcaea_id,
+            song_id=song_id,
+            difficulty=str(difficulty),
+        )
+        await arc.finish(MessageSegment.reply(event.message_id) + result)
+
+            
+

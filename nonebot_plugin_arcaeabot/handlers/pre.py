@@ -29,6 +29,7 @@ async def pre_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg(
         "unbind",
         "assets_update",
         "best",
+        "b40",
     ]:
         aua_ua = config.get_config("aua_ua")
         aua_url = config.get_config("aua_url")

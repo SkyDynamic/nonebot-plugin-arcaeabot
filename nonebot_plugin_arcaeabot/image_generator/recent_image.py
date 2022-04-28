@@ -1,12 +1,13 @@
 from PIL import Image
 from .assets import StaticPath
-from .utils import open_img, DataText, draw_text, choice_ptt_background, get_song_info
+from .utils import open_img, DataText, draw_text, choice_ptt_background
 from typing import Dict
 
 
-def draw_recent(data: Dict):
+def draw_user_recent(data: Dict):
     # User Info
-    account_info = data["content"]["account_info"]
+    account_info = data["account_info"]
+
     arcaea_id: str = account_info["code"]
     name: str = account_info["name"]
     character = account_info["character"]
@@ -18,11 +19,14 @@ def draw_recent(data: Dict):
         else f"{character}_icon.png"
     )
     rating: str = account_info["rating"]
+
     # Score Info
-    recent_score = data["content"]["recent_score"][0]
+    recent_score = data["recent_score"][0]
+
+    song_info = data["songinfo"][0]
+
     song_id: str = recent_score["song_id"]
-    song_info: Dict = get_song_info(song_id)
-    song_name: str = song_info["title_localized"]["en"]
+    song_name: str = song_info["name_en"]
     author_name: str = song_info["artist"]
     difficulty: int = recent_score["difficulty"]
     score: int = recent_score["score"]
@@ -32,12 +36,14 @@ def draw_recent(data: Dict):
     miss_count: int = recent_score["miss_count"]
     health: int = recent_score["health"]
     song_rating: float = recent_score["rating"]
-    constant: float = song_info["difficulties"][difficulty]["rating"]
+    constant: int = song_info["rating"] / 10
+    constant_plus: bool = True if song_info["difficulty"] % 2 != 0 else False
     full_character = (
         f"{character}u.png"
         if is_char_uncapped ^ is_char_uncapped_override
         else f"{character}.png"
     )
+
     image = Image.new("RGBA", (1280, 720))
     background = open_img(StaticPath.recent_background)
     image.alpha_composite(background)
@@ -110,11 +116,12 @@ def draw_recent(data: Dict):
         StaticPath.geosans_light,
     )
     image = draw_text(image, write_score)
+    _diff = "+" if constant_plus else ""
     write_difficulty = DataText(
         40,
         230,
         40,
-        ["Past", "Persent", "Future", "Beyond"][difficulty] + " " + str(int(constant)),
+        ["Past", "Persent", "Future", "Beyond"][difficulty] + " " + str(int(constant)) + _diff,
         StaticPath.geosans_light,
     )
     image = draw_text(image, write_difficulty, (96, 75, 84, 255))

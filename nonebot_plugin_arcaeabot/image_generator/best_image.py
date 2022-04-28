@@ -1,43 +1,47 @@
 from typing import Dict
 from PIL import Image
 from .assets import StaticPath
-from .utils import open_img, DataText, draw_text, choice_ptt_background, get_song_info
+from .utils import open_img, DataText, draw_text, choice_ptt_background
 
 
 def draw_user_best(data: Dict) -> Image.Image:
-    arcaea_id: str = data["content"]["account_info"]["code"]
-    name: str = data["content"]["account_info"]["name"]
-    character: int = data["content"]["account_info"]["character"]
-    is_char_uncapped = data["content"]["account_info"]["is_char_uncapped"]
-    is_char_uncapped_override = data["content"]["account_info"][
-        "is_char_uncapped_override"
-    ]
+    # User Info
+    account_info = data["account_info"]
+
+    arcaea_id: str = account_info["code"]
+    name: str = account_info["name"]
+    character = account_info["character"]
+    is_char_uncapped_override: bool = account_info["is_char_uncapped_override"]
+    is_char_uncapped: bool = account_info["is_char_uncapped"]
     icon: str = (
         f"{character}u_icon.png"
         if is_char_uncapped ^ is_char_uncapped_override
         else f"{character}_icon.png"
     )
-    rating: int = data["content"]["account_info"]["rating"]
-    song_id: str = data["content"]["record"]["song_id"]
-    song_info: Dict = get_song_info(song_id)
-    song_name: str = song_info["title_localized"]["en"]
+    rating: str = account_info["rating"]
+
+    record_score = data["record"]
+    song_info = data["songinfo"][0]
+
+    song_id: str = record_score["song_id"]
+    song_name: str = song_info["name_en"]
     author_name: str = song_info["artist"]
-    difficulty: int = data["content"]["record"]["difficulty"]
-    score: int = data["content"]["record"]["score"]
-    shiny_perfect_count: int = data["content"]["record"]["shiny_perfect_count"]
-    perfect_count: int = data["content"]["record"]["perfect_count"]
-    near_count: int = data["content"]["record"]["near_count"]
-    miss_count: int = data["content"]["record"]["miss_count"]
-    health: int = data["content"]["record"]["health"]
-    song_rating: float = data["content"]["record"]["rating"]
-    constant: float = (
-        data["content"]["songinfo"][0]["difficulties"][difficulty]["realrating"] / 10
-    )
+    difficulty: int = record_score["difficulty"]
+    score: int = record_score["score"]
+    shiny_perfect_count: int = record_score["shiny_perfect_count"]
+    perfect_count: int = record_score["perfect_count"]
+    near_count: int = record_score["near_count"]
+    miss_count: int = record_score["miss_count"]
+    health: int = record_score["health"]
+    song_rating: float = record_score["rating"]
+    constant: int = song_info["rating"] / 10
+    constant_plus: bool = True if song_info["difficulty"] % 2 != 0 else False
     full_character = (
         f"{character}u.png"
         if is_char_uncapped ^ is_char_uncapped_override
         else f"{character}.png"
     )
+
     image = Image.new("RGBA", (1280, 720))
     background = open_img(StaticPath.recent_background)
     image.alpha_composite(background)
@@ -113,12 +117,13 @@ def draw_user_best(data: Dict) -> Image.Image:
         anchor="mt",
     )
     image = draw_text(image, write_score)
+    _diff = "+" if constant_plus else ""
     write_difficulty = DataText(
         40,
         230,
         40,
-        ["Past", "Present", "Future", "Beyond"][difficulty] + " " + str(int(constant)),
-        StaticPath.kazesawa_regular,
+        ["Past", "Persent", "Future", "Beyond"][difficulty] + " " + str(int(constant)) + _diff,
+        StaticPath.geosans_light,
     )
     image = draw_text(image, write_difficulty, (96, 75, 84, 255))
     write_recent_text = DataText(40, 20, 45, "Recent", StaticPath.exo_regular)

@@ -27,8 +27,8 @@ async def get_user_b30(arcaea_id: str, overflow: int = 0, recent: bool = False) 
         aua_url = config.get_config("aua_url")
         headers = {"User-Agent": aua_ua}
         # To str
-        _overflow = "&overflow="+str(overflow) if overflow > 0 else ""
-        _recent = "&withrecent=true" if recent is False else ""
+        _overflow = "&overflow=" + str(overflow) if overflow > 0 else ""
+        _recent = "&withrecent=true" if recent is True else ""
         # request
         res = await client.get(
                 url=f"{aua_url}/botarcapi/user/best30?usercode={arcaea_id}{_overflow}{_recent}&withsonginfo=true",
@@ -49,7 +49,7 @@ async def get_user_best(arcaea_id: str, song_id: str, difficulty: str, recent: b
         aua_url = config.get_config("aua_url")
         headers = {"User-Agent": aua_ua}
         # to str
-        _recent = "&withrecent=true" if recent is False else ""
+        _recent = "&withrecent=true" if recent is True else ""
         # request
         res = await client.get(
             url=f"{aua_url}/botarcapi/user/best?usercode={arcaea_id}&songid={song_id}&difficulty={difficulty}{_recent}&withsonginfo=true",

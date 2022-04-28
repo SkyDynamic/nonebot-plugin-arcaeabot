@@ -54,7 +54,7 @@ def get_song_info(song_id: str) -> Dict:
     with open(StaticPath.slst_json, "r", encoding="UTF-8") as f:
         slst = json.loads(f.read())
     for i in slst["songs"]:
-        if i["id"] == song_id:
+        if i["song_id"] == song_id:
             return i
 
 
