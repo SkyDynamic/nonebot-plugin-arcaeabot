@@ -10,11 +10,11 @@ Arcaea 查分器。
 
 ## 如何开始 Quick Start
 
-***请注意! 1.0.0后的版本更改了默认使用的api，您需要填写相关配置才能正常使用***<
+***请注意! 1.0.0后的版本更改了默认使用的api，您需要填写相关配置才能正常使用***
 
 使用前请确保您的Python版本>=3.8
 
-项目默认使用AUA (ArcaeaUnlimitedApi)，您需要申请相关apiurl与token并在机器人所在目录`data\arcaea\config.yml`中填写
+项目默认使用AUA (ArcaeaUnlimitedApi)，您需要申请相关apiurl与token(user-agent)并在机器人所在目录`data\arcaea\config.yml`中填写
 
 | 参数               | 描述                                                         |
 | ------------------ | ------------------------------------------------------------ |
@@ -25,7 +25,6 @@ Arcaea 查分器。
 
 ### 首次使用您需要更新资源文件(assets/song, assets/char以及constants.json)
 
-- 将本仓库得
 - 向bot发送"/arc assets_update"以更新资源文件。（默认使用我搭建的api服务器）
 - 如果更新失败（服务器炸了）您可以使用[ArcaeaAssetsUpdater](https://github.com/SEAFHMC/ArcaeaAssetsUpdater)搭建自己的资源更新服务器，然后在.env.{ENVIRONMENT}中填写src_api_url=您的api地址)
 - 还可以直接从[百度云](https://pan.baidu.com/s/19tmRj4M3eAov6FB_te6f3A?pwd=7g1b)下载资源文件（更新至3.12.4c）。
@@ -44,7 +43,7 @@ Arcaea 查分器。
 | /arc best {songname} {difficulty}           | 查询您的单曲最佳记录                                        |
 
 ## To Do
-- 咕咕咕
+- 随机曲目推荐
 
 ## 参考代码
 
