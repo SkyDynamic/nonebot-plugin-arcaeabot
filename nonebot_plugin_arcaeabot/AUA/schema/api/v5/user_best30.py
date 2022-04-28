@@ -1,12 +1,11 @@
 from typing import List
 
-from pydantic import validator
 
-from image_generator.AUA.schema.api.v5.song_info import SongInfo
 
 from ...basemodel import Base
 from .song_score import SongScore
 from .account_info import AccountInfo
+from .song_info import SongInfo
 
 
 """
