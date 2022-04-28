@@ -1,7 +1,7 @@
 from nonebot.adapters.onebot.v11 import MessageSegment
 from .image_generator import draw_b30, draw_recent, draw_user_best
 from io import BytesIO
-from .request import get_user_best, get_user_b30, get_user_recent
+from .AUA import get_user_best, get_user_b30, get_user_recent
 
 
 class UserArcaeaInfo:

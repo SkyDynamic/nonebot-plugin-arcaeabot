@@ -2,37 +2,39 @@ from PIL import Image
 from .assets import StaticPath
 from .utils import open_img, DataText, draw_text, choice_ptt_background, get_song_info
 from typing import Dict
+from ..AUA import UserRecent, SongInfo, AccountInfo
 
 
 def draw_recent(data: Dict):
     # User Info
-    account_info = data["content"]["account_info"]
-    arcaea_id: str = account_info["code"]
-    name: str = account_info["name"]
-    character = account_info["character"]
-    is_char_uncapped_override: bool = account_info["is_char_uncapped_override"]
-    is_char_uncapped: bool = account_info["is_char_uncapped"]
+    user_recent: UserRecent = UserRecent(**data)
+    account_info: AccountInfo = user_recent.account_info
+    arcaea_id: str = account_info.code
+    name: str = account_info.name
+    character = account_info.character
+    is_char_uncapped_override: bool = account_info.is_char_uncapped
+    is_char_uncapped: bool = account_info.is_char_uncapped
     icon: str = (
         f"{character}u_icon.png"
         if is_char_uncapped ^ is_char_uncapped_override
         else f"{character}_icon.png"
     )
-    rating: str = account_info["rating"]
+    rating: str = account_info.rating
     # Score Info
-    recent_score = data["content"]["recent_score"][0]
-    song_id: str = recent_score["song_id"]
-    song_info: Dict = get_song_info(song_id)
-    song_name: str = song_info["title_localized"]["en"]
-    author_name: str = song_info["artist"]
-    difficulty: int = recent_score["difficulty"]
-    score: int = recent_score["score"]
-    shiny_perfect_count: int = recent_score["shiny_perfect_count"]
-    perfect_count: int = recent_score["perfect_count"]
-    near_count: int = recent_score["near_count"]
-    miss_count: int = recent_score["miss_count"]
-    health: int = recent_score["health"]
-    song_rating: float = recent_score["rating"]
-    constant: float = song_info["difficulties"][difficulty]["rating"]
+    recent_score = user_recent.recent_score[0]
+    song_id: str = recent_score.song_id
+    song_info: SongInfo = SongInfo(**get_song_info(song_id))
+    song_name: str = song_info.title_localized.en
+    author_name: str = song_info.artist
+    difficulty: int = recent_score.difficulty
+    score: int = recent_score.score
+    shiny_perfect_count: int = recent_score.shiny_perfect_count
+    perfect_count: int = recent_score.perfect_count
+    near_count: int = recent_score.near_count
+    miss_count: int = recent_score.miss_count
+    health: int = recent_score.health
+    song_rating: float = recent_score.rating
+    constant: float = song_info.difficulties[difficulty].rating
     full_character = (
         f"{character}u.png"
         if is_char_uncapped ^ is_char_uncapped_override

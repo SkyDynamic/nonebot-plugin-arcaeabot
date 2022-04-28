@@ -1,6 +1,6 @@
 from typing import List, Dict
 from httpx import AsyncClient
-from .config import config
+from ..config import config
 from nonebot.log import logger
 
 
