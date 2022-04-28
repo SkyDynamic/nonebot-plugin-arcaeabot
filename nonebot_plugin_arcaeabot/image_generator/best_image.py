@@ -1,7 +1,7 @@
 from typing import Dict
 from PIL import Image
 from .assets import StaticPath
-from .utils import open_img, DataText, draw_text, choice_ptt_background, get_song_info
+from .utils import open_img, DataText, draw_text, choice_ptt_background
 from ..AUA import UserBest, AccountInfo, SongInfo
 
 
