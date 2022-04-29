@@ -27,11 +27,9 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
 
         for s in data["songs"]:
             if s["song_id"] == args[1].strip():
-                song_id = s["song_id"]
                 song = s
             for alias in s["alias"]:
                 if alias == args[1].strip():
-                    song_id = s["song_id"]
                     song = s
 
         # check
@@ -62,7 +60,7 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
         # Query
         result = await UserArcaeaInfo.draw_best_image(
             arcaea_id=user_info.arcaea_id,
-            song_id=song_id,
+            song_id=song["song_id"],
             difficulty=str(difficulty),
         )
         await arc.finish(MessageSegment.reply(event.message_id) + result)

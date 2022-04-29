@@ -7,3 +7,5 @@ from .info import info_handler
 from .recent import recent_handler
 from .b30 import b30_handler
 from .best import best_handler
+from .random import random_handler
+from .song import song_handler
