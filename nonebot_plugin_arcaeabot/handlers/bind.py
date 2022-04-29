@@ -22,6 +22,7 @@ async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):
         res1 = await get_user_info(arcaea_id=arc_id)
         if res1["status"] != 0:
             await arc.finish(str(res1["status"]) + ": " + res1["message"])
+
         player_name = res1["content"]["account_info"]["name"]
         UserInfo.replace(
             user_qq=event.user_id, arcaea_id=arc_id, arcaea_name=player_name

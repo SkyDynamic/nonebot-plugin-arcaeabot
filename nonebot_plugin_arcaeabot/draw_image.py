@@ -51,7 +51,9 @@ class UserArcaeaInfo:
     async def draw_user_best(arcaea_id: str, song_id: str, difficulty: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
-            data = await get_user_best(arcaea_id=arcaea_id, song_id=song_id, difficulty=difficulty)
+            data = await get_user_best(
+                arcaea_id=arcaea_id, song_id=song_id, difficulty=difficulty
+            )
             if data["status"] != 0:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 return str(data["status"]) + ": " + data["message"]

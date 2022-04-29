@@ -49,7 +49,6 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
             difficulty = 0
         else:
             await arc.finish(MessageSegment.reply(event.message_id) + "参数输入有误！")
-
         # Exception
         if not user_info:
             await arc.finish(MessageSegment.reply(event.message_id) + "你还没绑定呢！")

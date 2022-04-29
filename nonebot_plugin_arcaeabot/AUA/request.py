@@ -20,7 +20,9 @@ async def get_user_info(arcaea_id: str, recent: bool = False) -> List[Dict]:
         return res.json()
 
 
-async def get_user_b30(arcaea_id: str, overflow: int = 0, recent: bool = False) -> List[Dict]:
+async def get_user_b30(
+    arcaea_id: str, overflow: int = 0, recent: bool = False
+) -> List[Dict]:
     async with AsyncClient() as client:
         # Config
         aua_ua = config.get_config("aua_ua")
@@ -42,7 +44,10 @@ async def get_user_recent(arcaea_id: str) -> List[Dict]:
     return await get_user_info(arcaea_id=arcaea_id, recent=True)
 
 
-async def get_user_best(arcaea_id: str, song_id: str, difficulty: str, recent: bool = False) -> List[Dict]:
+
+async def get_user_best(
+    arcaea_id: str, song_id: str, difficulty: str, recent: bool = False
+) -> List[Dict]:
     async with AsyncClient() as client:
         # Config
         aua_ua = config.get_config("aua_ua")
@@ -72,3 +77,4 @@ async def get_song_list() -> List[Dict]:
             timeout=100,
         )
         return res.json()
+

@@ -25,6 +25,7 @@ async def pre_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg(
         "songs",
     ]:
         await arc.finish("不支持的命令参数")
+
     aua_ua = config.get_config("aua_ua")
     aua_url = config.get_config("aua_url")
     if aua_ua == 'SECRET' or aua_url == 'URL':
