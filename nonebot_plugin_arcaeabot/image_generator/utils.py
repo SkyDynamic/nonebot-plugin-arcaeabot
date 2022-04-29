@@ -50,14 +50,6 @@ def player_time_format(time_stamp: int) -> str:
     return strftime("%Y-%m-%d %H:%M:%S", struct_time)
 
 
-def get_song_info(song_id: str) -> Dict:
-    with open(StaticPath.slst_json, "r", encoding="UTF-8") as f:
-        slst = json.loads(f.read())
-    for i in slst["songs"]:
-        if i["song_id"] == song_id:
-            return i
-
-
 def choice_ptt_background(ptt: int):
     if ptt == -1:
         return "rating_off.png"

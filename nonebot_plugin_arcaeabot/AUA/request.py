@@ -1,6 +1,6 @@
 from typing import List, Dict
 from httpx import AsyncClient
-from .config import config
+from ..config import config
 
 
 async def get_user_info(arcaea_id: str, recent: bool = False) -> List[Dict]:

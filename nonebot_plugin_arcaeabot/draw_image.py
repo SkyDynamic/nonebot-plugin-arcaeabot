@@ -1,7 +1,7 @@
 from nonebot.adapters.onebot.v11 import MessageSegment
 from . import image_generator
 from io import BytesIO
-from .request import get_user_best, get_user_b30, get_user_recent
+from .AUA import get_user_best, get_user_b30, get_user_recent
 
 
 class UserArcaeaInfo:
@@ -20,10 +20,10 @@ class UserArcaeaInfo:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 return str(data["status"]) + ": " + data["message"]
             else:
-                UserArcaeaInfo.querying.remove(arcaea_id)
                 image = image_generator.draw_user_b30(data=data["content"])
                 buffer = BytesIO()
                 image.save(buffer, "png")
+                UserArcaeaInfo.querying.remove(arcaea_id)
                 return MessageSegment.image(buffer)
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
@@ -38,10 +38,10 @@ class UserArcaeaInfo:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 return str(data["status"]) + ": " + data["message"]
             else:
-                UserArcaeaInfo.querying.remove(arcaea_id)
                 image = image_generator.draw_user_recent(data=data["content"])
                 buffer = BytesIO()
                 image.save(buffer, "png")
+                UserArcaeaInfo.querying.remove(arcaea_id)
                 return MessageSegment.image(buffer)
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)
@@ -56,10 +56,10 @@ class UserArcaeaInfo:
                 UserArcaeaInfo.querying.remove(arcaea_id)
                 return str(data["status"]) + ": " + data["message"]
             else:
-                UserArcaeaInfo.querying.remove(arcaea_id)
                 image = image_generator.draw_user_best(data=data["content"])
                 buffer = BytesIO()
                 image.save(buffer, "png")
+                UserArcaeaInfo.querying.remove(arcaea_id)
                 return MessageSegment.image(buffer)
         except Exception as e:
             UserArcaeaInfo.querying.remove(arcaea_id)

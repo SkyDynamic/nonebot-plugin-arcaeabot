@@ -23,7 +23,7 @@ async def b30_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg(
             await arc.finish(MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。")
         
         # Query
-        result = await UserArcaeaInfo.draw_b30_image(user_info.arcaea_id)
+        result = await UserArcaeaInfo.draw_user_b30(user_info.arcaea_id)
         await arc.finish(MessageSegment.reply(event.message_id) + result)
 
             

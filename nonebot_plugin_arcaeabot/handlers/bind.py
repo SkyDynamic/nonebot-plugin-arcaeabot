@@ -2,7 +2,7 @@ from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment
 from nonebot.params import CommandArg
 from ..data import UserInfo
 from ..matcher import arc
-from ..request import get_user_info
+from ..AUA import get_user_info
 
 
 async def bind_handler(bot: Bot, event: MessageEvent, args=CommandArg()):

@@ -20,14 +20,14 @@ def draw_song(song_info: Dict, difficulty: str = "all"):
         result = "Name: " + song_info["difficulties"][0]["name_en"] + "\n"
         for i, value in enumerate(song_info["difficulties"]):
             _diff: float = value["rating"] / 10
-            result += "[" + ["Past", "Persent", "Future", "Beyond"][i] + "]: " + str(_diff) + "\n"
+            result += "[" + ["Past", "Present", "Future", "Beyond"][i] + "]: " + str(_diff) + "\n"
     else:
         difficulty = int(difficulty)
         cover_name = "3.jpg" if difficulty == 3 else "base.jpg"
         image = open_img(root.assets.song / song_info["song_id"] / cover_name)
         song_info = song_info["difficulties"][difficulty]
         _diff: float = song_info["rating"] / 10
-        _minite = str(int(song_info["time"]) / 60)
+        _minite = str(int(int(song_info["time"]) / 60))
         _second = str(int(song_info["time"]) % 60)
         _name = song_info["name_jp"] + " [" + song_info["name_en"] + "]" if song_info["name_jp"] != "" else song_info["name_en"]
         result = "\n".join(

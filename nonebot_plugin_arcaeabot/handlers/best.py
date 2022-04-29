@@ -58,7 +58,7 @@ async def best_handler(bot: Bot, event: MessageEvent, args: Message = CommandArg
             await arc.finish(MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。")
 
         # Query
-        result = await UserArcaeaInfo.draw_best_image(
+        result = await UserArcaeaInfo.draw_user_best(
             arcaea_id=user_info.arcaea_id,
             song_id=song["song_id"],
             difficulty=str(difficulty),

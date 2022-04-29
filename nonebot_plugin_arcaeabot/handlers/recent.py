@@ -21,6 +21,6 @@ async def recent_handler(bot: Bot, event: MessageEvent, args: Message = CommandA
             await arc.finish(MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。")
 
         # Query
-        result = await UserArcaeaInfo.draw_recent_image(arcaea_id=user_info.arcaea_id)
+        result = await UserArcaeaInfo.draw_user_recent(arcaea_id=user_info.arcaea_id)
         await arc.finish(MessageSegment.reply(event.message_id) + result)
 

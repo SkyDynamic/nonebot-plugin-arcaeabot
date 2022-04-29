@@ -4,7 +4,7 @@ from os import path, listdir, makedirs
 from tqdm import tqdm
 from .config import config
 from ._RHelper import RHelper
-from .request import get_song_list
+from .AUA import get_song_list
 import json
 root = RHelper()
 
