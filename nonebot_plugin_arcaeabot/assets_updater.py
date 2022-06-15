@@ -12,6 +12,7 @@ if not plugin_config.src_api_url:
 else:
     src_api_url = plugin_config.src_api_url
 
+
 async def check_song_update() -> List[str]:
     song_dir = assets_root / "song"
     song_dir.mkdir(exist_ok=True, parents=True)
