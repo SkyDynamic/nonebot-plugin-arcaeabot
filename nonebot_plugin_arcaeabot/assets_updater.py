@@ -9,6 +9,8 @@ from nonebot import get_driver
 plugin_config = Config.parse_obj(get_driver().config.dict())
 if not plugin_config.src_api_url:
     src_api_url = "https://api.ritsuki.top/api/"
+else:
+    src_api_url = plugin_config.src_api_url
 
 async def check_song_update() -> List[str]:
     song_dir = assets_root / "song"
