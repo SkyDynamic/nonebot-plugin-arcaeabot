@@ -1,6 +1,6 @@
 from ..matcher import arc
 from ..assets_updater import check_song_update, check_char_update
-from ..resource_guider import assets_root
+from ..resource_manager import assets_root
 from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
 from nonebot.params import CommandArg

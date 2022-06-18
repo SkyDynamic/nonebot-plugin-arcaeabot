@@ -1,7 +1,7 @@
 from nonebot.log import logger
 from os import path
 import peewee as pw
-from .resource_guider import db_root
+from .resource_manager import db_root
 
 db = pw.SqliteDatabase(db_root / "user_data.db")
 

@@ -21,5 +21,19 @@ async def bind_handler(event: MessageEvent, arg: Message = CommandArg()):
             arc_id = arc_info.arcaea_id
             arc_name = arc_info.arcaea_name
 
-        # Not finished yet
-        return
+        resp = await API.get_user_info(arcaea_id=arc_id)
+        if error_message := resp.message:
+            await arc.finish(MessageSegment.reply(event.user_id) + error_message)
+        arc_id = resp.content.account_info.code
+        arc_name = resp.content.account_info.name
+        ArcInfo.replace(
+            arcaea_id=arc_id,
+            arcaea_name=arc_name,
+            ptt=resp.content.account_info.rating,
+        ).execute()
+        UserInfo.delete().where(UserInfo.user_qq == event.user_id).execute()
+        UserInfo.replace(user_qq=event.user_id, arcaea_id=arc_id).execute()
+        await arc.finish(
+            MessageSegment.reply(event.message_id)
+            + f"绑定成功, 用户名: {arc_name}, id: {arc_id}"
+        )
