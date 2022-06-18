@@ -7,7 +7,7 @@ license = "AGPL-3.0 License"
 readme = "README.md"
 homepage = "https://github.com/SEAFHMC/nonebot-plugin-arcaeabot"
 repository = "https://github.com/SEAFHMC/nonebot-plugin-arcaeabot"
-documentation = "https://github.com/SEAFHMC/nonebot-plugin-arcaeabot/blob/master/README.md"
+documentation = "https://github.com/SEAFHMC/nonebot-plugin-arcaeabot/blob/v3.0.0/README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
