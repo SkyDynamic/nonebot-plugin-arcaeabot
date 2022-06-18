@@ -60,7 +60,7 @@ Arcaea 查分器。
 | /arc best {songname} {difficulty}           | 查询您的单曲最佳记录                                               |
 | /arc song {songname} {difficulty}           | 查询歌曲信息                                                       |
 | /arc random {start} {end} {difficulty}      | 随机歌曲                                                          |
-| /arc preview {songname} {difficulty}         | 查询歌曲铺面预览                                                          |
+| /arc preview {songname} {difficulty}         | 查询歌曲谱面预览                                                          |
 
 </div>
   
