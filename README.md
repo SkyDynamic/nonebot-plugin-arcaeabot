@@ -18,7 +18,7 @@ Arcaea 查分器。
 
 使用 /arc help查看帮助信息
 
-[更新日志](https://github.com/SEAFHMC/nonebot-plugin-arcaeabot/blob/main/CHANGELOG.MD)
+[更新日志](https://github.com/SEAFHMC/nonebot-plugin-arcaeabot/blob/v3.0.0/CHANGELOG.MD)
 
 ## 如何开始 Quick Start
 
