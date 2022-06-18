@@ -15,6 +15,7 @@ class TextMessage:
             "/arc song <曲名> [难度] 查询信息",
             "/arc random [难度] 随机指定难度的歌曲",
             "/arc random [难度min] [难度max] 随机指定难度区间的歌曲",
+            "/arc preview <曲名> [难度] 查看单曲铺面预览"
         ]
     )
 
