@@ -53,4 +53,4 @@ class API:
         resp = await cls._quick_get(url=url)
         if resp.status_code == 200:
             return resp.read()
-        return resp.json()["message"]
+        return "https://s2.loli.net/2022/06/18/Fo37uPwOtDzdlMb.jpg"
