@@ -1,23 +1,10 @@
 from ...schema import SongRandom, AUASongInfo
-from ...resource_manager import assets_root
+from ...resource_manager import assets_root, StaticPath
 from nonebot.adapters.onebot.v11.message import MessageSegment
 
 
 class TextMessage:
-    help_message = "\n".join(
-        [
-            "/arc bind <arcaea id> 进行绑定",
-            "/arc info 查看绑定信息",
-            "/arc recent 查询上一次游玩记录",
-            "/arc b30 查询 best 30 记录",
-            "/arc assets_update 更新曲绘与立绘资源",
-            "/arc best <曲名> [难度] 查询单曲最高分",
-            "/arc song <曲名> [难度] 查询信息",
-            "/arc random [难度] 随机指定难度的歌曲",
-            "/arc random [难度min] [难度max] 随机指定难度区间的歌曲",
-            "/arc preview <曲名> [难度] 查看单曲谱面预览",
-        ]
-    )
+    help_message = MessageSegment.image(StaticPath.help)
 
     @staticmethod
     def song_info_detail(data: SongRandom):
