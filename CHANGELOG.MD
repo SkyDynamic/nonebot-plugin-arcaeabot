@@ -1,4 +1,7 @@
 # Change
+## [3.0.3](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.3/)
+- 增加插件元信息
+
 ## [3.0.0](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.0/)
 - 调整了assets的目录结构
 - 增加了铺面预览
@@ -7,7 +10,6 @@
 - 修复了一些歌名显示错误（点名nέο κόsmo）
 
 ## [2.1.4](https://pypi.org/project/nonebot-plugin-arcaeabot/2.1.4/)
-- 为什么没有2.1.3的ChangeLog【
 - 修复了一些bug
 
 ## [2.1.2](https://pypi.org/project/nonebot-plugin-arcaeabot/2.1.2/)

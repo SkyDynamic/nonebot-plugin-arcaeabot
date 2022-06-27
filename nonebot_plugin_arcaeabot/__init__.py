@@ -13,6 +13,18 @@ from .handler import (
     default_handler,
     preview_handler,
 )
+from nonebot.plugin import PluginMetadata
+
+__plugin_meta__ = PluginMetadata(
+    name="ArcaeaBot",
+    description="Arcaea查分插件",
+    usage="使用/arc help查看使用帮助",
+    extra={
+        "unique_name": "arcaeabot",
+        "author": "SEAFHMC <soku_ritsuki@outlook.com>",
+        "version": "3.0.3",
+    },
+)
 
 arc.handle()(pre_handler)
 arc.handle()(b30_handler)
