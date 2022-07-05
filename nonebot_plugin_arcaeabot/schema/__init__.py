@@ -6,7 +6,6 @@ from .v5.account_info import AccountInfo
 from .v5.user_best import UserBest
 from .v5.song_random import SongRandom
 from .v5.aua_song_info import AUASongInfo
-from httpx import Response
 
 
 def diffstr2num(diff: str):
