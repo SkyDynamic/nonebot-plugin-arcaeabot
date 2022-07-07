@@ -24,7 +24,7 @@ class TextMessage:
                 f"谱师: {content.songinfo.chart_designer}",
                 f"Note数: {content.songinfo.note}",
                 f"Rating: {content.songinfo.rating/10}",
-                f"隶属曲包: {content.songinfo.set_friendly}",
+                f"隶属曲包: {content.songinfo.set_friendly or content.songinfo.set}",
                 f"上线时间: { content.songinfo.date.strftime('%Y-%m-%d')}",
             ]
         )
@@ -53,7 +53,7 @@ class TextMessage:
                     f"谱师: {songinfo.chart_designer}",
                     f"Note数: {songinfo.note}",
                     f"Rating: {songinfo.rating/10}",
-                    f"隶属曲包: {songinfo.set_friendly}",
+                    f"隶属曲包: {songinfo.set_friendly or songinfo.set}",
                     f"上线时间: { songinfo.date.strftime('%Y-%m-%d')}",
                 ]
             )

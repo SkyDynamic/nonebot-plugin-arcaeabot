@@ -36,7 +36,7 @@ class SongInfo(Base):
     bpm: str
     bpm_base: int
     set: str
-    set_friendly: str
+    set_friendly: Optional[str]
     time: int
     side: int
     world_unlock: bool
