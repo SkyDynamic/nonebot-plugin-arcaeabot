@@ -60,8 +60,10 @@ def choice_ptt_background(ptt: int):
         return "rating_4.png"
     elif 12 <= ptt < 12.5:
         return "rating_5.png"
-    else:
+    elif 12.5 <= ptt < 13:
         return "rating_6.png"
+    else:
+        return "rating_7.png"
 
 
 class DataText:
