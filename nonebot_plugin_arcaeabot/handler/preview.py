@@ -3,10 +3,9 @@ from nonebot.params import CommandArg
 from ..matcher import arc
 from ..api.request import API
 from ..schema import diffstr2num
-from io import BytesIO
 
 
-async def preview_handler(bot: Bot, event: MessageEvent, arg: Message = CommandArg()):
+async def preview_handler(event: MessageEvent, arg: Message = CommandArg()):
     """
     /arc preview Fracture Ray ftr
     """
