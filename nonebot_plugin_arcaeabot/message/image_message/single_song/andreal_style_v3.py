@@ -2,7 +2,7 @@ from typing import Union
 from ....schema import UserBest, UserInfo
 from PIL import Image, ImageFilter
 from ..utils import *
-from ....resource_manager import StaticPath, resource_root
+from ....resource_manager import StaticPath
 
 
 def draw_single_song(data: Union[UserBest, UserInfo]):
