@@ -16,8 +16,8 @@ async def assets_update_handler(event: MessageEvent, arg: Message = CommandArg()
             if args[1] == "--purge":
                 if path.exists(assets_root / "song"):
                     rmtree(assets_root / "song")
-                if path.exists(assets_root / "song"):
-                    rmtree(assets_root / "song")
+                if path.exists(assets_root / "char"):
+                    rmtree(assets_root / "char")
                 await arc.send("正在更新，请关注控制台更新进度…")
         await arc.send("正在更新，请关注控制台更新进度…")
 
