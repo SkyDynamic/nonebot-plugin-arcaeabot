@@ -36,7 +36,7 @@ class TextMessage:
     def song_info(data: AUASongInfo, difficulty: int):
         if error_message := data.message:
             return error_message
-        if difficulty > len(data.content.difficulties):
+        if difficulty+1 > len(data.content.difficulties):
             return "this song has no beyond level"
         if difficulty != -1:
             songinfo = data.content.difficulties[difficulty]
