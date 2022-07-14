@@ -11,7 +11,7 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
     arcaea_id = account_info.code
     name = account_info.name
     character = account_info.character
-    is_char_uncapped_override = account_info.is_char_uncapped
+    is_char_uncapped_override = account_info.is_char_uncapped_override
     is_char_uncapped = account_info.is_char_uncapped
     icon: str = (
         f"{character}u_icon.png"
