@@ -43,7 +43,7 @@ Arcaea 查分器。
 
 - 向bot发送"/arc assets_update"以更新资源文件。
 - 如果更新失败（资源更新服务器炸了）您可以使用[ArcaeaAssetsUpdater](https://github.com/SEAFHMC/ArcaeaAssetsUpdater)搭建自己的资源更新服务器，然后在 config.yml 中填写您的api地址)
-- 还可以直接从[百度云](https://pan.baidu.com/s/1rR5NOy1zSeHIGZ97oNElTQ?pwd=c4iv)下载资源文件（更新至3.12.10c），并放置于bot目录/data/arcaea/assets中
+- 还可以直接从[百度云](https://pan.baidu.com/s/1yAirbWQ0JoCfyMgi3R0yIw?pwd=qwv1)下载资源文件（更新至3.12.10c），并放置于bot目录/data/arcaea/assets中
 
 ## 指令 Command
 
