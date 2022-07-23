@@ -43,13 +43,13 @@ Arcaea 查分器。
 
 - 向bot发送"/arc assets_update"以更新资源文件。
 - 如果更新失败（资源更新服务器炸了）您可以使用[ArcaeaAssetsUpdater](https://github.com/SEAFHMC/ArcaeaAssetsUpdater)搭建自己的资源更新服务器，然后在 config.yml 中填写您的api地址)
-- 还可以直接从[百度云](https://pan.baidu.com/s/1rR5NOy1zSeHIGZ97oNElTQ?pwd=c4iv)下载资源文件（更新至3.12.10c），并放置于bot目录/data/arcaea/assets中
+- 还可以直接从[百度云](https://pan.baidu.com/s/1yAirbWQ0JoCfyMgi3R0yIw?pwd=qwv1)下载资源文件（更新至4.0.255c），并放置于bot目录/data/arcaea/assets中
 
 ## 指令 Command
 
 <div align="center">
 
-| 指令                                        | 描述                                                              |
+| 指令                                         | 描述                                                              |
 | ------------------------------------------- | ------------------------------------------------------------      |
 | /arc assets_update                          | 更新曲绘, 请务必在您初次使用该插件或者 Arcaea 版本有更新时发送此命令   |
 | /arc help                                   | 查看该插件的帮助文档                                                |
@@ -59,8 +59,8 @@ Arcaea 查分器。
 | /arc b30                                    | 查询您的 best 30 记录                                              |
 | /arc best {songname} {difficulty}           | 查询您的单曲最佳记录                                               |
 | /arc song {songname} {difficulty}           | 查询歌曲信息                                                       |
-| /arc random {start} {end} {difficulty}      | 随机歌曲                                                          |
-| /arc preview {songname} {difficulty}         | 查询歌曲谱面预览                                                          |
+| /arc random {start} {end}                   | 随机歌曲                                                          |
+| /arc preview {songname} {difficulty}        | 查询歌曲谱面预览                                                          |
 
 </div>
   
