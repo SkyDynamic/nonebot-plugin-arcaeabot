@@ -23,6 +23,14 @@ async def check_song_update() -> List[str]:
                     with open(song_dir / args[-2] / args[-1], "wb") as file:
                         file.write(resp2.read())
                         result.append(args[-2])
+            elif missed := ({i.split("/")[-1] for i in v} - set(listdir(song_dir / k))):
+                for link in v:
+                    args = link.split("/")
+                    if args[-1] in missed:
+                        resp2 = await client.get(link)
+                        with open(song_dir / args[-2] / args[-1], "wb") as file:
+                            file.write(resp2.read())
+                            result.append(args[-2])
         return result
 
 

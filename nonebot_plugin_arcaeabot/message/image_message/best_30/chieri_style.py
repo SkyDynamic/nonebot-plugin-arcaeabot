@@ -38,7 +38,7 @@ def draw_score_detail(
 ) -> Image.Image:
     # Frame
     diff = song_score.difficulty
-    cover_name = "3.jpg" if song_info.jacket_override else "base.jpg"
+    cover_name = f"{diff}.jpg" if song_info.jacket_override else "base.jpg"
     song_background = open_img(
         StaticPath.song_dir / song_score.song_id / cover_name
     ).resize((270, 270))

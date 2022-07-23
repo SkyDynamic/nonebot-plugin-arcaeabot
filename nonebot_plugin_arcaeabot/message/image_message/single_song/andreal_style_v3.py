@@ -37,7 +37,7 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
     song_rating = score_info.rating
     constant = song_info.rating / 10
     # Back Ground
-    cover_name = "3.jpg" if song_info.jacket_override else "base.jpg"
+    cover_name = f"{difficulty}.jpg" if song_info.jacket_override else "base.jpg"
     image = Image.new("RGBA", (600, 867), (0, 0, 0, 0))
     song_cover = open_img(StaticPath.select_image("song", song_id, cover_name))
     image.alpha_composite(song_cover.resize((868, 868)), (-134, 0))
