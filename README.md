@@ -37,13 +37,13 @@ Arcaea 查分器。
 
 </div>
 
-使该项目被您的 NoneBot2 (nonebot2 及 nonebot-adapter-onebot 版本不得低于 `2.0.0-beta2` ) 机器人作为插件加载, 至于如何做, 您应该懂的。
+使该项目被您的 NoneBot2 (nonebot2 及 nonebot-adapter-onebot 版本不得低于 `2.0.0-beta4` ) 机器人作为插件加载, 至于如何做, 您应该懂的。
 
 ### 首次使用您需要更新资源文件(assets/song, assets/char)
 
 - 向bot发送"/arc assets_update"以更新资源文件。
 - 如果更新失败（资源更新服务器炸了）您可以使用[ArcaeaAssetsUpdater](https://github.com/SEAFHMC/ArcaeaAssetsUpdater)搭建自己的资源更新服务器，然后在 config.yml 中填写您的api地址)
-- 还可以直接从[百度云](https://pan.baidu.com/s/1yAirbWQ0JoCfyMgi3R0yIw?pwd=qwv1)下载资源文件（更新至4.0.255c），并放置于bot目录/data/arcaea/assets中
+- 还可以直接从[百度云](https://pan.baidu.com/s/1UWqU5S6tR7eG6s_fRK6Ksg?pwd=srhw)下载资源文件（更新至4.0.255c），并放置于bot目录/data/arcaea/assets中
 
 ## 指令 Command
 
