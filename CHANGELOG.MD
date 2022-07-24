@@ -1,5 +1,5 @@
 # Change
-## [3.0.9](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.9/)
+## [3.0.10](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.10/)
 - 修复了找不到部分歌曲封面的bug
 
 ## [3.0.3](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.3/)
