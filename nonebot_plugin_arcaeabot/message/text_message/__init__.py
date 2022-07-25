@@ -12,7 +12,11 @@ class TextMessage:
             return error_message
         content = data.content
         difficulty = ["Past", "Present", "Future", "Beyond"][content.ratingClass]
-        cover_name = f"{content.ratingClass}.jpg" if content.songinfo.jacket_override else "base.jpg"
+        cover_name = (
+            f"{content.ratingClass}.jpg"
+            if content.songinfo.jacket_override
+            else "base.jpg"
+        )
         image = "file:///" + str(assets_root / "song" / content.id / cover_name)
         result = "\n".join(
             [

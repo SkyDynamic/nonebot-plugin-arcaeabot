@@ -4,12 +4,12 @@ from ..config import config
 from ..schema import UserInfo, UserBest30, UserBest, SongRandom, AUASongInfo
 
 aua_ua = config.get_config("aua_ua")
-aua_url = config.get_config("aua_url")
+aua_url: str = config.get_config("aua_url")
 
 
 class API:
     headers = {"User-Agent": aua_ua}
-    base_url = aua_url
+    base_url = aua_url.replace("/botarcapi", "")
 
     @classmethod
     async def _quick_get(cls, url: str):
