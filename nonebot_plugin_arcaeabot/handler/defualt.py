@@ -1,4 +1,4 @@
-from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment
+from nonebot.adapters.onebot.v11 import MessageEvent, MessageSegment
 from ..matcher import arc
 
 

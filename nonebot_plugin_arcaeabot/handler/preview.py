@@ -1,4 +1,4 @@
-from nonebot.adapters.onebot.v11 import Bot, MessageEvent, Message, MessageSegment
+from nonebot.adapters.onebot.v11 import MessageEvent, Message, MessageSegment
 from nonebot.params import CommandArg
 from ..matcher import arc
 from ..api.request import API
@@ -12,7 +12,8 @@ async def preview_handler(event: MessageEvent, arg: Message = CommandArg()):
     args = arg.extract_plain_text().split()
     if len(args) >= 2 and args[0] == "preview":
         # get args
-        if difficulty := diffstr2num(args[-1].upper()):
+        difficulty = diffstr2num(args[-1].upper())
+        if difficulty is not None:
             songname = " ".join(args[1:-1])
         else:
             difficulty = 2

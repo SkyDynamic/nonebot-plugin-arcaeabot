@@ -15,7 +15,8 @@ async def best_handler(event: MessageEvent, arg: Message = CommandArg()):
     if len(args) >= 2 and args[0] == "best":
         user_info: UserInfo = UserInfo.get_or_none(UserInfo.user_qq == event.user_id)
         # get args
-        if difficulty := diffstr2num(args[-1].upper()):
+        difficulty = diffstr2num(args[-1].upper())
+        if difficulty is not None:
             songname = " ".join(args[1:-1])
         else:
             difficulty = 2
