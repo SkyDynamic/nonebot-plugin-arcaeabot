@@ -9,4 +9,4 @@ from .help import help_handler
 from .random import random_handler
 from .song import song_handler
 from .preview import preview_handler
-from .defualt import default_handler
+from .default import default_handler
