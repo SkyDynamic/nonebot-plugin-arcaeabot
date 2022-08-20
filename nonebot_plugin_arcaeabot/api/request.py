@@ -9,7 +9,7 @@ aua_url: str = config.get_config("aua_url")
 
 class API:
     headers = {"User-Agent": aua_ua}
-    base_url = aua_url.replace("/botarcapi", "")
+    base_url = aua_url.replace("/botarcapi/", "")
 
     @classmethod
     async def _quick_get(cls, url: str):
