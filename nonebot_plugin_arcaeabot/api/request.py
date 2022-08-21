@@ -3,12 +3,11 @@ from httpx import AsyncClient
 from ..config import config
 from ..schema import UserInfo, UserBest30, UserBest, SongRandom, AUASongInfo
 
-aua_ua = config.get_config("aua_ua")
 aua_url: str = config.get_config("aua_url")
-
+aua_token = config.get_config("aua_token")
 
 class API:
-    headers = {"User-Agent": aua_ua}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36","Authorization":"Bearer " + aua_token}
     base_url = aua_url.replace("/botarcapi/", "")
 
     @classmethod
