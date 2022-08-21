@@ -6,7 +6,7 @@ Config_path = Path() / "data" / "arcaea" / "config.yml"
 
 New_map = {
     "aua_url": "URL",
-    "aua_ua": "SECRET",
+    "aua_token": "SECRET",
     "src_url": "https://api.ritsuki.top/api/",
 }
 
