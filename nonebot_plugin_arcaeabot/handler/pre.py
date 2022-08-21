@@ -14,8 +14,8 @@ async def pre_handler(event: MessageEvent, arg: Message = CommandArg()):
             MessageSegment.reply(event.message_id) + TextMessage.help_message
         )
 
-    aua_ua = config.get_config("aua_ua")
+    aua_token = config.get_config("aua_token")
     aua_url = config.get_config("aua_url")
-    if aua_ua == "SECRET" or aua_url == "URL":
+    if aua_token == "SECRET" or aua_url == "URL":
         logger.error("ArcaeaUnlimitedApi is not configured!")
         await arc.finish("ArcaeaUnlimitedApi is not configured!")
