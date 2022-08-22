@@ -1,5 +1,5 @@
 # Change
-## [3.1.0](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.11/)
+## [3.1.0](https://pypi.org/project/nonebot-plugin-arcaeabot/3.1.0/)
 - 适配新版aua验证方式
 
 ## [3.0.13](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.11/)
