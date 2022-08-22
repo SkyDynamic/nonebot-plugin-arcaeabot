@@ -1,4 +1,7 @@
 # Change
+## [3.1.0](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.11/)
+- 适配新版aua验证方式
+
 ## [3.0.13](https://pypi.org/project/nonebot-plugin-arcaeabot/3.0.11/)
 - 修复了找不到部分歌曲封面的bug
 - 更换了帮助说明的图片（感谢群友Posui16）

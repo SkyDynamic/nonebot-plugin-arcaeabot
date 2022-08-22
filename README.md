@@ -22,7 +22,7 @@ Arcaea 查分器。
 
 ## 如何开始 Quick Start
 
-***请注意! 您需要填写相关配置才能正常使用***
+***请注意! 初次加载插件后会生成配置文件，您需要填写相关配置才能正常使用***
 
 使用前请确保您的Python版本>=3.8
 
@@ -32,8 +32,8 @@ Arcaea 查分器。
 
 | 参数               | 描述                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| AUA_URL | AUA的地址，如"https://www.example.com"</br>（不需要添加/botarcapi） |
-| AUA_UA | AUA请求头User-Agent，如"Grievous Lady (Linux; U; Android 2.3.3; BotArcAPI)" |
+| aua_url | AUA的地址，如"https://www.example.com"</br>（不需要添加/botarcapi） |
+| aua_token | AUA请求头User-Agent，如"Grievous Lady (Linux; U; Android 2.3.3; BotArcAPI)" |
 
 </div>
 
