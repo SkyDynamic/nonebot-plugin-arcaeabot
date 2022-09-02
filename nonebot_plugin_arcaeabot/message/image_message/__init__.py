@@ -21,7 +21,7 @@ class UserArcaeaInfo:
                 return error_message
             image = draw_user_b30(data=resp)
             buffer = BytesIO()
-            image.save(buffer, "png")
+            image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)
         except Exception as e:
             return str(e)
@@ -37,7 +37,7 @@ class UserArcaeaInfo:
                 return error_message
             image = draw_single_song(data=resp)
             buffer = BytesIO()
-            image.save(buffer, "png")
+            image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)
         except Exception as e:
             return str(e)
@@ -55,7 +55,7 @@ class UserArcaeaInfo:
                 return error_message
             image = draw_single_song(data=resp)
             buffer = BytesIO()
-            image.save(buffer, "png")
+            image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)
         except Exception as e:
             return str(e)
