@@ -16,9 +16,9 @@ async def assets_update_handler(event: MessageEvent, arg: Message = CommandArg()
             if args[1] == "--purge":
                 rmtree(ROOT / "assets", ignore_errors=True)
             if args[1] == "--standalone":
-                await arc.send(MessageSegment.reply(event.user_id) + "正在更新……")
+                await arc.send(MessageSegment.reply(event.message_id) + "正在更新……")
                 await ApkUpdater.update()
-                await arc.finish(MessageSegment.reply(event.user_id) + "更新完成")
+                await arc.finish(MessageSegment.reply(event.message_id) + "更新完成")
         await arc.send("正在更新，请关注控制台更新进度…")
 
         result_song = await AssetsUpdater.check_song_update()

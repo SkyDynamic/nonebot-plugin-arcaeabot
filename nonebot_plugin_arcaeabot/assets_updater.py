@@ -2,7 +2,7 @@ from .resource_manager import assets_root
 from .resource_manager import db_root as ROOT
 from httpx import AsyncClient
 from tqdm import tqdm
-from os import listdir, makedirs
+from os import listdir, makedirs, remove
 from typing import List
 from .config import config
 from shutil import move, copy, rmtree
@@ -98,6 +98,7 @@ class ApkUpdater:
             ROOT / "assets" / "char" / "5_icon.png",
             ROOT / "assets" / "char" / "5u_icon.png",
         )
+        zip_file.close() and remove(ROOT / f"arcaea_{version}.apk")
 
     @classmethod
     async def update(cls):
