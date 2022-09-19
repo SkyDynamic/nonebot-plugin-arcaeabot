@@ -98,7 +98,8 @@ class ApkUpdater:
             ROOT / "assets" / "char" / "5_icon.png",
             ROOT / "assets" / "char" / "5u_icon.png",
         )
-        zip_file.close() and remove(ROOT / f"arcaea_{version}.apk")
+        zip_file.close()
+        remove(ROOT / f"arcaea_{version}.apk")
 
     @classmethod
     async def update(cls):
