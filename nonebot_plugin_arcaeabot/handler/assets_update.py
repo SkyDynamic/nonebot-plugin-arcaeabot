@@ -1,6 +1,6 @@
 from ..matcher import arc
 from ..assets_updater import AssetsUpdater, ApkUpdater
-from ..resource_manager import assets_root
+from ..resource_manager import db_root as ROOT
 from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
 from nonebot.params import CommandArg
@@ -14,10 +14,7 @@ async def assets_update_handler(event: MessageEvent, arg: Message = CommandArg()
     if args[0] == "assets_update":
         if len(args) == 2:
             if args[1] == "--purge":
-                if path.exists(assets_root / "song"):
-                    rmtree(assets_root / "song")
-                if path.exists(assets_root / "char"):
-                    rmtree(assets_root / "char")
+                rmtree(ROOT / "assets", ignore_errors=True)
             if args[1] == "--standalone":
                 await arc.send(MessageSegment.reply(event.user_id) + "正在更新……")
                 await ApkUpdater.update()

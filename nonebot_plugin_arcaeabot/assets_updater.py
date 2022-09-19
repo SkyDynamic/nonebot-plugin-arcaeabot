@@ -9,6 +9,7 @@ from shutil import move, copy, rmtree
 from zipfile import ZipFile
 import ujson as json
 from aiofiles import open as async_open
+from re import match
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
@@ -85,7 +86,7 @@ class ApkUpdater:
             version = json.loads(f.read())["value"]["version"]
         zip_file = ZipFile(ROOT / f"arcaea_{version}.apk")
         for file in zip_file.namelist():
-            if file.startswith(("assets/songs", "assets/char")):
+            if match(r"^assets\/((char.*png)|(song.*(base|[0123]).jpg))$", file):
                 zip_file.extract(file, ROOT)
         for song_id in listdir(ROOT / "assets" / "songs"):
             move(
