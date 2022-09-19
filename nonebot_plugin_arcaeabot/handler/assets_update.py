@@ -1,5 +1,5 @@
 from ..matcher import arc
-from ..assets_updater import check_song_update, check_char_update
+from ..assets_updater import AssetsUpdater, ApkUpdater
 from ..resource_manager import assets_root
 from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
@@ -18,10 +18,14 @@ async def assets_update_handler(event: MessageEvent, arg: Message = CommandArg()
                     rmtree(assets_root / "song")
                 if path.exists(assets_root / "char"):
                     rmtree(assets_root / "char")
+            if args[1] == "--standalone":
+                await arc.send(MessageSegment.reply(event.user_id) + "正在更新……")
+                await ApkUpdater.update()
+                await arc.finish(MessageSegment.reply(event.user_id) + "更新完成")
         await arc.send("正在更新，请关注控制台更新进度…")
 
-        result_song = await check_song_update()
-        result_char = await check_char_update()
+        result_song = await AssetsUpdater.check_song_update()
+        result_char = await AssetsUpdater.check_char_update()
 
         await arc.finish(
             MessageSegment.reply(event.message_id)
