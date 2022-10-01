@@ -1,4 +1,3 @@
-from typing import Union
 from httpx import AsyncClient
 from ..config import config
 from ..schema import UserInfo, UserBest30, UserBest, SongRandom, AUASongInfo
@@ -12,7 +11,7 @@ class API:
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
         "Authorization": f"Bearer {aua_token}",
     }
-    base_url = aua_url.replace("/botarcapi/", "")
+    base_url = aua_url.removesuffix("/botarcapi/")
 
     @classmethod
     async def _quick_get(cls, url: str):
@@ -39,7 +38,9 @@ class API:
         return UserBest(**resp.json())
 
     @classmethod
-    async def get_song_random(cls, start: Union[str, float], end: Union[str, float]):
+    async def get_song_random(cls, start: str, end: str):
+        start = int(float(start.replace("+", ".5")) * 2)
+        end = int(float(end.replace("+", ".5")) * 2)
         url = f"{cls.base_url}/botarcapi/song/random?start={start}&end={end}&withsonginfo=true"
         resp = await cls._quick_get(url=url)
         return SongRandom(**resp.json())
