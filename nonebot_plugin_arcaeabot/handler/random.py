@@ -10,8 +10,8 @@ async def random_handler(event: MessageEvent, arg: Message = CommandArg()):
     args = {i: v for i, v in enumerate(args)}
     if args.get(0, None) == "random":
         # get args
-        start = args.get(1, 0)
-        end = args.get(2, 233)
+        start = args.get(1, "0")
+        end = args.get(2, "20")
         resp = await API.get_song_random(start=start, end=end)
         if error_message := resp.message:
             await arc.finish(MessageSegment.reply(event.message_id) + error_message)
