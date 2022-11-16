@@ -24,7 +24,7 @@ Arcaea 查分器。
 
 ***请注意! 初次加载插件后会生成配置文件，您需要填写相关配置才能正常使用***
 
-使用前请确保您的Python版本>=3.8
+使用前请确保您的Python版本>=3.9
 
 项目默认使用AUA (ArcaeaUnlimitedApi)，您需要申请相关apiurl与token(user-agent)并在机器人所在目录`data\arcaea\config.yml`中填写
 
@@ -42,7 +42,9 @@ Arcaea 查分器。
 ### 首次使用您需要更新资源文件(assets/song, assets/char)
 
 - 向bot发送"/arc assets_update"以更新资源文件。
-- 如果更新失败（资源更新服务器炸了）您可以使用[ArcaeaAssetsUpdater](https://github.com/SEAFHMC/ArcaeaAssetsUpdater)搭建自己的资源更新服务器，然后在 config.yml 中填写您的api地址)
+#### 如果更新失败（资源更新服务器炸了）
+- 您可以使用[ArcaeaAssetsUpdater](https://github.com/SEAFHMC/ArcaeaAssetsUpdater)搭建自己的资源更新服务器，然后在 config.yml 中填写您的api地址)
+- 要不试试/arc assets_update --standalone
 - 还可以直接从[百度云](https://pan.baidu.com/s/1UWqU5S6tR7eG6s_fRK6Ksg?pwd=srhw)下载资源文件（更新至4.0.255c），并放置于bot目录/data/arcaea/assets中
 
 ## 指令 Command
