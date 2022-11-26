@@ -30,6 +30,7 @@ async def best_handler(event: MessageEvent, arg: Message = CommandArg()):
                 MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
             )
         # Query
+        await arc.send(MessageSegment.reply(event.message_id) + "开始查询Best中，请稍后...")
         result = await UserArcaeaInfo.draw_user_best(
             arcaea_id=user_info.arcaea_id, songname=songname, difficulty=difficulty
         )
