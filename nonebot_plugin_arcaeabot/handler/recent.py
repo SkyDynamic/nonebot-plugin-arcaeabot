@@ -22,5 +22,6 @@ async def recent_handler(event: MessageEvent, arg: Message = CommandArg()):
             )
 
         # Query
+        await arc.send(MessageSegment.reply(event.message_id) + "开始查询您最近的游玩记录中，请稍后...")
         result = await UserArcaeaInfo.draw_user_recent(arcaea_id=user_info.arcaea_id)
         await arc.finish(MessageSegment.reply(event.message_id) + result)
