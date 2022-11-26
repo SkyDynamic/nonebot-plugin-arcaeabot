@@ -16,5 +16,6 @@ async def b30_handler(event: MessageEvent, arg: Message = CommandArg()):
             await arc.finish(
                 MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
             )
+        await arc.send(MessageSegment.reply(event.message_id) + "开始查询Bests30中，请稍后...")
         result = await UserArcaeaInfo.draw_user_b30(user_info.arcaea_id)
         await arc.finish(MessageSegment.reply(event.message_id) + result)
