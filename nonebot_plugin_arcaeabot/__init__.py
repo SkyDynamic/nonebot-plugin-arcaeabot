@@ -12,6 +12,7 @@ from .handler import (
     song_handler,
     default_handler,
     preview_handler,
+    ptt_handler
 )
 from nonebot.plugin import PluginMetadata
 
@@ -37,4 +38,5 @@ arc.handle()(info_handler)
 arc.handle()(assets_update_handler)
 arc.handle()(help_handler)
 arc.handle()(random_handler)
+arc.handle()(ptt_handler)
 arc.handle()(default_handler)
