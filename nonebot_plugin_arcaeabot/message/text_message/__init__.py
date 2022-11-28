@@ -1,5 +1,6 @@
 from ...schema import SongRandom, AUASongInfo
 from ...resource_manager import assets_root, StaticPath
+from ...schema import UserBest30
 from nonebot.adapters.onebot.v11.message import MessageSegment
 
 
@@ -86,3 +87,26 @@ class TextMessage:
         )
         result += "\n获取详细信息请在添加难度后缀"
         return MessageSegment.image(image) + "\n" + result
+
+    @staticmethod
+    def user_ptt(data: UserBest30):
+        user_best30 = data.content
+        best30 = user_best30.best30_avg
+        best10_sum = sum([i.rating for i in user_best30.best30_list[:10]])
+        best30_sum = sum([i.rating for i in user_best30.best30_list[:30]])
+        recent10 = user_best30.recent10_avg
+        account_info = user_best30.account_info
+        rating = account_info.rating
+        arcaea_id = account_info.code
+        name = account_info.name
+        result = "\n".join(
+                [
+                    f"Arcaea_ID：{arcaea_id}",
+                    f"Arcaea_Name：{name}",
+                    f"Arcaea_User_Ptt：{rating/100}",
+                    f"Best30_Ptt：{best30:.3f}",
+                    f"Recent10_Ptt：{recent10:.3f}",
+                    f"无推分Ptt：{(best30_sum + best10_sum) / 40:.3f}"
+                ]
+            )
+        return result
