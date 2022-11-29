@@ -197,3 +197,55 @@ def draw_user_b30(data: UserBest30):
             (background_x, background_y),
         )
     return B30_bg
+
+def draw_ptt(data: UserBest30):
+    B30_bg = open_img(StaticPath.ptt)
+    user_best30 = data.content
+    # User Info
+    best = user_best30.best30_avg
+    recent = user_best30.recent10_avg
+    theory_ptt = (sum([i.rating for i in user_best30.best30_list[:10]]) + sum([i.rating for i in user_best30.best30_list[:30]])) / 40
+    account_info = user_best30.account_info
+    arcaea_id = account_info.code
+    name = account_info.name
+    rating = account_info.rating
+    character = account_info.character
+    is_char_uncapped_override: bool = account_info.is_char_uncapped_override
+    is_char_uncapped: bool = account_info.is_char_uncapped
+    icon: str = (
+        f"{character}u_icon.png"
+        if is_char_uncapped ^ is_char_uncapped_override
+        else f"{character}_icon.png"
+    )
+    icon = open_img(StaticPath.char_dir / icon).resize((250, 250))
+    B30_bg.alpha_composite(icon, (75, 130))
+    ptt_background = open_img(
+        StaticPath.ptt_dir / choice_ptt_background(rating)
+    ).resize((150, 150))
+    B30_bg.alpha_composite(ptt_background, (200, 280))
+    raw_ptt = f"{(rating/100):.2f}".split(".")
+    if rating == -1:
+        write_ptt = DataText(275, 375, 50, "--", StaticPath.exo_medium, "mb")
+        B30_bg = draw_text(B30_bg, write_ptt, stroke_fill="Black", stroke_width=2)
+    else:
+        write_ptt_head = DataText(
+            270, 370, 50, raw_ptt[0], StaticPath.exo_medium, anchor="rs"
+        )
+        B30_bg = draw_text(B30_bg, write_ptt_head, stroke_fill="Black", stroke_width=2)
+        write_ptt_tail = DataText(
+            270, 370, 40, "." + raw_ptt[1], StaticPath.exo_medium, anchor="ls"
+        )
+        B30_bg = draw_text(B30_bg, write_ptt_tail, stroke_fill="Black", stroke_width=2)
+    write_arcname = DataText(355, 280, 100, name, StaticPath.exo_medium, anchor="lb")
+    B30_bg = draw_text(B30_bg, write_arcname)
+    write_arcaea_id = DataText(
+        380, 364, 60, f"ID:{arcaea_id}", StaticPath.exo_medium, anchor="lb"
+    )
+    B30_bg = draw_text(B30_bg, write_arcaea_id)
+    write_b30 = DataText(310, 800, 100, f"{(best):.3f}", StaticPath.exo_medium, anchor="lb")
+    B30_bg = draw_text(B30_bg, write_b30)
+    write_r10 = DataText(1300, 800, 100, f"{(recent):.3f}", StaticPath.exo_medium, anchor="lb")
+    B30_bg = draw_text(B30_bg, write_r10)
+    write_theory_ptt = DataText(770, 1200, 150, f"{(theory_ptt):.3f}", StaticPath.exo_medium, anchor="lb")
+    B30_bg = draw_text(B30_bg, write_theory_ptt)
+    return B30_bg
