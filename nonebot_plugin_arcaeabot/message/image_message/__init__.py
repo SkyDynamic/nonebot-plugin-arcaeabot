@@ -1,4 +1,4 @@
-from .best_30.chieri_style import draw_user_b30
+from .best_30.chieri_style import draw_user_b30, draw_ptt
 from .single_song.andreal_style_v3 import draw_single_song
 from ...api.request import API
 from io import BytesIO
@@ -20,6 +20,22 @@ class UserArcaeaInfo:
             if error_message := resp.message:
                 return error_message
             image = draw_user_b30(data=resp)
+            buffer = BytesIO()
+            image.convert("RGB").save(buffer, "jpeg")
+            return MessageSegment.image(buffer)
+        except Exception as e:
+            return str(e)
+        finally:
+            UserArcaeaInfo.querying.remove(arcaea_id)
+
+    @staticmethod
+    async def draw_user_ptt(arcaea_id: str):
+        UserArcaeaInfo.querying.append(arcaea_id)
+        try:
+            resp = await API.get_user_b30(arcaea_id=arcaea_id)
+            if error_message := resp.message:
+                return error_message
+            image = draw_ptt(data=resp)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)

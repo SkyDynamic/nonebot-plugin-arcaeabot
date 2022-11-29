@@ -1,8 +1,6 @@
 from ..matcher import arc
 from ..database import UserInfo
 from ..message.image_message import UserArcaeaInfo
-from ..message.text_message import TextMessage
-from ..api.request import API
 from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
 from nonebot.params import CommandArg
@@ -17,6 +15,5 @@ async def ptt_handler(event: MessageEvent, arg: Message = CommandArg()):
                 await arc.finish(
                     MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
                 )
-            resp = await API.get_user_b30(arcaea_id=user_info.arcaea_id)
-            result = TextMessage.user_ptt(resp)
+            result = await UserArcaeaInfo.draw_user_ptt(user_info.arcaea_id)
             await arc.finish(MessageSegment.reply(event.message_id) + result)

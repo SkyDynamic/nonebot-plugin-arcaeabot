@@ -16,6 +16,7 @@ class StaticPath:
     divider = resource_root / "b30" / "Divider.png"
     mask = resource_root / "b30" / "mask.png"
     table = resource_root / "b30" / "table.png"
+    ptt = resource_root / "b30" / "Ptt.png"
     char_dir = assets_root / "char"
     song_dir = assets_root / "song"
     ptt_dir = resource_root / "ptt"
