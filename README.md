@@ -32,8 +32,8 @@ Arcaea 查分器。
 
 | 参数               | 描述                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| aua_url | AUA的地址，如"https://www.example.com"</br>（不需要添加/botarcapi） |
-| aua_token | AUA请求头User-Agent，如"Grievous Lady (Linux; U; Android 2.3.3; BotArcAPI)" |
+| aua_url | AUA的地址，如"https://www.example.com"</br>|
+| aua_token | AUA的认证token，如"sb616" |
 
 </div>
 
