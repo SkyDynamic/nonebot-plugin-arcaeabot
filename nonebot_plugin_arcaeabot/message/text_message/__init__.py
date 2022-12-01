@@ -1,6 +1,5 @@
 from ...schema import SongRandom, AUASongInfo
 from ...resource_manager import assets_root, StaticPath
-from ...schema import UserBest30
 from nonebot.adapters.onebot.v11.message import MessageSegment
 
 

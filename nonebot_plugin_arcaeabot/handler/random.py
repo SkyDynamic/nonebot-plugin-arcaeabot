@@ -8,7 +8,7 @@ from ..api.request import API
 async def random_handler(event: MessageEvent, arg: Message = CommandArg()):
     args = arg.extract_plain_text().split()
     args = {i: v for i, v in enumerate(args)}
-    if args.get(0, None) == "random":
+    if args.get(0, None) == "random" or args.get(0, None) == "rd":
         # get args
         start = args.get(1, "0")
         end = args.get(2, "20")
