@@ -1,6 +1,7 @@
 # Change
-## [3.1.1]
+## [3.1.4]
 - 替换输出图片为jpeg格式，节省发送时间和流量
+- 增加了查询无推分ptt指令
 
 ## [3.1.0](https://pypi.org/project/nonebot-plugin-arcaeabot/3.1.0/)
 - 适配新版aua验证方式
