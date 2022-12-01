@@ -51,19 +51,9 @@ Arcaea 查分器。
 
 <div align="center">
 
-| 指令                                         | 描述                                                              |
-| ------------------------------------------- | ------------------------------------------------------------      |
-| /arc assets_update                          | 更新曲绘, 请务必在您初次使用该插件或者 Arcaea 版本有更新时发送此命令   |
-| /arc help                                   | 查看该插件的帮助文档                                                |
-| /arc bind {id}                              | 绑定您的 Arcaea 账户, 可以是id也可以是用户名                          |
-| /arc info                                   | 查询您的绑定信息                                                   |
-| /arc ptt                                    | 查询您的游玩ptt（Best30、Recent10、无推分）                         |
-| /arc recent                                 | 查询您的最近游玩信息                                               |
-| /arc b30                                    | 查询您的 best 30 记录                                              |
-| /arc best {songname} {difficulty}           | 查询您的单曲最佳记录                                               |
-| /arc song {songname} {difficulty}           | 查询歌曲信息                                                       |
-| /arc random {start} {end}                   | 随机歌曲                                                          |
-| /arc preview {songname} {difficulty}        | 查询歌曲谱面预览                                                          |
+
+![image](https://user-images.githubusercontent.com/9484642/204998386-e1599a15-720b-4d75-bf4e-385c071703ff.png)
+
 
 </div>
   
