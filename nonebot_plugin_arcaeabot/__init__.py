@@ -5,8 +5,6 @@ from .handler import (
     pre_handler,
     bind_handler,
     info_handler,
-    recent_handler,
-    best_handler,
     help_handler,
     random_handler,
     song_handler,
@@ -29,8 +27,6 @@ __plugin_meta__ = PluginMetadata(
 
 arc.handle()(pre_handler)
 arc.handle()(b30_handler)
-arc.handle()(recent_handler)
-arc.handle()(best_handler)
 arc.handle()(song_handler)
 arc.handle()(preview_handler)
 arc.handle()(bind_handler)
