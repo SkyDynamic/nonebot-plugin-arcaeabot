@@ -40,24 +40,5 @@ class StaticPath:
         return path.join(str(assets_root), *args)
 
     @staticmethod
-    def is_failed(character: int, health: int, score: int, lost_count: int):
-        def _check(x, y):
-            return (
-                x not in [7, 10, 14, 15, 28, 29, 35, 36, 37, 41, 42, 43] and y < 70
-            ) or (y == -1)
-
-        return (
-            StaticPath.track_failed
-            if _check(character, health)
-            else track_complete(score, lost_count)
-        )
-
-
-def track_complete(score: int, lost_count: int) -> str:
-    if not lost_count:
-        return (
-            resource_root / "recent" / "clear_pure.png"
-            if score > int(1e7)
-            else resource_root / "recent" / "clear_full.png"
-        )
-    return resource_root / "recent" / "clear_normal.png"
+    def is_failed(type: str):
+        return resource_root / "recent" / f"{type}.png"
