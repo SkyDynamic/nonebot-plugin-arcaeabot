@@ -52,7 +52,7 @@ Arcaea 查分器。
 <div align="center">
 
 
-![image](https://user-images.githubusercontent.com/9484642/204998386-e1599a15-720b-4d75-bf4e-385c071703ff.png)
+![image](nonebot_plugin_arcaeabot/resource/help.png)
 
 
 </div>
