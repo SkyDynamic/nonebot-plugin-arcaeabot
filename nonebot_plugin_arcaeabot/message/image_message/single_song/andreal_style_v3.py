@@ -101,20 +101,21 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
         difficulty
     ]
     image = draw_text(image, write_difficulty, diff_color)
+    clear_type = ("TL", "NC", "FR", "PM", "EC", "HC")[score_info.clear_type]
+    track_type = get_track_type(clear_type)
     track_info = open_img(
         StaticPath.is_failed(
-            character=character, health=health, score=score, lost_count=miss_count
+            track_type
         )
     )
     origin_size_w, origin_size_h = track_info.size
     track_info = track_info.resize((400, int(400 / origin_size_w * origin_size_h)))
     image.alpha_composite(track_info, (100, 615))
-    clear_type = ("[TL]", "[NC]", "[FR]", "[PM]", "[EC]", "[HC]")[score_info.clear_type]
     write_score = DataText(
         300,
         680,
         40,
-        format(score, ",").replace(",", "'") + "  " + clear_type,
+        format(score, ",").replace(",", "'") + f"  [{clear_type}]" ,
         StaticPath.exo_regular,
         "mt",
     )
@@ -139,3 +140,13 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
     write_lost_count = DataText(450, 845, 17, miss_count, StaticPath.exo_medium, "ls")
     image = draw_text(image, write_lost_count, "black")
     return image
+
+def get_track_type(type: str):
+    if type in ['NC', 'EC', 'HC']:
+        return 'clear_normal'
+    elif type == 'PM':
+        return 'clear_pure'
+    elif type == 'FR':
+        return 'clear_full'
+    elif type == 'TL':
+        return 'clear_fail'
