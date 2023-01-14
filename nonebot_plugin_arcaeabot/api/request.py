@@ -11,7 +11,8 @@ class API:
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
         "Authorization": f"Bearer {aua_token}",
     }
-    base_url = aua_url.removesuffix("/botarcapi/")
+    # 适配Python 3.8
+    base_url = aua_url.replace('/botarcapi/','')
 
     @classmethod
     async def _quick_get(cls, url: str):
