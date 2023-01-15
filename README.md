@@ -24,7 +24,7 @@ Arcaea 查分器。
 
 ***请注意! 初次加载插件后会生成配置文件，您需要填写相关配置才能正常使用***
 
-使用前请确保您的Python版本>=3.9
+使用前请确保您的Python版本>=3.8
 
 项目默认使用AUA (ArcaeaUnlimitedApi)，您需要申请相关apiurl与token(user-agent)并在机器人所在目录`data\arcaea\config.yml`中填写
 
