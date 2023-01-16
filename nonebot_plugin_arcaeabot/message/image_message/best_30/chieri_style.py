@@ -54,8 +54,13 @@ def draw_score_detail(
     text_overlay = Image.new("RGBA", (560, 270), (0, 0, 0, 0))
     write_song_name = DataText(45, 32, 40, song_name, StaticPath.roboto_regular)
     text_overlay = draw_text(text_overlay, write_song_name, average_color)
-    write_score = DataText(45, 80, 40, f"{song_score.score:,}", StaticPath.exo_medium)
-    text_overlay = draw_text(text_overlay, write_score, average_color)
+    write_score = DataText(45, 80, 40, f"{song_score.score:,}".replace(',',"'"), StaticPath.exo_medium)
+    if song_score.shiny_perfect_count == song_info.note:
+        write_theoretical_score = DataText(48, 83, 40, f"{song_score.score:,}".replace(',',"'"), StaticPath.exo_medium)
+        text_overlay = draw_text(text_overlay, write_theoretical_score, (0, 160, 170, 120))
+        text_overlay = draw_text(text_overlay, write_score, average_color)
+    else:
+        text_overlay = draw_text(text_overlay, write_score, average_color)
     write_ranking = DataText(490, 20, 30, f"#{rank + 1}", StaticPath.exo_medium)
     image = draw_text(image, write_ranking, (255, 255, 255, 255), 1)
     # Table
