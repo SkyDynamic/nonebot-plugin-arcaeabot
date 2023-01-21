@@ -118,10 +118,7 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
         StaticPath.exo_regular,
         "mt",
     )
-    if score_info.shiny_perfect_count == song_info.note:
-        image = draw_text(image, write_score, 'red')
-    else:
-        image = draw_text(image, write_score, "black")
+    image = draw_text(image, write_score, "black")
     write_PURE = DataText(380, 775, 20, "Pure", StaticPath.exo_medium, "ls")
     image = draw_text(image, write_PURE, "black")
     write_pure_count = DataText(
