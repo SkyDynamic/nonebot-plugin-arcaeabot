@@ -27,9 +27,9 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     song_id = score_info.song_id
     song_info = data.content.songinfo[0]
     # 判断用户的自定义语言
-    if language == 'en' or not language:
+    if language == "en" or not language:
         song_name = song_info.name_en
-    elif language == 'jp':
+    elif language == "jp":
         song_name = song_info.name_jp
     # 判断歌曲名是否拥有日文名，如没有则转为en
     if not song_name:
@@ -109,11 +109,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     image = draw_text(image, write_difficulty, diff_color)
     clear_type = ("TL", "NC", "FR", "PM", "EC", "HC")[score_info.clear_type]
     track_type = get_track_type(clear_type)
-    track_info = open_img(
-        StaticPath.is_failed(
-            track_type
-        )
-    )
+    track_info = open_img(StaticPath.is_failed(track_type))
     origin_size_w, origin_size_h = track_info.size
     track_info = track_info.resize((400, int(400 / origin_size_w * origin_size_h)))
     image.alpha_composite(track_info, (100, 615))
@@ -121,7 +117,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         300,
         680,
         40,
-        format(score, ",").replace(",", "'") + f"  [{clear_type}]" ,
+        format(score, ",").replace(",", "'") + f"  [{clear_type}]",
         StaticPath.exo_regular,
         "mt",
     )
@@ -147,12 +143,13 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     image = draw_text(image, write_lost_count, "black")
     return image
 
+
 def get_track_type(type: str):
-    if type in ['NC', 'EC', 'HC']:
-        return 'clear_normal'
-    elif type == 'PM':
-        return 'clear_pure'
-    elif type == 'FR':
-        return 'clear_full'
-    elif type == 'TL':
-        return 'clear_fail'
+    if type in ["NC", "EC", "HC"]:
+        return "clear_normal"
+    elif type == "PM":
+        return "clear_pure"
+    elif type == "FR":
+        return "clear_full"
+    elif type == "TL":
+        return "clear_fail"

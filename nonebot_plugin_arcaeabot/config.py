@@ -46,16 +46,17 @@ class ConfigsManager:
             return self._data[key]
         return None
 
+
 class UserUIConfig:
     def read(self) -> dict:
         if os.path.exists(User_Config_path) == False:
             self.write({})
         if os.path.exists(User_Config_path):
-            with open(User_Config_path, 'r', encoding='utf-8') as fi:
+            with open(User_Config_path, "r", encoding="utf-8") as fi:
                 return json.load(fi)
-    
+
     def write(self, data):
-        with open(User_Config_path,'w',encoding='utf-8') as f:
+        with open(User_Config_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
 

@@ -5,11 +5,13 @@ from ..schema import UserInfo, UserBest30, UserBest, SongRandom, AUASongInfo
 aua_url: str = config.get_config("aua_url")
 aua_token = config.get_config("aua_token")
 
+
 def removesuffix(s: str, suffix: str) -> str:
     if suffix and s.endswith(suffix):
-        return s[:-len(suffix)]
+        return s[: -len(suffix)]
     else:
         return s[:]
+
 
 class API:
     headers = {

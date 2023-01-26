@@ -29,6 +29,8 @@ async def pre_handler(event: MessageEvent, arg: Message = CommandArg()):
         # Query
         await arc.send(MessageSegment.reply(event.message_id) + "开始查询您最近的游玩记录中，请稍后...")
         user_config = UserUIConfig().read().get(str(event.user_id))
-        language = user_config.get('language') if user_config else None
-        result = await UserArcaeaInfo.draw_user_recent(arcaea_id=user_info.arcaea_id,language=language)
+        language = user_config.get("language") if user_config else None
+        result = await UserArcaeaInfo.draw_user_recent(
+            arcaea_id=user_info.arcaea_id, language=language
+        )
         await arc.finish(MessageSegment.reply(event.message_id) + result)

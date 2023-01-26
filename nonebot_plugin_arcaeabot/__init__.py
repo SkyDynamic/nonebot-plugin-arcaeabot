@@ -11,7 +11,7 @@ from .handler import (
     default_handler,
     preview_handler,
     ptt_handler,
-    ui_handler
+    ui_handler,
 )
 from nonebot.plugin import PluginMetadata
 
