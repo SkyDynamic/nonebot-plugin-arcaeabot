@@ -2,7 +2,11 @@ from typing import Optional, Any
 from pathlib import Path
 from ruamel import yaml
 
+import os
+import json
+
 Config_path = Path() / "data" / "arcaea" / "config.yml"
+User_Config_path = Path() / "data" / "arcaea" / "user_config.json"
 
 New_map = {
     "aua_url": "URL",
@@ -41,6 +45,19 @@ class ConfigsManager:
         if self._data[key] is not None:
             return self._data[key]
         return None
+
+
+class UserUIConfig:
+    def read(self) -> dict:
+        if os.path.exists(User_Config_path) == False:
+            self.write({})
+        if os.path.exists(User_Config_path):
+            with open(User_Config_path, "r", encoding="utf-8") as fi:
+                return json.load(fi)
+
+    def write(self, data):
+        with open(User_Config_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
 
 
 config = ConfigsManager(Config_path)

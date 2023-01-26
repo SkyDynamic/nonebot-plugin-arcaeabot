@@ -6,13 +6,20 @@ aua_url: str = config.get_config("aua_url")
 aua_token = config.get_config("aua_token")
 
 
+def removesuffix(s: str, suffix: str) -> str:
+    if suffix and s.endswith(suffix):
+        return s[: -len(suffix)]
+    else:
+        return s[:]
+
+
 class API:
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
         "Authorization": f"Bearer {aua_token}",
     }
-    # 适配Python 3.8
-    base_url = aua_url.replace('/botarcapi/','')
+    # 真正适配Python 3.8
+    base_url = removesuffix(aua_url, "/botarcapi/")
 
     @classmethod
     async def _quick_get(cls, url: str):

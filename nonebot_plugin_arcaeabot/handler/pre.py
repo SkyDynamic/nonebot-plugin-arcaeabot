@@ -1,6 +1,7 @@
 from ..matcher import arc
 from ..config import config
 from ..database import UserInfo
+from ..config import UserUIConfig
 from ..message.image_message import UserArcaeaInfo
 from nonebot.log import logger
 from nonebot.adapters.onebot.v11.event import MessageEvent
@@ -27,5 +28,9 @@ async def pre_handler(event: MessageEvent, arg: Message = CommandArg()):
             )
         # Query
         await arc.send(MessageSegment.reply(event.message_id) + "开始查询您最近的游玩记录中，请稍后...")
-        result = await UserArcaeaInfo.draw_user_recent(arcaea_id=user_info.arcaea_id)
+        user_config = UserUIConfig().read().get(str(event.user_id))
+        language = user_config.get("language") if user_config else None
+        result = await UserArcaeaInfo.draw_user_recent(
+            arcaea_id=user_info.arcaea_id, language=language
+        )
         await arc.finish(MessageSegment.reply(event.message_id) + result)

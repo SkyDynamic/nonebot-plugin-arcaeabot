@@ -5,7 +5,7 @@ from ..utils import *
 from ....resource_manager import StaticPath
 
 
-def draw_single_song(data: Union[UserBest, UserInfo]):
+def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     # User Info
     account_info = data.content.account_info
     arcaea_id = account_info.code
@@ -26,14 +26,20 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
         score_info = data.content.record
     song_id = score_info.song_id
     song_info = data.content.songinfo[0]
-    song_name = song_info.name_en
+    # 判断用户的自定义语言
+    if language == "en" or not language:
+        song_name = song_info.name_en
+    elif language == "jp":
+        song_name = song_info.name_jp
+    # 判断歌曲名是否拥有日文名，如没有则转为en
+    if not song_name:
+        song_name = song_info.name_en
     difficulty = score_info.difficulty
     score = score_info.score
     shiny_perfect_count = score_info.shiny_perfect_count
     perfect_count = score_info.perfect_count
     near_count = score_info.near_count
     miss_count = score_info.miss_count
-    health = score_info.health
     song_rating = score_info.rating
     constant = song_info.rating / 10
     # Back Ground
@@ -87,7 +93,7 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
         StaticPath.exo_regular,
     )
     image = draw_text(image, write_playtime, (110, 110, 110))
-    write_song_name = DataText(300, 520, 25, song_name, StaticPath.roboto_regular, "mt")
+    write_song_name = DataText(300, 520, 25, song_name, StaticPath.nsc_regular, "mt")
     image = draw_text(image, write_song_name, "black")
     write_difficulty = DataText(
         300,
@@ -103,11 +109,7 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
     image = draw_text(image, write_difficulty, diff_color)
     clear_type = ("TL", "NC", "FR", "PM", "EC", "HC")[score_info.clear_type]
     track_type = get_track_type(clear_type)
-    track_info = open_img(
-        StaticPath.is_failed(
-            track_type
-        )
-    )
+    track_info = open_img(StaticPath.is_failed(track_type))
     origin_size_w, origin_size_h = track_info.size
     track_info = track_info.resize((400, int(400 / origin_size_w * origin_size_h)))
     image.alpha_composite(track_info, (100, 615))
@@ -115,7 +117,7 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
         300,
         680,
         40,
-        format(score, ",").replace(",", "'") + f"  [{clear_type}]" ,
+        format(score, ",").replace(",", "'") + f"  [{clear_type}]",
         StaticPath.exo_regular,
         "mt",
     )
@@ -141,12 +143,13 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
     image = draw_text(image, write_lost_count, "black")
     return image
 
+
 def get_track_type(type: str):
-    if type in ['NC', 'EC', 'HC']:
-        return 'clear_normal'
-    elif type == 'PM':
-        return 'clear_pure'
-    elif type == 'FR':
-        return 'clear_full'
-    elif type == 'TL':
-        return 'clear_fail'
+    if type in ["NC", "EC", "HC"]:
+        return "clear_normal"
+    elif type == "PM":
+        return "clear_pure"
+    elif type == "FR":
+        return "clear_full"
+    elif type == "TL":
+        return "clear_fail"
