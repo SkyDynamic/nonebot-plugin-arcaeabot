@@ -32,6 +32,7 @@ class StaticPath:
     kazesawa_regular = resource_root / "font" / "Kazesawa-Regular.ttf"
     exo_semibold = resource_root / "font" / "Exo-SemiBold.ttf"
     exo_regular = resource_root / "font" / "Exo-Regular.ttf"
+    nsc_regular = resource_root / "font" / "NotoSansCJK-Regular.otf"
     # Help
     help = resource_root / "help.png"
 

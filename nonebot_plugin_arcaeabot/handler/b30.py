@@ -1,5 +1,6 @@
 from ..matcher import arc
 from ..database import UserInfo
+from ..config import UserUIConfig
 from ..message.image_message import UserArcaeaInfo
 from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
@@ -18,7 +19,9 @@ async def b30_handler(event: MessageEvent, arg: Message = CommandArg()):
                     MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
                 )
             await arc.send(MessageSegment.reply(event.message_id) + "开始查询Bests30中，请稍后...")
-            result = await UserArcaeaInfo.draw_user_b30(user_info.arcaea_id)
+            user_config = UserUIConfig().read().get(str(event.user_id))
+            language = user_config.get('language') if user_config else None
+            result = await UserArcaeaInfo.draw_user_b30(user_info.arcaea_id, language)
             await arc.finish(MessageSegment.reply(event.message_id) + result)
         elif len(args) == 2:
             querying = list()
@@ -28,6 +31,6 @@ async def b30_handler(event: MessageEvent, arg: Message = CommandArg()):
                     )
             querying.append(event.user_id)
             await arc.send(MessageSegment.reply(event.message_id) + "开始查询Bests30中，请稍后...")
-            result = await UserArcaeaInfo.draw_user_b30(args[1])
+            result = await UserArcaeaInfo.draw_user_b30(args[1], language='en')
             querying.remove(event.user_id)
             await arc.finish(MessageSegment.reply(event.message_id) + result)

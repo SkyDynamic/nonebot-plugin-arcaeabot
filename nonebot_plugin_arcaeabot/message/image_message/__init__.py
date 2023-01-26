@@ -13,13 +13,13 @@ class UserArcaeaInfo:
         return arcaea_id in UserArcaeaInfo.querying
 
     @staticmethod
-    async def draw_user_b30(arcaea_id: str):
+    async def draw_user_b30(arcaea_id: str, language: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
             resp = await API.get_user_b30(arcaea_id=arcaea_id)
             if error_message := resp.message:
                 return error_message
-            image = draw_user_b30(data=resp)
+            image = draw_user_b30(data=resp, language=language)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)
@@ -45,13 +45,13 @@ class UserArcaeaInfo:
             UserArcaeaInfo.querying.remove(arcaea_id)
 
     @staticmethod
-    async def draw_user_recent(arcaea_id: str):
+    async def draw_user_recent(arcaea_id: str,language: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
             resp = await API.get_user_info(arcaea_id=arcaea_id)
             if error_message := resp.message:
                 return error_message
-            image = draw_single_song(data=resp)
+            image = draw_single_song(data=resp,language=language)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)
@@ -61,7 +61,7 @@ class UserArcaeaInfo:
             UserArcaeaInfo.querying.remove(arcaea_id)
 
     @staticmethod
-    async def draw_user_best(arcaea_id: str, songname: str, difficulty: int):
+    async def draw_user_best(arcaea_id: str, songname: str, difficulty: int,language: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
             resp = await API.get_user_best(
@@ -69,7 +69,7 @@ class UserArcaeaInfo:
             )
             if error_message := resp.message:
                 return error_message
-            image = draw_single_song(data=resp)
+            image = draw_single_song(data=resp,language=language)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)

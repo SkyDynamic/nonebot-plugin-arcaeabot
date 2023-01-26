@@ -35,6 +35,7 @@ def draw_score_detail(
     rank: int,
     song_info: SongInfo,
     mask: Image.Image,
+    language: str
 ) -> Image.Image:
     # Frame
     diff = song_score.difficulty
@@ -49,10 +50,17 @@ def draw_score_detail(
         StaticPath.diff_dir / ["PST.png", "PRS.png", "FTR.png", "BYD.png"][diff]
     ).resize((14, 48))
     image.alpha_composite(diff_background, (24, 24))
-    song_name = song_info.name_en
+    # 判断用户的自定义语言
+    if language == 'en' or not language:
+        song_name = song_info.name_en
+    elif language == 'jp':
+        song_name = song_info.name_jp
+    # 判断歌曲名是否拥有日文名，如没有则转为en
+    if not song_name:
+        song_name = song_info.name_en
     song_name = song_name if len(song_name) < 19 else song_name[:18] + "…"
     text_overlay = Image.new("RGBA", (560, 270), (0, 0, 0, 0))
-    write_song_name = DataText(45, 32, 40, song_name, StaticPath.roboto_regular)
+    write_song_name = DataText(45, 32, 40, song_name, StaticPath.nsc_regular)
     text_overlay = draw_text(text_overlay, write_song_name, average_color)
     write_score = DataText(45, 80, 40, f"{song_score.score:,}".replace(',',"'"), StaticPath.exo_medium)
     if song_score.shiny_perfect_count == song_info.note:
@@ -121,7 +129,7 @@ def draw_score_detail(
     return image
 
 
-def draw_user_b30(data: UserBest30):
+def draw_user_b30(data: UserBest30, language: str):
     B30_bg = open_img(StaticPath.b30_bg)
     user_best30 = data.content
     # User Info
@@ -198,6 +206,7 @@ def draw_user_b30(data: UserBest30):
                 rank=num,
                 song_info=song_info,
                 mask=mask,
+                language=language
             ),
             (background_x, background_y),
         )

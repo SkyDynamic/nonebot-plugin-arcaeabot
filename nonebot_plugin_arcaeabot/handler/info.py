@@ -5,6 +5,7 @@ from ..database import UserInfo
 from ..message.image_message import UserArcaeaInfo
 from ..matcher import arc
 from ..schema import diffstr2num
+from ..config import UserUIConfig
 
 
 async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
@@ -25,7 +26,9 @@ async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
 
             # Query
             await arc.send(MessageSegment.reply(event.message_id) + "开始查询您最近的游玩记录中，请稍后...")
-            result = await UserArcaeaInfo.draw_user_recent(arcaea_id=user_info.arcaea_id)
+            user_config = UserUIConfig().read().get(str(event.user_id))
+            language = user_config.get('language') if user_config else None
+            result = await UserArcaeaInfo.draw_user_recent(arcaea_id=user_info.arcaea_id,language=language)
             await arc.finish(MessageSegment.reply(event.message_id) + result)
 
         if len(args) >= 2:
@@ -46,7 +49,9 @@ async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
                 )
             # Query
             await arc.send(MessageSegment.reply(event.message_id) + "开始查询Best中，请稍后...")
+            user_config = UserUIConfig().read().get(str(event.user_id))
+            language = user_config.get('language') if user_config else None
             result = await UserArcaeaInfo.draw_user_best(
-                arcaea_id=user_info.arcaea_id, songname=songname, difficulty=difficulty
+                arcaea_id=user_info.arcaea_id, songname=songname, difficulty=difficulty, language=language
             )
             await arc.finish(MessageSegment.reply(event.message_id) + result)

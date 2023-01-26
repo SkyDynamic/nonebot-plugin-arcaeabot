@@ -5,7 +5,7 @@ from ..utils import *
 from ....resource_manager import StaticPath
 
 
-def draw_single_song(data: Union[UserBest, UserInfo]):
+def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     # User Info
     account_info = data.content.account_info
     arcaea_id = account_info.code
@@ -26,7 +26,14 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
         score_info = data.content.record
     song_id = score_info.song_id
     song_info = data.content.songinfo[0]
-    song_name = song_info.name_en
+    # 判断用户的自定义语言
+    if language == 'en' or not language:
+        song_name = song_info.name_en
+    elif language == 'jp':
+        song_name = song_info.name_jp
+    # 判断歌曲名是否拥有日文名，如没有则转为en
+    if not song_name:
+        song_name = song_info.name_en
     difficulty = score_info.difficulty
     score = score_info.score
     shiny_perfect_count = score_info.shiny_perfect_count
@@ -86,7 +93,7 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
         StaticPath.exo_regular,
     )
     image = draw_text(image, write_playtime, (110, 110, 110))
-    write_song_name = DataText(300, 520, 25, song_name, StaticPath.roboto_regular, "mt")
+    write_song_name = DataText(300, 520, 25, song_name, StaticPath.nsc_regular, "mt")
     image = draw_text(image, write_song_name, "black")
     write_difficulty = DataText(
         300,
@@ -118,10 +125,7 @@ def draw_single_song(data: Union[UserBest, UserInfo]):
         StaticPath.exo_regular,
         "mt",
     )
-    if score_info.shiny_perfect_count == song_info.note:
-        image = draw_text(image, write_score, 'red')
-    else:
-        image = draw_text(image, write_score, "black")
+    image = draw_text(image, write_score, "black")
     write_PURE = DataText(380, 775, 20, "Pure", StaticPath.exo_medium, "ls")
     image = draw_text(image, write_PURE, "black")
     write_pure_count = DataText(
