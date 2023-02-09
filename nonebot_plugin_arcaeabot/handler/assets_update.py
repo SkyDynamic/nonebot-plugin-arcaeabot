@@ -1,5 +1,5 @@
 from ..matcher import arc
-from ..assets_updater import AssetsUpdater, ApkUpdater
+from ..assets_updater import AssetsUpdater
 from ..resource_manager import db_root as ROOT
 from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
