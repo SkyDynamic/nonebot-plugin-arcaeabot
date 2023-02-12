@@ -8,5 +8,5 @@ async def help_handler(event: MessageEvent, arg: Message = CommandArg()):
     args = arg.extract_plain_text().split()
     if args[0] == "help":
         await arc.finish(
-            MessageSegment.reply(event.message_id) + TextMessage.help_message
+            MessageSegment.reply(event.message_id) + TextMessage.help_message + "\n更详细的帮助请前往此文档：\nhttps://arcaeabot-docs.readthedocs.io/zh/latest/"
         )
