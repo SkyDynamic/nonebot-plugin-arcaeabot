@@ -1,5 +1,6 @@
 from .best_30.chieri_style import draw_user_b30, draw_ptt
 from .single_song.andreal_style_v3 import draw_single_song
+from .single_song import arcaea_style_v1
 from ...api.request import API
 from io import BytesIO
 from nonebot.adapters.onebot.v11.message import MessageSegment
@@ -45,13 +46,16 @@ class UserArcaeaInfo:
             UserArcaeaInfo.querying.remove(arcaea_id)
 
     @staticmethod
-    async def draw_user_recent(arcaea_id: str, language: str):
+    async def draw_user_recent(arcaea_id: str, language: str, ui: int | None):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
             resp = await API.get_user_info(arcaea_id=arcaea_id)
             if error_message := resp.message:
                 return error_message
-            image = draw_single_song(data=resp, language=language)
+            if ui == 0 or not ui:
+                image = draw_single_song(data=resp, language=language)
+            elif ui == 1:
+                image = arcaea_style_v1.draw_single_song(data=resp, language=language)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)
@@ -62,7 +66,7 @@ class UserArcaeaInfo:
 
     @staticmethod
     async def draw_user_best(
-        arcaea_id: str, songname: str, difficulty: int, language: str
+        arcaea_id: str, songname: str, difficulty: int, language: str, ui: int | None
     ):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
@@ -71,7 +75,10 @@ class UserArcaeaInfo:
             )
             if error_message := resp.message:
                 return error_message
-            image = draw_single_song(data=resp, language=language)
+            if ui == 0 or not ui:
+                image = draw_single_song(data=resp, language=language)
+            elif ui == 1:
+                image = arcaea_style_v1.draw_single_song(data=resp, language=language)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
             return MessageSegment.image(buffer)

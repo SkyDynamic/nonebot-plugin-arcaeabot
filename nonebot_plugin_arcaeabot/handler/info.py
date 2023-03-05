@@ -32,8 +32,9 @@ async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
             )
             user_config = UserUIConfig().read().get(str(event.user_id))
             language = user_config.get("language") if user_config else None
+            ui = user_config.get("ui") if user_config else None
             result = await UserArcaeaInfo.draw_user_recent(
-                arcaea_id=user_info.arcaea_id, language=language
+                arcaea_id=user_info.arcaea_id, language=language, ui=ui
             )
             await arc.finish(MessageSegment.reply(event.message_id) + result)
 
@@ -59,10 +60,12 @@ async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
             await arc.send(MessageSegment.reply(event.message_id) + "开始查询Best中，请稍后...")
             user_config = UserUIConfig().read().get(str(event.user_id))
             language = user_config.get("language") if user_config else None
+            ui = user_config.get("ui") if user_config else None
             result = await UserArcaeaInfo.draw_user_best(
                 arcaea_id=user_info.arcaea_id,
                 songname=songname,
                 difficulty=difficulty,
                 language=language,
+                ui=ui
             )
             await arc.finish(MessageSegment.reply(event.message_id) + result)

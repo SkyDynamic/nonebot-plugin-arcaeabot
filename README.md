@@ -21,6 +21,7 @@ Arcaea 查分器。
 [更新日志](https://github.com/SEAFHMC/nonebot-plugin-arcaeabot/blob/v3.0.0/CHANGELOG.MD)
 
 ## 如何开始 Quick Start
+### 有任何问题都可以前往QQ问题交流群[646089633](https://jq.qq.com/?_wv=1027&k=aB1dMnhe)
 
 ***请注意! 初次加载插件后会生成配置文件，您需要填写相关配置才能正常使用***
 

@@ -24,6 +24,8 @@ class StaticPath:
     # Recent Image
     rawv3bg_0 = resource_root / "recent" / "RawV3Bg_0.png"
     rawv3bg_1 = resource_root / "recent" / "RawV3Bg_1.png"
+    arcaea_0 = resource_root / "recent" / "arcaea_style" /"arcaea_0.png"
+    arcaea_style_dir = resource_root / "recent" / "arcaea_style"
     track_failed = resource_root / "recent" / "clear_normal.png"
     # Font
     exo_medium = resource_root / "font" / "Exo-Medium.ttf"
@@ -33,6 +35,15 @@ class StaticPath:
     exo_semibold = resource_root / "font" / "Exo-SemiBold.ttf"
     exo_regular = resource_root / "font" / "Exo-Regular.ttf"
     nsc_regular = resource_root / "font" / "NotoSansCJK-Regular.otf"
+    # Grade
+    grade_a = resource_root / "grade" / "grade_a.png"
+    grade_aa = resource_root / "grade" / "grade_aa.png"
+    grade_b = resource_root / "grade" / "grade_b.png"
+    grade_c = resource_root / "grade" / "grade_c.png"
+    grade_d = resource_root / "grade" / "grade_d.png"
+    grade_ex = resource_root / "grade" / "grade_ex.png"
+    grade_ex_plus = resource_root / "grade" / "grade_ex+.png"
+    grade_l = resource_root / "grade" / "grade_l.png"
     # Help
     help = resource_root / "help.png"
 
