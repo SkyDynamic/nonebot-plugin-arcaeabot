@@ -166,11 +166,15 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     write_author_shadow = DataText(1209, 449, 52, song_info.artist, StaticPath.nsc_regular, 'mm')
     image = draw_text(image, write_author_shadow, 'black')
     image = draw_text(image, write_author, 'white')
+    song_level = str(song_info.rating / 10).split('.')
+    song_level_format = song_level[0]
+    if int(song_level[1]) >= 7 and int(song_level[0]) >= 9:
+        song_level_format = f'{song_level[0]}+'
     write_difficulty = DataText(
         58,
         630,
         48,
-        ["Past", "Present", "Future", "Beyond"][difficulty] + " " + str(song_info.rating / 10).split('.')[0],
+        ["Past", "Present", "Future", "Beyond"][difficulty] + " " + song_level_format,
         StaticPath.kazesawa_regular,
         "lm",
     )
