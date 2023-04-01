@@ -3,6 +3,7 @@ from ....schema import UserBest, UserInfo
 from PIL import Image, ImageFilter
 from ..utils import *
 from ....resource_manager import StaticPath
+from ....get_char_point import GetCharPoint
 
 def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     # User Info
@@ -11,10 +12,12 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     character = account_info.character
     is_char_uncapped_override = account_info.is_char_uncapped_override
     is_char_uncapped = account_info.is_char_uncapped
+    if is_char_uncapped ^ is_char_uncapped_override:
+        character = f'{character}u'
+    else:
+        character = character
     icon: str = (
-        f"{character}u_icon.png"
-        if is_char_uncapped ^ is_char_uncapped_override
-        else f"{character}_icon.png"
+        f"{character}_icon.png"
     )
     character_image: str = (
         f"{character}.png"
@@ -55,11 +58,13 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     image.alpha_composite(hp_base_bar, (745, 662))
     image.alpha_composite(song_cover.resize((702, 702)), (56, 662))
     character_image_ = open_img(StaticPath.select_image("char", character_image)).resize((1910, 1910))
-    image.alpha_composite(character_image_, (1080, 0))
+    image.alpha_composite(character_image_, GetCharPoint(str(character)))
     score_card = open_img(StaticPath.arcaea_style_dir / "score.png")
     image.alpha_composite(score_card, (814, 659))
     top_bar = open_img(StaticPath.arcaea_style_dir / "top_bar.png")
     image.alpha_composite(top_bar, (0, 0))
+    icon_border = open_img(StaticPath.arcaea_style_dir / "char_icon_border.png").resize((199,200))
+    image.alpha_composite(icon_border, (1084, -45))
     score_ = open_img(StaticPath.arcaea_style_dir / "score_.png")
     image.alpha_composite(score_, (1076, 1150))
     back_bottom = open_img(StaticPath.arcaea_style_dir / "back.png")
@@ -132,18 +137,18 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     icon = open_img(StaticPath.select_image("char", icon))
     image.alpha_composite(icon, (1100, -30))
     ptt = open_img(StaticPath.ptt_dir / choice_ptt_background(rating)).resize((119, 119))
-    image.alpha_composite(ptt, (1205, 55))
+    image.alpha_composite(ptt, (1190, 55))
     if rating == -1:
-        write_ptt = DataText(1265, 125, 40, "--", StaticPath.exo_semibold, anchor="mb")
+        write_ptt = DataText(1250, 125, 40, "--", StaticPath.exo_semibold, anchor="mb")
         image = draw_text(image, write_ptt, stroke_fill="Black", stroke_width=2)
     else:
         raw_ptt = f"{(rating/100):.2f}".split(".")
         write_ptt_head = DataText(
-            1255, 128, 40, raw_ptt[0], StaticPath.exo_semibold, anchor="rs"
+            1240, 128, 40, raw_ptt[0], StaticPath.exo_semibold, anchor="rs"
         )
         image = draw_text(image, write_ptt_head, stroke_fill="Black", stroke_width=2)
         write_ptt_tail = DataText(
-            1255, 128, 35, "." + raw_ptt[1], StaticPath.exo_semibold, anchor="ls"
+            1240, 128, 35, "." + raw_ptt[1], StaticPath.exo_semibold, anchor="ls"
         )
         image = draw_text(image, write_ptt_tail, stroke_fill="Black", stroke_width=2)
     write_user_name = DataText(1085, 50, 65, name, StaticPath.exo_medium, anchor='rm')
