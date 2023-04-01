@@ -22,7 +22,7 @@ __plugin_meta__ = PluginMetadata(
     extra={
         "unique_name": "arcaeabot",
         "author": "SEAFHMC <soku_ritsuki@outlook.com>",
-        "version": "3.1.3",
+        "version": "3.1.10",
     },
 )
 
