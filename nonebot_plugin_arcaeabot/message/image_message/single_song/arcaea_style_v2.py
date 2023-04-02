@@ -32,6 +32,8 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     song_info = data.content.songinfo[0]
     health = score_info.health
     song_rating = score_info.rating
+    shiny_perfect_count = score_info.shiny_perfect_count
+    note = song_info.note
     # 判断用户的自定义语言
     if language == "en" or not language:
         song_name = song_info.name_en
@@ -81,6 +83,9 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     image.alpha_composite(retry_bottom, (1983, 1549))
     clear_type = ("TL", "NC", "FR", "PM", "EC", "HC")[score_info.clear_type]
     move_y = 0
+    hp_top = open_img(StaticPath.arcaea_style_dir / "hp_top.png")
+    origin_size_w, origin_size_h = hp_top.size
+    hp_top = hp_top.resize((56, int(56 / origin_size_w * origin_size_h)))
     if clear_type != 'HC' and clear_type != 'EC':
         if health == 100:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_clear.png").resize((56, 702))
@@ -99,6 +104,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
             image.alpha_composite(hp_bar, (758, 662 + move_y))
         elif health == 0:
             move_y = int(702 * ((100 - health)/100)) - 35
+        image.alpha_composite(hp_top, (758, 662))
     elif clear_type == 'HC':
         if health == 100:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_hard.png").resize((56, 702))
@@ -129,6 +135,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
             image.alpha_composite(hp_bar, (758, 662 + move_y))
         elif health == 0:
             move_y = int(702 * ((100 - health)/100)) - 35
+        image.alpha_composite(hp_top, (758, 662))
     hp_grid = open_img(StaticPath.arcaea_style_dir / "hp_grid.png").resize((56, 702))
     image.alpha_composite(hp_grid, (758, 662))
     write_health = DataText(787, 683 + move_y, 28, health, StaticPath.exo_regular, 'mm')
@@ -154,9 +161,9 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     write_user_name = DataText(1085, 50, 65, name, StaticPath.exo_medium, anchor='rm')
     image = draw_text(image, write_user_name, (91,79,83))
     # Draw Score Info
-    write_play_ptt = DataText(58, 580, 30, "Play Ptt:", StaticPath.exo_regular,'lm')
+    write_play_ptt = DataText(58, 580, 50, "Play Ptt:", StaticPath.exo_regular,'lm')
     image = draw_text(image, write_play_ptt, (111,111,111))
-    write_song_rating = DataText(177, 582, 30, str(round(song_rating, 2)), StaticPath.exo_regular,'lm')
+    write_song_rating = DataText(255, 582, 50, str(round(song_rating, 4)), StaticPath.exo_regular,'lm')
     image = draw_text(image, write_song_rating, (111,111,111))
     write_song_name_shodow = DataText(1209, 349, 108, song_name, StaticPath.nsc_regular, 'mm')
     write_song_name = DataText(1205, 345, 108, song_name, StaticPath.nsc_regular, 'mm')
@@ -203,7 +210,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         StaticPath.andrea,
         "mm",
     )
-    if score_info.shiny_perfect_count == song_info.note:
+    if shiny_perfect_count == note:
         image = draw_text(image, write_score_shadow, (0, 160, 170, 120))
     else:
         image = draw_text(image, write_score_shadow, "black")
@@ -215,6 +222,8 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     image.alpha_composite(grade, (1035, 905))
     write_pure = DataText(1210, 1135, 64, perfect_count, StaticPath.andrea)
     image = draw_text(image, write_pure, (111, 111, 111), 8, "white")
+    write_shiny_pure = DataText(1365, 1143, 40, f'+{shiny_perfect_count}', StaticPath.andrea, 'lt')
+    image = draw_text(image, write_shiny_pure, (111, 111, 111), 2, "white")
     write_far = DataText(1210, 1205, 64, near_count, StaticPath.andrea)
     image = draw_text(image, write_far, (111, 111, 111), 8, "white")
     write_lost = DataText(1210, 1275, 64, miss_count, StaticPath.andrea)
@@ -226,7 +235,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         1350,
         45,
         player_time_format(score_info.time_played.timestamp()),
-        StaticPath.exo_regular,
+        StaticPath.exo_regular
     )
     image = draw_text(image, write_playtime, (110, 110, 110), 2, 'white')
     return image

@@ -1,16 +1,25 @@
 from ...schema import SongRandom, AUASongInfo
 from ...resource_manager import assets_root, StaticPath
 from nonebot.adapters.onebot.v11.message import MessageSegment
-
+import json
+import random
 
 class TextMessage:
     help_message = MessageSegment.image(StaticPath.help)
 
     @staticmethod
     def song_info_detail(data: SongRandom):
+        randomtemplate = json.load(open(StaticPath.RandomTemplate, 'r', encoding='utf8'))
+        random_text = str(random.choice(randomtemplate))
         if error_message := data.message:
             return error_message
         content = data.content
+        song_name = content.songinfo.name_en
+        artist = content.songinfo.artist
+        if '$songname$' in random_text:
+            random_text = random_text.replace('$songname$', song_name)
+        if '$artist$' in random_text:
+            random_text = random_text.replace('$artist$', artist)
         difficulty = ["Past", "Present", "Future", "Beyond"][content.ratingClass]
         cover_name = (
             f"{content.ratingClass}.jpg"
@@ -20,8 +29,8 @@ class TextMessage:
         image = "file:///" + str(assets_root / "song" / content.id / cover_name)
         result = "\n".join(
             [
-                f"曲名: {content.songinfo.name_en}[{difficulty}]",
-                f"曲师: {content.songinfo.artist}",
+                f"曲名: {song_name}[{difficulty}]",
+                f"曲师: {artist}",
                 f"曲绘: {content.songinfo.jacket_designer}",
                 f"时长: {'%02d:%02d' % divmod(content.songinfo.time, 60)}",
                 f"BPM: {content.songinfo.bpm}",
@@ -34,6 +43,7 @@ class TextMessage:
         )
         result += "\n需要世界模式解锁" if content.songinfo.world_unlock is True else ""
         result += "\n需要下载" if content.songinfo.remote_download is True else ""
+        result += f"\nAI酱：{random_text}"
         return MessageSegment.image(image) + "\n" + result
 
     @staticmethod

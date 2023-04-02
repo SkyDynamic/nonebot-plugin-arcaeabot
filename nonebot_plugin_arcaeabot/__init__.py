@@ -21,7 +21,9 @@ __plugin_meta__ = PluginMetadata(
     usage="使用/arc help查看使用帮助",
     extra={
         "unique_name": "arcaeabot",
-        "author": "SEAFHMC <soku_ritsuki@outlook.com>",
+        "author": [
+            "SEAFHMC <soku_ritsuki@outlook.com>"
+            "SkyDynamic <SkyDynamic@outlook.com>"],
         "version": "3.1.10",
     },
 )
