@@ -46,6 +46,8 @@ class StaticPath:
     grade_l = resource_root / "grade" / "grade_l.png"
     # Help
     help = resource_root / "help.png"
+    # Random
+    RandomTemplate = resource_root / "RandomTemplate.json"
 
     # Method
     def select_image(*args) -> str:
