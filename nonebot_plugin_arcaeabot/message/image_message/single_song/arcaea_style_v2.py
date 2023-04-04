@@ -89,18 +89,21 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     if clear_type != 'HC' and clear_type != 'EC':
         if health == 100:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_clear.png").resize((56, 702))
+            hp_bar.putalpha(100)
             image.alpha_composite(hp_bar, (758, 662))
         elif health >= 70:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_clear.png").resize((56, 702))
             hp_size_x, hp_size_y = hp_bar.size
             move_y = int(hp_size_y * ((100 - health)/100))
             hp_bar = hp_bar.crop((0, move_y, hp_size_x, hp_size_y))
+            hp_bar.putalpha(100)
             image.alpha_composite(hp_bar, (758, 662 + move_y))
         elif 0 < health < 70:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar.png").resize((56, 702))
             hp_size_x, hp_size_y = hp_bar.size
             move_y = int(hp_size_y * ((100 - health)/100))
             hp_bar = hp_bar.crop((0, move_y, hp_size_x, hp_size_y))
+            hp_bar.putalpha(100)
             image.alpha_composite(hp_bar, (758, 662 + move_y))
         elif health == 0:
             move_y = int(702 * ((100 - health)/100)) - 35
@@ -120,18 +123,21 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     elif clear_type == 'EC':
         if health == 100:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_easy_clear.png").resize((56, 702))
+            hp_bar.putalpha(100)
             image.alpha_composite(hp_bar, (758, 662))
         elif health >= 70:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_easy_clear.png").resize((56, 702))
             hp_size_x, hp_size_y = hp_bar.size
             move_y = int(hp_size_y * ((100 - health)/100))
             hp_bar = hp_bar.crop((0, move_y, hp_size_x, hp_size_y))
+            hp_bar.putalpha(100)
             image.alpha_composite(hp_bar, (758, 662 + move_y))
         elif 0 < health < 70:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_easy.png").resize((56, 702))
             hp_size_x, hp_size_y = hp_bar.size
             move_y = int(hp_size_y * ((100 - health)/100))
             hp_bar = hp_bar.crop((0, move_y, hp_size_x, hp_size_y))
+            hp_bar.putalpha(100)
             image.alpha_composite(hp_bar, (758, 662 + move_y))
         elif health == 0:
             move_y = int(702 * ((100 - health)/100)) - 35
