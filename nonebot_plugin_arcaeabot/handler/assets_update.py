@@ -4,7 +4,6 @@ from ..resource_manager import db_root as ROOT
 from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
 from nonebot.params import CommandArg
-from os import path
 from shutil import rmtree
 from typing import List
 

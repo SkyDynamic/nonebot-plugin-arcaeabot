@@ -1,4 +1,8 @@
 # Change
+## [3.1.11]
+- 增加了最受欢迎的AI酱~
+- 修复了Arcaea_Style的一些bug
+
 ## [3.1.8]
 - 增加新的Recent UI,你可以点[这里](https://s2.loli.net/2023/03/05/3fVwojYTFsNtBz9.png)预览
 - 修复了些小bug?

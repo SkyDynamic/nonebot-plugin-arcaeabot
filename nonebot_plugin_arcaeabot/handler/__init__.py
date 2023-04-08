@@ -10,3 +10,4 @@ from .preview import preview_handler
 from .default import default_handler
 from .ptt import ptt_handler
 from .ui import ui_handler
+from .ai import ai_handler
