@@ -1,6 +1,8 @@
 from pathlib import Path
 from os import path
 
+import json
+
 resource_root = Path(__file__).parent.absolute() / "resource"
 resource_root.mkdir(exist_ok=True, parents=True)
 
@@ -47,7 +49,7 @@ class StaticPath:
     # Help
     help = resource_root / "help.png"
     # Random
-    RandomTemplate = resource_root / "RandomTemplate.json"
+    RandomTemplate = json.load(open(resource_root / "RandomTemplate.json", 'r', encoding='utf8'))
 
     # Method
     def select_image(*args) -> str:

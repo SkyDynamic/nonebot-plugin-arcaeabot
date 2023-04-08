@@ -12,6 +12,7 @@ from .handler import (
     preview_handler,
     ptt_handler,
     ui_handler,
+    ai_handler
 )
 from nonebot.plugin import PluginMetadata
 
@@ -39,4 +40,5 @@ arc.handle()(help_handler)
 arc.handle()(random_handler)
 arc.handle()(ptt_handler)
 arc.handle()(ui_handler)
+arc.handle()(ai_handler)
 arc.handle()(default_handler)

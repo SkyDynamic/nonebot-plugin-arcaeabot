@@ -2,14 +2,9 @@ from .resource_manager import assets_root
 from .resource_manager import db_root as ROOT
 from httpx import AsyncClient
 from tqdm import tqdm
-from os import listdir, makedirs, remove
+from os import listdir, makedirs
 from typing import List
 from .config import config
-from shutil import move, copy, rmtree
-from zipfile import ZipFile
-import ujson as json
-from aiofiles import open as async_open
-from re import match
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
