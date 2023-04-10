@@ -67,14 +67,14 @@ class TextMessage:
                 random_text = random_text.replace('$songname$', song_name)
             if '$artist$' in random_text:
                 random_text = random_text.replace('$artist$', artist)
-            result = f'Ai酱：{random_text}\n剩余请求次数：{int(TextMessage.query_data.get(user_id).get("specific_number")) - 1}'
             TextMessage.query_data[user_id]['specific_number'] = int(TextMessage.query_data.get(user_id).get('specific_number')) - 1
+            result = f'Ai酱：{random_text}\n剩余请求次数：{int(TextMessage.query_data.get(user_id).get("specific_number"))}'
             if TextMessage.query_data.get(user_id).get('specific_number') == 0:
-                TextMessage.query_data[user_id]['reset_time'] = int(time.time())
+                TextMessage.query_data[user_id]['reset_time'] = int(time.time() + 3599)
             return result
         else:
             TextMessage.query_data[user_id]['specific_number'] = int(TextMessage.query_data.get(user_id).get('specific_number')) - 1
-            return f'无法处理更多请求。\n剩余请求次数：{int(TextMessage.query_data.get(user_id).get("specific_number")) - 1}'
+            return f'无法处理更多请求。\n剩余请求次数：{int(TextMessage.query_data.get(user_id).get("specific_number"))}'
 
     @staticmethod
     def song_info(data: AUASongInfo, difficulty: int):
