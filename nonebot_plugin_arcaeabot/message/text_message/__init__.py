@@ -2,9 +2,21 @@ from ...schema import SongRandom, AUASongInfo
 from ...resource_manager import assets_root, StaticPath
 from nonebot.adapters.onebot.v11.message import MessageSegment
 import random
+import time
 
 class TextMessage:
     help_message = MessageSegment.image(StaticPath.help)
+    query_data = {}
+
+    '''
+    {
+        user_id(qq): {
+            specific_number: num(int),
+            reset_time: time(int)
+            resp: SongRandom
+            }
+    }
+    '''
 
     @staticmethod
     def song_info_detail(data: SongRandom):
@@ -39,20 +51,29 @@ class TextMessage:
         return MessageSegment.image(image) + "\n" + result
 
     @staticmethod
-    def ai_song_info_detail(data: SongRandom):
-        randomtemplate = StaticPath.RandomTemplate
-        if error_message := data.message:
-            return error_message
-        random_text = str(random.choice(randomtemplate))
-        content = data.content
-        song_name = content.songinfo.name_en
-        artist = content.songinfo.artist
-        if '$songname$' in random_text:
-            random_text = random_text.replace('$songname$', song_name)
-        if '$artist$' in random_text:
-            random_text = random_text.replace('$artist$', artist)
-        result = f'Ai酱：{random_text}'
-        return result
+    def ai_song_info_detail(data: SongRandom, user_id: str):
+        if user_id not in TextMessage.query_data:
+            TextMessage.query_data[user_id] = {}
+            TextMessage.query_data[user_id]['specific_number'] = 5
+            TextMessage.query_data[user_id]['reset_time'] = None
+        if int(TextMessage.query_data.get(user_id).get('specific_number')) > 0:
+            TextMessage.query_data[user_id]['resp'] = data
+            randomtemplate = StaticPath.RandomTemplate
+            random_text = str(random.choice(randomtemplate))
+            content = data.content
+            song_name = content.songinfo.name_en
+            artist = content.songinfo.artist
+            if '$songname$' in random_text:
+                random_text = random_text.replace('$songname$', song_name)
+            if '$artist$' in random_text:
+                random_text = random_text.replace('$artist$', artist)
+            result = f'Ai酱：{random_text}\n剩余请求次数：{int(TextMessage.query_data.get(user_id).get("specific_number")) - 1}'
+            TextMessage.query_data[user_id]['specific_number'] = int(TextMessage.query_data.get(user_id).get('specific_number')) - 1
+            if TextMessage.query_data.get(user_id).get('specific_number') == 0:
+                TextMessage.query_data[user_id]['reset_time'] = int(time.time())
+            return result
+        else:
+            return '无法处理更多请求。'
 
     @staticmethod
     def song_info(data: AUASongInfo, difficulty: int):
