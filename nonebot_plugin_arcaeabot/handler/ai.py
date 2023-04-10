@@ -17,9 +17,10 @@ first_msg = '您好!我是Ai酱，出身于韵律源点Arcaea的一位内置人�
 async def ai_handler(event: MessageEvent, arg: Message = CommandArg()):
     reply = MessageSegment.reply(event.message_id)
     args = arg.extract_plain_text().split()
+    specific_number = TextMessage.query_data.get(str(event.user_id))
     if args[0] == "ai":
         await arc.send(
-            reply + first_msg
+            reply + first_msg + f'\n剩余请求次数：{specific_number.get("specific_number") if specific_number else 5}'
         )
 
 async def ai_first_handler(event: MessageEvent, code: str = ArgPlainText()):
