@@ -8,7 +8,7 @@ from nonebot.params import CommandArg
 
 async def ui_handler(event: MessageEvent, arg: Message = CommandArg()):
     args = arg.extract_plain_text().split()
-    reply = MessageSegment(event.message_id)
+    reply = MessageSegment.reply(event.message_id)
     if args[0] == "ui":
         if len(args) == 3:
             config = UserUIConfig()
