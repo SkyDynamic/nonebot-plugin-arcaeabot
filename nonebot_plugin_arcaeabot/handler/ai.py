@@ -56,7 +56,7 @@ async def ai_continue_handler(event: MessageEvent, code: str = ArgPlainText('cod
             reply + '会话结束'
         )
 
-@Ai_query_reset_scheduler.scheduled_job('interval', seconds=60)
+@Ai_query_reset_scheduler.scheduled_job('interval', seconds=3600)
 def Ai_query_reset_handler():
     now = int(time.time())
     data = TextMessage.query_data
