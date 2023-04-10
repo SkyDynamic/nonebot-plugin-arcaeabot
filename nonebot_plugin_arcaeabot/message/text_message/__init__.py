@@ -73,7 +73,8 @@ class TextMessage:
                 TextMessage.query_data[user_id]['reset_time'] = int(time.time())
             return result
         else:
-            return '无法处理更多请求。'
+            TextMessage.query_data[user_id]['specific_number'] = int(TextMessage.query_data.get(user_id).get('specific_number')) - 1
+            return f'无法处理更多请求。\n剩余请求次数：{int(TextMessage.query_data.get(user_id).get("specific_number")) - 1}'
 
     @staticmethod
     def song_info(data: AUASongInfo, difficulty: int):
