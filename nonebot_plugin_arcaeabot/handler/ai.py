@@ -20,7 +20,7 @@ async def ai_handler(event: MessageEvent, arg: Message = CommandArg()):
     specific_number = TextMessage.query_data.get(str(event.user_id))
     if args[0] == "ai":
         await arc.send(
-            reply + first_msg + f'\n剩余请求次数：{specific_number.get("specific_number") if specific_number else 5}'
+            reply + first_msg + f'\n剩余请求次数：{specific_number.get("specific_number") if specific_number else 5}' + '\n\n1: 推荐一首歌给我吧\n2: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)'
         )
 
 async def ai_first_handler(event: MessageEvent, code: str = ArgPlainText()):
@@ -28,7 +28,7 @@ async def ai_first_handler(event: MessageEvent, code: str = ArgPlainText()):
     if code == '1':
         resp = await random(event)
         await arc.send(
-            reply + TextMessage.ai_song_info_detail(resp, str(event.user_id))
+            reply + TextMessage.ai_song_info_detail(resp, str(event.user_id)) + '\n\n1: 再推荐一首歌给我吧!\n2: 好耶, 冲冲冲!\n3: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)'
         )
     elif code == '2':
         await arc.finish(
@@ -39,18 +39,12 @@ async def ai_continue_handler(event: MessageEvent, code: str = ArgPlainText('cod
     reply = MessageSegment.reply(event.message_id)
     if code == '1':
         resp = await random(event)
-        await arc.send(
-            reply + TextMessage.ai_song_info_detail(resp, str(event.user_id))
-        )
         await arc.reject(
-            reply + '1: 再推荐一首歌给我吧!\n2: 好耶, 冲冲冲!\n3: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)'
+            reply + TextMessage.ai_song_info_detail(resp, str(event.user_id)) + '\n\n1: 再推荐一首歌给我吧!\n2: 好耶, 冲冲冲!\n3: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)'
         )
     elif code == '2':
-        await arc.send(
-            reply + TextMessage.song_info_detail(TextMessage.query_data[str(event.user_id)]['resp'])
-        )
         await arc.reject(
-            reply + '1: 再推荐一首歌给我吧!\n2: 好耶, 冲冲冲!\n3: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)'
+            reply + TextMessage.song_info_detail(TextMessage.query_data[str(event.user_id)]['resp']) + '\n\n1: 再推荐一首歌给我吧!\n2: 好耶, 冲冲冲!\n3: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)'
         )
     elif code == '3':
         await arc.finish(
