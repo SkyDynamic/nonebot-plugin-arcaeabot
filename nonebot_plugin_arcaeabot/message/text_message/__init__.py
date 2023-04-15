@@ -7,12 +7,11 @@ import time
 class TextMessage:
     help_message = MessageSegment.image(StaticPath.help)
     query_data = {}
-
     '''
     {
         user_id(qq): {
             specific_number: num(int),
-            reset_time: time(int)
+            reset_time: time(int),
             resp: SongRandom
             }
     }

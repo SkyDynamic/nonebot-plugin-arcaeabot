@@ -1,4 +1,5 @@
 from nonebot.adapters.onebot.v11 import MessageEvent, MessageSegment
+from ..message.text_message import TextMessage
 from ..matcher import arc
 
 

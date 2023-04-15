@@ -1,4 +1,4 @@
-from .matcher import arc
+from .matcher import arc, ai_cmd
 from .handler import (
     b30_handler,
     assets_update_handler,
@@ -28,7 +28,7 @@ __plugin_meta__ = PluginMetadata(
         "author": [
             "SEAFHMC <soku_ritsuki@outlook.com>"
             "SkyDynamic <SkyDynamic@outlook.com>"],
-        "version": "3.1.10",
+        "version": "3.1.11",
     },
 )
 
@@ -45,7 +45,7 @@ arc.handle()(help_handler)
 arc.handle()(random_handler)
 arc.handle()(ptt_handler)
 arc.handle()(ui_handler)
-arc.handle()(ai_handler)
-arc.got('code')(ai_first_handler)
-arc.got('code_')(ai_continue_handler)
+ai_cmd.handle()(ai_handler)
+ai_cmd.got('code')(ai_first_handler)
+ai_cmd.got('code_')(ai_continue_handler)
 arc.handle()(default_handler)

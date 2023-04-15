@@ -2,8 +2,9 @@ from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
 from nonebot.params import CommandArg
 from nonebot.params import ArgPlainText
+from nonebot.matcher import Matcher
 from ..api.request import API
-from ..matcher import arc
+from ..matcher import arc, ai_cmd
 from ..message.text_message import TextMessage
 
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -14,7 +15,7 @@ Ai_query_reset_scheduler = BackgroundScheduler()
 
 first_msg = '您好!我是Ai酱，出身于韵律源点Arcaea的一位内置人工智能助手。众所周知，打音游的时候要进入状态才能发挥得好。因此，每当不确定要玩哪首歌曲时，您都可以来问我，我会推荐一些曲目来帮助您进入状态，并同时体会到游玩的乐趣!'
 
-async def ai_handler(event: MessageEvent, arg: Message = CommandArg()):
+async def ai_handler(event: MessageEvent, matcher: Matcher, arg: Message = CommandArg()):
     reply = MessageSegment.reply(event.message_id)
     args = arg.extract_plain_text().split()
     specific_number = TextMessage.query_data.get(str(event.user_id))
@@ -22,8 +23,11 @@ async def ai_handler(event: MessageEvent, arg: Message = CommandArg()):
         await arc.send(
             reply + first_msg + f'\n剩余请求次数：{specific_number.get("specific_number") if specific_number else 5}' + '\n\n1: 推荐一首歌给我吧\n2: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)'
         )
+        matcher.stop_propagation()
+    else:
+        ai_cmd.skip()
 
-async def ai_first_handler(event: MessageEvent, code: str = ArgPlainText()):
+async def ai_first_handler(event: MessageEvent, code: str = ArgPlainText('code')):
     reply = MessageSegment.reply(event.message_id)
     if code == '1':
         resp = await random(event)
@@ -34,6 +38,8 @@ async def ai_first_handler(event: MessageEvent, code: str = ArgPlainText()):
         await arc.finish(
             reply + '会话结束'
         )
+    else:
+        ai_cmd.skip()
 
 async def ai_continue_handler(event: MessageEvent, code: str = ArgPlainText('code_')):
     reply = MessageSegment.reply(event.message_id)
@@ -50,6 +56,8 @@ async def ai_continue_handler(event: MessageEvent, code: str = ArgPlainText('cod
         await arc.finish(
             reply + '会话结束'
         )
+    else:
+        ai_cmd.skip()
 
 @Ai_query_reset_scheduler.scheduled_job('interval', seconds=60)
 def Ai_query_reset_handler():
