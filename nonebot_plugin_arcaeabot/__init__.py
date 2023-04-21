@@ -1,4 +1,4 @@
-from .matcher import arc
+from .matcher import arc, ai_cmd
 from .handler import (
     b30_handler,
     assets_update_handler,
@@ -28,7 +28,7 @@ __plugin_meta__ = PluginMetadata(
         "author": [
             "SEAFHMC <soku_ritsuki@outlook.com>"
             "SkyDynamic <SkyDynamic@outlook.com>"],
-        "version": "3.1.10",
+        "version": "3.1.11",
     },
 )
 
@@ -45,7 +45,7 @@ arc.handle()(help_handler)
 arc.handle()(random_handler)
 arc.handle()(ptt_handler)
 arc.handle()(ui_handler)
-arc.handle()(ai_handler)
-arc.got('code', '1: 推荐一首歌给我吧\n2: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)')(ai_first_handler)
-arc.got('code_', '1: 再推荐一首歌给我吧!\n2: 好耶, 冲冲冲!\n3: 结束会话(不需要请务必回复此代码否侧返回未知参数)\n(输入数字代码，不要输入其他的)')(ai_continue_handler)
+ai_cmd.handle()(ai_handler)
+ai_cmd.got('code')(ai_first_handler)
+ai_cmd.got('code_')(ai_continue_handler)
 arc.handle()(default_handler)

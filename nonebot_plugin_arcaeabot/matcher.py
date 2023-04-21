@@ -1,3 +1,5 @@
-from nonebot.plugin import on_command
+from nonebot import MatcherGroup
 
-arc = on_command("arc", aliases={"arcaea", "a"})
+cmd_group = MatcherGroup()
+arc = cmd_group.on_command("arc", aliases={"arcaea", "a"}, priority=1)
+ai_cmd = cmd_group.on_command("arc", aliases={"arcaea", "a"}, priority=0)
