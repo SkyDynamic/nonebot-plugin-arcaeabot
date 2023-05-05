@@ -30,7 +30,7 @@ class API:
 
     @classmethod
     async def get_user_info(cls, arcaea_id: str):
-        url = f"{cls.base_url}/arcapi/user/info?user={arcaea_id}&recent=1&withsonginfo=true"
+        url = f"{cls.base_url}/arcapi/user/info?user_name={arcaea_id}&recent=1&with_song_info=true"
         resp = await cls._quick_get(url=url)
         return UserInfo(**resp.json())
 
@@ -42,13 +42,13 @@ class API:
 
     @classmethod
     async def get_user_b30(cls, session_info: str):
-        url = f"{cls.base_url}/arcapi/user/best30?usercode={session_info}&withrecent=false&overflow=10&withsonginfo=true"
+        url = f"{cls.base_url}/arcapi/user/best30?user_code={session_info}&with_recent=false&overflow=10&with_song_info=true"
         resp = await cls._quick_get(url=url)
         return UserBest30(**resp.json())
 
     @classmethod
     async def get_user_best(cls, arcaea_id: str, songname: str, difficulty: int):
-        url = f"{cls.base_url}/arcapi/user/best?user={arcaea_id}&songname={songname}&difficulty={difficulty}&withsonginfo=true"
+        url = f"{cls.base_url}/arcapi/user/best?user_name={arcaea_id}&song_name={songname}&difficulty={difficulty}&with_song_info=true"
         resp = await cls._quick_get(url=url)
         return UserBest(**resp.json())
 
@@ -56,19 +56,19 @@ class API:
     async def get_song_random(cls, start: str, end: str):
         start = int(float(start.replace("+", ".5")) * 2)
         end = int(float(end.replace("+", ".5")) * 2)
-        url = f"{cls.base_url}/arcapi/song/random?start={start}&end={end}&withsonginfo=true"
+        url = f"{cls.base_url}/arcapi/song/random?start={start}&end={end}&with_song_info=true"
         resp = await cls._quick_get(url=url)
         return SongRandom(**resp.json())
 
     @classmethod
     async def get_song_info(cls, songname: str):
-        url = f"{cls.base_url}/arcapi/song/info?songname={songname}"
+        url = f"{cls.base_url}/arcapi/song/info?song_name={songname}"
         resp = await cls._quick_get(url=url)
         return AUASongInfo(**resp.json())
 
     @classmethod
     async def get_song_preview(cls, songname: str, difficulty: int):
-        url = f"{cls.base_url}/arcapi/assets/preview?songname={songname}&difficulty={difficulty}"
+        url = f"{cls.base_url}/arcapi/assets/preview?song_name={songname}&difficulty={difficulty}"
         resp = await cls._quick_get(url=url)
         if resp.status_code == 200:
             return resp.read()
