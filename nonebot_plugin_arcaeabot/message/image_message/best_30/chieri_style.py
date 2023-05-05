@@ -267,15 +267,15 @@ def draw_ptt(data: UserBest30):
     )
     B30_bg = draw_text(B30_bg, write_arcaea_id)
     write_b30 = DataText(
-        310, 800, 100, f"{(best):.3f}", StaticPath.exo_medium, anchor="lb"
+        310, 800, 100, f"{best :.3f}", StaticPath.exo_medium, anchor="lb"
     )
     B30_bg = draw_text(B30_bg, write_b30)
     write_r10 = DataText(
-        1300, 800, 100, f"{(recent):.3f}", StaticPath.exo_medium, anchor="lb"
+        1300, 800, 100, f"{recent :.3f}", StaticPath.exo_medium, anchor="lb"
     )
     B30_bg = draw_text(B30_bg, write_r10)
     write_theory_ptt = DataText(
-        770, 1200, 150, f"{(theory_ptt):.3f}", StaticPath.exo_medium, anchor="lb"
+        770, 1200, 150, f"{theory_ptt :.3f}", StaticPath.exo_medium, anchor="lb"
     )
     B30_bg = draw_text(B30_bg, write_theory_ptt)
     return B30_bg

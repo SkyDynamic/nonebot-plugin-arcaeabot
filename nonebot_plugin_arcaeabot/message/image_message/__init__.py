@@ -15,10 +15,20 @@ class UserArcaeaInfo:
         return arcaea_id in UserArcaeaInfo.querying
 
     @staticmethod
-    async def draw_user_b30(arcaea_id: str, language: str):
+    async def get_query_session(arcaea_id: str):
+        try:
+            resp = await API.get_user_session(arcaea_id=arcaea_id)
+            if error_message := resp.message:
+                return resp.content.session_info, error_message
+            return resp.content.session_info, ""
+        except Exception as e:
+            return str(e)
+
+    @staticmethod
+    async def draw_user_b30(session_info: str, language: str, arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
-            resp = await API.get_user_b30(arcaea_id=arcaea_id)
+            resp = await API.get_user_b30(session_info=session_info)
             if error_message := resp.message:
                 return error_message
             image = draw_user_b30(data=resp, language=language)
@@ -31,10 +41,10 @@ class UserArcaeaInfo:
             UserArcaeaInfo.querying.remove(arcaea_id)
 
     @staticmethod
-    async def draw_user_ptt(arcaea_id: str):
+    async def draw_user_ptt(arcaea_id: str, session_info: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
-            resp = await API.get_user_b30(arcaea_id=arcaea_id)
+            resp = await API.get_user_b30(session_info=session_info)
             if error_message := resp.message:
                 return error_message
             image = draw_ptt(data=resp)
@@ -67,7 +77,7 @@ class UserArcaeaInfo:
 
     @staticmethod
     async def draw_user_best(
-        arcaea_id: str, songname: str, difficulty: int, language: str, ui: Optional[int]
+            arcaea_id: str, songname: str, difficulty: int, language: str, ui: Optional[int]
     ):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
