@@ -4,6 +4,7 @@ from ..matcher import arc
 from ..message.text_message import TextMessage
 from ..api.request import API
 
+
 async def random_handler(event: MessageEvent, arg: Message = CommandArg()):
     args = arg.extract_plain_text().split()
     args = {i: v for i, v in enumerate(args)}
