@@ -154,7 +154,7 @@ def draw_user_b30(data: UserBest30, language: str):
         else f"{character}_icon.png"
     )
     score_info_list = user_best30.best30_list + user_best30.best30_overflow
-    song_info_list = user_best30.best30_songinfo + user_best30.best30_overflow_songinfo
+    song_info_list = user_best30.best30_song_info + user_best30.best30_overflow_song_info
     icon = open_img(StaticPath.char_dir / icon).resize((250, 250))
     B30_bg.alpha_composite(icon, (75, 130))
     ptt_background = open_img(
