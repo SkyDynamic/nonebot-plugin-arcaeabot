@@ -18,9 +18,7 @@ class UserArcaeaInfo:
     async def get_query_session(arcaea_id: str):
         try:
             resp = await API.get_user_session(arcaea_id=arcaea_id)
-            if error_message := resp.message:
-                return resp.content.session_info, error_message
-            return resp.content.session_info, ""
+            return resp.content.session_info
         except Exception as e:
             return str(e)
 
