@@ -30,15 +30,15 @@ async def ui_handler(event: MessageEvent, arg: Message = CommandArg()):
                     await arc.finish(reply + "生成图片的语言已更换为Janpanese")
                 else:
                     await arc.finish(reply + "参数不存在")
-            elif args[1] in ['样式', 'style', 'ui']:
-                if args[2] == '0':
+            elif args[1] in ["样式", "style", "ui"]:
+                if args[2] == "0":
                     if not origin_data.get(str(event.user_id)):
                         origin_data[str(event.user_id)] = {"language": "en", "ui": 0}
                     else:
                         origin_data[str(event.user_id)]["ui"] = 0
                     config.write(origin_data)
                     await arc.finish(reply + "生成图片的样式已改为Andrea_Style_v3")
-                if args[2] == '1':
+                if args[2] == "1":
                     if not origin_data.get(str(event.user_id)):
                         origin_data[str(event.user_id)] = {"language": "en", "ui": 1}
                     else:

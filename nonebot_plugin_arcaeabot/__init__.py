@@ -15,8 +15,8 @@ from .handler import (
     ai_handler,
     ai_first_handler,
     ai_continue_handler,
-    Ai_query_reset_scheduler
-    )
+    Ai_query_reset_scheduler,
+)
 from nonebot.plugin import PluginMetadata
 
 __plugin_meta__ = PluginMetadata(
@@ -26,8 +26,8 @@ __plugin_meta__ = PluginMetadata(
     extra={
         "unique_name": "arcaeabot",
         "author": [
-            "SEAFHMC <soku_ritsuki@outlook.com>"
-            "SkyDynamic <SkyDynamic@outlook.com>"],
+            "SEAFHMC <soku_ritsuki@outlook.com>" "SkyDynamic <SkyDynamic@outlook.com>"
+        ],
         "version": "3.1.11",
     },
 )
@@ -46,6 +46,6 @@ arc.handle()(random_handler)
 arc.handle()(ptt_handler)
 arc.handle()(ui_handler)
 ai_cmd.handle()(ai_handler)
-ai_cmd.got('code')(ai_first_handler)
-ai_cmd.got('code_')(ai_continue_handler)
+ai_cmd.got("code")(ai_first_handler)
+ai_cmd.got("code_")(ai_continue_handler)
 arc.handle()(default_handler)

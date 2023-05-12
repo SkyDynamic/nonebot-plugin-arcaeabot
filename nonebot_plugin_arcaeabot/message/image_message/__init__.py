@@ -75,7 +75,7 @@ class UserArcaeaInfo:
 
     @staticmethod
     async def draw_user_best(
-            arcaea_id: str, songname: str, difficulty: int, language: str, ui: Optional[int]
+        arcaea_id: str, songname: str, difficulty: int, language: str, ui: Optional[int]
     ):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:

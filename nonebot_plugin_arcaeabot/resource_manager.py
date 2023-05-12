@@ -26,7 +26,7 @@ class StaticPath:
     # Recent Image
     rawv3bg_0 = resource_root / "recent" / "RawV3Bg_0.png"
     rawv3bg_1 = resource_root / "recent" / "RawV3Bg_1.png"
-    arcaea_0 = resource_root / "recent" / "arcaea_style" /"arcaea_0.png"
+    arcaea_0 = resource_root / "recent" / "arcaea_style" / "arcaea_0.png"
     arcaea_style_dir = resource_root / "recent" / "arcaea_style"
     track_failed = resource_root / "recent" / "clear_normal.png"
     # Font
@@ -49,7 +49,9 @@ class StaticPath:
     # Help
     help = resource_root / "help.png"
     # Random
-    RandomTemplate = json.load(open(resource_root / "RandomTemplate.json", 'r', encoding='utf8'))
+    RandomTemplate = json.load(
+        open(resource_root / "RandomTemplate.json", "r", encoding="utf8")
+    )
 
     # Method
     def select_image(*args) -> str:

@@ -66,6 +66,6 @@ async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
                 songname=songname,
                 difficulty=difficulty,
                 language=language,
-                ui=ui
+                ui=ui,
             )
             await arc.finish(MessageSegment.reply(event.message_id) + result)
