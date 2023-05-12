@@ -15,17 +15,14 @@ class UserArcaeaInfo:
         return arcaea_id in UserArcaeaInfo.querying
 
     @staticmethod
-    async def get_query_session(arcaea_id: str):
-        try:
-            resp = await API.get_user_session(arcaea_id=arcaea_id)
-            return resp.content.session_info
-        except Exception as e:
-            return str(e)
-
-    @staticmethod
-    async def draw_user_b30(session_info: str, language: str, arcaea_id: str):
+    async def draw_user_b30(language: str, arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
+            session_get = await API.get_user_session(arcaea_id=arcaea_id)
+            if session_get.content:
+                session_info = session_get.content.session_info
+            else:
+                return session_get.message
             resp = await API.get_user_b30(session_info=session_info)
             if error_message := resp.message:
                 return error_message
@@ -39,9 +36,14 @@ class UserArcaeaInfo:
             UserArcaeaInfo.querying.remove(arcaea_id)
 
     @staticmethod
-    async def draw_user_ptt(arcaea_id: str, session_info: str):
+    async def draw_user_ptt(arcaea_id: str):
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
+            session_get = await API.get_user_session(arcaea_id=arcaea_id)
+            if session_get.content:
+                session_info = session_get.content.session_info
+            else:
+                return session_get.message
             resp = await API.get_user_b30(session_info=session_info)
             if error_message := resp.message:
                 return error_message

@@ -88,7 +88,9 @@ class TextMessage:
             return "this song has no beyond level"
         if difficulty != -1:
             song_info = data.content.difficulties[difficulty]
-            cover_name = f"{difficulty}.jpg" if song_info.jacket_override else "base.jpg"
+            cover_name = (
+                f"{difficulty}.jpg" if song_info.jacket_override else "base.jpg"
+            )
             difficulty = ["Past", "Present", "Future", "Beyond"][difficulty]
             image = "file:///" + str(
                 assets_root / "song" / data.content.song_id / cover_name
