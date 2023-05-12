@@ -5,7 +5,7 @@ from typing import Optional
 
 class Content(Base):
     id: str
-    rating_Class: int
+    rating_class: int
     song_info: SongInfo
 
 

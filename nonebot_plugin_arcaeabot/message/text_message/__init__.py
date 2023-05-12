@@ -25,9 +25,9 @@ class TextMessage:
         content = data.content
         song_name = content.song_info.name_en
         artist = content.song_info.artist
-        difficulty = ["Past", "Present", "Future", "Beyond"][content.rating_Class]
+        difficulty = ["Past", "Present", "Future", "Beyond"][content.rating_class]
         cover_name = (
-            f"{content.rating_Class}.jpg"
+            f"{content.rating_class}.jpg"
             if content.song_info.jacket_override
             else "base.jpg"
         )
