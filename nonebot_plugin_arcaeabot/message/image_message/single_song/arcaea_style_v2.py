@@ -29,7 +29,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     else:
         score_info = data.content.record
     song_id = score_info.song_id
-    song_info = data.content.songinfo[0]
+    song_info = data.content.song_info[0]
     health = score_info.health
     song_rating = score_info.rating
     shiny_perfect_count = score_info.shiny_perfect_count
