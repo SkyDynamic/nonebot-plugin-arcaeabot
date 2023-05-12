@@ -10,7 +10,7 @@ from .song_info import SongInfo
 class Content(Base):
     account_info: AccountInfo
     record: ScoreInfo
-    songinfo: List[SongInfo]
+    song_info: List[SongInfo]
 
 
 class UserBest(Base):

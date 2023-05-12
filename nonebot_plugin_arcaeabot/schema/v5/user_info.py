@@ -8,7 +8,7 @@ from .account_info import AccountInfo
 class Content(Base):
     account_info: AccountInfo
     recent_score: List[ScoreInfo]
-    songinfo: List[SongInfo]
+    song_info: List[SongInfo]
 
 
 class UserInfo(Base):

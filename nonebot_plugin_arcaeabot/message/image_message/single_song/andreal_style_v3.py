@@ -25,7 +25,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     else:
         score_info = data.content.record
     song_id = score_info.song_id
-    song_info = data.content.songinfo[0]
+    song_info = data.content.song_info[0]
     # 判断用户的自定义语言
     if language == "en" or not language:
         song_name = song_info.name_en
@@ -50,7 +50,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     image = image.filter(ImageFilter.GaussianBlur(radius=10))
     fog = Image.new("RGBA", (600, 867), (255, 255, 255, 60))
     image.alpha_composite(fog)
-    side = data.content.songinfo[0].side
+    side = data.content.song_info[0].side
     card = open_img(StaticPath.rawv3bg_0 if side == 0 else StaticPath.rawv3bg_1)
     image.alpha_composite(card)
     image.alpha_composite(song_cover.resize((256, 256)), (172, 245))

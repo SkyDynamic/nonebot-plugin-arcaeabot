@@ -42,7 +42,7 @@ class API:
 
     @classmethod
     async def get_user_b30(cls, session_info: str):
-        url = f"{cls.base_url}/arcapi/user/best30?user_code={session_info}&with_recent=false&overflow=10&with_song_info=true"
+        url = f"{cls.base_url}/arcapi/user/bests/result?session_info={session_info}&with_recent=false&overflow=10&with_song_info=true"
         resp = await cls._quick_get(url=url)
         return UserBest30(**resp.json())
 
