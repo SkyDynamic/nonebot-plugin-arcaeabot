@@ -23,12 +23,9 @@ async def b30_handler(event: MessageEvent, arg: Message = CommandArg()):
             await arc.send(
                 MessageSegment.reply(event.message_id) + "开始查询Bests30中，请稍后..."
             )
-            query_session = await UserArcaeaInfo.get_query_session(user_info.arcaea_id)
             user_config = UserUIConfig().read().get(str(event.user_id))
             language = user_config.get("language") if user_config else None
-            result = await UserArcaeaInfo.draw_user_b30(
-                query_session, language, user_info.arcaea_id
-            )
+            result = await UserArcaeaInfo.draw_user_b30(language, user_info.arcaea_id)
             await arc.finish(MessageSegment.reply(event.message_id) + result)
         elif len(args) == 2:
             querying = list()
@@ -40,9 +37,8 @@ async def b30_handler(event: MessageEvent, arg: Message = CommandArg()):
             await arc.send(
                 MessageSegment.reply(event.message_id) + "开始查询Bests30中，请稍后..."
             )
-            query_session = await UserArcaeaInfo.get_query_session(args[1])
             result = await UserArcaeaInfo.draw_user_b30(
-                language="en", arcaea_id=args[1], session_info=query_session
+                language="en", arcaea_id=args[1]
             )
             querying.remove(event.user_id)
             await arc.finish(MessageSegment.reply(event.message_id) + result)
