@@ -23,12 +23,12 @@ class TextMessage:
         if error_message := data.message:
             return error_message
         content = data.content
-        song_name = content.songinfo.name_en
-        artist = content.songinfo.artist
-        difficulty = ["Past", "Present", "Future", "Beyond"][content.ratingClass]
+        song_name = content.song_info.name_en
+        artist = content.song_info.artist
+        difficulty = ["Past", "Present", "Future", "Beyond"][content.rating_Class]
         cover_name = (
-            f"{content.ratingClass}.jpg"
-            if content.songinfo.jacket_override
+            f"{content.rating_Class}.jpg"
+            if content.song_info.jacket_override
             else "base.jpg"
         )
         image = "file:///" + str(assets_root / "song" / content.id / cover_name)
@@ -36,18 +36,18 @@ class TextMessage:
             [
                 f"曲名: {song_name}[{difficulty}]",
                 f"曲师: {artist}",
-                f"曲绘: {content.songinfo.jacket_designer}",
-                f"时长: {'%02d:%02d' % divmod(content.songinfo.time, 60)}",
-                f"BPM: {content.songinfo.bpm}",
-                f"谱师: {content.songinfo.chart_designer}",
-                f"Note数: {content.songinfo.note}",
-                f"Rating: {content.songinfo.rating/10}",
-                f"隶属曲包: {content.songinfo.set_friendly or content.songinfo.set}",
-                f"上线时间: { content.songinfo.date.strftime('%Y-%m-%d')}",
+                f"曲绘: {content.song_info.jacket_designer}",
+                f"时长: {'%02d:%02d' % divmod(content.song_info.time, 60)}",
+                f"BPM: {content.song_info.bpm}",
+                f"谱师: {content.song_info.chart_designer}",
+                f"Note数: {content.song_info.note}",
+                f"Rating: {content.song_info.rating/10}",
+                f"隶属曲包: {content.song_info.set_friendly or content.song_info.set}",
+                f"上线时间: { content.song_info.date.strftime('%Y-%m-%d')}",
             ]
         )
-        result += "\n需要世界模式解锁" if content.songinfo.world_unlock is True else ""
-        result += "\n需要下载" if content.songinfo.remote_download is True else ""
+        result += "\n需要世界模式解锁" if content.song_info.world_unlock is True else ""
+        result += "\n需要下载" if content.song_info.remote_download is True else ""
         return MessageSegment.image(image) + "\n" + result
 
     @staticmethod
@@ -61,8 +61,8 @@ class TextMessage:
             randomtemplate = StaticPath.RandomTemplate
             random_text = str(random.choice(randomtemplate))
             content = data.content
-            song_name = content.songinfo.name_en
-            artist = content.songinfo.artist
+            song_name = content.song_info.name_en
+            artist = content.song_info.artist
             if "$songname$" in random_text:
                 random_text = random_text.replace("$songname$", song_name)
             if "$artist$" in random_text:
@@ -87,28 +87,28 @@ class TextMessage:
         if difficulty + 1 > len(data.content.difficulties):
             return "this song has no beyond level"
         if difficulty != -1:
-            songinfo = data.content.difficulties[difficulty]
-            cover_name = f"{difficulty}.jpg" if songinfo.jacket_override else "base.jpg"
+            song_info = data.content.difficulties[difficulty]
+            cover_name = f"{difficulty}.jpg" if song_info.jacket_override else "base.jpg"
             difficulty = ["Past", "Present", "Future", "Beyond"][difficulty]
             image = "file:///" + str(
                 assets_root / "song" / data.content.song_id / cover_name
             )
             result = "\n".join(
                 [
-                    f"曲名: {songinfo.name_en}[{difficulty}]",
-                    f"曲师: {songinfo.artist}",
-                    f"曲绘: {songinfo.jacket_designer}",
-                    f"时长: {'%02d:%02d' % divmod(songinfo.time, 60)}",
-                    f"BPM: {songinfo.bpm}",
-                    f"谱师: {songinfo.chart_designer}",
-                    f"Note数: {songinfo.note}",
-                    f"Rating: {songinfo.rating/10}",
-                    f"隶属曲包: {songinfo.set_friendly or songinfo.set}",
-                    f"上线时间: { songinfo.date.strftime('%Y-%m-%d')}",
+                    f"曲名: {song_info.name_en}[{difficulty}]",
+                    f"曲师: {song_info.artist}",
+                    f"曲绘: {song_info.jacket_designer}",
+                    f"时长: {'%02d:%02d' % divmod(song_info.time, 60)}",
+                    f"BPM: {song_info.bpm}",
+                    f"谱师: {song_info.chart_designer}",
+                    f"Note数: {song_info.note}",
+                    f"Rating: {song_info.rating/10}",
+                    f"隶属曲包: {song_info.set_friendly or song_info.set}",
+                    f"上线时间: { song_info.date.strftime('%Y-%m-%d')}",
                 ]
             )
-            result += "\n需要世界模式解锁" if songinfo.world_unlock is True else ""
-            result += "\n需要下载" if songinfo.remote_download is True else ""
+            result += "\n需要世界模式解锁" if song_info.world_unlock is True else ""
+            result += "\n需要下载" if song_info.remote_download is True else ""
             return MessageSegment.image(image) + "\n" + result
 
         image = "file:///" + str(

@@ -5,8 +5,8 @@ from typing import Optional
 
 class Content(Base):
     id: str
-    ratingClass: int
-    songinfo: SongInfo
+    rating_Class: int
+    song_info: SongInfo
 
 
 class SongRandom(Base):
