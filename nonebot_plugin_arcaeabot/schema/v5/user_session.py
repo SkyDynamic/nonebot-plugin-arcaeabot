@@ -3,7 +3,7 @@ from ..basemodel import Base
 
 
 class Content(Base):
-    session_info: str
+    session_info: Optional[str]
 
 
 class UserSession(Base):

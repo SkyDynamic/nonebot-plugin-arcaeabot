@@ -19,11 +19,10 @@ class UserArcaeaInfo:
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
             session_get = await API.get_user_session(arcaea_id=arcaea_id)
-            if session_get.content:
-                session_info = session_get.content.session_info
+            if session_info := session_get.content.session_info:
+                resp = await API.get_user_b30(session_info=session_info)
             else:
                 return session_get.message
-            resp = await API.get_user_b30(session_info=session_info)
             if error_message := resp.message:
                 return error_message
             image = draw_user_b30(data=resp, language=language)
@@ -40,11 +39,10 @@ class UserArcaeaInfo:
         UserArcaeaInfo.querying.append(arcaea_id)
         try:
             session_get = await API.get_user_session(arcaea_id=arcaea_id)
-            if session_get.content:
-                session_info = session_get.content.session_info
+            if session_info := session_get.content:
+                resp = await API.get_user_b30(session_info=session_info)
             else:
                 return session_get.message
-            resp = await API.get_user_b30(session_info=session_info)
             if error_message := resp.message:
                 return error_message
             image = draw_ptt(data=resp)
