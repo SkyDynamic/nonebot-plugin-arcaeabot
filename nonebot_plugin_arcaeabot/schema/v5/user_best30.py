@@ -6,14 +6,14 @@ from .score_info import ScoreInfo
 
 
 class Content(Base):
-    query_time: int
-    best30_avg: float
-    recent10_avg: float
-    account_info: AccountInfo
-    best30_list: List[ScoreInfo]
-    best30_song_info: List[SongInfo]
-    best30_overflow: List[ScoreInfo]
-    best30_overflow_song_info: List[SongInfo]
+    query_time: Optional[int]
+    best30_avg: Optional[float]
+    recent10_avg: Optional[float]
+    account_info: Optional[AccountInfo]
+    best30_list: Optional[List[ScoreInfo]]
+    best30_song_info: Optional[List[SongInfo]]
+    best30_overflow: Optional[List[ScoreInfo]]
+    best30_overflow_song_info: Optional[List[SongInfo]]
 
 
 class UserBest30(Base):
