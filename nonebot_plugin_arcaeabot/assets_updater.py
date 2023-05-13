@@ -1,5 +1,4 @@
 from .resource_manager import assets_root
-from .resource_manager import db_root as ROOT
 from httpx import AsyncClient
 from tqdm import tqdm
 from os import listdir, makedirs

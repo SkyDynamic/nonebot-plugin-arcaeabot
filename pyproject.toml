@@ -18,8 +18,6 @@ peewee = ">=3.14.4"
 httpx = ">=0.20.0, <1.0.0"
 tqdm = "^4.1.0"
 "ruamel.yaml" = "^0.17.2"
-ujson = "^5.5.0"
-aiofiles = "^22.1.0"
 
 [tool.poetry.dev-dependencies]
 
