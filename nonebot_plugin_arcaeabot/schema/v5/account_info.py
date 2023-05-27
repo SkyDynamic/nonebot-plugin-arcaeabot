@@ -13,7 +13,6 @@ class AccountInfo(Base):
         "is_char_uncapped": true,
         "is_skill_sealed": false,
         "rating": 1274,
-        "join_date": 1487816563340,
         "character": 12
     }
     """
@@ -26,5 +25,4 @@ class AccountInfo(Base):
     is_char_uncapped: bool
     is_skill_sealed: bool
     rating: int
-    join_date: datetime
     character: int
