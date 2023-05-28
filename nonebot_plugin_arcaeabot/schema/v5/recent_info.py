@@ -3,7 +3,7 @@ from datetime import datetime
 from ..basemodel import Base
 
 
-class ScoreInfo(Base):
+class RecentInfo(Base):
     """
     {
         "score": 9979350,
@@ -23,15 +23,11 @@ class ScoreInfo(Base):
     """
 
     score: int
-    health: int
-    rating: float
+
+
     song_id: str
-    modifier: int
+
     difficulty: int
-    clear_type: int
-    best_clear_type: int
+
+
     time_played: datetime
-    near_count: int
-    miss_count: int
-    perfect_count: int
-    shiny_perfect_count: int
