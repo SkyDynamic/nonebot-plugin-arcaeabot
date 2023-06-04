@@ -2,6 +2,7 @@ from .best_30.chieri_style import draw_user_b30, draw_ptt
 from .single_song.andreal_style_v3 import draw_single_song
 from .single_song import arcaea_style_v2
 from ...api.request import API
+from ...schema.v5.user_session import get_message
 from typing import Optional
 from io import BytesIO
 from nonebot.adapters.onebot.v11.message import MessageSegment
@@ -23,9 +24,9 @@ class UserArcaeaInfo:
                 if session_info := content.session_info:
                     resp = await API.get_user_b30(session_info=session_info)
                 else:
-                    return session_get.message
+                    return get_message(session_get.message)
             else:
-                return session_get.message
+                return get_message(session_get.message)
             if error_message := resp.message:
                 return error_message
             image = draw_user_b30(data=resp, language=language)
@@ -46,9 +47,9 @@ class UserArcaeaInfo:
                 if session_info := content.session_info:
                     resp = await API.get_user_b30(session_info=session_info)
                 else:
-                    return session_get.message
+                    return get_message(session_get.message)
             else:
-                return session_get.message
+                return get_message(session_get.message)
             if error_message := resp.message:
                 return error_message
             image = draw_ptt(data=resp)
