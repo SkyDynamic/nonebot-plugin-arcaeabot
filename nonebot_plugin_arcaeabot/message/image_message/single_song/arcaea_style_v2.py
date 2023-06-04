@@ -23,44 +23,27 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     # Score Info
     if isinstance(data, UserInfo):
         score_info = data.content.recent_score[0]
-        # Recent 内没有这几项, 但是剩代码的话设置为 'Unkonwn'
-        health = -1
-        shiny_perfect_count = None
-        perfect_count = 'Unkonwn'
-        near_count = 'Unkonwn'
-        miss_count = 'Unkonwn'
-        clear_type_ = 6
     else:
         score_info = data.content.record
-        # Bests拥有项
-        health = score_info.health
-        shiny_perfect_count = score_info.shiny_perfect_count
-        perfect_count = score_info.perfect_count
-        near_count = score_info.near_count
-        miss_count = score_info.miss_count
-        clear_type_ = score_info.clear_type
-
     song_id = score_info.song_id
     song_info = data.content.song_info[0]
-
+    health = score_info.health
     song_rating = score_info.rating
+    shiny_perfect_count = score_info.shiny_perfect_count
     note = song_info.note
-
     # 判断用户的自定义语言
     if language == "en" or not language:
         song_name = song_info.name_en
     elif language == "jp":
         song_name = song_info.name_jp
-
     # 判断歌曲名是否拥有日文名，如没有则转为en
     if not song_name:
         song_name = song_info.name_en
-
-    # Song Score Base Information
     difficulty = score_info.difficulty
     score = score_info.score
-    song_rating = score_info.rating
-
+    perfect_count = score_info.perfect_count
+    near_count = score_info.near_count
+    miss_count = score_info.miss_count
     # Back Ground
     cover_name = f"{difficulty}.jpg" if song_info.jacket_override else "base.jpg"
     image = Image.new("RGBA", (2388, 1668), (0, 0, 0, 0))
@@ -99,14 +82,11 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     origin_size_w, origin_size_h = retry_bottom.size
     retry_bottom = retry_bottom.resize((405, int(405 / origin_size_w * origin_size_h)))
     image.alpha_composite(retry_bottom, (1983, 1549))
-    clear_type = ("TL", "NC", "FR", "PM", "EC", "HC", "UNK")[clear_type_]
+    clear_type = ("TL", "NC", "FR", "PM", "EC", "HC")[score_info.clear_type]
     move_y = 0
     hp_top = open_img(StaticPath.arcaea_style_dir / "hp_top.png")
     origin_size_w, origin_size_h = hp_top.size
     hp_top = hp_top.resize((56, int(56 / origin_size_w * origin_size_h)))
-    if clear_type == 'UNK':
-        move_y = int(702 * ((100 - 0) / 100)) - 35
-        health = '?'
     if clear_type != "HC" and clear_type != "EC":
         if health == 100:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_clear.png").resize(
@@ -242,12 +222,11 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         difficulty
     ]
     image = draw_text(image, write_difficulty, diff_color)
-    if clear_type_ != 6:
-        track_type = get_track_type(clear_type)
-        track_info = open_img(StaticPath.is_failed(track_type))
-        origin_size_w, origin_size_h = track_info.size
-        track_info = track_info.resize((996, int(996 / origin_size_w * origin_size_h)))
-        image.alpha_composite(track_info, (700, 515))
+    track_type = get_track_type(clear_type)
+    track_info = open_img(StaticPath.is_failed(track_type))
+    origin_size_w, origin_size_h = track_info.size
+    track_info = track_info.resize((996, int(996 / origin_size_w * origin_size_h)))
+    image.alpha_composite(track_info, (700, 515))
     write_score = DataText(
         1205,
         740,
@@ -264,7 +243,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         StaticPath.andrea,
         "mm",
     )
-    if shiny_perfect_count and shiny_perfect_count == note:
+    if shiny_perfect_count == note:
         image = draw_text(image, write_score_shadow, (0, 160, 170, 120))
     else:
         image = draw_text(image, write_score_shadow, "black")
@@ -277,7 +256,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     write_pure = DataText(1210, 1135, 64, perfect_count, StaticPath.andrea)
     image = draw_text(image, write_pure, (111, 111, 111), 8, "white")
     write_shiny_pure = DataText(
-        1365, 1143, 40, (f"+{shiny_perfect_count}" if shiny_perfect_count else ""), StaticPath.andrea, "lt"
+        1365, 1143, 40, f"+{shiny_perfect_count}", StaticPath.andrea, "lt"
     )
     image = draw_text(image, write_shiny_pure, (111, 111, 111), 2, "white")
     write_far = DataText(1210, 1205, 64, near_count, StaticPath.andrea)
