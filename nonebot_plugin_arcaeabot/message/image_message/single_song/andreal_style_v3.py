@@ -22,11 +22,11 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     # Score Info
     if isinstance(data, UserInfo):
         score_info = data.content.recent_score[0]
-        # Recent 内没有这几项, 但是剩代码的话设置为 'Unkonwn'
+        # Recent 内没有这几项, 但是剩代码的话设置为 'Unknown'
         shiny_perfect_count = None
-        perfect_count = 'Unkonwn'
-        near_count = 'Unkonwn'
-        miss_count = 'Unkonwn'
+        perfect_count = 'Unknown'
+        near_count = 'Unknown'
+        miss_count = 'Unknown'
         clear_type_ = 6
     else:
         score_info = data.content.record
