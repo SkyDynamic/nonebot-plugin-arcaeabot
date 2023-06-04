@@ -27,14 +27,14 @@ Arcaea 查分器。
 
 使用前请确保您的Python版本>=3.8
 
-项目默认使用AUA (ArcaeaUnlimitedApi)，您需要申请相关apiurl与token(user-agent)并在机器人所在目录`data\arcaea\config.yml`中填写
+项目默认使用UAA (UnofficialArcaeaAPI)，您需要申请相关apiurl与token(user-agent)并在机器人所在目录`data\arcaea\config.yml`中填写
 
 <div align="center">
 
 | 参数               | 描述                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| aua_url | AUA的地址，如"https://www.example.com"</br>|
-| aua_token | AUA的认证token，如"sb616" |
+| uaa_url | UAA的地址，如"https://www.example.com"</br>|
+| uaa_token | UAA的认证token，如"sb616" |
 
 </div>
 
