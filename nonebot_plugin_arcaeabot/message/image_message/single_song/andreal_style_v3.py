@@ -22,26 +22,40 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     # Score Info
     if isinstance(data, UserInfo):
         score_info = data.content.recent_score[0]
+        # Recent 内没有这几项, 但是剩代码的话设置为 'Unkonwn'
+        shiny_perfect_count = None
+        perfect_count = 'Unkonwn'
+        near_count = 'Unkonwn'
+        miss_count = 'Unkonwn'
+        clear_type_ = 6
     else:
         score_info = data.content.record
+        # Bests拥有项
+        shiny_perfect_count = score_info.shiny_perfect_count
+        perfect_count = score_info.perfect_count
+        near_count = score_info.near_count
+        miss_count = score_info.miss_count
+        clear_type_ = score_info.clear_type
+
     song_id = score_info.song_id
     song_info = data.content.song_info[0]
+
     # 判断用户的自定义语言
     if language == "en" or not language:
         song_name = song_info.name_en
     elif language == "jp":
         song_name = song_info.name_jp
+
     # 判断歌曲名是否拥有日文名，如没有则转为en
     if not song_name:
         song_name = song_info.name_en
+
+    # Song Score Base Information
     difficulty = score_info.difficulty
     score = score_info.score
-    shiny_perfect_count = score_info.shiny_perfect_count
-    perfect_count = score_info.perfect_count
-    near_count = score_info.near_count
-    miss_count = score_info.miss_count
     song_rating = score_info.rating
     constant = song_info.rating / 10
+
     # Back Ground
     cover_name = f"{difficulty}.jpg" if song_info.jacket_override else "base.jpg"
     image = Image.new("RGBA", (600, 867), (0, 0, 0, 0))
@@ -54,6 +68,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     card = open_img(StaticPath.rawv3bg_0 if side == 0 else StaticPath.rawv3bg_1)
     image.alpha_composite(card)
     image.alpha_composite(song_cover.resize((256, 256)), (172, 245))
+
     # Draw User Info
     icon = open_img(StaticPath.select_image("char", icon)).resize((100, 100))
     image.alpha_composite(icon, (90, 90))
@@ -76,6 +91,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     image = draw_text(image, write_user_name, "black")
     write_user_code = DataText(210, 155, 20, f"ArcID:  {arcaea_id}", StaticPath.andrea)
     image = draw_text(image, write_user_code, "black")
+
     # Draw Score Info
     write_PLAYPTT = DataText(65, 765, 20, "Play Ptt:", StaticPath.exo_regular)
     image = draw_text(image, write_PLAYPTT, (110, 110, 110))
@@ -107,12 +123,13 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         difficulty
     ]
     image = draw_text(image, write_difficulty, diff_color)
-    clear_type = ("TL", "NC", "FR", "PM", "EC", "HC")[score_info.clear_type]
-    track_type = get_track_type(clear_type)
-    track_info = open_img(StaticPath.is_failed(track_type))
-    origin_size_w, origin_size_h = track_info.size
-    track_info = track_info.resize((400, int(400 / origin_size_w * origin_size_h)))
-    image.alpha_composite(track_info, (100, 615))
+    clear_type = ("TL", "NC", "FR", "PM", "EC", "HC", "UNK")[clear_type_]
+    if clear_type_ != 6:
+        track_type = get_track_type(clear_type)
+        track_info = open_img(StaticPath.is_failed(track_type))
+        origin_size_w, origin_size_h = track_info.size
+        track_info = track_info.resize((400, int(400 / origin_size_w * origin_size_h)))
+        image.alpha_composite(track_info, (100, 615))
     write_score = DataText(
         300,
         680,
@@ -128,7 +145,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         450,
         775,
         17,
-        f"{perfect_count}(+{shiny_perfect_count})",
+        f"{perfect_count}" + (f"(+{shiny_perfect_count})" if shiny_perfect_count else ""),
         StaticPath.exo_medium,
         "ls",
     )
