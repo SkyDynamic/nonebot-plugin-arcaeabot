@@ -6,6 +6,8 @@ from .score_info import ScoreInfo
 
 
 class Content(Base):
+    queried_charts: Optional[int]
+    current_account: Optional[int]
     query_time: Optional[int]
     best30_avg: Optional[float]
     recent10_avg: Optional[float]

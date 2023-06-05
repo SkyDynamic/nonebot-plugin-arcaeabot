@@ -52,48 +52,9 @@ class API:
 
     @classmethod
     async def get_user_b30(cls, session_info: str):
-        url = f"{cls.base_url}/arcapi/user/bests/result?session_info={session_info}".replace(
-            "https", "wss"
-        )
-        async with websockets.connect(uri=url, extra_headers=cls.headers) as websocket:
-            try:
-                package_recv = []
-                async for message in websocket:
-                    package_recv.append(json.loads(message))
-            except ConnectionClosedError as e:
-                pass
-            finally:
-                await websocket.close()
-                account_info = package_recv[0]["content"]["account_info"]
-                chart_list = package_recv[1:]
-                chart_list.sort(
-                    key=lambda v: v["content"]["record"]["rating"], reverse=True
-                )
-                chart_b40 = chart_list[:41]
-                score_info_list = [i["content"]["record"] for i in chart_b40]
-                song_info_list = [i["content"]["song_info"] for i in chart_b40]
-                best_total: float = 0.0
-                for i in (
-                    range(30)
-                    if len(score_info_list) >= 30
-                    else range(len(score_info_list))
-                ):
-                    best_total += score_info_list[i]["rating"]
-                best30_avg = best_total / 30
-                recent10_avg = (account_info["rating"] / 100 - best30_avg * 0.75) / 0.25
-                resp = {
-                    "status": 0,
-                    "content": {
-                        "best30_avg": best30_avg,
-                        "recent10_avg": recent10_avg,
-                        "account_info": account_info,
-                        "best30_list": score_info_list[:31],
-                        "best30_overflow": score_info_list[31:41],
-                        "best30_song_info": song_info_list[:31],
-                        "best30_overflow_song_info": song_info_list[31:41],
-                    },
-                }
-                return UserBest30(**resp)
+        url = f"{cls.base_url}/arcapi/user/bests/result?session_info={session_info}&with_recent=false&overflow=10&with_song_info=true"
+        resp = await cls._quick_get(url=url)
+        return UserBest30(**resp.json())
 
     @classmethod
     async def get_user_best(cls, arcaea_id: str, songname: str, difficulty: int):

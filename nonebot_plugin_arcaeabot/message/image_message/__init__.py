@@ -2,11 +2,24 @@ from .best_30.chieri_style import draw_user_b30, draw_ptt
 from .single_song.andreal_style_v3 import draw_single_song
 from .single_song import arcaea_style_v2
 from ...api.request import API
-from ...schema.v5.user_session import get_message
 from typing import Optional
 from io import BytesIO
 from nonebot.adapters.onebot.v11.message import MessageSegment
+from ...config import StatusMsgDict
 
+def get_message(status: int, queried_charts: Optional[int] = None, current_account: Optional[int] = None) -> str:
+    # b30
+    if status == -31:
+        return StatusMsgDict.get(str(-31)) + str(queried_charts)
+    elif status == -32:
+        return StatusMsgDict.get(str(-32)) + str(current_account)
+    # other status
+    elif status != -31 and status != -32:
+        if str(status) in StatusMsgDict:
+            return StatusMsgDict.get(str(status))
+    # other
+    else:
+        return "未知错误, 请稍后再试, 或联系Bot主人"
 
 class UserArcaeaInfo:
     querying = list()
@@ -24,11 +37,11 @@ class UserArcaeaInfo:
                 if session_info := content.session_info:
                     resp = await API.get_user_b30(session_info=session_info)
                 else:
-                    return get_message(session_get.message)
+                    return session_get.message
             else:
-                return get_message(session_get.message)
-            if error_message := resp.message:
-                return error_message
+                return get_message(session_get.status)
+            if resp.message:
+                return get_message(resp.status, resp.content.queried_charts, resp.content.current_account)
             image = draw_user_b30(data=resp, language=language)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
@@ -47,11 +60,11 @@ class UserArcaeaInfo:
                 if session_info := content.session_info:
                     resp = await API.get_user_b30(session_info=session_info)
                 else:
-                    return get_message(session_get.message)
+                    return session_get.message
             else:
-                return get_message(session_get.message)
-            if error_message := resp.message:
-                return error_message
+                return get_message(session_get.status)
+            if resp.message:
+                return get_message(resp.status, resp.content.queried_charts, resp.content.current_account)
             image = draw_ptt(data=resp)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")

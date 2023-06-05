@@ -1,6 +1,7 @@
 from ..api import API
 from ..database import UserInfo, ArcInfo
 from ..matcher import arc
+from .. config import StatusMsgDict
 from nonebot.adapters.onebot.v11.message import Message, MessageSegment
 from nonebot.adapters.onebot.v11.event import MessageEvent
 from nonebot.params import CommandArg
@@ -22,8 +23,10 @@ async def bind_handler(event: MessageEvent, arg: Message = CommandArg()):
             arc_name = arc_info.arcaea_name
 
         resp = await API.get_user_info(arcaea_id=arc_id)
-        if error_message := resp.message:
-            await arc.finish(MessageSegment.reply(event.user_id) + error_message)
+        if resp.message:
+            await arc.finish(
+                MessageSegment.reply(event.user_id) + StatusMsgDict.get(str(resp.status))
+            )
         arc_id = resp.content.account_info.code
         arc_name = resp.content.account_info.name
         ArcInfo.replace(

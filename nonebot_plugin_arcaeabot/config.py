@@ -1,9 +1,11 @@
-from typing import Optional, Any
+from typing import NoReturn, Optional, Any
 from pathlib import Path
 from ruamel import yaml
 
 import os
 import json
+
+from .resource_manager import StaticPath
 
 Config_path = Path() / "data" / "arcaea" / "config.yml"
 User_Config_path = Path() / "data" / "arcaea" / "user_config.json"
@@ -12,8 +14,8 @@ New_map = {
     "aua_url": "URL",
     "aua_token": "SECRET",
     "src_url": "https://api.ritsuki.top/api/",
+    "StatusLanguage": "zh_CN"
 }
-
 
 class ConfigsManager:
     def __init__(self, file: Path):
@@ -55,9 +57,13 @@ class UserUIConfig:
             with open(User_Config_path, "r", encoding="utf-8") as fi:
                 return json.load(fi)
 
-    def write(self, data):
+    def write(self, data) -> NoReturn:
         with open(User_Config_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
 
 
 config = ConfigsManager(Config_path)
+
+StatusMsgDict = StaticPath.Read_StatusMsg_Language(
+    config.get_config('StatusLanguage')
+    )

@@ -1,6 +1,5 @@
 # Change
 ## [3.1.18]
-- B30接口更改为Websockets
 - 修复recent无法获取的问题
 - 更改了部分语言问题
 

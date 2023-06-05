@@ -6,6 +6,7 @@ from nonebot.matcher import Matcher
 from ..api.request import API
 from ..matcher import arc, ai_cmd
 from ..message.text_message import TextMessage
+from ..config import StatusMsgDict
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -84,6 +85,6 @@ def Ai_query_reset_handler():
 async def random(event: MessageEvent):
     reply = MessageSegment.reply(event.message_id)
     resp = await API.get_song_random(start="0", end="24")
-    if error_message := resp.message:
-        await arc.finish(reply + error_message)
+    if resp.message:
+        await arc.finish(reply + StatusMsgDict.get(str(resp.status)))
     return resp
