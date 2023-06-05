@@ -107,7 +107,7 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     if clear_type == 'UNK':
         move_y = int(702 * ((100 - 0) / 100)) - 35
         health = '?'
-    if clear_type != "HC" and clear_type != "EC":
+    elif clear_type != "HC" and clear_type != "EC":
         if health == 100:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_clear.png").resize(
                 (56, 702)
