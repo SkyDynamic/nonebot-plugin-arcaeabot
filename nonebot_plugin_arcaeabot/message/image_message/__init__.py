@@ -2,10 +2,12 @@ from .best_30.chieri_style import draw_user_b30, draw_ptt
 from .single_song.andreal_style_v3 import draw_single_song
 from .single_song import arcaea_style_v2
 from ...api.request import API
+from ...config import StatusMsgDict
+from ...matcher import arc
 from typing import Optional
 from io import BytesIO
 from nonebot.adapters.onebot.v11.message import MessageSegment
-from ...config import StatusMsgDict
+import asyncio
 
 def get_message(status: int, queried_charts: Optional[int] = None, current_account: Optional[int] = None) -> str:
     # b30
@@ -40,8 +42,23 @@ class UserArcaeaInfo:
                     return session_get.message
             else:
                 return get_message(session_get.status)
+            # 若resp.message存在且status code = -31 / -32时开始轮询
             if resp.message:
-                return get_message(resp.status, resp.content.queried_charts, resp.content.current_account)
+                if resp.status in [-31, -32]:
+                    await arc.send(get_message(resp.status, resp.content.queried_charts, resp.content.current_account) + '\n当前用户轮询异步进程已开启, 请耐心等待(9分钟后轮询超时)')
+                    request_count = 0
+                    while True:
+                        request_count += 1
+                        resp = await API.get_user_b30(session_info=session_info)
+                        # 完成则打破循环
+                        if not resp.message:
+                            break
+                        if request_count >= 30:
+                            return '轮询超时，当前用户轮询异步进程结束'
+                        # 18秒轮询一次
+                        await asyncio.sleep(18)
+                else:
+                    return get_message(resp.status)
             image = draw_user_b30(data=resp, language=language)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
@@ -63,8 +80,23 @@ class UserArcaeaInfo:
                     return session_get.message
             else:
                 return get_message(session_get.status)
+            # 若resp.message存在且status code = -31 / -32时开始轮询
             if resp.message:
-                return get_message(resp.status, resp.content.queried_charts, resp.content.current_account)
+                if resp.status in [-31, -32]:
+                    await arc.send(get_message(resp.status, resp.content.queried_charts, resp.content.current_account) + '\n当前用户轮询异步进程已开启, 请耐心等待(9分钟后轮询超时)')
+                    request_count = 0
+                    while True:
+                        request_count += 1
+                        resp = await API.get_user_b30(session_info=session_info)
+                        # 完成则打破循环
+                        if not resp.message:
+                            break
+                        if request_count >= 30:
+                            return '轮询超时，当前用户轮询异步进程结束'
+                        # 18秒轮询一次
+                        await asyncio.sleep(18)
+                else:
+                    return get_message(resp.status)
             image = draw_ptt(data=resp)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
