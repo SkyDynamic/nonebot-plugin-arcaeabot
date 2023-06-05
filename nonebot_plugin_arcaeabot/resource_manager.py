@@ -52,6 +52,17 @@ class StaticPath:
     RandomTemplate = json.load(
         open(resource_root / "RandomTemplate.json", "r", encoding="utf8")
     )
+    # StatusMsg
+    def Read_StatusMsg_Language(lang: str) -> dict:
+        try:
+            result = json.load(
+                open(resource_root / "StatusMsg" / f"{lang}.json", 'r', encoding="utf8")
+            )
+        except FileNotFoundError:
+            result = json.load(
+                open(resource_root / "StatusMsg" / "zh_CN.json", 'r', encoding="utf8")
+            ) 
+        return result
 
     # Method
     def select_image(*args) -> str:

@@ -4,7 +4,7 @@ from ..matcher import arc
 from ..message.text_message import TextMessage
 from ..api.request import API
 from ..schema import diffstr2num
-
+from ..config import StatusMsgDict
 
 async def song_handler(event: MessageEvent, arg: Message = CommandArg()):
     """
@@ -21,8 +21,10 @@ async def song_handler(event: MessageEvent, arg: Message = CommandArg()):
             songname = " ".join(args[1:])
         # query
         resp = await API.get_song_info(songname=songname)
-        if error_message := resp.message:
-            await arc.finish(MessageSegment.reply(event.message_id) + error_message)
+        if resp.message:
+            await arc.finish(
+                MessageSegment.reply(event.message_id) + StatusMsgDict.get(str(resp.status))
+                )
         await arc.finish(
             MessageSegment.reply(event.message_id)
             + TextMessage.song_info(data=resp, difficulty=difficulty)
