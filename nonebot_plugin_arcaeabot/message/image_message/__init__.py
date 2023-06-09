@@ -24,15 +24,20 @@ def get_message(status: int, queried_charts: Optional[int] = None, current_accou
         return "未知错误, 请稍后再试, 或联系Bot主人"
 
 class UserArcaeaInfo:
-    querying = list()
+    b30_querying = list()
+    normal_querying = list()
 
     @staticmethod
-    def is_querying(arcaea_id: str) -> bool:
-        return arcaea_id in UserArcaeaInfo.querying
+    def is_b30_querying(arcaea_id: str) -> bool:
+        return arcaea_id in UserArcaeaInfo.b30_querying
+
+    @staticmethod
+    def is_normal_querying(user_id: str) -> bool:
+        return user_id in UserArcaeaInfo.normal_querying
 
     @staticmethod
     async def draw_user_b30(language: str, arcaea_id: str):
-        UserArcaeaInfo.querying.append(arcaea_id)
+        UserArcaeaInfo.b30_querying.append(arcaea_id)
         try:
             session_get = await API.get_user_session(arcaea_id=arcaea_id)
             if content := session_get.content:
@@ -66,11 +71,11 @@ class UserArcaeaInfo:
         except Exception as e:
             return str(e)
         finally:
-            UserArcaeaInfo.querying.remove(arcaea_id)
+            UserArcaeaInfo.b30_querying.remove(arcaea_id)
 
     @staticmethod
     async def draw_user_ptt(arcaea_id: str):
-        UserArcaeaInfo.querying.append(arcaea_id)
+        UserArcaeaInfo.b30_querying.append(arcaea_id)
         try:
             session_get = await API.get_user_session(arcaea_id=arcaea_id)
             if content := session_get.content:
@@ -104,15 +109,15 @@ class UserArcaeaInfo:
         except Exception as e:
             return str(e)
         finally:
-            UserArcaeaInfo.querying.remove(arcaea_id)
+            UserArcaeaInfo.b30_querying.remove(arcaea_id)
 
     @staticmethod
     async def draw_user_recent(arcaea_id: str, language: str, ui: Optional[int]):
-        UserArcaeaInfo.querying.append(arcaea_id)
+        UserArcaeaInfo.normal_querying.append(arcaea_id)
         try:
             resp = await API.get_user_info(arcaea_id=arcaea_id)
-            if error_message := resp.message:
-                return error_message
+            if resp.message:
+                return StatusMsgDict.get(str(resp.status))
             if ui == 0 or not ui:
                 image = draw_single_song(data=resp, language=language)
             elif ui == 1:
@@ -123,19 +128,19 @@ class UserArcaeaInfo:
         except Exception as e:
             return str(e)
         finally:
-            UserArcaeaInfo.querying.remove(arcaea_id)
+            UserArcaeaInfo.normal_querying.remove(arcaea_id)
 
     @staticmethod
     async def draw_user_best(
         arcaea_id: str, songname: str, difficulty: int, language: str, ui: Optional[int]
     ):
-        UserArcaeaInfo.querying.append(arcaea_id)
+        UserArcaeaInfo.normal_querying.append(arcaea_id)
         try:
             resp = await API.get_user_best(
                 arcaea_id=arcaea_id, songname=songname, difficulty=difficulty
             )
-            if error_message := resp.message:
-                return error_message
+            if resp.message:
+                return StatusMsgDict.get(str(resp.status))
             if ui == 0 or not ui:
                 image = draw_single_song(data=resp, language=language)
             elif ui == 1:
@@ -146,4 +151,4 @@ class UserArcaeaInfo:
         except Exception as e:
             return str(e)
         finally:
-            UserArcaeaInfo.querying.remove(arcaea_id)
+            UserArcaeaInfo.normal_querying.remove(arcaea_id)

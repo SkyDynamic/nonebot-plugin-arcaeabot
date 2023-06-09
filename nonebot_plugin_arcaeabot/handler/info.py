@@ -21,7 +21,7 @@ async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
             if not user_info:
                 await arc.finish(MessageSegment.reply(event.message_id) + "你还没绑定呢！")
 
-            if UserArcaeaInfo.is_querying(user_info.arcaea_id):
+            if UserArcaeaInfo.is_normal_querying(user_info.arcaea_id):
                 await arc.finish(
                     MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
                 )
@@ -43,7 +43,7 @@ async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
                 UserInfo.user_qq == event.user_id
             )
             difficulty = diffstr2num(args[-1].upper())
-            if difficulty is not None:
+            if difficulty:
                 songname = " ".join(args[1:-1])
             else:
                 difficulty = 2
@@ -52,7 +52,7 @@ async def info_handler(event: MessageEvent, arg: Message = CommandArg()):
             if not user_info:
                 await arc.finish(MessageSegment.reply(event.message_id) + "你还没绑定呢！")
 
-            if UserArcaeaInfo.is_querying(user_info.arcaea_id):
+            if UserArcaeaInfo.is_normal_querying(user_info.arcaea_id):
                 await arc.finish(
                     MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
                 )

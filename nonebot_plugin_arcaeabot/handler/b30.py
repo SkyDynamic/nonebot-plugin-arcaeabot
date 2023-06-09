@@ -10,13 +10,14 @@ from nonebot.params import CommandArg
 async def b30_handler(event: MessageEvent, arg: Message = CommandArg()):
     args = arg.extract_plain_text().split()
     if args[0] == "b30" or args[0] == "b40":
+        # 直接B30
         if len(args) == 1:
             user_info: UserInfo = UserInfo.get_or_none(
                 UserInfo.user_qq == event.user_id
             )
             if not user_info:
                 await arc.finish(MessageSegment.reply(event.message_id) + "你还没绑定呢！")
-            if UserArcaeaInfo.is_querying(user_info.arcaea_id):
+            if UserArcaeaInfo.is_b30_querying(user_info.arcaea_id):
                 await arc.finish(
                     MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
                 )
@@ -27,18 +28,17 @@ async def b30_handler(event: MessageEvent, arg: Message = CommandArg()):
             language = user_config.get("language") if user_config else None
             result = await UserArcaeaInfo.draw_user_b30(language, user_info.arcaea_id)
             await arc.finish(MessageSegment.reply(event.message_id) + result)
+
+        # 输入Friend ID   
         elif len(args) == 2:
-            querying = list()
-            if event.user_id in querying:
+            if UserArcaeaInfo.is_b30_querying(arg[1]):
                 await arc.finish(
-                    MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
+                    MessageSegment.reply(event.message_id) + "该用户已在查询队列, 请勿重复发起查询。"
                 )
-            querying.append(event.user_id)
             await arc.send(
                 MessageSegment.reply(event.message_id) + "开始查询Bests30中，请稍后..."
             )
             result = await UserArcaeaInfo.draw_user_b30(
                 language="en", arcaea_id=args[1]
             )
-            querying.remove(event.user_id)
             await arc.finish(MessageSegment.reply(event.message_id) + result)

@@ -25,7 +25,7 @@ async def bind_handler(event: MessageEvent, arg: Message = CommandArg()):
         resp = await API.get_user_info(arcaea_id=arc_id)
         if resp.message:
             await arc.finish(
-                MessageSegment.reply(event.user_id) + StatusMsgDict.get(str(resp.status))
+                MessageSegment.reply(event.message_id) + StatusMsgDict.get(str(resp.status))
             )
         arc_id = resp.content.account_info.code
         arc_name = resp.content.account_info.name

@@ -9,8 +9,6 @@ from ..schema import (
     AUASongInfo,
     UserSession,
 )
-import websockets
-import json
 
 aua_url: str = config.get_config("aua_url")
 aua_token = config.get_config("aua_token")

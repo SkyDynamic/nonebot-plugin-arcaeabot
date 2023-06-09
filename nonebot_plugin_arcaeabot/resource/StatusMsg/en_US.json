@@ -33,5 +33,7 @@
     "-32": "session waiting for account, account count: ",
     "-33": "duplicate bests requests within 12 hours. cached session generated",
     "-34": "invalid account",
-    "-233": "internal error occurred (not trigger from bot)"
+    "-233": "internal error occurred (not trigger from bot)",
+    "-1001": "this song has no beyond level",
+    "-1002": "Unsupported parameter"
 }

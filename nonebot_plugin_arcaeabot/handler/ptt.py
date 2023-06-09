@@ -12,7 +12,7 @@ async def ptt_handler(event: MessageEvent, arg: Message = CommandArg()):
         user_info: UserInfo = UserInfo.get_or_none(UserInfo.user_qq == event.user_id)
         if not user_info:
             await arc.finish(MessageSegment.reply(event.message_id) + "你还没绑定呢！")
-        if UserArcaeaInfo.is_querying(user_info.arcaea_id):
+        if UserArcaeaInfo.is_b30_querying(user_info.arcaea_id):
             await arc.finish(
                 MessageSegment.reply(event.message_id) + "您已在查询队列, 请勿重复发起查询。"
             )
