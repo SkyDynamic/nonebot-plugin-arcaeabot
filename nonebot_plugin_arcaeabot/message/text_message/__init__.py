@@ -134,8 +134,8 @@ class TextMessage:
         result += "\n获取详细信息请在添加难度后缀"
         return MessageSegment.image(image) + "\n" + result
 
-class CalcMessage:
 
+class CalcMessage:
     @staticmethod
     def score(data: AUASongInfo, ptt: float, difficulty: int) -> str:
         if ptt >= 0:
@@ -146,9 +146,9 @@ class CalcMessage:
                 difficulty = ["Past", "Present", "Future", "Beyond"][difficulty]
                 rating = song_info.rating / 10
                 if ptt > rating + 2:
-                    return '大于该曲目最高单曲Ptt, 不给予计算'
+                    return "大于该曲目最高单曲Ptt, 不给予计算"
                 if ptt == rating + 2:
-                    score = f'10000000 - {10000000 + song_info.note}'
+                    score = f"10000000 - {10000000 + song_info.note}"
                 elif ptt < rating + 1:
                     score = (ptt - rating) * 300000 + 9500000
                 elif ptt >= rating + 1:
@@ -159,14 +159,14 @@ class CalcMessage:
                         f"分数: {int(score)}",
                         f"计算的单曲ptt: {ptt}",
                         f"曲名: {song_info.name_en}",
-                        f"难度: {difficulty}"
+                        f"难度: {difficulty}",
                     ]
                 )
                 return result
-        return '?你想输入负数的ptt?'
-    
+        return "?你想输入负数的ptt?"
+
     @staticmethod
-    def ptt(data: AUASongInfo, score: int, difficulty: int) ->str:
+    def ptt(data: AUASongInfo, score: int, difficulty: int) -> str:
         if score >= 0:
             if difficulty + 1 > len(data.content.difficulties):
                 return StatusMsgDict.get("-1001")
@@ -175,7 +175,7 @@ class CalcMessage:
                 difficulty = ["Past", "Present", "Future", "Beyond"][difficulty]
                 rating = song_info.rating / 10
                 if score > 10000000 + song_info.note:
-                    return '大于该曲目理论分数, 不给予计算'
+                    return "大于该曲目理论分数, 不给予计算"
                 if score >= 10000000:
                     ptt = rating + 2
                 elif 9800000 <= score < 10000000:
@@ -190,8 +190,8 @@ class CalcMessage:
                         f"单曲ptt: {result_ptt if result_ptt >= 0 else 0}",
                         f"计算的分数: {score}",
                         f"曲名: {song_info.name_en}",
-                        f"难度: {difficulty}"
+                        f"难度: {difficulty}",
                     ]
                 )
                 return result
-        return '?你想输入负数的分数?'
+        return "?你想输入负数的分数?"

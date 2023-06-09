@@ -16,8 +16,9 @@ async def random_handler(event: MessageEvent, arg: Message = CommandArg()):
         resp = await API.get_song_random(start=start, end=end)
         if resp.message:
             await arc.finish(
-                MessageSegment.reply(event.message_id) + StatusMsgDict.get(str(resp.status))
-                )
+                MessageSegment.reply(event.message_id)
+                + StatusMsgDict.get(str(resp.status))
+            )
         await arc.finish(
             MessageSegment.reply(event.message_id) + TextMessage.song_info_detail(resp)
         )

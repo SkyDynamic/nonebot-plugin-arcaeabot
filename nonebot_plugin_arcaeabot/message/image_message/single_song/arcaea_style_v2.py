@@ -26,9 +26,9 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         # Recent 内没有这几项, 但是剩代码的话设置为 'Unknown'
         health = -1
         shiny_perfect_count = None
-        perfect_count = 'Unknown'
-        near_count = 'Unknown'
-        miss_count = 'Unknown'
+        perfect_count = "Unknown"
+        near_count = "Unknown"
+        miss_count = "Unknown"
         clear_type_ = 6
     else:
         score_info = data.content.record
@@ -104,9 +104,9 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     hp_top = open_img(StaticPath.arcaea_style_dir / "hp_top.png")
     origin_size_w, origin_size_h = hp_top.size
     hp_top = hp_top.resize((56, int(56 / origin_size_w * origin_size_h)))
-    if clear_type == 'UNK':
+    if clear_type == "UNK":
         move_y = int(702 * ((100 - 0) / 100)) - 35
-        health = '?'
+        health = "?"
     elif clear_type != "HC" and clear_type != "EC":
         if health == 100:
             hp_bar = open_img(StaticPath.arcaea_style_dir / "hp_bar_clear.png").resize(
@@ -277,7 +277,12 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     write_pure = DataText(1210, 1135, 64, perfect_count, StaticPath.andrea)
     image = draw_text(image, write_pure, (111, 111, 111), 8, "white")
     write_shiny_pure = DataText(
-        1365, 1143, 40, (f"+{shiny_perfect_count}" if shiny_perfect_count else ""), StaticPath.andrea, "lt"
+        1365,
+        1143,
+        40,
+        (f"+{shiny_perfect_count}" if shiny_perfect_count else ""),
+        StaticPath.andrea,
+        "lt",
     )
     image = draw_text(image, write_shiny_pure, (111, 111, 111), 2, "white")
     write_far = DataText(1210, 1205, 64, near_count, StaticPath.andrea)

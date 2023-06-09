@@ -9,7 +9,12 @@ from io import BytesIO
 from nonebot.adapters.onebot.v11.message import MessageSegment
 import asyncio
 
-def get_message(status: int, queried_charts: Optional[int] = None, current_account: Optional[int] = None) -> str:
+
+def get_message(
+    status: int,
+    queried_charts: Optional[int] = None,
+    current_account: Optional[int] = None,
+) -> str:
     # b30
     if status == -31:
         return StatusMsgDict.get(str(-31)) + str(queried_charts)
@@ -22,6 +27,7 @@ def get_message(status: int, queried_charts: Optional[int] = None, current_accou
     # other
     else:
         return "未知错误, 请稍后再试, 或联系Bot主人"
+
 
 class UserArcaeaInfo:
     b30_querying = list()
@@ -50,7 +56,14 @@ class UserArcaeaInfo:
             # 若resp.message存在且status code = -31 / -32时开始轮询
             if resp.message:
                 if resp.status in [-31, -32]:
-                    await arc.send(get_message(resp.status, resp.content.queried_charts, resp.content.current_account) + '\n当前用户轮询异步进程已开启, 请耐心等待(9分钟后轮询超时)')
+                    await arc.send(
+                        get_message(
+                            resp.status,
+                            resp.content.queried_charts,
+                            resp.content.current_account,
+                        )
+                        + "\n当前用户轮询异步进程已开启, 请耐心等待(9分钟后轮询超时)"
+                    )
                     request_count = 0
                     while True:
                         request_count += 1
@@ -59,7 +72,7 @@ class UserArcaeaInfo:
                         if not resp.message:
                             break
                         if request_count >= 30:
-                            return '轮询超时，当前用户轮询异步进程结束'
+                            return "轮询超时，当前用户轮询异步进程结束"
                         # 18秒轮询一次
                         await asyncio.sleep(18)
                 else:
@@ -88,7 +101,14 @@ class UserArcaeaInfo:
             # 若resp.message存在且status code = -31 / -32时开始轮询
             if resp.message:
                 if resp.status in [-31, -32]:
-                    await arc.send(get_message(resp.status, resp.content.queried_charts, resp.content.current_account) + '\n当前用户轮询异步进程已开启, 请耐心等待(9分钟后轮询超时)')
+                    await arc.send(
+                        get_message(
+                            resp.status,
+                            resp.content.queried_charts,
+                            resp.content.current_account,
+                        )
+                        + "\n当前用户轮询异步进程已开启, 请耐心等待(9分钟后轮询超时)"
+                    )
                     request_count = 0
                     while True:
                         request_count += 1
@@ -97,7 +117,7 @@ class UserArcaeaInfo:
                         if not resp.message:
                             break
                         if request_count >= 30:
-                            return '轮询超时，当前用户轮询异步进程结束'
+                            return "轮询超时，当前用户轮询异步进程结束"
                         # 18秒轮询一次
                         await asyncio.sleep(18)
                 else:

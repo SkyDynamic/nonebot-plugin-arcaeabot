@@ -24,9 +24,9 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         score_info = data.content.recent_score[0]
         # Recent 内没有这几项, 但是剩代码的话设置为 'Unknown'
         shiny_perfect_count = None
-        perfect_count = 'Unknown'
-        near_count = 'Unknown'
-        miss_count = 'Unknown'
+        perfect_count = "Unknown"
+        near_count = "Unknown"
+        miss_count = "Unknown"
         clear_type_ = 6
     else:
         score_info = data.content.record
@@ -145,7 +145,8 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
         450,
         775,
         17,
-        f"{perfect_count}" + (f"(+{shiny_perfect_count})" if shiny_perfect_count else ""),
+        f"{perfect_count}"
+        + (f"(+{shiny_perfect_count})" if shiny_perfect_count else ""),
         StaticPath.exo_medium,
         "ls",
     )

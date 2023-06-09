@@ -29,7 +29,7 @@ async def b30_handler(event: MessageEvent, arg: Message = CommandArg()):
             result = await UserArcaeaInfo.draw_user_b30(language, user_info.arcaea_id)
             await arc.finish(MessageSegment.reply(event.message_id) + result)
 
-        # 输入Friend ID   
+        # 输入Friend ID
         elif len(args) == 2:
             if UserArcaeaInfo.is_b30_querying(arg[1]):
                 await arc.finish(

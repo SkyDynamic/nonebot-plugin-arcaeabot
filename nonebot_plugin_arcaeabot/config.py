@@ -14,8 +14,9 @@ New_map = {
     "aua_url": "URL",
     "aua_token": "SECRET",
     "src_url": "https://api.ritsuki.top/api/",
-    "StatusLanguage": "zh_CN"
+    "StatusLanguage": "zh_CN",
 }
+
 
 class ConfigsManager:
     def __init__(self, file: Path):
@@ -64,6 +65,4 @@ class UserUIConfig:
 
 config = ConfigsManager(Config_path)
 
-StatusMsgDict = StaticPath.Read_StatusMsg_Language(
-    config.get_config('StatusLanguage')
-    )
+StatusMsgDict = StaticPath.Read_StatusMsg_Language(config.get_config("StatusLanguage"))

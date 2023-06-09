@@ -1,6 +1,7 @@
 from typing import Optional
 from ..basemodel import Base
 
+
 class Content(Base):
     session_info: Optional[str]
 

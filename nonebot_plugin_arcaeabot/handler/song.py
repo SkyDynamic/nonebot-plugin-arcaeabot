@@ -6,6 +6,7 @@ from ..api.request import API
 from ..schema import diffstr2num
 from ..config import StatusMsgDict
 
+
 async def song_handler(event: MessageEvent, arg: Message = CommandArg()):
     """
     /arc song Fracture Ray ftr
@@ -23,8 +24,9 @@ async def song_handler(event: MessageEvent, arg: Message = CommandArg()):
         resp = await API.get_song_info(songname=songname)
         if resp.message:
             await arc.finish(
-                MessageSegment.reply(event.message_id) + StatusMsgDict.get(str(resp.status))
-                )
+                MessageSegment.reply(event.message_id)
+                + StatusMsgDict.get(str(resp.status))
+            )
         await arc.finish(
             MessageSegment.reply(event.message_id)
             + TextMessage.song_info(data=resp, difficulty=difficulty)
