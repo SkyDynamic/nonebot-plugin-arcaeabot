@@ -181,11 +181,13 @@ class CalcMessage:
                 elif 9800000 <= score < 10000000:
                     ptt = rating + 1 + (score - 9800000) / 200000
                 elif score < 9800000:
-                    ptt = rating + (score - 9500000) / 300000 
+                    ptt = rating + (score - 9500000) / 300000
+                result_ptt = round(ptt, 4)
                 result = "\n".join(
                     [
                         f"结算结果: ",
-                        f"单曲ptt: {round(ptt, 4)}",
+                        # 以防它返回负数
+                        f"单曲ptt: {result_ptt if result_ptt >= 0 else 0}",
                         f"计算的分数: {score}",
                         f"曲名: {song_info.name_en}",
                         f"难度: {difficulty}"
