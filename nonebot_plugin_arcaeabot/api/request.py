@@ -1,5 +1,4 @@
 from httpx import AsyncClient
-from websockets.exceptions import *
 from ..config import config
 from ..schema import (
     UserInfo,

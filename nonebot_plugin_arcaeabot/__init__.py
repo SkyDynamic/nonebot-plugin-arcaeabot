@@ -29,7 +29,7 @@ __plugin_meta__ = PluginMetadata(
         "author": [
             "SEAFHMC <soku_ritsuki@outlook.com>" "SkyDynamic <SkyDynamic@outlook.com>"
         ],
-        "version": "3.1.16",
+        "version": "3.1.19",
     },
 )
 
