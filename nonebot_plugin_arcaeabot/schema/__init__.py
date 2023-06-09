@@ -8,8 +8,10 @@ from .v5.song_random import SongRandom
 from .v5.aua_song_info import AUASongInfo
 from .v5.user_session import UserSession
 
+from typing import Optional
 
-def diffstr2num(diff: str):
+
+def diffstr2num(diff: str) -> Optional[int]:
     diff_dict = {
         "PAST": 0,
         "PST": 0,

@@ -16,3 +16,4 @@ from .ai import (
     ai_continue_handler,
     Ai_query_reset_scheduler,
 )
+from .calc import calc_handler

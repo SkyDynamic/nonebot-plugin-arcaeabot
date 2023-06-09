@@ -1,6 +1,7 @@
 from ...schema import SongRandom, AUASongInfo
 from ...resource_manager import assets_root, StaticPath
 from nonebot.adapters.onebot.v11.message import MessageSegment
+from ...config import StatusMsgDict
 import random
 import time
 
@@ -20,8 +21,8 @@ class TextMessage:
 
     @staticmethod
     def song_info_detail(data: SongRandom):
-        if error_message := data.message:
-            return error_message
+        if data.message:
+            return StatusMsgDict.get(str(data.status))
         content = data.content
         song_name = content.song_info.name_en
         artist = content.song_info.artist
@@ -82,10 +83,10 @@ class TextMessage:
 
     @staticmethod
     def song_info(data: AUASongInfo, difficulty: int):
-        if error_message := data.message:
-            return error_message
+        if data.message:
+            return StatusMsgDict.get(str(data.status))
         if difficulty + 1 > len(data.content.difficulties):
-            return "this song has no beyond level"
+            return StatusMsgDict.get("-1001")
         if difficulty != -1:
             song_info = data.content.difficulties[difficulty]
             cover_name = (
@@ -132,3 +133,63 @@ class TextMessage:
         )
         result += "\n获取详细信息请在添加难度后缀"
         return MessageSegment.image(image) + "\n" + result
+
+class CalcMessage:
+
+    @staticmethod
+    def score(data: AUASongInfo, ptt: float, difficulty: int) -> str:
+        if ptt >= 0:
+            if difficulty + 1 > len(data.content.difficulties):
+                return StatusMsgDict.get("-1001")
+            if difficulty != -1:
+                song_info = data.content.difficulties[difficulty]
+                difficulty = ["Past", "Present", "Future", "Beyond"][difficulty]
+                rating = song_info.rating / 10
+                if ptt > rating + 2:
+                    return '大于该曲目最高单曲Ptt, 不给予计算'
+                if ptt == rating + 2:
+                    score = f'10000000 - {10000000 + song_info.note}'
+                elif ptt < rating + 1:
+                    score = (ptt - rating) * 300000 + 9500000
+                elif ptt >= rating + 1:
+                    score = (ptt - rating - 1) * 200000 + 9800000
+                result = "\n".join(
+                    [
+                        f"结算结果: ",
+                        f"分数: {int(score)}",
+                        f"计算的单曲ptt: {ptt}",
+                        f"曲名: {song_info.name_en}",
+                        f"难度: {difficulty}"
+                    ]
+                )
+                return result
+        return '?你想输入负数的ptt?'
+    
+    @staticmethod
+    def ptt(data: AUASongInfo, score: int, difficulty: int) ->str:
+        if score >= 0:
+            if difficulty + 1 > len(data.content.difficulties):
+                return StatusMsgDict.get("-1001")
+            if difficulty != -1:
+                song_info = data.content.difficulties[difficulty]
+                difficulty = ["Past", "Present", "Future", "Beyond"][difficulty]
+                rating = song_info.rating / 10
+                if score > 10000000 + song_info.note:
+                    return '大于该曲目理论分数, 不给予计算'
+                if score >= 10000000:
+                    ptt = rating + 2
+                elif 9800000 <= score < 10000000:
+                    ptt = rating + 1 + (score - 9800000) / 200000
+                elif score < 9800000:
+                    ptt = rating + (score - 9500000) / 300000 
+                result = "\n".join(
+                    [
+                        f"结算结果: ",
+                        f"单曲ptt: {round(ptt, 4)}",
+                        f"计算的分数: {score}",
+                        f"曲名: {song_info.name_en}",
+                        f"难度: {difficulty}"
+                    ]
+                )
+                return result
+        return '?你想输入负数的分数?'

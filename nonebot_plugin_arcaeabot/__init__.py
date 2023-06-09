@@ -16,6 +16,7 @@ from .handler import (
     ai_first_handler,
     ai_continue_handler,
     Ai_query_reset_scheduler,
+    calc_handler
 )
 from nonebot.plugin import PluginMetadata
 
@@ -44,6 +45,7 @@ arc.handle()(assets_update_handler)
 arc.handle()(help_handler)
 arc.handle()(random_handler)
 arc.handle()(ptt_handler)
+arc.handle()(calc_handler)
 arc.handle()(ui_handler)
 ai_cmd.handle()(ai_handler)
 ai_cmd.got("code")(ai_first_handler)
