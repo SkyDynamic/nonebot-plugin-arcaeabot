@@ -80,6 +80,9 @@ class UserArcaeaInfo:
             image = draw_user_b30(data=resp, language=language)
             buffer = BytesIO()
             image.convert("RGB").save(buffer, "jpeg")
+            # 检测是否为缓存
+            if session_get.status == -33:
+                return '12小时内已查询过B30, 返回缓存' + MessageSegment.image(buffer)
             return MessageSegment.image(buffer)
         except Exception as e:
             return str(e)
