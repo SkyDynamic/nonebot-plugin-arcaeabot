@@ -24,12 +24,18 @@ def draw_single_song(data: Union[UserBest, UserInfo], language: str):
     if isinstance(data, UserInfo):
         score_info = data.content.recent_score[0]
         # Recent 内没有这几项, 但是剩代码的话设置为 'Unknown'
-        health = -1
-        shiny_perfect_count = None
-        perfect_count = "Unknown"
-        near_count = "Unknown"
-        miss_count = "Unknown"
-        clear_type_ = 6
+        # health = -1
+        # shiny_perfect_count = None
+        # perfect_count = "Unknown"
+        # near_count = "Unknown"
+        # miss_count = "Unknown"
+        # clear_type_ = 6
+        health = score_info.health
+        shiny_perfect_count = score_info.shiny_perfect_count
+        perfect_count = score_info.perfect_count
+        near_count = score_info.near_count
+        miss_count = score_info.miss_count
+        clear_type_ = score_info.clear_type
     else:
         score_info = data.content.record
         # Bests拥有项
